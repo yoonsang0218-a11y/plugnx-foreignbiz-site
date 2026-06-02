@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow" />
+<title>VisaDesk — 외국인 고용·체류 준법관리 SaaS | PlugNX</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --blue:#0066cc; --blue-focus:#0071e3; --sky:#2997ff;
+    --white:#ffffff; --parch:#f5f5f7; --pearl:#fafafc;
+    --tile:#272729; --tile2:#2a2a2c; --black:#000;
+    --ink:#1d1d1f; --ink80:#333; --ink48:#7a7a7a;
+    --on-dark:#fff; --dim:#cccccc;
+    --hair:#e0e0e0; --divider:#f0f0f0;
+    --danger:#d70015; --danger-d:#ff5a4d;
+    --shadow-prod:rgba(0,0,0,.22) 3px 5px 30px 0;
+    --font:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text",Inter,system-ui,"Apple SD Gothic Neo",sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--font);background:var(--white);color:var(--ink);line-height:1.47;
+    letter-spacing:-.022em;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+  a{color:var(--blue);text-decoration:none}
+  .container{max-width:1080px;margin:0 auto;padding:0 22px}
+  img{max-width:100%}
+
+  /* ---- typography ---- */
+  h1,h2,h3,h4{letter-spacing:-.022em;font-weight:600;color:var(--ink)}
+  .eyebrow{font-size:14px;font-weight:600;color:var(--blue);letter-spacing:0}
+  .display{font-size:clamp(32px,5.4vw,56px);font-weight:600;line-height:1.07;letter-spacing:-.028em}
+  .h2{font-size:clamp(27px,3.6vw,40px);font-weight:600;line-height:1.1;letter-spacing:-.024em}
+  .lead{font-size:clamp(19px,2.2vw,26px);font-weight:400;line-height:1.28;color:var(--ink80)}
+  .body{font-size:17px;font-weight:400;line-height:1.47}
+  .muted{color:var(--ink48)}
+  .on-dark .lead{color:var(--dim)}
+  .on-dark h1,.on-dark h2,.on-dark h3,.on-dark h4{color:var(--on-dark)}
+  .on-dark{color:var(--dim)}
+  .on-dark a{color:var(--sky)}
+  .on-dark .eyebrow{color:var(--sky)}
+
+  /* ---- tiles ---- */
+  .tile{padding:clamp(56px,8vw,88px) 0}
+  .tile.light{background:var(--white)}
+  .tile.parch{background:var(--parch)}
+  .tile.dark{background:var(--tile);color:var(--dim)}
+  .tile.black{background:var(--black);color:var(--dim)}
+  .sec-head{max-width:760px;margin:0 auto clamp(34px,5vw,52px);text-align:center}
+  .sec-head .eyebrow{display:block;margin-bottom:12px}
+  .sec-head .h2{margin-bottom:14px}
+  .sec-head p{font-size:19px;color:var(--ink48);line-height:1.42}
+  .on-dark .sec-head p{color:var(--dim)}
+
+  /* ---- buttons ---- */
+  .btn{display:inline-flex;align-items:center;gap:7px;font-family:var(--font);font-size:17px;
+    font-weight:400;letter-spacing:-.022em;padding:11px 22px;border-radius:980px;border:1px solid transparent;
+    cursor:pointer;transition:transform .12s ease,background .2s,opacity .2s;white-space:nowrap;text-decoration:none}
+  .btn:active{transform:scale(.96)}
+  .btn:focus-visible{outline:2px solid var(--blue-focus);outline-offset:3px}
+  .btn-primary{background:var(--blue);color:#fff;border-color:var(--blue)}
+  .btn-primary:hover{background:#0a6fd6}
+  .btn-secondary{background:transparent;color:var(--blue);border-color:var(--blue)}
+  .btn-secondary:hover{background:rgba(0,102,204,.06)}
+  .on-dark .btn-secondary{color:var(--sky);border-color:var(--sky)}
+  .on-dark .btn-secondary:hover{background:rgba(41,151,255,.12)}
+  .btn-sm{font-size:14px;padding:8px 16px}
+  .btn-dark{background:var(--ink);color:#fff;border-radius:8px;font-size:14px;padding:8px 15px}
+  .btn-dark:active{transform:scale(.96)}
+  .btn-text{color:var(--blue);font-size:17px;font-weight:400;display:inline-flex;align-items:center;gap:5px}
+  .btn-text:hover{text-decoration:underline}
+
+  /* ---- nav ---- */
+  .gnav{background:var(--black);height:44px;position:relative;z-index:60}
+  .gnav .container{height:44px;display:flex;align-items:center;gap:18px}
+  .gnav a{color:#f5f5f7;font-size:12px;font-weight:400;letter-spacing:-.01em;opacity:.85}
+  .gnav a:hover{opacity:1}
+  .wordmark{font-weight:700;font-size:15px;color:#fff;letter-spacing:-.02em}
+  .wordmark .nx{color:#fff;opacity:.62}
+  .gnav .sp{margin-left:auto}
+  .subnav{position:sticky;top:0;z-index:55;height:52px;
+    background:rgba(245,245,247,.82);-webkit-backdrop-filter:saturate(180%) blur(20px);backdrop-filter:saturate(180%) blur(20px);
+    border-bottom:1px solid rgba(0,0,0,.08)}
+  .subnav .container{height:52px;display:flex;align-items:center;gap:22px}
+  .subnav .cat{font-size:21px;font-weight:600;color:var(--ink);letter-spacing:-.02em}
+  .subnav .cat b{color:var(--blue)}
+  .subnav .links{display:flex;gap:22px;margin-left:8px}
+  .subnav .links a{font-size:13px;color:var(--ink80);font-weight:400}
+  .subnav .links a:hover{color:var(--ink)}
+  .subnav .right{margin-left:auto;display:flex;align-items:center;gap:12px}
+  @media(max-width:900px){.subnav .links{display:none}}
+  @media(max-width:560px){.gnav .links-extra{display:none}.subnav .cat{font-size:18px}}
+
+  /* ---- hero ---- */
+  .hero{text-align:center;padding:clamp(48px,7vw,76px) 0 clamp(36px,5vw,56px)}
+  .hero .eyebrow{margin-bottom:14px}
+  .hero .display{margin-bottom:18px}
+  .hero .lead{max-width:600px;margin:0 auto 26px}
+  .hero-cta{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-bottom:14px}
+  .hero-cta .btn-text{padding:11px 4px}
+  .hero-pills{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:6px}
+  .chip{font-size:13px;color:var(--ink48);background:var(--parch);border:1px solid var(--hair);
+    border-radius:980px;padding:6px 13px}
+  .chip b{color:var(--ink)}
+
+  /* product mock (the one shadow) */
+  .mock{max-width:480px;margin:clamp(34px,5vw,52px) auto 0;background:#fff;border:1px solid var(--hair);
+    border-radius:18px;padding:24px;box-shadow:var(--shadow-prod);text-align:left}
+  .mock-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
+  .mock-co{font-size:17px;font-weight:600}
+  .mock-co small{display:block;color:var(--ink48);font-weight:400;font-size:12px;margin-top:2px;letter-spacing:0}
+  .mock-tag{font-size:11px;font-weight:600;color:var(--blue);background:rgba(0,102,204,.08);
+    border-radius:980px;padding:4px 10px}
+  .gauge{display:flex;align-items:center;gap:18px;margin-bottom:20px}
+  .ring{--p:72;width:96px;height:96px;border-radius:50%;flex:0 0 auto;display:grid;place-items:center;
+    background:conic-gradient(var(--blue) calc(var(--p)*1%),#e8e8ed 0)}
+  .ring:after{content:"";position:absolute;width:74px;height:74px;border-radius:50%;background:#fff}
+  .ring b{position:relative;z-index:1;font-size:26px;font-weight:600;color:var(--ink)}
+  .ring b small{font-size:13px;color:var(--ink48);font-weight:400}
+  .gauge .gm .g{font-size:15px;font-weight:600;color:var(--ink)}
+  .gauge .gm .a{font-size:13px;color:var(--ink48);margin-top:3px}
+  .mrows{display:flex;flex-direction:column;gap:1px;background:var(--divider);border-radius:12px;overflow:hidden;border:1px solid var(--divider)}
+  .mrow{display:flex;align-items:center;justify-content:space-between;gap:10px;background:#fff;padding:12px 14px;font-size:14px}
+  .mrow .l{color:var(--ink80);display:flex;align-items:center;gap:8px}
+  .mrow .dot{width:7px;height:7px;border-radius:50%;flex:0 0 auto}
+  .mrow .v{font-weight:600;color:var(--ink)}
+  .mrow .dot.warn{background:#f5a623}.mrow .dot.bad{background:#d70015}.mrow .dot.ok{background:#1d8a4f}
+
+  /* ---- grids ---- */
+  .g2{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+  .g3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .g4{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+  @media(max-width:900px){.g4{grid-template-columns:repeat(2,1fr)}.g3{grid-template-columns:1fr}}
+  @media(max-width:640px){.g2,.g4{grid-template-columns:1fr}}
+
+  /* ---- cards ---- */
+  .card{background:#fff;border:1px solid var(--hair);border-radius:18px;padding:24px}
+  .on-dark .card{background:var(--tile2);border-color:rgba(255,255,255,.12)}
+  .card h3{font-size:19px;font-weight:600;margin-bottom:8px}
+  .card p{font-size:15px;color:var(--ink48);line-height:1.5}
+  .on-dark .card p{color:var(--dim)}
+  .feat .fic{font-size:26px;margin-bottom:14px;display:block}
+  .feat .fn{font-size:12px;font-weight:600;color:var(--blue);letter-spacing:.04em;display:block;margin-bottom:6px}
+
+  /* loss cards (dark tile) */
+  .loss .tag{font-size:12px;font-weight:600;color:var(--danger-d);background:rgba(255,90,77,.12);
+    border-radius:980px;padding:4px 11px;display:inline-block;margin-bottom:14px}
+  .loss .amt{font-size:30px;font-weight:600;color:#fff;letter-spacing:-.03em;margin-bottom:8px}
+  .loss h3{font-size:17px;font-weight:600;color:#fff;margin-bottom:8px}
+  .loss p{font-size:14px;color:var(--dim);line-height:1.5}
+  .src{font-size:12px;color:var(--ink48);margin-top:20px;line-height:1.6}
+  .on-dark .src{color:#8a8a8e}
+
+  /* table */
+  .tbl-wrap{overflow-x:auto;border:1px solid var(--hair);border-radius:18px;background:#fff}
+  table.cmp{width:100%;border-collapse:collapse;font-size:14px;min-width:660px}
+  table.cmp th{text-align:left;padding:14px 18px;font-size:12px;font-weight:600;color:var(--ink48);
+    text-transform:uppercase;letter-spacing:.03em;border-bottom:1px solid var(--hair)}
+  table.cmp td{padding:14px 18px;color:var(--ink48);border-bottom:1px solid var(--divider);vertical-align:top}
+  table.cmp tr:last-child td{border-bottom:none}
+  table.cmp td.k{color:var(--ink);font-weight:600;white-space:nowrap}
+  table.cmp tr.hl td{background:rgba(0,102,204,.05);color:var(--ink)}
+  table.cmp tr.hl td.k{color:var(--blue)}
+
+  /* roi */
+  .roi-line{display:flex;justify-content:space-between;font-size:15px;padding:7px 0}
+  .roi-line.total{border-top:1px solid var(--hair);margin-top:6px;padding-top:12px}
+  .roi-line b{font-weight:600}
+  .pos{color:#1d8a4f}
+  .insure{font-size:21px;font-weight:600;line-height:1.4;color:var(--ink)}
+  .insure .ac{color:var(--blue)}
+
+  /* policy */
+  .pol h3{font-size:17px;font-weight:600;margin-bottom:4px}
+  .pol .when{font-size:12px;color:var(--ink48);margin-bottom:10px}
+  .pol .now{font-size:14px;color:var(--ink80);margin-bottom:6px}
+  .pol .fut{font-size:14px;color:var(--ink)}
+  .pol .fut b{color:var(--blue)}
+  .pol .now b{color:var(--ink);font-weight:600}
+
+  /* flywheel */
+  .fly{display:grid;grid-template-columns:1fr auto 1fr;gap:20px;align-items:stretch}
+  @media(max-width:760px){.fly{grid-template-columns:1fr}}
+  .fly .arrow{display:grid;place-items:center;color:var(--sky);font-size:30px;font-weight:600}
+  @media(max-width:760px){.fly .arrow{transform:rotate(90deg);padding:4px 0}}
+  .fly .role{font-size:12px;font-weight:600;letter-spacing:.04em;margin-bottom:4px}
+  .fly h3{font-size:21px;font-weight:600;margin-bottom:14px;color:#fff}
+  .fly ul{list-style:none;display:flex;flex-direction:column;gap:10px}
+  .fly li{font-size:14px;color:var(--dim);display:flex;gap:9px;align-items:flex-start;line-height:1.45}
+  .fly li:before{content:"";width:5px;height:5px;border-radius:50%;background:var(--sky);margin-top:8px;flex:0 0 auto}
+  .langrow{display:flex;gap:6px;flex-wrap:wrap;margin-top:14px}
+  .langrow span{font-size:12px;font-weight:500;padding:4px 10px;border-radius:980px;
+    background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);color:#fff}
+  .mkt-row{display:flex;gap:36px;flex-wrap:wrap;justify-content:center;margin-top:40px}
+  .mkt{text-align:center}
+  .mkt .n{font-size:30px;font-weight:600;color:#fff;letter-spacing:-.02em}
+  .mkt .l{font-size:13px;color:var(--dim);margin-top:4px}
+
+  /* diagnosis */
+  .diag{max-width:740px;margin:0 auto}
+  .prog{display:flex;align-items:center;gap:14px;margin-bottom:26px}
+  .prog-bar{flex:1;height:8px;border-radius:980px;background:#e3e3e8;overflow:hidden}
+  .prog-fill{height:100%;width:0;border-radius:980px;background:var(--blue);transition:width .35s ease}
+  .prog-txt{font-size:14px;font-weight:600;color:var(--blue);white-space:nowrap}
+  .q.card{margin-bottom:14px}
+  .qh{display:flex;align-items:baseline;gap:10px;margin-bottom:14px}
+  .qn{font-size:13px;font-weight:600;color:var(--blue);flex:0 0 auto}
+  .qt{font-size:18px;font-weight:600;color:var(--ink)}
+  .opts{display:flex;flex-wrap:wrap;gap:9px}
+  .opt{font-family:var(--font);font-size:15px;font-weight:400;letter-spacing:-.02em;padding:10px 17px;
+    border-radius:980px;cursor:pointer;background:#fff;border:1px solid var(--hair);color:var(--ink80);
+    transition:border-color .15s,background .15s;-webkit-user-select:none;user-select:none}
+  .opt:hover{border-color:#c7c7cc}
+  .opt.sel{border:2px solid var(--blue);background:rgba(0,102,204,.06);color:var(--ink);padding:9px 16px}
+  .diag-actions{display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin-top:24px}
+  .diag-actions .hint{font-size:14px;color:var(--ink48)}
+  #diagResult{display:none}
+  .res-card{text-align:center;padding:40px 28px;border:1px solid var(--hair);border-radius:18px;background:#fff;box-shadow:var(--shadow-prod)}
+  .res-ey{font-size:14px;font-weight:600;color:var(--blue);margin-bottom:6px}
+  .res-plan{font-size:40px;font-weight:600;letter-spacing:-.03em;margin-bottom:4px}
+  .res-price{font-size:17px;color:var(--ink48);font-weight:400}
+  .res-why{font-size:15px;color:var(--ink80);max-width:540px;margin:22px auto 0;text-align:left;
+    background:var(--parch);border-radius:14px;padding:18px 20px;line-height:1.6}
+  .res-why b{color:var(--ink);font-weight:600}
+  .res-cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:24px}
+
+  /* pricing */
+  .price{display:flex;flex-direction:column;position:relative}
+  .price.pop{border:2px solid var(--blue);padding:23px}
+  .pop-badge{position:absolute;top:-11px;left:50%;transform:translateX(-50%);font-size:12px;font-weight:600;
+    color:#fff;background:var(--blue);border-radius:980px;padding:4px 14px}
+  .pname{font-size:13px;font-weight:600;color:var(--ink48);letter-spacing:.04em}
+  .pprice{font-size:34px;font-weight:600;letter-spacing:-.03em;margin:8px 0 2px}
+  .pprice small{font-size:14px;color:var(--ink48);font-weight:400}
+  .pcap{font-size:13px;color:var(--ink48);margin-bottom:16px;padding-bottom:16px;border-bottom:1px solid var(--divider)}
+  .price ul{list-style:none;display:flex;flex-direction:column;gap:10px;flex:1;margin-bottom:18px}
+  .price li{font-size:14px;color:var(--ink80);display:flex;gap:9px;align-items:flex-start;line-height:1.4}
+  .price li:before{content:"";width:16px;height:16px;flex:0 0 auto;margin-top:1px;border-radius:50%;
+    background:rgba(0,102,204,.1) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10'%3E%3Cpath d='M1 5l2.5 2.5L9 1.5' stroke='%230066cc' stroke-width='1.6' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/10px no-repeat}
+  .price li b{color:var(--ink);font-weight:600}
+  .price .btn{justify-content:center}
+  .price-note{text-align:center;font-size:15px;color:var(--ink48);margin-top:26px}
+  .price-note b{color:var(--ink)}
+
+  /* quotes */
+  .quote{display:flex;flex-direction:column;gap:18px}
+  .quote .qm{font-size:17px;color:var(--ink);line-height:1.55}
+  .quote .qa{display:flex;align-items:center;gap:12px;margin-top:auto}
+  .quote .av{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;font-weight:600;
+    background:var(--blue);color:#fff;font-size:17px;flex:0 0 auto}
+  .quote .who{font-size:14px;font-weight:600}
+  .quote .who small{display:block;color:var(--ink48);font-weight:400;font-size:12px;margin-top:1px;letter-spacing:0}
+
+  /* faq */
+  .faq{max-width:840px;margin:0 auto;border-top:1px solid var(--hair)}
+  .faq details{border-bottom:1px solid var(--hair)}
+  .faq summary{cursor:pointer;list-style:none;padding:20px 4px;font-size:19px;font-weight:600;color:var(--ink);
+    display:flex;justify-content:space-between;gap:14px;align-items:center}
+  .faq summary::-webkit-details-marker{display:none}
+  .faq summary:after{content:"+";color:var(--blue);font-size:24px;font-weight:300;flex:0 0 auto;transition:transform .2s}
+  .faq details[open] summary:after{transform:rotate(45deg)}
+  .faq .ans{padding:0 4px 22px;font-size:15px;color:var(--ink48);line-height:1.7;max-width:720px}
+  .faq .ans b{color:var(--ink80);font-weight:600}
+
+  /* timeline */
+  .tl{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+  @media(max-width:760px){.tl{grid-template-columns:1fr}}
+  .tl-step .num{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;font-weight:600;
+    background:rgba(0,102,204,.1);color:var(--blue);margin-bottom:14px}
+  .tl-week{font-size:12px;font-weight:600;color:var(--blue);letter-spacing:.04em}
+  .tl-step h3{font-size:17px;font-weight:600;margin:6px 0 8px}
+  .tl-step p{font-size:14px;color:var(--ink48);line-height:1.5}
+
+  /* final */
+  .final{text-align:center}
+  .final .h2{margin-bottom:14px}
+  .final p{font-size:19px;color:var(--dim);max-width:560px;margin:0 auto 28px}
+  .final .row{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+
+  /* footer */
+  footer{background:var(--parch);padding:56px 0 40px;color:var(--ink48)}
+  .ft-top{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:28px}
+  @media(max-width:760px){.ft-top{grid-template-columns:1fr 1fr}}
+  @media(max-width:460px){.ft-top{grid-template-columns:1fr}}
+  .ft-intro .wordmark{color:var(--ink)}
+  .ft-intro .wordmark .nx{color:var(--ink48)}
+  .ft-intro p{font-size:13px;color:var(--ink48);margin-top:12px;max-width:280px;line-height:1.6}
+  .ft-col h4{font-size:13px;font-weight:600;color:var(--ink);margin-bottom:12px}
+  .ft-col a{display:block;font-size:14px;color:var(--ink48);margin-bottom:10px;line-height:1.4}
+  .ft-col a:hover{color:var(--ink)}
+  .ft-disc{margin-top:34px;padding-top:24px;border-top:1px solid var(--hair);font-size:12px;color:var(--ink48);line-height:1.7}
+  .ft-disc b{color:var(--ink80)}
+</style>
+</head>
+<body>
+
+<!-- ============ GLOBAL NAV ============ -->
+<div class="gnav">
+  <div class="container">
+    <span class="wordmark">PLUG<span class="nx">nx</span></span>
+    <a class="links-extra" href="moneeback.html">Moneeback</a>
+    <a class="links-extra" href="dashboard.html">대시보드</a>
+    <a class="sp" href="index.html">산출물 허브</a>
+  </div>
+</div>
+
+<!-- ============ SUB NAV ============ -->
+<div class="subnav">
+  <div class="container">
+    <span class="cat">Visa<b>Desk</b></span>
+    <div class="links">
+      <a href="#why">왜 필요한가</a>
+      <a href="#why-saas">왜 SaaS</a>
+      <a href="#policy">정책 기회</a>
+      <a href="#features">기능</a>
+      <a href="#diagnosis">자가진단</a>
+      <a href="#pricing">요금제</a>
+    </div>
+    <div class="right">
+      <a class="btn btn-primary btn-sm" href="#diagnosis">1분 무료 진단</a>
+    </div>
+  </div>
+</div>
+
+<!-- ============ HERO ============ -->
+<section class="tile light">
+  <div class="container hero">
+    <span class="eyebrow">PlugNX VisaDesk · B2B 외국인 준법관리 SaaS</span>
+    <h1 class="display">외국인 고용,<br/>이렇게 단순해집니다.</h1>
+    <p class="lead">체류·비자·임금·서류·환급까지 한 플랫폼에서. 벌금과 인력 공백을 자동으로 막습니다.</p>
+    <div class="hero-cta">
+      <a class="btn btn-primary" href="#diagnosis">1분 무료 자가진단</a>
+      <a class="btn-text" href="#features">기능 둘러보기 ›</a>
+    </div>
+    <div class="hero-pills">
+      <span class="chip">월 구독</span>
+      <span class="chip"><b>8주 무료</b> PoC 진단</span>
+      <span class="chip">행정사·노무사 연계</span>
+    </div>
+
+    <!-- product mock : the single shadow -->
+    <div class="mock">
+      <div class="mock-top">
+        <div class="mock-co">한성기공<small>오늘 · 리스크 대시보드</small></div>
+        <span class="mock-tag">DEMO</span>
+      </div>
+      <div class="gauge">
+        <div class="ring" style="--p:72"><b>72<small>/100</small></b></div>
+        <div class="gm">
+          <div class="g">C등급</div>
+          <div class="a">A등급까지 3개 액션 남음</div>
+        </div>
+      </div>
+      <div class="mrows">
+        <div class="mrow"><span class="l"><span class="dot warn"></span>체류만료 90일 내</span><span class="v">8명 / 47명</span></div>
+        <div class="mrow"><span class="l"><span class="dot bad"></span>임금요건 미달</span><span class="v">3명</span></div>
+        <div class="mrow"><span class="l"><span class="dot bad"></span>서류 미비</span><span class="v">12명</span></div>
+        <div class="mrow"><span class="l"><span class="dot ok"></span>1인 평균 환급 (Moneeback)</span><span class="v">약 1,050만원</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHY (losses) — dark ============ -->
+<section class="tile dark on-dark" id="why">
+  <div class="container">
+    <div class="sec-head">
+      <span class="eyebrow">왜 필요한가</span>
+      <h2 class="h2">외국인 1명을 잘못 관리하면,<br/>월 구독료보다 큰 비용이 샙니다.</h2>
+      <p>4가지 대표 손해. 한 번만 막아도 본전, 두 번이면 이익입니다.</p>
+    </div>
+    <div class="g4">
+      <div class="card loss">
+        <span class="tag">출입국관리법 §94</span>
+        <div class="amt">2,000만원</div>
+        <h3>불법체류자 고용 벌금</h3>
+        <p>체류만료 1건만 놓쳐도 ‘불법고용’. 3년 이하 징역 또는 2천만원 이하 벌금. (개정 잦음·확인 필요)</p>
+      </div>
+      <div class="card loss">
+        <span class="tag">외국인고용법 §20</span>
+        <div class="amt">3년</div>
+        <h3>외국인 신규고용 제한</h3>
+        <p>고용허가·신고 의무 위반 적발 시 최대 3년 채용 불가. 인력 운영이 마비됩니다.</p>
+      </div>
+      <div class="card loss">
+        <span class="tag">정부합동단속 ’24~’25</span>
+        <div class="amt">약 480만원</div>
+        <h3>단속 적발 1인 평균 범칙금</h3>
+        <p>연 2회 정례화. 불법고용주 1인당 평균 범칙금 추정(단속 결과 환산).</p>
+      </div>
+      <div class="card loss">
+        <span class="tag">대체채용·재교육 (가정)</span>
+        <div class="amt">약 1,500만원</div>
+        <h3>갱신 거부 → 인력 공백</h3>
+        <p>임금요건 미달·서류 미비로 갱신 거부 시 3개월 대체채용·교육 비용.</p>
+      </div>
+    </div>
+    <p class="src">출처 · 출입국관리법 §94·§100, 외국인고용법 §20, 근로기준법 §109, 법무부 정부합동단속(’24~’25). 금액·요건은 개정이 잦아 적용 시 최신 확인 필요. ‘가정’은 사안별 추정치.</p>
+  </div>
+</section>
+
+<!-- ============ WHY SAAS — parchment ============ -->
+<section class="tile parch" id="why-saas">
+  <div class="container">
+    <div class="sec-head">
+      <span class="eyebrow">왜 돈 내고 SaaS인가</span>
+      <h2 class="h2">지금은 어떻게 관리하세요?<br/>대부분 “터지고 나서” 움직입니다.</h2>
+      <p>엑셀·행정사·노무사 모두 사후·간헐·자기책임이라는 빈틈이 있습니다. VisaDesk는 상시·예방·자동으로 그 사이를 지킵니다.</p>
+    </div>
+    <div class="tbl-wrap">
+      <table class="cmp">
+        <thead><tr>
+          <th>관리 방식</th><th>비용</th><th>리스크</th><th>한계</th>
+        </tr></thead>
+        <tbody>
+          <tr><td class="k">① 엑셀·캘린더</td><td>무료처럼 보이나 담당자 시간=인건비</td><td>만료일을 사람이 직접 입력·확인 → 누락 1건이 과태료</td><td>퇴사하면 데이터·노하우 증발</td></tr>
+          <tr><td class="k">② 행정사 그때그때</td><td>건당 80~150만원, 반복</td><td>의뢰 전까진 무방비, 임박해야 연락</td><td>사후 처리 — 예방은 업무 밖</td></tr>
+          <tr><td class="k">③ 노무사 외주</td><td>월 자문료 + 별건 수수료</td><td>임금·근태 중심, 비자·체류는 사각지대</td><td>외국인 체류 전문 아님</td></tr>
+          <tr><td class="k">④ 아무것도 안 함</td><td>0원</td><td>적발 시 벌금·고용제한·인력공백</td><td>‘안 걸림’은 안전이 아니라 운</td></tr>
+          <tr class="hl"><td class="k">PlugNX VisaDesk</td><td>월 29~169만원 (구독)</td><td>D-120·90·60·30 자동 알림 → 누락 0 지향</td><td>상시·예방·자동 — 빈틈을 메움</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="body muted" style="margin-top:16px">①~④는 모두 <b style="color:var(--ink)">문제가 생긴 뒤</b>에 움직입니다. VisaDesk는 <b style="color:var(--blue)">문제가 생기기 전</b>에 막습니다.</p>
+    <div class="g2" style="margin-top:24px">
+      <div class="card">
+        <span class="eyebrow">ROI · 한 번만 막아도 본전</span>
+        <p class="body muted" style="margin:8px 0 16px">외국인 30명 · Growth(월 89만원) 기준.</p>
+        <div class="roi-line"><span class="muted">연 구독료</span><b>1,068만원</b></div>
+        <div class="roi-line"><span class="muted">불법체류 적발 1건 회피</span><b class="pos">+2,000만원</b></div>
+        <div class="roi-line"><span class="muted">인력 공백 1건 회피</span><b class="pos">+1,500만원</b></div>
+        <div class="roi-line total"><b>단 1건만 막아도</b><b class="pos">932만원 이득</b></div>
+        <p class="muted" style="font-size:12px;margin-top:14px;line-height:1.6">회피비용은 사안별 가정치. 실제 금액은 법령·상황에 따라 다름.</p>
+      </div>
+      <div class="card" style="display:flex;flex-direction:column;justify-content:center">
+        <div class="insure" style="margin-bottom:12px">월 89만원은 비용이 아니라 외국인 30명에게 드는 <span class="ac">리스크 보험료</span>입니다.</div>
+        <p class="body muted">막은 손해는 영수증에 안 찍히지만, 안 막은 손해는 통장에 찍힙니다. 사고 한 건이 보험료 1년치보다 비쌉니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ POLICY — light ============ -->
+<section class="tile light" id="policy">
+  <div class="container">
+    <div class="sec-head">
+      <span class="eyebrow">정책 기회 · 2030 이민정책 미래전략</span>
+      <h2 class="h2">지금 기록을 쌓으면,<br/>정책이 바뀔 때 앞서갑니다.</h2>
+      <p>정부 이민정책은 성실·디지털·장기정주 기업을 우대하는 방향입니다. 관리 기록은 소급되지 않습니다 — 인증·쿼터는 ‘평소’를 봅니다. 시행 후 준비하면 늦습니다.</p>
+    </div>
+    <div class="g2" style="gap:14px">
+      <div class="card pol"><h3>K-Trust 성실고용 인증제</h3><div class="when">📅 2026.3 도입 발표 · 세부 시행 예정</div><div class="now"><b>지금</b> · 체류·임금·서류 준법 기록 자동 축적</div><div class="fut"><b>→ 미래 이득</b> · 시행 즉시 상위 등급 신청 → 예고된 체류연장 자동승인 등 우대 선점. <span class="muted">(등급·혜택 세부는 정부 발표 전)</span></div></div>
+      <div class="card pol"><h3>디지털 비자·AI 사전심사</h3><div class="when">📅 이민행정 전자화(과제2)</div><div class="now"><b>지금</b> · 정형화된 근로자·서류 데이터 정리</div><div class="fut"><b>→ 미래 이득</b> · 전자신청·사전스크리닝에 그대로 연동 → 심사 지연·반려↓, 속도 우위</div></div>
+      <div class="card pol"><h3>취업비자 3단계 개편·K-CORE</h3><div class="when">📅 비자 체계 단순화·신설</div><div class="now"><b>지금</b> · 비자 룰 변경을 시스템이 반영</div><div class="fut"><b>→ 미래 이득</b> · 자격전환·신규 비자 활용을 경쟁사보다 먼저 — 인력 확보 선점</div></div>
+      <div class="card pol"><h3>외국인력 쿼터 확대</h3><div class="when">📅 ’30 인력부족 112.5만·쿼터 사전공표</div><div class="now"><b>지금</b> · 리스크 점수로 준법·성실 상시 증빙</div><div class="fut"><b>→ 미래 이득</b> · 쿼터·특례에서 성실기업 우선 → 더 많이, 더 빨리</div></div>
+      <div class="card pol"><h3>임금요건 매년 고시</h3><div class="when">📅 임금 자문위·연 1회 갱신</div><div class="now"><b>지금</b> · 갱신된 임금요건 자동 비교·경고</div><div class="fut"><b>→ 미래 이득</b> · 미달 갱신 거부 0 → 인력 안정 유지</div></div>
+      <div class="card pol"><h3>E-7-4 숙련전환 + 권익보호</h3><div class="when">📅 장기정주·환급·권익 강화</div><div class="now"><b>지금</b> · 근속·요건 추적 + Moneeback 환급 연계</div><div class="fut"><b>→ 미래 이득</b> · E-9를 장기 숙련인력으로 전환 = 유지·생산성↑, ‘환급까지 챙기는 회사’로 근속·채용 매력↑</div></div>
+    </div>
+    <div class="card" style="margin-top:22px;background:var(--parch);border-color:var(--parch)">
+      <div style="font-size:21px;font-weight:600;color:var(--ink);margin-bottom:6px">먼저 쌓은 기록이 곧 정책 프리미엄입니다.</div>
+      <p class="body muted">경쟁사가 제도 시행 후 준비를 시작할 때, 당신은 이미 상위 등급·쿼터·빠른 심사를 받습니다.</p>
+    </div>
+    <p class="src muted">출처 · 법무부 「2030 이민정책 미래전략」(2026.3) 5대 핵심 과제. K-Trust 등급·인센티브 등 일부는 도입 발표 단계로 세부는 정부 후속 발표 시 확정.</p>
+  </div>
+</section>
+
+<!-- ============ FEATURES — parchment ============ -->
+<section class="tile parch" id="features">
+  <div class="container">
+    <div class="sec-head">
+      <span class="eyebrow">기능</span>
+      <h2 class="h2">엑셀·캘린더로 관리하던<br/>모든 일을 자동화합니다.</h2>
+      <p>담당자 1명이 30명을 관리하던 방식을, 시스템이 대신합니다.</p>
+    </div>
+    <div class="g3">
+      <div class="card feat"><span class="fic">⏰</span><span class="fn">01</span><h3>체류만료 자동 알림</h3><p>D-120 / 90 / 60 / 30 사전 알림을 담당자 휴대폰으로. 더 이상 D-30에 발견하는 일은 없습니다.</p></div>
+      <div class="card feat"><span class="fic">💴</span><span class="fn">02</span><h3>비자별 임금요건 자동 점검</h3><p>매년 바뀌는 E-7-1/2/3/4 임금 기준을 계약·실수령과 자동 비교하고 미달 시 경고합니다.</p></div>
+      <div class="card feat"><span class="fic">📁</span><span class="fn">03</span><h3>서류 체크리스트 &amp; 보관</h3><p>비자별 필수서류 누락·만료를 자동 추적. 필요한 서류를 한 번에 검색해 꺼냅니다.</p></div>
+      <div class="card feat"><span class="fic">🤝</span><span class="fn">04</span><h3>전문가 원클릭 연결</h3><p>등록 행정사·노무사·변호사에게 즉시 라우팅. 사안에 맞는 전문가에게 한 번에 연결됩니다.</p></div>
+      <div class="card feat"><span class="fic">📊</span><span class="fn">05</span><h3>기업 리스크 점수</h3><p>체류·임금·서류·노무·주거를 100점으로 환산. 매월 갱신되는 점수로 약점을 한눈에.</p></div>
+      <div class="card feat"><span class="fic">🏅</span><span class="fn">06</span><h3>K-Trust 준비 진단</h3><p>A/B/C 등급과 업그레이드 액션을 자동 추천. 모의심사로 인증 전 미리 점검합니다.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MONEEBACK flywheel — dark ============ -->
+<section class="tile dark on-dark" id="moneeback">
+  <div class="container">
+    <div class="sec-head">
+      <span class="eyebrow">Moneeback 연계 · 플라이휠</span>
+      <h2 class="h2">기업이 등록하면,<br/>근로자가 곧바로 혜택을 받습니다.</h2>
+      <p>동일 인물·동일 데이터. 중복 입력 없이 B2B 관리와 B2C 근로자 금융이 한 데이터로 연결되어 양방향 가치가 흐릅니다.</p>
+    </div>
+    <div class="fly">
+      <div class="card">
+        <div class="role" style="color:var(--sky)">B2B · 기업</div>
+        <h3>🏢 VisaDesk</h3>
+        <ul>
+          <li>체류만료 자동 알림 · 임금요건 점검</li>
+          <li>서류 체크리스트 · 전문가 연결</li>
+          <li>기업 리스크 점수 · K-Trust 진단</li>
+          <li>근로자 1회 등록 → 데이터 그대로 전달</li>
+        </ul>
+      </div>
+      <div class="arrow">⇄</div>
+      <div class="card">
+        <div class="role" style="color:#ffd60a">B2C · 근로자</div>
+        <h3>💰 Moneeback</h3>
+        <ul>
+          <li>미수령 연금·보험·퇴직금 환급 안내</li>
+          <li>AI 급여 적정성 진단</li>
+          <li>송금 비교 · 대출 중개 · 신용스코어</li>
+          <li>다국어 지원</li>
+        </ul>
+        <div class="langrow">
+          <span>한국어</span><span>English</span><span>Tiếng Việt</span><span>中文</span><span>ไทย</span><span>O'zbek</span>
+        </div>
+      </div>
+    </div>
+    <div class="mkt-row">
+      <div class="mkt"><div class="n">278.3만</div><div class="l">체류외국인 (’25.12)</div></div>
+      <div class="mkt"><div class="n">49만</div><div class="l">E계열 취업비자</div></div>
+      <div class="mkt"><div class="n">63.5만</div><div class="l">동포 H2/F4</div></div>
+      <div class="mkt"><div class="n">30.1만</div><div class="l">유학 D2</div></div>
+    </div>
+    <div style="text-align:center;margin-top:32px">
+      <a class="btn btn-secondary" href="moneeback.html">근로자용 Moneeback 보기 ›</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DIAGNOSIS — parchment ============ -->
+<section class="tile parch" id="diagnosis">
+  <div class="container">
+    <div class="sec-head">
+      <span class="eyebrow">1분 무료 자가진단</span>
+      <h2 class="h2">9문항이면, 우리 회사에 맞는 플랜이 나옵니다.</h2>
+      <p>회사 규모·업종·비자·고민을 종합해 추천 플랜과 이유를 알려드립니다.</p>
+    </div>
+    <div class="diag">
+      <div id="diagForm">
+        <div class="prog">
+          <div class="prog-bar"><div class="prog-fill" id="progFill"></div></div>
+          <div class="prog-txt"><span id="progN">0</span>/9 답변 완료</div>
+        </div>
+        <div id="qList"></div>
+        <div class="diag-actions">
+          <button type="button" class="btn btn-primary" id="diagSubmit" disabled>추천 플랜 보기</button>
+          <span class="hint" id="diagHint">9개 문항에 모두 답해 주세요.</span>
+        </div>
+      </div>
+      <div id="diagResult">
+        <div class="res-card">
+          <div class="res-ey">추천 플랜</div>
+          <div class="res-plan" id="resPlan">Growth</div>
+          <div class="res-price" id="resPrice">89만원 / 월</div>
+          <div class="res-why" id="resWhy"></div>
+          <div class="res-cta">
+            <a class="btn btn-primary" href="mailto:ys.cho@bonanza-plug.co.kr?subject=VisaDesk%208주%20무료%20PoC%20신청">8주 무료 PoC 시작</a>
+            <button type="button" class="btn btn-secondary" id="diagReset">다시 진단하기</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PRICING — light ============ -->
+<section class="tile light" id="pricing">
+  <div class="container">
+    <div class="sec-head">
+      <span class="eyebrow">요금제</span>
+      <h2 class="h2">회사 규모에 맞춰 시작하세요.</h2>
+      <p>모든 플랜 월 단위 해지 가능. 락인 없습니다.</p>
+    </div>
+    <div class="g4">
+      <div class="card price">
+        <div class="pname">STARTER</div>
+        <div class="pprice">29<small>만원/월</small></div>
+        <div class="pcap">최대 10명 · 초과 1만원/명</div>
+        <ul>
+          <li>체류만료 자동 알림</li>
+          <li>서류 체크리스트</li>
+          <li>기본 이메일 알림</li>
+          <li>근로자 정보 관리</li>
+        </ul>
+        <a class="btn btn-secondary" href="#diagnosis">자가진단으로 확인</a>
+      </div>
+      <div class="card price pop">
+        <span class="pop-badge">인기</span>
+        <div class="pname">GROWTH</div>
+        <div class="pprice">89<small>만원/월</small></div>
+        <div class="pcap">최대 30명 · 초과 1.5만원/명</div>
+        <ul>
+          <li><b>Starter 전체 +</b></li>
+          <li>비자별 임금요건 자동점검</li>
+          <li>전문가 티켓</li>
+          <li>월간 리스크 리포트</li>
+          <li>Moneeback 근로자 연계</li>
+        </ul>
+        <a class="btn btn-primary" href="#diagnosis">자가진단으로 확인</a>
+      </div>
+      <div class="card price">
+        <div class="pname">COMPLIANCE</div>
+        <div class="pprice">169<small>만원/월</small></div>
+        <div class="pcap">최대 50명 · 초과 2만원/명</div>
+        <ul>
+          <li><b>Growth 전체 +</b></li>
+          <li>K-Trust 준비 진단</li>
+          <li>노무·주거·안전 서류</li>
+          <li>임금 교차검증(계약 vs 실수령)</li>
+          <li>환급·출국 패키지</li>
+        </ul>
+        <a class="btn btn-secondary" href="#diagnosis">자가진단으로 확인</a>
+      </div>
+      <div class="card price">
+        <div class="pname">ENTERPRISE</div>
+        <div class="pprice">별도</div>
+        <div class="pcap">100명+ 맞춤 견적</div>
+        <ul>
+          <li><b>Compliance 전체 +</b></li>
+          <li>다사업장 통합</li>
+          <li>API 연동</li>
+          <li>전담 운영매니저</li>
+          <li>맞춤 SLA</li>
+        </ul>
+        <a class="btn btn-secondary" href="mailto:ys.cho@bonanza-plug.co.kr?subject=VisaDesk%20Enterprise%20문의">문의하기</a>
+      </div>
+    </div>
+    <div class="price-note">온보딩비 30~100만원 별도 · 모든 플랜 월 단위 해지 가능. <b>한 번만 막아도 본전, 두 번이면 이익.</b></div>
+  </div>
+</section>
+
+<!-- ============ TESTIMONIALS — parchment ============ -->
+<section class="tile parch" id="reviews">
+  <div class="container">
+    <div class="sec-head">
+      <span class="eyebrow">현장의 목소리</span>
+      <h2 class="h2">이미 쓰는 회사들의 이야기.</h2>
+    </div>
+    <div class="g3">
+      <div class="card quote">
+        <div class="qm">“엑셀로 30명 체류만료를 관리하다 D-30에야 발견한 적이 여러 번이었어요. VisaDesk 도입 후엔 D-90에 알림을 받아 여유 있게 준비합니다.”</div>
+        <div class="qa"><div class="av">김</div><div class="who">김태현 팀장<small>한성기공(주) · 제조 30명</small></div></div>
+      </div>
+      <div class="card quote">
+        <div class="qm">“외국인 요양보호사 채용 후 비자 변경·서류가 복잡했는데, 체크리스트와 행정사 연결로 체계가 잡혔습니다.”</div>
+        <div class="qa"><div class="av">박</div><div class="who">박미영 시설장<small>행복요양원 · 돌봄 E-7-2 8명</small></div></div>
+      </div>
+      <div class="card quote">
+        <div class="qm">“임금요건 미달 경고 덕분에 E-7-3 연장 문제를 미리 발견했어요. 월간 리포트는 이사회 보고에 그대로 씁니다.”</div>
+        <div class="qa"><div class="av">이</div><div class="who">이준호 대표<small>동진테크 · 제조 E-7-3 12명</small></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ — light ============ -->
+<section class="tile light" id="faq">
+  <div class="container">
+    <div class="sec-head">
+      <span class="eyebrow">자주 묻는 질문</span>
+      <h2 class="h2">FAQ</h2>
+    </div>
+    <div class="faq">
+      <details><summary>행정사를 따로 둬야 하나요?</summary><div class="ans">아닙니다. VisaDesk는 신청 전 준비·관리·리스크 추적을 자동화하고, 전문 처리가 필요할 때는 등록된 행정사·노무사·변호사에게 원클릭으로 연결합니다. 기존에 거래하던 전문가가 있다면 그대로 연계할 수도 있습니다.</div></details>
+      <details><summary>한국어가 서툰 근로자도 쓸 수 있나요?</summary><div class="ans">근로자 대상 Moneeback은 한국어·영어·베트남어를 기본 지원하며 중국어·태국어·우즈벡어로 확장됩니다. 기업 관리자(VisaDesk)는 한국어 인터페이스이고, 근로자에게는 모국어 화면이 제공됩니다.</div></details>
+      <details><summary>정부 하이코리아(HiKorea)와 뭐가 다른가요?</summary><div class="ans">하이코리아는 공식 신청·접수 창구입니다. VisaDesk는 <b>신청 전 단계</b>인 준비·관리·리스크 점검·체류만료 추적을 자동화합니다. 공식 사증·체류 신청은 하이코리아 및 관할 출입국·외국인청을 통해 별도로 진행됩니다.</div></details>
+      <details><summary>데이터 보안은 어떻게 하나요?</summary><div class="ans">최소 수집·암호화·접근권한 분리·국내 보관을 원칙으로 합니다. 특히 외국인등록번호 등 민감정보는 별도 보안 처리하며, 예시·로그에는 실제 값을 남기지 않습니다.</div></details>
+      <details><summary>K-Trust가 무엇인가요?</summary><div class="ans">법무부 2030 이민정책 미래전략에서 제시된 기업 신뢰 인증 방향으로, A등급 기업에 채용 쿼터 20~30% 확대·체류연장 패스트트랙 등의 혜택이 논의됩니다. <b>시행 시점·세부 기준은 확인이 필요</b>하며, VisaDesk는 등급 준비를 위한 모의심사·액션 추천을 제공합니다.</div></details>
+      <details><summary>계약 기간 약정(락인)이 있나요?</summary><div class="ans">없습니다. 모든 플랜은 월 단위로 해지할 수 있습니다. 8주 무료 PoC로 먼저 효과를 확인한 뒤 결정하셔도 됩니다.</div></details>
+      <details><summary>기존 엑셀 명단을 가져올 수 있나요?</summary><div class="ans">네. CSV 업로드와 수기 입력을 모두 지원합니다. 온보딩 과정에서 기존 근로자 명단을 그대로 옮겨 드립니다.</div></details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ POC — parchment ============ -->
+<section class="tile parch" id="poc">
+  <div class="container">
+    <div class="sec-head">
+      <span class="eyebrow">8주 무료 PoC</span>
+      <h2 class="h2">도입 부담 없이, 먼저 효과를 확인하세요.</h2>
+      <p>8주간 무료로 진행되는 검증 프로세스입니다.</p>
+    </div>
+    <div class="tl">
+      <div class="card tl-step"><div class="num">1</div><div class="tl-week">WEEK 1</div><h3>회사·근로자 등록</h3><p>CSV·수기로 근로자 명단을 옮기고 비자·체류 정보를 세팅합니다.</p></div>
+      <div class="card tl-step"><div class="num">2</div><div class="tl-week">WEEK 2</div><h3>자동 리스크 분석</h3><p>체류만료·임금요건·서류 미비를 자동으로 진단하고 리스크 점수를 산출합니다.</p></div>
+      <div class="card tl-step"><div class="num">4</div><div class="tl-week">WEEK 4</div><h3>첫 월간 리포트</h3><p>첫 리스크 리포트와 전문가 티켓으로 우선 처리 항목을 정리합니다.</p></div>
+      <div class="card tl-step"><div class="num">8</div><div class="tl-week">WEEK 8</div><h3>운영 안정화</h3><p>알림·체크리스트가 일상 운영에 자리잡습니다. 이후 도입 여부를 결정.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FINAL CTA — dark ============ -->
+<section class="tile dark on-dark">
+  <div class="container final">
+    <h2 class="h2">1분이면 충분합니다.</h2>
+    <p>9문항 자가진단 + 8주 무료 PoC로, 우리 회사의 외국인 고용 리스크를 지금 확인하세요.</p>
+    <div class="row">
+      <a class="btn btn-primary" href="#diagnosis">1분 무료 자가진단</a>
+      <a class="btn btn-secondary" href="dashboard.html">대시보드 미리보기</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="container">
+    <div class="ft-top">
+      <div class="ft-intro">
+        <span class="wordmark">PLUG<span class="nx">nx</span></span>
+        <p>채용 이후의 모든 것을 하나의 데이터 파이프라인으로. 외국인 고용·체류 준법관리부터 근로자 금융까지.</p>
+      </div>
+      <div class="ft-col">
+        <h4>서비스</h4>
+        <a href="visadesk.html">VisaDesk (B2B)</a>
+        <a href="dashboard.html">관리 대시보드</a>
+        <a href="#pricing">요금제</a>
+        <a href="#diagnosis">자가진단</a>
+      </div>
+      <div class="ft-col">
+        <h4>근로자</h4>
+        <a href="moneeback.html">Moneeback (B2C)</a>
+        <a href="moneeback.html#estimator">환급 안내</a>
+        <a href="#moneeback">플라이휠</a>
+      </div>
+      <div class="ft-col">
+        <h4>회사</h4>
+        <a href="index.html">산출물 허브</a>
+        <a href="#faq">FAQ</a>
+        <a href="mailto:ys.cho@bonanza-plug.co.kr">문의하기</a>
+      </div>
+    </div>
+    <div class="ft-disc">
+      <b>참고용 안내.</b> VisaDesk는 기업의 외국인 고용·체류관리를 지원하는 민간 서비스로 참고용 정보를 제공하며,
+      체류허가·사증발급·자격변경/연장의 최종 판단은 관할 출입국·외국인청 및 관련 기관이 합니다.
+      비자·환급·세무/법률 판단은 법적 효력이 없으며 행정사·노무사·변호사 검증과 최신 법령 확인이 필요합니다.
+      개인정보·민감정보(외국인등록번호·여권번호·계좌)는 최소 수집·암호화·국내 보관 원칙으로 처리합니다.<br/><br/>
+      © 2026 PlugNX Inc. · 내부 데모 · <a href="index.html">산출물 허브로</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  // ===== 9-question diagnosis =====
+  var QUESTIONS = [
+    { id:'Q1', t:'업종이 무엇인가요?', opts:['제조','돌봄·요양','농축수산','IT·서비스','기타'] },
+    { id:'Q2', t:'외국인 근로자 수는?', opts:['5명 이하','6~30명','31~50명','50명 초과'] },
+    { id:'Q3', t:'주요 비자유형은?', opts:['E-9 비전문취업','E-7-4 숙련기능','F-4 재외동포','D-2 유학·D-10','E-7-2 돌봄·특정','잘 모름'] },
+    { id:'Q4', t:'현재 관리방식은?', opts:['엑셀·캘린더','행정사에 전부 의존','시스템 없음','노무사 외주','기타'] },
+    { id:'Q5', t:'가장 큰 고민은?', opts:['체류만료','임금요건','서류·행정','언어·소통','K-Trust 준비','기타'] },
+    { id:'Q6', t:'체류만료를 놓친 적이 있나요?', opts:['있다','없다','모름'] },
+    { id:'Q7', t:'K-Trust 신뢰기업 인증에 관심이 있나요?', opts:['적극 관심','알아본 적 있음','처음 들음'] },
+    { id:'Q8', t:'임금요건·서류 자동점검이 필요한가요?', opts:['필수','있으면 좋음','불필요'] },
+    { id:'Q9', t:'근로자 환급·금융 패키지를 원하시나요?', opts:['예','검토중','아니오'] }
+  ];
+
+  var answers = {};
+  var qList = document.getElementById('qList');
+  var progFill = document.getElementById('progFill');
+  var progN = document.getElementById('progN');
+  var submitBtn = document.getElementById('diagSubmit');
+  var hint = document.getElementById('diagHint');
+
+  QUESTIONS.forEach(function(q){
+    var wrap = document.createElement('div');
+    wrap.className = 'q card';
+    var head = document.createElement('div');
+    head.className = 'qh';
+    head.innerHTML = '<span class="qn">'+q.id+'</span><span class="qt">'+q.t+'</span>';
+    wrap.appendChild(head);
+    var opts = document.createElement('div');
+    opts.className = 'opts';
+    q.opts.forEach(function(label, oi){
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'opt';
+      b.textContent = label;
+      b.addEventListener('click', function(){
+        answers[q.id] = oi;
+        opts.querySelectorAll('.opt').forEach(function(o){ o.classList.remove('sel'); });
+        b.classList.add('sel');
+        updateProgress();
+      });
+      opts.appendChild(b);
+    });
+    wrap.appendChild(opts);
+    qList.appendChild(wrap);
+  });
+
+  function answeredCount(){ return Object.keys(answers).length; }
+
+  function updateProgress(){
+    var n = answeredCount();
+    progN.textContent = n;
+    progFill.style.width = (n/9*100) + '%';
+    if(n === 9){
+      submitBtn.disabled = false;
+      hint.textContent = '준비 완료! 추천 플랜을 확인하세요.';
+    } else {
+      submitBtn.disabled = true;
+      hint.textContent = '남은 문항 ' + (9-n) + '개에 답해 주세요.';
+    }
+  }
+
+  var PLANS = {
+    Starter:    { name:'Starter',    price:'29만원 / 월',  cap:'최대 10명' },
+    Growth:     { name:'Growth',     price:'89만원 / 월',  cap:'최대 30명' },
+    Compliance: { name:'Compliance', price:'169만원 / 월', cap:'최대 50명' },
+    Enterprise: { name:'Enterprise', price:'별도 견적',    cap:'100명+' }
+  };
+  var ORDER = ['Starter','Growth','Compliance','Enterprise'];
+
+  function recommend(){
+    var q2 = answers['Q2'];
+    var idx = [0,1,2,3][q2];
+    var reasons = [];
+    var sizeLabel = ['5명 이하','6~30명','31~50명','50명 초과'][q2];
+    reasons.push('근로자 규모가 <b>'+sizeLabel+'</b>이라 1차 기준으로 <b>'+PLANS[ORDER[idx]].name+'</b>이 적합합니다.');
+
+    var bumped = false;
+    if(answers['Q7'] === 0 && idx < 3){
+      idx += 1; bumped = true;
+      reasons.push('K-Trust 인증에 <b>적극 관심</b>이라 준비 진단이 포함된 한 단계 상위 플랜을 추천합니다.');
+    }
+    if(answers['Q8'] === 0 && idx < 3 && !bumped){
+      idx += 1; bumped = true;
+      reasons.push('임금요건·서류 <b>자동점검이 필수</b>라, 해당 기능이 포함된 상위 플랜으로 상향했습니다.');
+    } else if(answers['Q8'] === 0 && !bumped){
+      reasons.push('임금요건·서류 자동점검은 추천 플랜에 포함됩니다.');
+    }
+
+    var key = ORDER[Math.min(idx,3)];
+
+    if(answers['Q6'] === 0){
+      reasons.push('과거 <b>체류만료를 놓친 경험</b>이 있어, D-120/90/60/30 자동 알림이 특히 중요합니다.');
+    }
+    if(answers['Q9'] === 0){
+      reasons.push('근로자 환급·금융 패키지를 원하시므로 <b>Moneeback 연계</b>(Growth 이상)로 근로자 만족·근속에 기여합니다.');
+    }
+    if(answers['Q5'] === 4){
+      reasons.push('가장 큰 고민이 <b>K-Trust 준비</b>라면 Compliance의 모의심사가 가장 직접적입니다.');
+    }
+    return { key:key, reasons:reasons };
+  }
+
+  submitBtn.addEventListener('click', function(){
+    if(answeredCount() < 9) return;
+    var r = recommend();
+    var p = PLANS[r.key];
+    document.getElementById('resPlan').textContent = p.name;
+    document.getElementById('resPrice').textContent = p.price + ' · ' + p.cap;
+    document.getElementById('resWhy').innerHTML = '<b>왜 이 플랜인가요?</b><br/>' + r.reasons.slice(0,4).join('<br/>');
+    document.getElementById('diagForm').style.display = 'none';
+    var res = document.getElementById('diagResult');
+    res.style.display = 'block';
+    res.scrollIntoView({ behavior:'smooth', block:'center' });
+  });
+
+  document.getElementById('diagReset').addEventListener('click', function(){
+    answers = {};
+    document.querySelectorAll('#qList .opt').forEach(function(o){ o.classList.remove('sel'); });
+    updateProgress();
+    document.getElementById('diagResult').style.display = 'none';
+    document.getElementById('diagForm').style.display = 'block';
+    document.getElementById('diagnosis').scrollIntoView({ behavior:'smooth', block:'start' });
+  });
+
+  updateProgress();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow" />
+<title>PlugNX 외국인 신사업 — 산출물 허브</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --blue:#0066cc; --blue-focus:#0071e3; --sky:#2997ff;
+    --white:#ffffff; --parch:#f5f5f7; --pearl:#fafafc;
+    --tile:#272729; --tile2:#2a2a2c; --black:#000;
+    --ink:#1d1d1f; --ink80:#333; --ink48:#7a7a7a;
+    --on-dark:#fff; --dim:#cccccc;
+    --hair:#e0e0e0; --divider:#f0f0f0;
+    --danger:#d70015; --danger-d:#ff5a4d;
+    --shadow-prod:rgba(0,0,0,.22) 3px 5px 30px 0;
+    --font:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text",Inter,system-ui,"Apple SD Gothic Neo",sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--font);background:var(--white);color:var(--ink);line-height:1.47;
+    letter-spacing:-.022em;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+  a{color:var(--blue);text-decoration:none}
+  .container{max-width:1080px;margin:0 auto;padding:0 22px}
+  img{max-width:100%}
+
+  /* ---- typography ---- */
+  h1,h2,h3,h4{letter-spacing:-.022em;font-weight:600;color:var(--ink)}
+  .eyebrow{font-size:14px;font-weight:600;color:var(--blue);letter-spacing:0}
+  .display{font-size:clamp(32px,5.4vw,56px);font-weight:600;line-height:1.07;letter-spacing:-.028em}
+  .h2{font-size:clamp(27px,3.6vw,40px);font-weight:600;line-height:1.1;letter-spacing:-.024em}
+  .lead{font-size:clamp(19px,2.2vw,26px);font-weight:400;line-height:1.28;color:var(--ink80)}
+  .body{font-size:17px;font-weight:400;line-height:1.47}
+  .muted{color:var(--ink48)}
+
+  /* ---- tiles ---- */
+  .tile{padding:clamp(56px,8vw,88px) 0}
+  .tile.light{background:var(--white)}
+  .tile.parch{background:var(--parch)}
+
+  /* ---- global nav ---- */
+  .gnav{background:var(--black);height:44px;position:relative;z-index:60}
+  .gnav .container{height:44px;display:flex;align-items:center;gap:18px}
+  .gnav a{color:#f5f5f7;font-size:12px;font-weight:400;letter-spacing:-.01em;opacity:.85}
+  .gnav a:hover{opacity:1}
+  .wordmark{font-weight:700;font-size:15px;color:#fff;letter-spacing:-.02em}
+  .wordmark .nx{color:#fff;opacity:.62}
+  .gnav .sp{margin-left:auto}
+  @media(max-width:560px){.gnav .links-extra{display:none}}
+
+  /* ---- buttons / text-link ---- */
+  .btn{display:inline-flex;align-items:center;gap:7px;font-family:var(--font);font-size:17px;
+    font-weight:400;letter-spacing:-.022em;padding:11px 22px;border-radius:980px;border:1px solid transparent;
+    cursor:pointer;transition:transform .12s ease,background .2s,opacity .2s;white-space:nowrap;text-decoration:none}
+  .btn:active{transform:scale(.96)}
+  .btn:focus-visible{outline:2px solid var(--blue-focus);outline-offset:3px}
+  .btn-primary{background:var(--blue);color:#fff;border-color:var(--blue)}
+  .btn-primary:hover{background:#0a6fd6}
+  .btn-secondary{background:transparent;color:var(--blue);border-color:var(--blue)}
+  .btn-secondary:hover{background:rgba(0,102,204,.06)}
+  .btn-sm{font-size:14px;padding:8px 16px}
+  .btn-text{color:var(--blue);font-size:17px;font-weight:400;display:inline-flex;align-items:center;gap:5px}
+  .btn-text:hover{text-decoration:underline}
+
+  /* ---- hero ---- */
+  .hero{padding:clamp(48px,7vw,76px) 0 clamp(36px,5vw,52px)}
+  .hero .eyebrow{display:block;margin-bottom:14px}
+  .hero .display{margin-bottom:18px}
+  .hero .lead{max-width:680px;margin-bottom:30px}
+  .stats{display:flex;gap:clamp(26px,5vw,52px);flex-wrap:wrap}
+  .stat .n{font-size:clamp(28px,3.4vw,34px);font-weight:600;color:var(--ink);letter-spacing:-.03em;line-height:1}
+  .stat .l{font-size:13px;color:var(--ink48);margin-top:7px}
+
+  /* ---- grids ---- */
+  .g2{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+  @media(max-width:640px){.g2{grid-template-columns:1fr}}
+
+  /* ---- cards (utility) ---- */
+  .card{background:#fff;border:1px solid var(--hair);border-radius:18px;padding:24px;
+    display:flex;flex-direction:column;gap:10px;text-decoration:none;color:inherit;
+    transition:transform .18s ease,border-color .18s ease}
+  a.card:hover{transform:translateY(-2px);border-color:#c7c7cc}
+  .card .top{display:flex;align-items:center;justify-content:space-between;gap:12px}
+  .card .ic{width:46px;height:46px;border-radius:12px;display:grid;place-items:center;font-size:24px;
+    background:var(--parch);border:1px solid var(--hair)}
+  .card h3{font-size:19px;font-weight:600;letter-spacing:-.022em;color:var(--ink)}
+  .card p{font-size:15px;color:var(--ink48);line-height:1.5}
+  .card .go{font-size:15px;font-weight:400;color:var(--blue);margin-top:auto;
+    display:inline-flex;align-items:center;gap:5px}
+
+  /* ---- chips / badges ---- */
+  .chip{font-size:12px;font-weight:600;letter-spacing:.01em;padding:5px 11px;border-radius:980px;
+    display:inline-flex;align-items:center;gap:6px}
+  .chip.blue{color:var(--blue);background:rgba(0,102,204,.08)}
+  .chip.neutral{color:var(--ink48);background:var(--parch);border:1px solid var(--hair)}
+  .chip.live{color:#1d8a4f;background:rgba(29,138,79,.1)}
+  .chip.live .dot{width:6px;height:6px;border-radius:50%;background:#1d8a4f;flex:0 0 auto}
+  .chip.lock{color:var(--ink48);background:var(--parch);border:1px solid var(--hair)}
+
+  /* ---- private (non-link) card ---- */
+  .card.static{cursor:default}
+  .card.static:hover{transform:none;border-color:var(--hair)}
+  .card .go.off{color:var(--ink48)}
+
+  /* ---- footer ---- */
+  footer{background:var(--parch);padding:48px 0 56px;color:var(--ink48)}
+  .ft-disc{font-size:13px;color:var(--ink48);line-height:1.7}
+  .ft-disc .wordmark{color:var(--ink);font-size:15px}
+  .ft-disc .wordmark .nx{color:var(--ink48)}
+  .ft-disc code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12px;
+    background:#fff;border:1px solid var(--hair);border-radius:6px;padding:1px 6px;color:var(--ink80)}
+  .ft-disc b{color:var(--ink80);font-weight:600}
+  .ft-row{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;
+    margin-top:26px;padding-top:22px;border-top:1px solid var(--hair)}
+  .ft-row .legal{font-size:12px;color:var(--ink48)}
+</style>
+</head>
+<body>
+
+<!-- ============ GLOBAL NAV ============ -->
+<div class="gnav">
+  <div class="container">
+    <span class="wordmark">PLUG<span class="nx">nx</span></span>
+    <a class="links-extra" href="visadesk.html">VisaDesk</a>
+    <a class="links-extra" href="moneeback.html">Moneeback</a>
+    <a class="sp" href="index.html">산출물 허브</a>
+  </div>
+</div>
+
+<!-- ============ HERO ============ -->
+<section class="tile light">
+  <div class="container hero">
+    <span class="eyebrow">PlugNX 외국인 신사업 · Deliverables Hub</span>
+    <h1 class="display">외국인 신사업<br/>산출물 허브.</h1>
+    <p class="lead">체류외국인 278만 시장을 겨냥한 PlugNX × Moneeback 통합 플랫폼. 지금까지 만든 산출물과 라이브 서비스를 한 곳에서.</p>
+    <div class="stats">
+      <div class="stat"><div class="n">9</div><div class="l">산출물</div></div>
+      <div class="stat"><div class="n">3</div><div class="l">자립형 웹</div></div>
+      <div class="stat"><div class="n">12+12</div><div class="l">skill·agent</div></div>
+      <div class="stat"><div class="n">60억</div><div class="l">24M ARR 목표</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DELIVERABLES GRID — parchment ============ -->
+<section class="tile parch" style="padding-top:0">
+  <div class="container">
+    <div class="g2" style="margin-top:0;padding-top:clamp(8px,2vw,16px)">
+
+      <a class="card" href="business-case-9fk2x7.html#summary">
+        <div class="top"><div class="ic">📊</div><span class="chip blue">LOCAL · 보고서</span></div>
+        <h3>사업 타당성 보고서</h3>
+        <p>목적·정책 인사이트·Needs/Pain·고객여정 30·금융확장(대출/대환)·5축 타당성. 12섹션 인터랙티브.</p>
+        <span class="go">열기 →</span>
+      </a>
+
+      <a class="card" href="business-case-9fk2x7.pdf">
+        <div class="top"><div class="ic">⬇</div><span class="chip blue">LOCAL · PDF</span></div>
+        <h3>타당성 보고서 PDF</h3>
+        <p>인쇄·첨부용 A4 가로 PDF. 보고/공유에 그대로 사용.</p>
+        <span class="go">다운로드 →</span>
+      </a>
+
+      <a class="card" href="visadesk.html">
+        <div class="top"><div class="ic">🏢</div><span class="chip neutral">LOCAL · B2B</span></div>
+        <h3>VisaDesk (기업용)</h3>
+        <p>외국인 고용·체류 준법관리 SaaS 랜딩 + 1분 자가진단(9문항) + 요금제·후기·FAQ. “이런 손해, 막아드립니다.”</p>
+        <span class="go">열기 →</span>
+      </a>
+
+      <a class="card" href="moneeback.html">
+        <div class="top"><div class="ic">💰</div><span class="chip neutral">LOCAL · B2C</span></div>
+        <h3>Moneeback (근로자용)</h3>
+        <p>미수령 연금·보험·퇴직금 환급 추정 계산기 + 급여 적정성. 다국어(한·영·베) 토글 근로자 페이지.</p>
+        <span class="go">열기 →</span>
+      </a>
+
+      <a class="card" href="dashboard.html">
+        <div class="top"><div class="ic">📋</div><span class="chip neutral">LOCAL · 데모</span></div>
+        <h3>VisaDesk 대시보드</h3>
+        <p>체류만료·임금요건·서류·리스크 점수·K-Trust. 관리자 대시보드 데모(KPI·게이지·테이블).</p>
+        <span class="go">열기 →</span>
+      </a>
+
+      <a class="card" href="https://plugnx-visaops.netlify.app" target="_blank" rel="noopener">
+        <div class="top"><div class="ic">🌐</div><span class="chip live"><span class="dot"></span>LIVE · Netlify</span></div>
+        <h3>라이브 배포 (참고)</h3>
+        <p>Netlify에 올라간 기존 라이브 버전. 위 LOCAL 3종이 자립형 최신 산출물.</p>
+        <span class="go">라이브 열기 ↗</span>
+      </a>
+
+      <a class="card" href="guild.html">
+        <div class="top"><div class="ic">🎮</div><span class="chip neutral">LOCAL · 팀</span></div>
+        <h3>PlugNX 길드 (에이전트)</h3>
+        <p>skill·agent 12쌍을 2D MMO 파티로. 캐릭터 카드 → 소환(호출 명령) 복사.</p>
+        <span class="go">열기 →</span>
+      </a>
+
+      <a class="card" href="worklog.html">
+        <div class="top"><div class="ic">🧾</div><span class="chip neutral">LOCAL · 로그</span></div>
+        <h3>작업 로그</h3>
+        <p>이민정책 분석 → 시장조사 → 사업기획 → 웹 구축 → 배포 → 워크스페이스까지의 전 과정 타임라인.</p>
+        <span class="go">열기 →</span>
+      </a>
+
+      <div class="card static">
+        <div class="top"><div class="ic">🗄️</div><span class="chip lock">🔒 PRIVATE · REPO</span></div>
+        <h3>워크스페이스 저장소</h3>
+        <p>plugnx-foreignbiz — <b style="color:var(--ink80);font-weight:600">비공개</b> 저장소. skill·agent·CLAUDE.md·산출물 버전관리. 접근하려면 GitHub 협업자 권한이 필요합니다.</p>
+        <span class="go off">비공개 · 외부 링크 비활성</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="container">
+    <div class="ft-disc">
+      <span class="wordmark">PLUG<span class="nx">nx</span></span>
+      <p style="margin-top:14px;max-width:760px">
+        외국인 신사업 산출물 허브 · 내부용 · 생성 2026.06<br/>
+        <b>LOCAL</b> = 이 폴더(<code>plugnx-foreignbiz/output</code>)의 자립형 파일 ·
+        <b>LIVE</b> = Netlify 배포 서비스 ·
+        저장소 <code>plugnx-foreignbiz</code> (비공개 · 접근 권한 필요)
+      </p>
+    </div>
+    <div class="ft-row">
+      <span class="legal">© 2026 PlugNX Inc. · 내부 데모</span>
+      <a class="btn-text" href="visadesk.html">VisaDesk 보기 →</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
