@@ -55,6 +55,17 @@
   .pill-btn.ghost:hover{border-color:var(--ink)}
   .pill-btn.lg{height:56px;font-size:17px;padding:0 32px}
 
+  /* Left section rail */
+  .section-rail{position:fixed;left:max(12px,calc((100vw - 1180px)/2 - 136px));top:50%;transform:translateY(-50%);z-index:45;width:112px;max-height:calc(100vh - 112px);overflow:auto;background:rgba(255,255,255,.92);border:1px solid var(--border);border-radius:8px;backdrop-filter:blur(12px);padding:8px;box-shadow:0 18px 40px -32px rgba(10,11,13,.4)}
+  .section-rail .rail-title{font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding:5px 8px 8px;border-bottom:1px solid var(--border);margin-bottom:6px}
+  .section-rail a{display:flex;align-items:center;justify-content:space-between;gap:6px;min-height:28px;border-radius:7px;padding:5px 7px;color:var(--muted);font-size:11.5px;font-weight:650;line-height:1.2;transition:background .15s,color .15s}
+  .section-rail a:hover{background:#f5f8ff;color:var(--accent)}
+  .section-rail a.is-current{background:var(--accent);color:#fff}
+  .section-rail a .no{font-size:10px;font-weight:800;letter-spacing:0;color:inherit;opacity:.72}
+  .section-rail .top-link{margin-bottom:7px;background:var(--ink);color:#fff}
+  .section-rail .top-link:hover{background:#222;color:#fff}
+  @media(max-width:1420px){.section-rail{display:none}}
+
   /* Hero */
   .hero{padding:92px 0 80px}
   .hero h1{margin-bottom:24px;max-width:880px}
@@ -417,6 +428,7 @@
     nav.top{position:static}
     .pill-btn{display:none}
     .pdf-fab{display:none !important}
+    .section-rail{display:none !important}
     body{font-size:12px}
     section{padding:26px 0;break-inside:auto}
     .hero{padding:24px 0 20px}
@@ -440,7 +452,7 @@
   @page{size:A4 landscape;margin:9mm}
 </style>
 </head>
-<body>
+<body id="top">
 
 <!-- ===== NAV ===== -->
 <nav class="top">
@@ -467,6 +479,26 @@
     </div>
   </div>
 </nav>
+
+<!-- ===== LEFT SECTION RAIL ===== -->
+<aside class="section-rail" data-section-rail aria-label="보고서 섹션 바로가기">
+  <div class="rail-title">Sections</div>
+  <a class="top-link" href="#top"><span>맨 위</span><span class="no">Top</span></a>
+  <a href="#summary"><span>요약</span><span class="no">00</span></a>
+  <a href="#purpose"><span>목적</span><span class="no">01</span></a>
+  <a href="#policy"><span>정책</span><span class="no">02</span></a>
+  <a href="#needs"><span>Needs</span><span class="no">03</span></a>
+  <a href="#model"><span>모델</span><span class="no">04</span></a>
+  <a href="#strategy-choice"><span>전략선택</span><span class="no">05</span></a>
+  <a href="#market"><span>시장</span><span class="no">06</span></a>
+  <a href="#product"><span>제품</span><span class="no">07</span></a>
+  <a href="#competition"><span>경쟁</span><span class="no">08</span></a>
+  <a href="#financial"><span>재무</span><span class="no">09</span></a>
+  <a href="#finance-expansion"><span>금융확장</span><span class="no">10</span></a>
+  <a href="#ops"><span>실행</span><span class="no">11</span></a>
+  <a href="#kpi"><span>KPI</span><span class="no">12</span></a>
+  <a href="#conclusion"><span>결론</span><span class="no">13</span></a>
+</aside>
 
 <!-- ===== HERO ===== -->
 <header class="hero">
@@ -1570,6 +1602,29 @@ const io = new IntersectionObserver((entries) => {
   entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }});
 }, { threshold: 0.08 });
 document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+/* Left section rail active state */
+const sectionRail = document.querySelector('[data-section-rail]');
+if (sectionRail) {
+  const railLinks = Array.from(sectionRail.querySelectorAll('a[href^="#"]'));
+  const sectionLinks = railLinks.filter(link => link.getAttribute('href') !== '#top');
+  const sectionIds = sectionLinks.map(link => link.getAttribute('href').slice(1));
+  const setRailActive = (id) => {
+    sectionLinks.forEach(link => {
+      link.classList.toggle('is-current', link.getAttribute('href') === `#${id}`);
+    });
+  };
+  const railObserver = new IntersectionObserver((entries) => {
+    const visible = entries
+      .filter(entry => entry.isIntersecting)
+      .sort((a, b) => Math.abs(a.boundingClientRect.top) - Math.abs(b.boundingClientRect.top));
+    if (visible[0]) setRailActive(visible[0].target.id);
+  }, { rootMargin: '-22% 0px -62% 0px', threshold: [0, .2, .6] });
+  sectionIds.forEach(id => {
+    const section = document.getElementById(id);
+    if (section) railObserver.observe(section);
+  });
+}
 
 /* Interactive business canvas */
 const bizCanvas = {
