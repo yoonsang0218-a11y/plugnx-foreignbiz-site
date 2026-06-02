@@ -84,26 +84,61 @@
   .card .tag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--accent);background:#eef4ff;padding:4px 10px;border-radius:999px;margin-bottom:14px}
 
   /* Business item canvas */
-  .biz-canvas{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:32px}
-  .canvas-card{background:#fff;border:1px solid var(--border);border-radius:8px;padding:20px}
-  .canvas-card .ctag{font-size:11px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
-  .canvas-card h4{font-size:16px;font-weight:600;letter-spacing:-0.01em;margin-bottom:8px}
-  .canvas-card p{font-size:13.5px;color:var(--muted);line-height:1.6}
-  .canvas-card ul{list-style:none;font-size:13.5px;color:var(--muted);line-height:1.65}
-  .canvas-card li{position:relative;padding-left:14px;margin-bottom:5px}
-  .canvas-card li:before{content:"";position:absolute;left:0;top:9px;width:5px;height:5px;border-radius:2px;background:var(--accent)}
-  .canvas-card.value{grid-column:span 2;background:var(--ink);border-color:var(--ink);color:#fff}
-  .canvas-card.value .ctag{color:rgba(255,255,255,0.55)}
-  .canvas-card.value h4{font-size:22px;line-height:1.25;color:#fff}
-  .canvas-card.value p{color:rgba(255,255,255,0.78);font-size:14px}
-  .canvas-card.value b{color:#fff;font-weight:600}
   .icp-note{display:grid;grid-template-columns:180px 1fr;gap:18px;align-items:start;background:#fff;border:1px solid var(--border);border-left:4px solid var(--accent);border-radius:8px;padding:22px 24px;margin-top:28px}
   .icp-note .ibadge{display:inline-flex;align-items:center;justify-content:center;width:max-content;background:#eef4ff;color:var(--accent);font-size:11px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;padding:5px 11px;border-radius:999px}
   .icp-note h4{font-size:18px;font-weight:600;letter-spacing:-0.01em;margin-bottom:6px}
   .icp-note p{font-size:14px;color:var(--muted);line-height:1.65}
   .icp-note b{color:var(--ink);font-weight:600}
-  @media(max-width:960px){.biz-canvas{grid-template-columns:1fr 1fr}.canvas-card.value{grid-column:span 2}}
-  @media(max-width:640px){.biz-canvas{grid-template-columns:1fr}.canvas-card.value{grid-column:span 1}.icp-note{grid-template-columns:1fr}}
+  .biz-board{display:grid;grid-template-columns:330px 1fr;margin-top:22px;background:#fff;border:1px solid var(--border);border-radius:8px;overflow:hidden;box-shadow:0 18px 46px -34px rgba(10,11,13,.45)}
+  .biz-tabs{background:#f6f8fb;border-right:1px solid var(--border);padding:16px;display:flex;flex-direction:column;gap:7px}
+  .biz-tab{appearance:none;border:1px solid transparent;background:transparent;border-radius:8px;padding:12px;display:grid;grid-template-columns:32px 1fr;gap:11px;align-items:center;text-align:left;cursor:pointer;color:var(--muted);transition:background .16s,border-color .16s,color .16s,transform .16s}
+  .biz-tab:hover{background:#fff;border-color:#dbe3ef;color:var(--ink)}
+  .biz-tab.is-active{background:#fff;border-color:var(--accent);color:var(--ink);box-shadow:0 10px 26px -22px rgba(0,82,255,.55)}
+  .biz-tab .n{width:32px;height:32px;border-radius:8px;display:grid;place-items:center;background:#e8edf5;color:#6b7280;font-size:12px;font-weight:700}
+  .biz-tab.is-active .n{background:var(--accent);color:#fff}
+  .biz-tab .ko{display:block;font-size:14px;font-weight:700;letter-spacing:-.01em}
+  .biz-tab .en{display:block;font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-top:1px}
+  .biz-detail{position:relative;padding:30px 32px 28px;min-height:520px;display:flex;flex-direction:column}
+  .biz-detail:before{content:"";position:absolute;right:-90px;top:-120px;width:280px;height:280px;border:1px solid rgba(0,82,255,.12);border-radius:50%}
+  .biz-detail>*{position:relative}
+  .biz-kicker{font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+  .biz-detail h4{font-size:clamp(26px,3vw,34px);line-height:1.12;font-weight:500;letter-spacing:-.02em;margin-bottom:14px;max-width:720px}
+  .biz-detail .body{font-size:15px;color:var(--muted);line-height:1.72;max-width:760px}
+  .biz-detail .body b{color:var(--ink);font-weight:650}
+  .biz-insight{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:26px}
+  .biz-panel{background:var(--soft);border:1px solid var(--border);border-radius:8px;padding:18px}
+  .biz-panel .label{font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:9px}
+  .biz-panel p,.biz-panel li{font-size:13.5px;color:var(--muted);line-height:1.62}
+  .biz-panel ul{list-style:none}
+  .biz-panel li{position:relative;padding-left:14px;margin-bottom:6px}
+  .biz-panel li:before{content:"";position:absolute;left:0;top:9px;width:5px;height:5px;border-radius:2px;background:var(--accent)}
+  .biz-metric{margin-top:auto;display:grid;grid-template-columns:repeat(3,1fr);gap:10px;padding-top:24px}
+  .biz-metric .m{border-top:1px solid var(--border);padding-top:12px}
+  .biz-metric .v{font-size:22px;line-height:1;font-weight:500;color:var(--ink);letter-spacing:-.02em}
+  .biz-metric .l{font-size:12px;color:var(--muted);margin-top:6px;line-height:1.45}
+  .decision-band{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:8px;overflow:hidden;margin-top:24px}
+  .decision-band .d{background:#fff;padding:20px 22px}
+  .decision-band .tag{font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+  .decision-band h4{font-size:16px;font-weight:650;margin-bottom:6px}
+  .decision-band p{font-size:13.5px;color:var(--muted);line-height:1.6}
+  .biz-print-canvas{display:none}
+  .biz-print-canvas div{background:#fff;border:1px solid var(--border);border-radius:8px;padding:14px}
+  .biz-print-canvas b{display:block;font-size:12px;margin-bottom:4px}
+  .biz-print-canvas span{font-size:11.5px;color:var(--muted);line-height:1.45}
+  @media(max-width:960px){
+    .biz-board{grid-template-columns:1fr}
+    .biz-tabs{border-right:none;border-bottom:1px solid var(--border);display:grid;grid-template-columns:repeat(3,1fr)}
+    .biz-detail{min-height:0}
+    .biz-insight{grid-template-columns:1fr}
+    .decision-band{grid-template-columns:1fr}
+  }
+  @media(max-width:640px){
+    .icp-note{grid-template-columns:1fr}
+    .biz-tabs{display:flex;flex-direction:row;overflow-x:auto;padding:12px;scroll-snap-type:x mandatory}
+    .biz-tab{min-width:156px;scroll-snap-align:start}
+    .biz-detail{padding:24px 22px}
+    .biz-metric{grid-template-columns:1fr}
+  }
 
   /* Tables */
   table.dt{width:100%;border-collapse:collapse;font-size:13px;background:#fff;border:1px solid var(--border);border-radius:8px;overflow:hidden}
@@ -282,6 +317,7 @@
   /* Reveal animation */
   .reveal{opacity:0;transform:translateY(16px);transition:opacity .6s ease, transform .6s ease}
   .reveal.in{opacity:1;transform:none}
+  #summary .reveal{opacity:1;transform:none}
 
   /* Floating PDF action */
   .pdf-fab{position:fixed;right:20px;bottom:20px;z-index:60;display:flex;align-items:stretch;
@@ -320,7 +356,9 @@
     h3.title{break-after:avoid}
     h4.block{break-after:avoid}
     .reveal{opacity:1 !important;transform:none !important}
-    .card,.canvas-card,.chartbox,.swot,.pillar,.flow .box,.refi,.verdict,.focus-callout,
+    .biz-board{display:none !important}
+    .biz-print-canvas{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px}
+    .card,.biz-panel,.decision-band .d,.chartbox,.swot,.pillar,.flow .box,.refi,.verdict,.focus-callout,
       .kpi,.stage,.flywheel,table.dt,table.price,table.map,.fl,.needs .pillar{break-inside:avoid}
     table.journeytbl{break-inside:auto}
     table.journeytbl tr{break-inside:avoid}
@@ -403,93 +441,60 @@
       </div>
     </div>
 
-    <div class="biz-canvas reveal">
-      <div class="canvas-card">
-        <div class="ctag">문제 · Problem</div>
-        <h4>중소·중견의 채용 이후가 비어 있다</h4>
-        <p>대기업은 전담조직이 있지만, 중소·중견은 체류만료·임금요건·서류·K-Trust 리스크를 엑셀과 기억으로 관리합니다. 근로자는 환급·급여·신용 정보를 한국어 장벽 속에서 놓칩니다.</p>
+    <div class="biz-board reveal" data-biz-board>
+      <div class="biz-tabs" role="tablist" aria-label="사업아이템 캔버스 항목">
+        <button class="biz-tab is-active" type="button" role="tab" aria-selected="true" data-key="problem"><span class="n">01</span><span><span class="ko">문제</span><span class="en">Problem</span></span></button>
+        <button class="biz-tab" type="button" role="tab" aria-selected="false" data-key="solution"><span class="n">02</span><span><span class="ko">해결책</span><span class="en">Solution</span></span></button>
+        <button class="biz-tab" type="button" role="tab" aria-selected="false" data-key="value"><span class="n">03</span><span><span class="ko">핵심가치</span><span class="en">Core Value</span></span></button>
+        <button class="biz-tab" type="button" role="tab" aria-selected="false" data-key="edge"><span class="n">04</span><span><span class="ko">경쟁우위</span><span class="en">Edge</span></span></button>
+        <button class="biz-tab" type="button" role="tab" aria-selected="false" data-key="target"><span class="n">05</span><span><span class="ko">타겟 고객</span><span class="en">Target</span></span></button>
+        <button class="biz-tab" type="button" role="tab" aria-selected="false" data-key="channel"><span class="n">06</span><span><span class="ko">채널</span><span class="en">Channel</span></span></button>
+        <button class="biz-tab" type="button" role="tab" aria-selected="false" data-key="revenue"><span class="n">07</span><span><span class="ko">수익모델</span><span class="en">Revenue</span></span></button>
+        <button class="biz-tab" type="button" role="tab" aria-selected="false" data-key="cost"><span class="n">08</span><span><span class="ko">비용구조</span><span class="en">Cost</span></span></button>
+        <button class="biz-tab" type="button" role="tab" aria-selected="false" data-key="metrics"><span class="n">09</span><span><span class="ko">핵심지표</span><span class="en">Metrics</span></span></button>
       </div>
-      <div class="canvas-card">
-        <div class="ctag">해결책 · Solution</div>
-        <h4>VisaDesk + Moneeback + ForeignID</h4>
-        <p>중소·중견도 전담 HR·법무팀 없이 쓸 수 있는 B2B 준법관리 SaaS와, 근로자용 환급·금융 앱, 공통 본인인증 인프라를 하나의 데이터 레이어로 연결합니다.</p>
-      </div>
-      <div class="canvas-card value">
-        <div class="ctag">핵심가치 · Core Value</div>
-        <h4>사고가 나기 전에 막고, 놓친 돈을 찾고, 신용이 생기게 한다.</h4>
-        <p><b>핵심가치는 “중소·중견을 위한 외국인 채용 이후 운영체계”</b>입니다. 기업이 한 번 등록한 데이터가 체류관리, 임금검증, 환급체크, 금융연계까지 재사용되며 고용주는 리스크를 낮추고 근로자는 권리와 금융 접근성을 회복합니다.</p>
-      </div>
-      <div class="canvas-card">
-        <div class="ctag">경쟁우위 · Competitive Edge</div>
-        <h4>중개가 아닌 인프라</h4>
-        <ul>
-          <li>양면 네트워크와 CAC 0원 B2C 유입</li>
-          <li>고용+금융 데이터 기반 외국인 신용스코어</li>
-          <li>정책 정합성, 전환비용, 전문가 네트워크</li>
-        </ul>
-      </div>
-      <div class="canvas-card">
-        <div class="ctag">타겟 고객 · Target Customer</div>
-        <h4>1차 고객은 대기업이 아니다</h4>
-        <p>B2B는 외국인 고용 의존도는 높지만 전담 관리조직이 약한 중소·중견 사업장입니다. B2C는 환급·급여·금융 니즈가 있는 장기체류 및 출국 예정 외국인입니다.</p>
-      </div>
-      <div class="canvas-card">
-        <div class="ctag">채널 · Channel</div>
-        <h4>현장 채널로 중소·중견에 들어간다</h4>
-        <p>산단·협회 세미나, 무료 준법진단, 행정사·노무사 추천 채널로 기업을 확보하고, 기업 등록 근로자를 Moneeback으로 초대합니다.</p>
-      </div>
-      <div class="canvas-card">
-        <div class="ctag">수익모델 · Revenue Model</div>
-        <h4>구독 + 성공보수 + 금융중개</h4>
-        <p>VisaDesk 월 구독(Starter 29 / Growth 89 / Compliance 169만원), 전문가 마켓, Moneeback 환급 성공보수, 송금·대출·보험 중개로 확장합니다.</p>
-      </div>
-      <div class="canvas-card">
-        <div class="ctag">비용구조 · Cost Structure</div>
-        <h4>제품·인증·영업·전문가 운영</h4>
-        <p>Next.js/Supabase/OpenAI 기반 개발·인프라, ForeignID OCR/KYC, 다국어 CS, 법무·노무 검증, 세미나·파트너 영업비가 핵심 비용입니다.</p>
-      </div>
-      <div class="canvas-card">
-        <div class="ctag">핵심지표 · Key Metrics</div>
-        <h4>PoC부터 ARR까지 추적</h4>
-        <ul>
-          <li>8주 PoC: 15사 · 3,300만원</li>
-          <li>12개월: ARR 21억 · 100사</li>
-          <li>24개월: ARR 60억 · 300사</li>
-          <li>B2C 자동 유입 전환 60%+</li>
-        </ul>
+      <div class="biz-detail" role="tabpanel" aria-live="polite">
+        <div class="biz-kicker" id="bizKicker">문제 · Problem</div>
+        <h4 id="bizTitle">중소·중견의 채용 이후가 비어 있다</h4>
+        <p class="body" id="bizBody">대기업은 전담조직이 있지만, 중소·중견은 체류만료·임금요건·서류·K-Trust 리스크를 엑셀과 기억으로 관리합니다. 근로자는 환급·급여·신용 정보를 한국어 장벽 속에서 놓칩니다.</p>
+        <div class="biz-insight">
+          <div class="biz-panel">
+            <div class="label">핵심 판단</div>
+            <p id="bizWhy">관리 공백은 모든 기업에 같은 크기로 존재하지 않습니다. 초기 시장은 전담 시스템 없이 외국인 고용 리스크를 떠안는 중소·중견입니다.</p>
+          </div>
+          <div class="biz-panel">
+            <div class="label">실행 포인트</div>
+            <ul id="bizActions">
+              <li>외국인 고용 의존도 높은 사업장부터 PoC</li>
+              <li>체류만료·임금요건·서류 누락을 첫 진단 항목으로 제시</li>
+              <li>대기업은 2차 확장 시장으로 분리</li>
+            </ul>
+          </div>
+        </div>
+        <div class="biz-metric">
+          <div class="m"><div class="v" id="bizMetric1">중소·중견</div><div class="l" id="bizMetric1Label">초기 ICP</div></div>
+          <div class="m"><div class="v" id="bizMetric2">13개</div><div class="l" id="bizMetric2Label">핵심 공백 터치포인트</div></div>
+          <div class="m"><div class="v" id="bizMetric3">B2B2C</div><div class="l" id="bizMetric3Label">기업 등록 → 근로자 유입</div></div>
+        </div>
       </div>
     </div>
-    <div class="grid g2 reveal" style="margin-top:32px">
-      <div class="card" style="border-left:3px solid var(--accent)">
-        <div class="tag">핵심가치</div>
-        <h4 style="font-size:16px">중소·중견의 외국인 채용 이후 운영체계가 된다</h4>
-        <p>전담조직이 약한 기업에는 사고 전 예방형 컴플라이언스를, 근로자에게는 환급·급여·금융 접근성을 제공합니다. 같은 데이터가 양쪽의 손실을 동시에 줄입니다.</p>
-      </div>
-      <div class="card" style="border-left:3px solid var(--accent)">
-        <div class="tag">왜 지금</div>
-        <h4 style="font-size:16px">시장·정책·기술이 동시에 정렬된 골든타임</h4>
-        <p>체류외국인 278만(’26년 300만 돌파) · 생산인구 -313만 · 「2030 이민정책 미래전략」이 외국인을 국가성장 자산으로 재정의.</p>
-      </div>
-      <div class="card" style="border-left:3px solid var(--accent)">
-        <div class="tag">정책 인사이트</div>
-        <h4 style="font-size:16px">5대 정책 과제가 그대로 민간 사업 기회</h4>
-        <p>“공무원 편한 행정 → 기업인 편한 행정”, K-Trust 인증제, 디지털 비자, 임금 자문위 — 모두 SaaS·금융 수요로 직결.</p>
-      </div>
-      <div class="card" style="border-left:3px solid var(--accent)">
-        <div class="tag">차별성</div>
-        <h4 style="font-size:16px">데이터가 쌓일수록 강해지는 인프라</h4>
-        <p>단순 중개가 아니라 ForeignID·고용·금융 데이터를 연결하는 레이어. 양면 네트워크와 외국인 신용스코어가 장기 해자로 전환됩니다.</p>
-      </div>
-      <div class="card" style="border-left:3px solid var(--accent)">
-        <div class="tag">사업성 타당성</div>
-        <h4 style="font-size:16px">고객 ROI가 명확해 단가 방어가 되는 구조</h4>
-        <p>중소·중견은 사고 1건의 비용이 담당자·예산에 바로 타격입니다. 외국인 1명 사고비용(과태료·인력공백) &gt; 연 구독료 → <b>구독 + 환급 성공보수</b> 이중 수익.</p>
-      </div>
-      <div class="card" style="border-left:3px solid var(--accent)">
-        <div class="tag">GTM</div>
-        <h4 style="font-size:16px">산단·협회·전문가 채널로 중소·중견에 진입</h4>
-        <p>무료 준법진단 → 리스크 리포트 → 유료 전환. 기업이 등록하면 근로자가 따라오는 <b>B2B2C 단일 채널</b>로 Moneeback까지 자동 확장.</p>
-      </div>
+
+    <div class="biz-print-canvas">
+      <div><b>문제</b><span>중소·중견은 외국인 채용 이후 관리가 엑셀·기억에 머문다.</span></div>
+      <div><b>해결책</b><span>VisaDesk, Moneeback, ForeignID를 하나의 데이터 레이어로 연결한다.</span></div>
+      <div><b>핵심가치</b><span>사고 전 예방, 놓친 돈 회복, 금융 접근성 확보.</span></div>
+      <div><b>경쟁우위</b><span>양면 네트워크, 고용+금융 데이터, 정책 정합성.</span></div>
+      <div><b>타겟 고객</b><span>전담조직이 약한 중소·중견 제조·요양·서비스 사업장.</span></div>
+      <div><b>채널</b><span>산단·협회, 무료 준법진단, 전문가 추천.</span></div>
+      <div><b>수익모델</b><span>VisaDesk 구독, 전문가 마켓, 환급 성공보수, 금융중개.</span></div>
+      <div><b>비용구조</b><span>제품·인증·영업·전문가 운영비.</span></div>
+      <div><b>핵심지표</b><span>8주 PoC 15사, ARR 21억, B2C 전환 60%+.</span></div>
+    </div>
+
+    <div class="decision-band reveal">
+      <div class="d"><div class="tag">초기 ICP</div><h4>대기업이 아니라 중소·중견</h4><p>외국인 고용 의존도는 높지만 전담 시스템이 약한 사업장을 1차 고객으로 둡니다.</p></div>
+      <div class="d"><div class="tag">경제성</div><h4>사고 1건 회피가 구독료를 설명</h4><p>과태료·인력공백·행정비용이 바로 예산 타격으로 이어져 ROI 설득이 쉽습니다.</p></div>
+      <div class="d"><div class="tag">확장 경로</div><h4>B2B 등록이 B2C 유입으로 연결</h4><p>기업이 근로자를 등록하면 Moneeback 환급·금융 흐름이 열리는 구조입니다.</p></div>
     </div>
   </div>
 </section>
@@ -1352,6 +1357,118 @@ const io = new IntersectionObserver((entries) => {
   entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }});
 }, { threshold: 0.08 });
 document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+/* Interactive business canvas */
+const bizCanvas = {
+  problem: {
+    kicker: '문제 · Problem',
+    title: '중소·중견의 채용 이후가 비어 있다',
+    body: '대기업은 전담조직이 있지만, 중소·중견은 체류만료·임금요건·서류·K-Trust 리스크를 엑셀과 기억으로 관리합니다. 근로자는 환급·급여·신용 정보를 한국어 장벽 속에서 놓칩니다.',
+    why: '관리 공백은 모든 기업에 같은 크기로 존재하지 않습니다. 초기 시장은 전담 시스템 없이 외국인 고용 리스크를 떠안는 중소·중견입니다.',
+    actions: ['외국인 고용 의존도 높은 사업장부터 PoC', '체류만료·임금요건·서류 누락을 첫 진단 항목으로 제시', '대기업은 2차 확장 시장으로 분리'],
+    metrics: [['중소·중견','초기 ICP'], ['13개','핵심 공백 터치포인트'], ['B2B2C','기업 등록 → 근로자 유입']]
+  },
+  solution: {
+    kicker: '해결책 · Solution',
+    title: 'VisaDesk + Moneeback + ForeignID',
+    body: '중소·중견도 전담 HR·법무팀 없이 쓸 수 있는 B2B 준법관리 SaaS와 근로자용 환급·금융 앱, 공통 본인인증 인프라를 하나의 데이터 레이어로 연결합니다.',
+    why: '기업 화면과 근로자 화면을 따로 만드는 것이 아니라, 같은 근로자 데이터를 서로 다른 사용자 경험으로 재사용하는 구조입니다.',
+    actions: ['VisaDesk: 만료·임금·서류·리스크 알림', 'Moneeback: 환급·급여 적정성·금융 연계', 'ForeignID: 여권·외국인등록증·계좌 인증 레이어'],
+    metrics: [['3개','제품 레이어'], ['25p','B2B 대시보드'], ['L1-L3','ForeignID 인증 단계']]
+  },
+  value: {
+    kicker: '핵심가치 · Core Value',
+    title: '사고 전 예방, 놓친 돈 회복, 금융 접근성 확보',
+    body: '<b>핵심가치는 “중소·중견을 위한 외국인 채용 이후 운영체계”</b>입니다. 기업이 한 번 등록한 데이터가 체류관리, 임금검증, 환급체크, 금융연계까지 재사용됩니다.',
+    why: '고용주는 리스크를 낮추고, 근로자는 권리와 금융 접근성을 회복합니다. 양쪽의 이익이 같은 데이터 위에서 동시에 발생합니다.',
+    actions: ['사고비용을 사전에 줄이는 예방형 SaaS', '환급·급여 분석으로 근로자 체감가치 확보', '고용+금융 데이터로 신용스코어 확장'],
+    metrics: [['예방','컴플라이언스'], ['회복','환급·급여'], ['확장','외국인 신용']]
+  },
+  edge: {
+    kicker: '경쟁우위 · Competitive Edge',
+    title: '중개가 아니라 데이터 인프라다',
+    body: '단순 상담·환급 중개가 아니라 ForeignID, 고용 데이터, 금융 데이터를 연결하는 레이어입니다. 데이터가 누적될수록 전환비용과 신용스코어 자산이 커집니다.',
+    why: '경쟁사가 한쪽 서비스만 복제해도 B2B↔B2C 플라이휠과 데이터 결합을 동시에 따라오기는 어렵습니다.',
+    actions: ['B2B 등록으로 B2C 유입 확보', '고용+금융 결합 데이터 축적', '정책 정합성과 전문가 네트워크를 진입장벽으로 설계'],
+    metrics: [['CAC 0','B2C 자동 유입'], ['5선','경쟁 해자'], ['CB','신용스코어 확장']]
+  },
+  target: {
+    kicker: '타겟 고객 · Target Customer',
+    title: '1차 고객은 대기업이 아니다',
+    body: 'B2B는 외국인 고용 의존도는 높지만 전담 관리조직이 약한 중소·중견 사업장입니다. B2C는 환급·급여·금융 니즈가 있는 장기체류 및 출국 예정 외국인입니다.',
+    why: '대기업은 자체 시스템을 갖췄을 가능성이 높습니다. 반면 중소·중견은 담당자 1명이 사고 리스크를 떠안는 경우가 많아 도입 명분이 선명합니다.',
+    actions: ['제조·요양·서비스 등 반복 고용 사업장 우선', '외국인 10명 이상 보유 사업장을 PoC 후보로 설정', '대기업은 협력사 관리·감사 모듈로 후순위 확장'],
+    metrics: [['B2B TAM','E계열 49만'], ['B2C TAM','장기체류 216만'], ['PoC','8주 15사']]
+  },
+  channel: {
+    kicker: '채널 · Channel',
+    title: '현장 채널로 중소·중견에 들어간다',
+    body: '산단·협회 세미나, 무료 준법진단, 행정사·노무사 추천 채널로 기업을 확보하고, 기업 등록 근로자를 Moneeback으로 초대합니다.',
+    why: '중소·중견은 브랜드 광고보다 현장 신뢰와 전문가 추천에 반응합니다. 진단 리포트는 영업 대화의 시작점이 됩니다.',
+    actions: ['산단·요양협회 대상 무료 진단 캠페인', '행정사·노무사 파트너 추천 수수료 설계', '진단 결과를 Growth/Compliance 플랜으로 연결'],
+    metrics: [['무료진단','첫 접점'], ['15사','PoC 목표'], ['60%+','B2C 초대 전환']]
+  },
+  revenue: {
+    kicker: '수익모델 · Revenue Model',
+    title: '구독 + 성공보수 + 금융중개',
+    body: 'VisaDesk 월 구독(Starter 29 / Growth 89 / Compliance 169만원), 전문가 마켓, Moneeback 환급 성공보수, 송금·대출·보험 중개로 확장합니다.',
+    why: 'B2B 구독은 반복매출의 바닥을 만들고, B2C 환급·금융은 근로자 데이터가 쌓일수록 ARPU 확장을 만듭니다.',
+    actions: ['Starter/Growth로 진입 장벽 낮추기', 'Compliance 플랜으로 리스크 높은 기업 업셀', '환급 성공보수 이후 금융 중개로 LTV 확장'],
+    metrics: [['29/89/169','월 구독 요금'], ['10~15%','환급 성공보수'], ['21억','12개월 ARR 목표']]
+  },
+  cost: {
+    kicker: '비용구조 · Cost Structure',
+    title: '제품·인증·영업·전문가 운영',
+    body: 'Next.js/Supabase/OpenAI 기반 개발·인프라, ForeignID OCR/KYC, 다국어 CS, 법무·노무 검증, 세미나·파트너 영업비가 핵심 비용입니다.',
+    why: '초기 비용은 제품과 신뢰 구축에 집중됩니다. 자동화율이 올라갈수록 기업당 운영비는 낮아지고 전문가 네트워크는 변동비화됩니다.',
+    actions: ['OCR/KYC와 리드 API 안정화', '다국어 CS 템플릿화', '전문가 티켓은 수수료 쉐어 구조로 운영'],
+    metrics: [['제품','개발·인프라'], ['신뢰','검증·전문가'], ['영업','세미나·파트너']]
+  },
+  metrics: {
+    kicker: '핵심지표 · Key Metrics',
+    title: 'PoC부터 ARR까지 숫자로 본다',
+    body: '초기에는 PoC 전환과 리스크 진단 완료율을 보고, 12개월부터는 ARR·기업 수·B2C 자동 유입률·환급 성공률을 핵심 지표로 관리합니다.',
+    why: '이 사업은 예쁜 사용량보다 “기업이 계속 돈을 내는가”와 “근로자가 실제 경제적 가치를 얻는가”가 중요합니다.',
+    actions: ['8주 PoC: 15사 · 3,300만원', '12개월: ARR 21억 · 100사', '24개월: ARR 60억 · 300사'],
+    metrics: [['15사','8주 PoC'], ['21억','12개월 ARR'], ['60억','24개월 ARR']]
+  }
+};
+const bizBoard = document.querySelector('[data-biz-board]');
+if (bizBoard) {
+  const els = {
+    kicker: document.getElementById('bizKicker'),
+    title: document.getElementById('bizTitle'),
+    body: document.getElementById('bizBody'),
+    why: document.getElementById('bizWhy'),
+    actions: document.getElementById('bizActions'),
+    metrics: [
+      [document.getElementById('bizMetric1'), document.getElementById('bizMetric1Label')],
+      [document.getElementById('bizMetric2'), document.getElementById('bizMetric2Label')],
+      [document.getElementById('bizMetric3'), document.getElementById('bizMetric3Label')],
+    ]
+  };
+  const renderCanvas = (key) => {
+    const item = bizCanvas[key];
+    if (!item) return;
+    els.kicker.textContent = item.kicker;
+    els.title.textContent = item.title;
+    els.body.innerHTML = item.body;
+    els.why.textContent = item.why;
+    els.actions.innerHTML = item.actions.map(action => `<li>${action}</li>`).join('');
+    item.metrics.forEach((metric, i) => {
+      els.metrics[i][0].textContent = metric[0];
+      els.metrics[i][1].textContent = metric[1];
+    });
+    bizBoard.querySelectorAll('.biz-tab').forEach(tab => {
+      const active = tab.dataset.key === key;
+      tab.classList.toggle('is-active', active);
+      tab.setAttribute('aria-selected', active ? 'true' : 'false');
+    });
+  };
+  bizBoard.querySelectorAll('.biz-tab').forEach(tab => {
+    tab.addEventListener('click', () => renderCanvas(tab.dataset.key));
+  });
+}
 
 /* Chart common defaults */
 const FONT = 'Inter, Pretendard, system-ui, sans-serif';
