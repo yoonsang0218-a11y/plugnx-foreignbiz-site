@@ -1299,7 +1299,7 @@
       <table class="dt">
         <thead><tr><th style="width:22%">하지 말아야 할 진입</th><th style="width:30%">왜 위험한가</th><th>대신 선택할 방식</th></tr></thead>
         <tbody>
-          <tr><td><b>B2C 생활포털 전면전</b></td><td>glow가 이미 생활·금융·커뮤니티·채용·비자 정보를 넓게 선점 중. 자본·콘텐츠·마케팅 소모가 큼.</td><td>기업 등록 근로자만 자동 유입시키고, 생활정보는 제휴·큐레이션으로 제한.</td></tr>
+          <tr><td><b>B2C 생활포털 전면전</b></td><td>glow가 생활·금융·커뮤니티·채용·비자 정보를 넓게 공략 중. 자본·콘텐츠·마케팅 소모가 큼.</td><td>기업 등록 근로자만 자동 유입시키고, 생활정보는 제휴·큐레이션으로 제한.</td></tr>
           <tr><td><b>송금 라이선스 직접 취득·가격 경쟁</b></td><td>SentBe·Hanpass·WireBarley는 외환·AML·국가별 네트워크가 핵심 자산. 후발 가격전은 해자가 약함.</td><td>송금 비교·리퍼럴·제휴 수수료. 핵심 데이터는 고용·환급·리스크 지표로 축적.</td></tr>
           <tr><td><b>여신 직접 취급·자체 대출</b></td><td>대부중개·신용정보·전자금융·AML·자본 리스크가 커지고, 초기 타당성 논리가 흔들림.</td><td>초기엔 비교·중개와 제휴 금융 PoC. 내부 리스크 지표→샌드박스/인가 후 확장.</td></tr>
           <tr><td><b>비자 승인 보장·법률 대행처럼 보이는 UX</b></td><td>체류자격 판단은 정부 심사·전문가 영역. 보장 표현은 법적·신뢰 리스크.</td><td>준비도 진단·체크리스트·알림·전문가 연결. 모든 판단은 참고용으로 라벨링.</td></tr>
@@ -1333,6 +1333,7 @@
         <h4>고객 ROI 시뮬레이션 (외국인 30명 기준)</h4>
         <div class="note">월 89만원 Growth 플랜 도입 시 — 회피 가능 비용 vs 구독료</div>
         <div class="canvas-h"><canvas id="roiChart"></canvas></div>
+        <div class="note" style="margin-top:8px">가정치: 벌칙·인력공백·행정사·K-Trust 기회손실의 연간 기대값 합산이며, 단일 과태료 또는 확정 비용이 아닙니다.</div>
       </div>
     </div>
 
@@ -1394,7 +1395,7 @@
         <div class="card">
           <div class="num" style="font-size:28px">안심</div>
           <h4 style="font-size:15px">손해·사기를 막는다</h4>
-          <p>급여 적정성 AI 체크(체불 방지), 전세 안전체크, 비싼 송금 비교. 모국어로 안전하게.</p>
+          <p>급여 적정성 AI 체크(체불 방지), 전세 안전체크, 송금 안전·환율·수수료 비교. 모국어로 안전하게.</p>
         </div>
         <div class="card">
           <div class="num" style="font-size:28px">편의</div>
@@ -1403,7 +1404,7 @@
         </div>
         <div class="card" style="border-top:3px solid var(--accent)">
           <div class="num" style="font-size:28px">미래</div>
-          <h4 style="font-size:15px">신용이 쌓인다</h4>
+          <h4 style="font-size:15px">리스크 신호가 쌓인다</h4>
           <p>고용·소득·환급 이력이 금융사가 참고할 <b>리스크 신호</b>로 축적된다 — 아래 ②~④.</p>
         </div>
       </div>
@@ -1417,7 +1418,7 @@
         <div class="swot warn">
           <h4>외국인이 막히는 이유</h4>
           <ul>
-            <li>신용정보 부재 → 은행이 리스크 평가 불가 → 취급 회피</li>
+            <li>기존 CB 변별력 부족 → 심사·한도 산정 어려움</li>
             <li>계좌·KYC 난이도 → 비대면 대출 진입 장벽</li>
             <li>이직·출국 시 회수 불안 → 은행이 꺼림</li>
           </ul>
@@ -1495,7 +1496,7 @@
         <div class="card">
           <div class="tag">유입·예수금</div>
           <h4 style="font-size:15px">계좌개설 + 급여이체</h4>
-          <p>ForeignID KYC로 비대면 계좌개설, 급여이체 유도 → 은행 신규고객·저원가 예금.</p>
+          <p>제휴 금융사의 KYC·실명확인 절차와 연동해 비대면 계좌개설을 보조하고, 급여이체 유도 가능성을 검증.</p>
         </div>
         <div class="card" style="border-top:3px solid var(--accent)">
           <div class="tag">핵심</div>
@@ -1905,13 +1906,15 @@ new Chart(document.getElementById('arrChart'), {
 });
 
 /* ROI chart — 회피 비용 vs 구독료 */
+const roiSubscriptionAnnual = 89 * 12;
+const roiAvoidableAnnual = 4340; // 벌칙·인력공백·행정사·K-Trust 기회손실의 연간 기대값 가정
 new Chart(document.getElementById('roiChart'), {
   type: 'bar',
   data: {
     labels: ['PlugNX 연 구독료', '회피 가능 비용'],
     datasets: [
       { label: '연 비용 (만원)',
-        data: [89*12, 2000 + 1500 + 240 /* 행정사 절감 */ + 600 /* K-Trust 기회손실 일부 */],
+        data: [roiSubscriptionAnnual, roiAvoidableAnnual],
         backgroundColor: ['#5b616e', '#0052ff'], borderRadius: 6, barThickness: 60 }
     ]
   },
