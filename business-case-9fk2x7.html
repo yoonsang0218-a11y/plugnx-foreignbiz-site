@@ -156,6 +156,74 @@
   .chartbox .note{font-size:12px;color:var(--muted);margin-bottom:14px}
   .canvas-h{position:relative;height:300px}
 
+  /* Strategic choice matrix */
+  .strategy-thesis{display:grid;grid-template-columns:1fr 320px;gap:18px;align-items:stretch;background:var(--ink);color:#fff;border-radius:8px;padding:30px 32px;margin-top:34px}
+  .strategy-thesis .label{font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:10px}
+  .strategy-thesis h4{font-size:clamp(24px,3vw,34px);line-height:1.14;font-weight:400;letter-spacing:0;margin-bottom:12px}
+  .strategy-thesis p{font-size:14.5px;color:rgba(255,255,255,.74);line-height:1.7;max-width:760px}
+  .thesis-metrics{display:grid;gap:1px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.14);border-radius:8px;overflow:hidden}
+  .thesis-metrics .tm{background:rgba(255,255,255,.06);padding:15px 16px}
+  .thesis-metrics .tm b{display:block;font-size:22px;line-height:1;font-weight:500;letter-spacing:0;color:#fff;margin-bottom:6px}
+  .thesis-metrics .tm span{font-size:12px;color:rgba(255,255,255,.66);line-height:1.45}
+  .strategy-shell{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(300px,.85fr);gap:14px;margin-top:22px;align-items:stretch}
+  .matrix-card,.strategy-side,.sequence-card{background:#fff;border:1px solid var(--border);border-radius:8px;padding:24px}
+  .matrix-card h4,.strategy-side h4,.sequence-card h4{font-size:14px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;margin-bottom:6px}
+  .matrix-card .note,.strategy-side .note,.sequence-card .note{font-size:12.5px;color:var(--muted);line-height:1.55;margin-bottom:16px}
+  .strategy-matrix{position:relative;height:430px;border:1px solid var(--border);border-radius:8px;background:#fff;overflow:hidden}
+  .strategy-matrix:before{content:"";position:absolute;left:50%;top:0;bottom:0;width:1px;background:var(--border)}
+  .strategy-matrix:after{content:"";position:absolute;left:0;right:0;top:50%;height:1px;background:var(--border)}
+  .quad{position:absolute;width:50%;height:50%;padding:15px 16px;font-size:12px;color:var(--muted);line-height:1.45}
+  .quad b{display:block;color:var(--ink);font-size:13px;margin-bottom:3px}
+  .quad.q1{right:0;top:0;background:#f5f8ff}
+  .quad.q2{left:0;top:0}
+  .quad.q3{left:0;bottom:0;background:var(--soft)}
+  .quad.q4{right:0;bottom:0}
+  .axis-label{position:absolute;z-index:3;font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);background:#fff;border:1px solid var(--border);border-radius:999px;padding:5px 10px}
+  .axis-label.y{left:12px;top:12px}
+  .axis-label.x{right:12px;bottom:12px}
+  .market-dot{position:absolute;z-index:4;left:var(--x);top:var(--y);transform:translate(-50%,-50%);display:inline-flex;align-items:center;gap:7px;max-width:168px;padding:8px 10px;border:1px solid var(--border);border-radius:999px;background:#fff;color:var(--ink);font-size:12px;font-weight:650;line-height:1.2;white-space:nowrap}
+  .market-dot .score{display:inline-grid;place-items:center;width:23px;height:23px;border-radius:999px;background:#eef1f4;color:var(--muted);font-size:10px;font-weight:800;letter-spacing:0}
+  .market-dot.core{border-color:var(--accent);background:#f5f8ff;color:var(--accent)}
+  .market-dot.core .score{background:var(--accent);color:#fff}
+  .market-dot.option{border-color:#cfd7e6}
+  .market-dot.partner{color:var(--muted)}
+  .strategy-side{display:flex;flex-direction:column;gap:12px}
+  .strategy-choice{border-top:1px solid var(--border);padding-top:14px}
+  .strategy-choice:first-of-type{border-top:none;padding-top:0}
+  .strategy-choice .tag{display:inline-block;font-size:10.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;border-radius:999px;padding:4px 9px;background:#eef4ff;color:var(--accent);margin-bottom:8px}
+  .strategy-choice h5{font-size:16px;font-weight:650;letter-spacing:0;margin-bottom:5px}
+  .strategy-choice p{font-size:13px;color:var(--muted);line-height:1.6}
+  .priority-table td:nth-child(3),.priority-table td:nth-child(4){white-space:nowrap;text-align:center;font-weight:700;color:var(--ink)}
+  .priority-table .core-row{background:#f5f8ff}
+  .priority-table .judgement{font-weight:650;color:var(--ink)}
+  .core3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:22px}
+  .core-card{background:#fff;border:1px solid var(--border);border-radius:8px;padding:24px;border-top:4px solid var(--accent)}
+  .core-card h4{font-size:18px;font-weight:650;letter-spacing:0;margin-bottom:8px}
+  .core-card p{font-size:13.5px;color:var(--muted);line-height:1.65}
+  .core-card ul{list-style:none;margin-top:14px;font-size:13px;color:var(--ink);line-height:1.55}
+  .core-card li{position:relative;padding-left:15px;margin-bottom:6px}
+  .core-card li:before{content:"";position:absolute;left:0;top:8px;width:5px;height:5px;border-radius:2px;background:var(--accent)}
+  .strategy-sequence{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px}
+  .sequence-card table.dt{font-size:12.5px}
+  .roadmap{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:8px;overflow:hidden}
+  .roadmap .step{background:#fff;padding:18px}
+  .roadmap .step .t{font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+  .roadmap .step h5{font-size:15px;font-weight:650;margin-bottom:5px}
+  .roadmap .step p{font-size:12.5px;color:var(--muted);line-height:1.58}
+  .strategy-caveat{margin-top:16px;font-size:12px;color:var(--muted);line-height:1.65}
+  @media(max-width:980px){
+    .strategy-thesis,.strategy-shell,.strategy-sequence{grid-template-columns:1fr}
+    .core3,.roadmap{grid-template-columns:1fr}
+  }
+  @media(max-width:640px){
+    .strategy-thesis{padding:24px 22px}
+    .matrix-card,.strategy-side,.sequence-card{padding:20px}
+    .strategy-matrix{height:520px}
+    .market-dot{font-size:10.8px;padding:7px 8px;max-width:126px;white-space:normal;border-radius:18px}
+    .market-dot .score{width:20px;height:20px;font-size:9px;flex:none}
+    .market-dot.edge-right{transform:translate(-72%,-50%)}
+  }
+
   /* Funnel */
   .funnel{display:flex;flex-direction:column;gap:8px}
   .fl{border-radius:8px;padding:16px 22px;color:#fff;font-weight:600}
@@ -317,6 +385,7 @@
   /* Reveal animation */
   .reveal{opacity:0;transform:translateY(16px);transition:opacity .6s ease, transform .6s ease}
   .reveal.in{opacity:1;transform:none}
+  section:target .reveal{opacity:1;transform:none}
   #summary .reveal{opacity:1;transform:none}
 
   /* Floating PDF action */
@@ -359,7 +428,8 @@
     .biz-board{display:none !important}
     .biz-print-canvas{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px}
     .card,.biz-panel,.decision-band .d,.chartbox,.swot,.pillar,.flow .box,.refi,.verdict,.focus-callout,
-      .kpi,.stage,.flywheel,table.dt,table.price,table.map,.fl,.needs .pillar{break-inside:avoid}
+      .kpi,.stage,.flywheel,table.dt,table.price,table.map,.fl,.needs .pillar,.strategy-thesis,.matrix-card,
+      .strategy-side,.sequence-card,.core-card,.roadmap .step{break-inside:avoid}
     table.journeytbl{break-inside:auto}
     table.journeytbl tr{break-inside:avoid}
     table.journeytbl thead{display:table-header-group}
@@ -382,6 +452,7 @@
       <a href="#policy">정책 인사이트</a>
       <a href="#needs">Needs·Pain</a>
       <a href="#model">시장·모델</a>
+      <a href="#strategy-choice">전략선택</a>
       <a href="#market">시장</a>
       <a href="#product">제품</a>
       <a href="#competition">경쟁</a>
@@ -888,11 +959,153 @@
   </div>
 </section>
 
-<!-- ===== 03 시장 타당성 ===== -->
+<!-- ===== 05 전략 선택 ===== -->
+<section id="strategy-choice">
+  <div class="wrap">
+    <div class="reveal">
+      <h2 class="sec">05 · Strategic Choice</h2>
+      <h3 class="title">8대 신시장, 전면 진입이 아니라 선택과 제휴</h3>
+      <p class="lead">2030 이민정책이 여는 시장은 넓지만, PlugNX가 지금 모두 직접 할 이유는 없습니다. 시장매력도와 right-to-win을 나누어 보면 초기 승부처는 <b style="color:var(--ink)">VisaDesk 중심의 RegTech, Moneeback 환급·금융, K-Trust/ForeignID 데이터 레이어</b>로 좁혀집니다.</p>
+    </div>
+
+    <div class="strategy-thesis reveal">
+      <div>
+        <div class="label">MBB-style strategic answer</div>
+        <h4>PlugNX는 8개 시장을 모두 하는 회사가 아니라, 코어3를 장악한 뒤 확장 옵션을 사는 회사입니다.</h4>
+        <p>동시 진입은 범위 과확장으로 읽힙니다. 따라서 전략은 <b style="color:#fff">코어3 집중 → 확장3 옵션 → 제휴2 번들</b>입니다. 기업의 준법 데이터를 먼저 system of record로 만들고, 그 데이터가 Moneeback과 ForeignID로 이어질 때 CAC와 심사비용을 동시에 낮출 수 있습니다.</p>
+      </div>
+      <div class="thesis-metrics">
+        <div class="tm"><b>Core 3</b><span>RegTech · FinTech · HRTech/K-Trust</span></div>
+        <div class="tm"><b>Option 3</b><span>채용매칭 · 돌봄 · 사회통합교육</span></div>
+        <div class="tm"><b>Partner 2</b><span>정착생활 · 권익보호 리걸테크</span></div>
+      </div>
+    </div>
+
+    <div class="strategy-shell reveal">
+      <div class="matrix-card">
+        <h4>8대 신시장 우선순위 2×2</h4>
+        <div class="note">세로축은 시장매력도, 가로축은 PlugNX right-to-win. 점수는 전략 평가(가정), 1=낮음·5=높음.</div>
+        <div class="strategy-matrix" aria-label="8대 신시장 시장매력도와 right-to-win 2x2 매트릭스">
+          <div class="quad q1"><b>집중 진입</b>시장도 크고 우리가 이길 이유가 분명한 코어</div>
+          <div class="quad q2"><b>옵션 구축</b>수요는 크지만 운영·경쟁 부담을 검증할 시장</div>
+          <div class="quad q3"><b>제휴 번들</b>단독 수익화보다 리텐션·혜택으로 붙일 시장</div>
+          <div class="quad q4"><b>업셀 모듈</b>독립시장보다 기존 제품 고도화로 흡수</div>
+          <div class="axis-label y">시장매력도 ↑</div>
+          <div class="axis-label x">Right-to-win →</div>
+          <span class="market-dot core edge-right" style="--x:84%;--y:17%"><span class="score">5/5</span>RegTech</span>
+          <span class="market-dot core edge-right" style="--x:84%;--y:31%"><span class="score">5/5</span>FinTech</span>
+          <span class="market-dot core edge-right" style="--x:82%;--y:45%"><span class="score">4/5</span>HRTech/K-Trust</span>
+          <span class="market-dot option" style="--x:56%;--y:24%"><span class="score">4/3</span>채용매칭</span>
+          <span class="market-dot option" style="--x:35%;--y:27%"><span class="score">4/2</span>돌봄</span>
+          <span class="market-dot option" style="--x:55%;--y:66%"><span class="score">3/3</span>사회통합교육</span>
+          <span class="market-dot partner" style="--x:34%;--y:70%"><span class="score">3/2</span>정착생활</span>
+          <span class="market-dot partner" style="--x:60%;--y:80%"><span class="score">3/3</span>권익보호 리걸테크</span>
+        </div>
+      </div>
+      <div class="strategy-side">
+        <div class="strategy-choice">
+          <span class="tag">Decision 01</span>
+          <h5>RegTech는 첫 wedge</h5>
+          <p>기업이 실제로 지불하는 문제는 채용 자체보다 채용 이후의 만료·직무·근무처·서류·보험·신고 리스크입니다. VisaDesk가 B2B ARR의 출발점입니다.</p>
+        </div>
+        <div class="strategy-choice">
+          <span class="tag">Decision 02</span>
+          <h5>FinTech는 B2C 수익화 축</h5>
+          <p>환급·급여 적정성은 “찾아주는 돈”이라 전환 명분이 강합니다. 다만 초기에는 환급·비교·제휴 범위로 제한하고, 여신·신용은 인가 파트너와 단계적으로 확장합니다.</p>
+        </div>
+        <div class="strategy-choice">
+          <span class="tag">Decision 03</span>
+          <h5>HRTech는 채용 플랫폼이 아니다</h5>
+          <p>K-Trust·ForeignID는 독립 채용매칭이 아니라 VisaDesk의 고가 업셀 모듈입니다. 고용·체류·임금·환급 데이터가 쌓일수록 전환비용과 신용 데이터 해자가 커집니다.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="reveal" style="margin-top:22px;overflow-x:auto">
+      <table class="dt priority-table">
+        <thead>
+          <tr>
+            <th style="width:18%">8대 신시장</th>
+            <th>정의</th>
+            <th>시장매력도</th>
+            <th>Right-to-win</th>
+            <th style="width:24%">전략 판단</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="core-row"><td><b>RegTech</b></td><td>외국인 고용·체류·비자·임금·서류 준법관리</td><td>5</td><td>5</td><td class="judgement">코어 집중 · VisaDesk</td></tr>
+          <tr class="core-row"><td><b>FinTech</b></td><td>미수령 환급·급여 적정성·송금·금융 제휴</td><td>5</td><td>5</td><td class="judgement">코어 집중 · Moneeback</td></tr>
+          <tr class="core-row"><td><b>HRTech/K-Trust</b></td><td>준법 기록·인증 readiness·근속 데이터를 HR 워크플로화</td><td>4</td><td>5</td><td class="judgement">VisaDesk 업셀 모듈</td></tr>
+          <tr><td><b>채용매칭</b></td><td>검증된 외국인 풀과 기업 수요 연결</td><td>4</td><td>3</td><td>데이터 축적 후 옵션</td></tr>
+          <tr><td><b>돌봄</b></td><td>돌봄·간병·가사 인력의 자격·체류·배치 관리</td><td>4</td><td>2</td><td>버티컬 PoC·제휴</td></tr>
+          <tr><td><b>사회통합교육</b></td><td>KIIP·한국어·정착 교육 이수·증빙 트래킹</td><td>3</td><td>3</td><td>콘텐츠보다 증빙 모듈</td></tr>
+          <tr><td><b>정착생활</b></td><td>주거·통신·송금·보험 등 생활 온보딩</td><td>3</td><td>2</td><td>Moneeback 제휴 허브</td></tr>
+          <tr><td><b>권익보호 리걸테크</b></td><td>체류·노동·환급 분쟁의 전문가 연결·진행 추적</td><td>3</td><td>3</td><td>법률자문이 아닌 referral</td></tr>
+        </tbody>
+      </table>
+      <p class="strategy-caveat">주: 위 점수는 확정 시장점유율·실적이 아니라 전략 평가(가정)입니다. 비자·환급·금융·법률 판단은 법적 효력이 없는 참고 정보이며, 최신 법령과 행정사·노무사·변호사·세무사 검증이 필요합니다.</p>
+    </div>
+
+    <div class="core3 reveal">
+      <div class="core-card">
+        <h4>1. VisaDesk · RegTech</h4>
+        <p>중소·중견의 관리 공백을 월 구독으로 제품화합니다. 대기업보다 외국인 담당자 1명이 엑셀과 기억으로 리스크를 떠안는 사업장이 초기 ICP입니다.</p>
+        <ul>
+          <li>만료·직무·근무처·서류·보험·신고 리스크 자동 점검</li>
+          <li>Starter 29 / Growth 89 / Compliance 169만원·월</li>
+          <li>12개월 ARR 21억, 24개월 ARR 60억 목표와 직접 연결</li>
+        </ul>
+      </div>
+      <div class="core-card">
+        <h4>2. Moneeback · FinTech</h4>
+        <p>근로자의 미수령 권리를 금융 진입점으로 바꿉니다. VisaDesk 등록 근로자가 자동 유입되면 B2C CAC를 낮추고 환급·급여·송금 제휴로 LTV를 키울 수 있습니다.</p>
+        <ul>
+          <li>연금·보험·퇴직금·급여 적정성 통합 체크</li>
+          <li>B2B 등록 근로자 전환 60%+ 목표/가정</li>
+          <li>여신·신용평가는 인가 파트너 제휴 후 단계적 확장</li>
+        </ul>
+      </div>
+      <div class="core-card">
+        <h4>3. ForeignID/K-Trust · Data Moat</h4>
+        <p>독립 앱보다 코어3를 관통하는 신뢰 데이터 레이어입니다. 고용·체류·임금·환급·인증 로그가 누적될수록 교체 비용과 외국인 신용 데이터가 커집니다.</p>
+        <ul>
+          <li>L1 여권+셀카 → L2 ARC·통신 → L3 계좌·전자서명</li>
+          <li>K-Trust readiness를 Compliance 플랜 업셀로 연결</li>
+          <li>채용매칭·금융 제휴의 right-to-win을 후행 강화</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="strategy-sequence reveal">
+      <div class="sequence-card">
+        <h4>Where to play / How to win</h4>
+        <div class="note">첫 시장은 대기업 일반 HR이 아니라 외국인 5~50명 고용 중소·중견의 준법 운영 공백.</div>
+        <table class="dt">
+          <tbody>
+            <tr><th>Where to play</th><td>제조·요양·서비스 등 외국인 의존도는 높지만 전담 컴플라이언스 조직이 약한 사업장</td></tr>
+            <tr><th>How to win</th><td>7일 리스크 리포트 → 8주 PoC → Growth/Compliance 플랜 전환</td></tr>
+            <tr><th>Flywheel</th><td>기업 등록 → 근로자 Moneeback 초대 → 환급·급여 만족 → 근속률·B2B 유지 강화</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="sequence-card">
+        <h4>De-risking roadmap</h4>
+        <div class="note">코어3도 한 번에 제품화하지 않고, 지불의사와 전환율을 순차 검증합니다.</div>
+        <div class="roadmap">
+          <div class="step"><div class="t">0~90일</div><h5>VisaDesk wedge</h5><p>8주 15사·3,300만원 PoC. 만료·서류·임금·보험 리스크 리포트로 유료 전환 검증.</p></div>
+          <div class="step"><div class="t">3~6개월</div><h5>Compliance upsell</h5><p>Growth/Compliance 플랜, 전문가 티켓, K-Trust readiness, 근로자 환급 체크를 묶어 유지율 검증.</p></div>
+          <div class="step"><div class="t">6~12개월</div><h5>Data moat</h5><p>ForeignID 신뢰레벨과 금융·송금 제휴 LOI를 검증하고, 채용매칭·돌봄은 옵션으로 보류.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 06 시장 타당성 ===== -->
 <section id="market">
   <div class="wrap">
     <div class="reveal">
-      <h2 class="sec">05 · Market Feasibility</h2>
+      <h2 class="sec">06 · Market Feasibility</h2>
       <h3 class="title">TAM·SAM·SOM과 시장 추진력</h3>
       <p class="lead">체류외국인 278만 명을 기준으로 단계적 도달 시장을 산정. 정책 추진력과 인력 부족의 구조성이 시장 성장의 두 축.</p>
     </div>
@@ -935,11 +1148,11 @@
   </div>
 </section>
 
-<!-- ===== 04 제품 타당성 ===== -->
+<!-- ===== 07 제품 타당성 ===== -->
 <section id="product" class="alt">
   <div class="wrap">
     <div class="reveal">
-      <h2 class="sec">06 · Product Feasibility</h2>
+      <h2 class="sec">07 · Product Feasibility</h2>
       <h3 class="title">MVP는 이미 라이브 — 제품 위험은 검증됨</h3>
       <p class="lead">
         <a href="https://plugnx-visaops.netlify.app" target="_blank" style="color:var(--accent);font-weight:600">plugnx-visaops.netlify.app</a>에 핵심 기능이 가동 중. B2B 25페이지 대시보드, 자가진단 9문항, 리드 API, 다국어 근로자 페이지까지 구현 완료.
@@ -977,11 +1190,11 @@
   </div>
 </section>
 
-<!-- ===== 05 경쟁 타당성 ===== -->
+<!-- ===== 08 경쟁 타당성 ===== -->
 <section id="competition">
   <div class="wrap">
     <div class="reveal">
-      <h2 class="sec">07 · Competitive Feasibility</h2>
+      <h2 class="sec">08 · Competitive Feasibility</h2>
       <h3 class="title">기존 플레이어가 못 잡는 ‘공백’을 잡는다</h3>
       <p class="lead">기존 시장은 [채용 플랫폼]→매칭→입사 후 <b style="color:var(--danger)">관리 공백</b>→퇴사·출국 후 <b style="color:var(--danger)">환급 공백</b>. PlugNX × Moneeback은 채용 이후 구간 전체를 잡는 유일한 사업자.</p>
     </div>
@@ -1019,11 +1232,11 @@
   </div>
 </section>
 
-<!-- ===== 06 재무 타당성 ===== -->
+<!-- ===== 09 재무 타당성 ===== -->
 <section id="financial" class="alt">
   <div class="wrap">
     <div class="reveal">
-      <h2 class="sec">08 · Financial Feasibility</h2>
+      <h2 class="sec">09 · Financial Feasibility</h2>
       <h3 class="title">한 번만 막아도 본전 — ROI가 자기 입증</h3>
       <p class="lead">외국인 1명 잘못 관리하면 월 구독료보다 큰 비용이 새어 나갑니다. 고객 ROI가 명확해 단가 협상 압력이 낮고, 단위경제(Unit Economics)는 양면 플라이휠이 강화합니다.</p>
       <div style="display:inline-flex;align-items:center;gap:8px;margin-top:14px;font-size:12.5px;font-weight:600;color:var(--accent);background:#eef4ff;border:1px solid #d6e4ff;border-radius:999px;padding:7px 14px">
@@ -1061,11 +1274,11 @@
   </div>
 </section>
 
-<!-- ===== 08 금융 확장 (대출·대환) ===== -->
+<!-- ===== 10 금융 확장 (대출·대환) ===== -->
 <section id="finance-expansion" class="alt">
   <div class="wrap">
     <div class="reveal">
-      <h2 class="sec">09 · Financial Expansion</h2>
+      <h2 class="sec">10 · Financial Expansion</h2>
       <h3 class="title">진짜 큰 돈은 ‘대출·대환’에 있고, 그곳이 비어 있다</h3>
       <p class="lead">
         재직관리(B2B)와 환급(B2C)은 <b style="color:var(--ink)">진입 wedge</b>입니다. 노동자를 모으고 데이터를 쌓는 입구죠.
@@ -1219,11 +1432,11 @@
   </div>
 </section>
 
-<!-- ===== 09 운영·규제 타당성 ===== -->
+<!-- ===== 11 운영·규제 타당성 ===== -->
 <section id="ops">
   <div class="wrap">
     <div class="reveal">
-      <h2 class="sec">10 · Operational & Regulatory</h2>
+      <h2 class="sec">11 · Operational & Regulatory</h2>
       <h3 class="title">실행 경로와 리스크 — 모두 관리 가능 범위</h3>
       <p class="lead">GTM은 산단·요양협회 세미나 채널을 통해 검증된 깔때기. 규제는 ‘플랫폼은 관리, 신청 결정은 정부’ 구조로 본질적 위험을 분산.</p>
     </div>
@@ -1271,11 +1484,11 @@
   </div>
 </section>
 
-<!-- ===== 09 기대효과 / KPI ===== -->
+<!-- ===== 12 기대효과 / KPI ===== -->
 <section id="kpi">
   <div class="wrap">
     <div class="reveal">
-      <h2 class="sec">11 · Expected Outcomes & KPI</h2>
+      <h2 class="sec">12 · Expected Outcomes & KPI</h2>
       <h3 class="title">기대효과와 성과지표 (목표)</h3>
       <p class="lead">사업을 추진했을 때의 <b style="color:var(--ink)">가정 기반 목표치</b>와, 그것을 점검할 단계별 KPI. 확정 실적이 아니라 추진 시 달성을 노리는 목표이며, 보고 후 의사결정·진척 점검의 기준이 됩니다.</p>
     </div>
@@ -1314,11 +1527,11 @@
   </div>
 </section>
 
-<!-- ===== 10 결론 ===== -->
+<!-- ===== 13 결론 ===== -->
 <section id="conclusion" class="alt">
   <div class="wrap">
     <div class="reveal verdict">
-      <div class="label">12 · Conclusion</div>
+      <div class="label">13 · Conclusion</div>
       <h2>다섯 축 모두 타당. 진입은 합리적입니다.</h2>
       <p>
         <b>시장</b>은 정주화·구조적 인력난·정책 골든타임의 트리플 추진력이 작동하고,
