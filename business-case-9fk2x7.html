@@ -97,8 +97,13 @@
   .canvas-card.value h4{font-size:22px;line-height:1.25;color:#fff}
   .canvas-card.value p{color:rgba(255,255,255,0.78);font-size:14px}
   .canvas-card.value b{color:#fff;font-weight:600}
+  .icp-note{display:grid;grid-template-columns:180px 1fr;gap:18px;align-items:start;background:#fff;border:1px solid var(--border);border-left:4px solid var(--accent);border-radius:8px;padding:22px 24px;margin-top:28px}
+  .icp-note .ibadge{display:inline-flex;align-items:center;justify-content:center;width:max-content;background:#eef4ff;color:var(--accent);font-size:11px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;padding:5px 11px;border-radius:999px}
+  .icp-note h4{font-size:18px;font-weight:600;letter-spacing:-0.01em;margin-bottom:6px}
+  .icp-note p{font-size:14px;color:var(--muted);line-height:1.65}
+  .icp-note b{color:var(--ink);font-weight:600}
   @media(max-width:960px){.biz-canvas{grid-template-columns:1fr 1fr}.canvas-card.value{grid-column:span 2}}
-  @media(max-width:640px){.biz-canvas{grid-template-columns:1fr}.canvas-card.value{grid-column:span 1}}
+  @media(max-width:640px){.biz-canvas{grid-template-columns:1fr}.canvas-card.value{grid-column:span 1}.icp-note{grid-template-columns:1fr}}
 
   /* Tables */
   table.dt{width:100%;border-collapse:collapse;font-size:13px;background:#fff;border:1px solid var(--border);border-radius:8px;overflow:hidden}
@@ -390,24 +395,32 @@
       <p class="lead">의사결정자를 위한 요약. 무엇을, 누구에게, 왜 파는지 사업아이템의 문제·해결책·핵심가치·수익구조를 한 장으로 닫고, 아래 6개 결론이 이를 데이터로 뒷받침합니다.</p>
     </div>
 
+    <div class="icp-note reveal">
+      <div class="ibadge">ICP 판단</div>
+      <div>
+        <h4>대기업보다 중소·중견의 관리 공백이 더 크다</h4>
+        <p>대기업은 HRIS·법무·노무·컴플라이언스 조직으로 일부 자체 대응이 가능합니다. 따라서 초기 고객은 대기업이 아니라, <b>외국인 근로자를 꾸준히 쓰지만 전담 시스템이 없는 제조·요양·서비스 중소·중견 사업장</b>입니다. 대기업은 추후 감사·표준화·협력사 관리 모듈로 확장 가능한 2차 시장입니다.</p>
+      </div>
+    </div>
+
     <div class="biz-canvas reveal">
       <div class="canvas-card">
-        <div class="ctag">Problem</div>
-        <h4>채용 이후가 비어 있다</h4>
-        <p>기업은 체류만료·임금요건·서류·K-Trust 리스크를 엑셀과 기억으로 관리하고, 근로자는 환급·급여·신용 정보를 한국어 장벽 속에서 놓칩니다.</p>
+        <div class="ctag">문제 · Problem</div>
+        <h4>중소·중견의 채용 이후가 비어 있다</h4>
+        <p>대기업은 전담조직이 있지만, 중소·중견은 체류만료·임금요건·서류·K-Trust 리스크를 엑셀과 기억으로 관리합니다. 근로자는 환급·급여·신용 정보를 한국어 장벽 속에서 놓칩니다.</p>
       </div>
       <div class="canvas-card">
-        <div class="ctag">Solution</div>
+        <div class="ctag">해결책 · Solution</div>
         <h4>VisaDesk + Moneeback + ForeignID</h4>
-        <p>B2B 준법관리 SaaS, B2C 환급·금융 앱, 공통 본인인증 인프라를 하나의 근로자 데이터 레이어로 연결합니다.</p>
+        <p>중소·중견도 전담 HR·법무팀 없이 쓸 수 있는 B2B 준법관리 SaaS와, 근로자용 환급·금융 앱, 공통 본인인증 인프라를 하나의 데이터 레이어로 연결합니다.</p>
       </div>
       <div class="canvas-card value">
-        <div class="ctag">Core Value</div>
+        <div class="ctag">핵심가치 · Core Value</div>
         <h4>사고가 나기 전에 막고, 놓친 돈을 찾고, 신용이 생기게 한다.</h4>
-        <p><b>핵심가치는 “외국인 채용 이후의 운영체계”</b>입니다. 기업이 한 번 등록한 데이터가 체류관리, 임금검증, 환급체크, 금융연계까지 재사용되며 고용주는 리스크를 낮추고 근로자는 권리와 금융 접근성을 회복합니다.</p>
+        <p><b>핵심가치는 “중소·중견을 위한 외국인 채용 이후 운영체계”</b>입니다. 기업이 한 번 등록한 데이터가 체류관리, 임금검증, 환급체크, 금융연계까지 재사용되며 고용주는 리스크를 낮추고 근로자는 권리와 금융 접근성을 회복합니다.</p>
       </div>
       <div class="canvas-card">
-        <div class="ctag">Competitive Edge</div>
+        <div class="ctag">경쟁우위 · Competitive Edge</div>
         <h4>중개가 아닌 인프라</h4>
         <ul>
           <li>양면 네트워크와 CAC 0원 B2C 유입</li>
@@ -416,27 +429,27 @@
         </ul>
       </div>
       <div class="canvas-card">
-        <div class="ctag">Target Customer</div>
-        <h4>외국인 고용기업과 장기체류 근로자</h4>
-        <p>B2B는 E계열 취업비자 인력을 고용하는 중소·중견 사업장, B2C는 환급·급여·금융 니즈가 있는 장기체류 및 출국 예정 외국인입니다.</p>
+        <div class="ctag">타겟 고객 · Target Customer</div>
+        <h4>1차 고객은 대기업이 아니다</h4>
+        <p>B2B는 외국인 고용 의존도는 높지만 전담 관리조직이 약한 중소·중견 사업장입니다. B2C는 환급·급여·금융 니즈가 있는 장기체류 및 출국 예정 외국인입니다.</p>
       </div>
       <div class="canvas-card">
-        <div class="ctag">Channel</div>
-        <h4>B2B로 진입해 B2C를 자동 확보</h4>
-        <p>산단·협회 세미나, 무료 준법진단, 전문가 추천 채널로 기업을 확보하고, 기업 등록 근로자를 Moneeback으로 초대합니다.</p>
+        <div class="ctag">채널 · Channel</div>
+        <h4>현장 채널로 중소·중견에 들어간다</h4>
+        <p>산단·협회 세미나, 무료 준법진단, 행정사·노무사 추천 채널로 기업을 확보하고, 기업 등록 근로자를 Moneeback으로 초대합니다.</p>
       </div>
       <div class="canvas-card">
-        <div class="ctag">Revenue Model</div>
+        <div class="ctag">수익모델 · Revenue Model</div>
         <h4>구독 + 성공보수 + 금융중개</h4>
         <p>VisaDesk 월 구독(Starter 29 / Growth 89 / Compliance 169만원), 전문가 마켓, Moneeback 환급 성공보수, 송금·대출·보험 중개로 확장합니다.</p>
       </div>
       <div class="canvas-card">
-        <div class="ctag">Cost Structure</div>
+        <div class="ctag">비용구조 · Cost Structure</div>
         <h4>제품·인증·영업·전문가 운영</h4>
         <p>Next.js/Supabase/OpenAI 기반 개발·인프라, ForeignID OCR/KYC, 다국어 CS, 법무·노무 검증, 세미나·파트너 영업비가 핵심 비용입니다.</p>
       </div>
       <div class="canvas-card">
-        <div class="ctag">Key Metrics</div>
+        <div class="ctag">핵심지표 · Key Metrics</div>
         <h4>PoC부터 ARR까지 추적</h4>
         <ul>
           <li>8주 PoC: 15사 · 3,300만원</li>
@@ -449,8 +462,8 @@
     <div class="grid g2 reveal" style="margin-top:32px">
       <div class="card" style="border-left:3px solid var(--accent)">
         <div class="tag">핵심가치</div>
-        <h4 style="font-size:16px">외국인 채용 이후의 운영체계가 된다</h4>
-        <p>기업에는 사고 전 예방형 컴플라이언스를, 근로자에게는 환급·급여·금융 접근성을 제공합니다. 같은 데이터가 양쪽의 손실을 동시에 줄입니다.</p>
+        <h4 style="font-size:16px">중소·중견의 외국인 채용 이후 운영체계가 된다</h4>
+        <p>전담조직이 약한 기업에는 사고 전 예방형 컴플라이언스를, 근로자에게는 환급·급여·금융 접근성을 제공합니다. 같은 데이터가 양쪽의 손실을 동시에 줄입니다.</p>
       </div>
       <div class="card" style="border-left:3px solid var(--accent)">
         <div class="tag">왜 지금</div>
@@ -470,12 +483,12 @@
       <div class="card" style="border-left:3px solid var(--accent)">
         <div class="tag">사업성 타당성</div>
         <h4 style="font-size:16px">고객 ROI가 명확해 단가 방어가 되는 구조</h4>
-        <p>외국인 1명 사고비용(과태료·인력공백) &gt; 연 구독료 → 도입 명분이 자명. <b>구독(반복매출) + 환급 성공보수</b> 이중 수익, CAC 0원 양면 플라이휠.</p>
+        <p>중소·중견은 사고 1건의 비용이 담당자·예산에 바로 타격입니다. 외국인 1명 사고비용(과태료·인력공백) &gt; 연 구독료 → <b>구독 + 환급 성공보수</b> 이중 수익.</p>
       </div>
       <div class="card" style="border-left:3px solid var(--accent)">
         <div class="tag">GTM</div>
-        <h4 style="font-size:16px">B2B로 진입 → B2C 자동 확보</h4>
-        <p>산단공단·요양협회 세미나 → 무료 진단 → 유료 전환의 검증된 깔때기. 기업이 등록하면 근로자가 따라오는 <b>B2B2C 단일 채널</b>로 동시 공략.</p>
+        <h4 style="font-size:16px">산단·협회·전문가 채널로 중소·중견에 진입</h4>
+        <p>무료 준법진단 → 리스크 리포트 → 유료 전환. 기업이 등록하면 근로자가 따라오는 <b>B2B2C 단일 채널</b>로 Moneeback까지 자동 확장.</p>
       </div>
     </div>
   </div>
