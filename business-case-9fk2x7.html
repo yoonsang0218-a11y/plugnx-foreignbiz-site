@@ -455,33 +455,34 @@
       </div>
       <div class="biz-detail" role="tabpanel" aria-live="polite">
         <div class="biz-kicker" id="bizKicker">문제 · Problem</div>
-        <h4 id="bizTitle">중소·중견의 채용 이후가 비어 있다</h4>
-        <p class="body" id="bizBody">대기업은 전담조직이 있지만, 중소·중견은 체류만료·임금요건·서류·K-Trust 리스크를 엑셀과 기억으로 관리합니다. 근로자는 환급·급여·신용 정보를 한국어 장벽 속에서 놓칩니다.</p>
+        <h4 id="bizTitle">리스크는 채용 순간이 아니라 채용 이후 매일 쌓인다</h4>
+        <p class="body" id="bizBody">대기업은 전담조직이 있지만, 중소·중견은 체류만료·실제 직무·근무처·서류·보험·신고기한을 엑셀과 기억으로 관리합니다. 한 항목 누락이 불법체류, 자격외활동, 무허가고용, 보험 미가입 리스크로 번질 수 있습니다.</p>
         <div class="biz-insight">
           <div class="biz-panel">
             <div class="label">핵심 판단</div>
-            <p id="bizWhy">관리 공백은 모든 기업에 같은 크기로 존재하지 않습니다. 초기 시장은 전담 시스템 없이 외국인 고용 리스크를 떠안는 중소·중견입니다.</p>
+            <p id="bizWhy">관리 공백의 본질은 “정보가 없는 것”이 아니라 정보가 서로 연결되지 않는 것입니다. 직원별 체류기간, 실제 업무, 근무처 변경, 보험 가입, 고용변동 신고가 따로 관리되면 담당자 개인의 캘린더와 인수인계로는 현장 변경을 따라가기 어렵습니다.</p>
           </div>
           <div class="biz-panel">
             <div class="label">실행 포인트</div>
             <ul id="bizActions">
-              <li>외국인 고용 의존도 높은 사업장부터 PoC</li>
-              <li>체류만료·임금요건·서류 누락을 첫 진단 항목으로 제시</li>
-              <li>대기업은 2차 확장 시장으로 분리</li>
+              <li>직원별 체류만료 D-day와 여권·계약·허가서 만료일 대조</li>
+              <li>비자별 허용 업무와 실제 직무·근무처 매칭</li>
+              <li>보험 가입 누락과 고용변동 신고기한 체크</li>
+              <li>High 리스크를 담당자에게 우선 표시</li>
             </ul>
           </div>
         </div>
         <div class="biz-metric">
-          <div class="m"><div class="v" id="bizMetric1">중소·중견</div><div class="l" id="bizMetric1Label">초기 ICP</div></div>
-          <div class="m"><div class="v" id="bizMetric2">13개</div><div class="l" id="bizMetric2Label">핵심 공백 터치포인트</div></div>
-          <div class="m"><div class="v" id="bizMetric3">B2B2C</div><div class="l" id="bizMetric3Label">기업 등록 → 근로자 유입</div></div>
+          <div class="m"><div class="v" id="bizMetric1">6대 공백</div><div class="l" id="bizMetric1Label">만료·직무·근무처·서류·보험·신고</div></div>
+          <div class="m"><div class="v" id="bizMetric2">D-60/30/14/7</div><div class="l" id="bizMetric2Label">만료 전 단계별 알림</div></div>
+          <div class="m"><div class="v" id="bizMetric3">High</div><div class="l" id="bizMetric3Label">불법체류·자격외활동·무허가고용</div></div>
         </div>
       </div>
     </div>
 
     <div class="biz-print-canvas">
-      <div><b>문제</b><span>중소·중견은 외국인 채용 이후 관리가 엑셀·기억에 머문다.</span></div>
-      <div><b>해결책</b><span>VisaDesk, Moneeback, ForeignID를 하나의 데이터 레이어로 연결한다.</span></div>
+      <div><b>문제</b><span>체류만료·직무·근무처·서류·보험·신고기한이 따로 관리되어 High 리스크가 누적된다.</span></div>
+      <div><b>해결책</b><span>VisaDesk가 만료·업무범위·서류·보험을 4대 기본 룰로 자동 점검한다.</span></div>
       <div><b>핵심가치</b><span>사고 전 예방, 놓친 돈 회복, 금융 접근성 확보.</span></div>
       <div><b>경쟁우위</b><span>양면 네트워크, 고용+금융 데이터, 정책 정합성.</span></div>
       <div><b>타겟 고객</b><span>전담조직이 약한 중소·중견 제조·요양·서비스 사업장.</span></div>
@@ -1362,19 +1363,19 @@ document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 const bizCanvas = {
   problem: {
     kicker: '문제 · Problem',
-    title: '중소·중견의 채용 이후가 비어 있다',
-    body: '대기업은 전담조직이 있지만, 중소·중견은 체류만료·임금요건·서류·K-Trust 리스크를 엑셀과 기억으로 관리합니다. 근로자는 환급·급여·신용 정보를 한국어 장벽 속에서 놓칩니다.',
-    why: '관리 공백은 모든 기업에 같은 크기로 존재하지 않습니다. 초기 시장은 전담 시스템 없이 외국인 고용 리스크를 떠안는 중소·중견입니다.',
-    actions: ['외국인 고용 의존도 높은 사업장부터 PoC', '체류만료·임금요건·서류 누락을 첫 진단 항목으로 제시', '대기업은 2차 확장 시장으로 분리'],
-    metrics: [['중소·중견','초기 ICP'], ['13개','핵심 공백 터치포인트'], ['B2B2C','기업 등록 → 근로자 유입']]
+    title: '리스크는 채용 순간이 아니라 채용 이후 매일 쌓인다',
+    body: '대기업은 전담조직이 있지만, 중소·중견은 체류만료·실제 직무·근무처·서류·보험·신고기한을 엑셀과 기억으로 관리합니다. 한 항목 누락이 불법체류, 자격외활동, 무허가고용, 보험 미가입 리스크로 번질 수 있습니다.',
+    why: '관리 공백의 본질은 “정보가 없는 것”이 아니라 정보가 서로 연결되지 않는 것입니다. 직원별 체류기간, 여권·계약·허가서 만료일, 실제 업무, 근무처 변경, 보험 가입, 고용변동 신고가 따로 관리되면 담당자 개인의 캘린더와 인수인계로는 현장 변경을 따라가기 어렵습니다.',
+    actions: ['직원별 체류만료 D-day와 여권·계약·허가서 만료일을 한 화면에서 대조', '비자별 허용 업무와 실제 직무·근무처를 매칭해 자격외활동 의심 건 표시', '4대보험·출국만기보험·임금체불 보증보험 등 보험 가입 누락 점검', '고용변동·근무처 변경·퇴직·출국 관련 신고기한을 체크리스트로 묶기'],
+    metrics: [['6대 공백','만료·직무·근무처·서류·보험·신고'], ['D-60/30/14/7','만료 전 단계별 알림'], ['High 리스크','불법체류·자격외활동·무허가고용']]
   },
   solution: {
     kicker: '해결책 · Solution',
-    title: 'VisaDesk + Moneeback + ForeignID',
-    body: '중소·중견도 전담 HR·법무팀 없이 쓸 수 있는 B2B 준법관리 SaaS와 근로자용 환급·금융 앱, 공통 본인인증 인프라를 하나의 데이터 레이어로 연결합니다.',
-    why: '기업 화면과 근로자 화면을 따로 만드는 것이 아니라, 같은 근로자 데이터를 서로 다른 사용자 경험으로 재사용하는 구조입니다.',
-    actions: ['VisaDesk: 만료·임금·서류·리스크 알림', 'Moneeback: 환급·급여 적정성·금융 연계', 'ForeignID: 여권·외국인등록증·계좌 인증 레이어'],
-    metrics: [['3개','제품 레이어'], ['25p','B2B 대시보드'], ['L1-L3','ForeignID 인증 단계']]
+    title: '외국인 고용을 리스크 그래프로 관리한다',
+    body: 'VisaDesk는 외국인 직원을 단순 명부가 아니라 체류·노무·서류 상태가 연결된 리스크 그래프로 봅니다. 중소·중견 담당자는 법령을 외우는 대신, 시스템이 띄우는 위험도·근거·조치·기한을 따라 처리합니다.',
+    why: '해결책은 “알림 앱”이 아니라 운영 절차의 표준화입니다. VisaDesk가 만료·업무범위·서류·보험을 자동 점검하고, High 건은 담당자에게 에스컬레이션하며, 환급 가능 신호는 Moneeback 연계 포인트로 남깁니다.',
+    actions: ['비자 만료, 자격외활동, 서류 누락, 보험 미가입을 4대 기본 룰로 자동 점검', 'High 리스크는 HR·컴플라이언스 담당자에게 에스컬레이션', '직원에게는 민감정보 없는 요약본과 다음 액션만 전달', '퇴직금·출국만기보험 등 환급 가능 신호를 Moneeback 전환 데이터로 기록'],
+    metrics: [['4대 룰','만료·업무범위·서류·보험'], ['25p','직원·비자·서류·보험·알림 대시보드'], ['B2B→B2C','기업 등록 직원이 환급·금융 흐름으로 전환']]
   },
   value: {
     kicker: '핵심가치 · Core Value',
