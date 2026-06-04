@@ -21,9 +21,9 @@
     --font:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text",Inter,system-ui,"Apple SD Gothic Neo",sans-serif;
   }
   *{box-sizing:border-box;margin:0;padding:0}
-  html{scroll-behavior:smooth}
+  html{scroll-behavior:smooth;overflow-x:hidden}
   body{font-family:var(--font);background:var(--white);color:var(--ink);line-height:1.47;
-    letter-spacing:-.022em;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+    letter-spacing:-.022em;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:hidden}
   a{color:var(--blue);text-decoration:none}
   .container{max-width:1080px;margin:0 auto;padding:0 22px}
   img{max-width:100%}
@@ -91,7 +91,21 @@
   .subnav .links a:hover{color:var(--ink)}
   .subnav .right{margin-left:auto;display:flex;align-items:center;gap:12px}
   @media(max-width:900px){.subnav .links{display:none}}
-  @media(max-width:560px){.gnav .links-extra{display:none}.subnav .cat{font-size:18px}}
+  @media(max-width:560px){
+    .container{padding:0 20px}
+    .gnav .links-extra{display:none}
+    .subnav .container{gap:10px;min-width:0}
+    .subnav .cat{font-size:18px;min-width:0;white-space:nowrap}
+    .subnav .right{margin-left:auto;min-width:0;gap:8px}
+    .subnav .right .btn{display:none}
+    .display{font-size:clamp(30px,10vw,39px);line-height:1.14;letter-spacing:0;overflow-wrap:anywhere}
+    .lead{font-size:18px;line-height:1.42}
+    .btn,.btn-text{max-width:100%;white-space:normal;text-align:center;justify-content:center}
+    .hero-cta{gap:10px}
+    .verdict{padding:24px 20px}
+    .verdict-top{align-items:flex-start}
+    .verdict-stamp{white-space:normal;text-align:center}
+  }
 
   /* ---- hero ---- */
   .hero{text-align:center;padding:clamp(48px,7vw,76px) 0 clamp(36px,5vw,56px)}
@@ -264,8 +278,8 @@
 <section class="tile light">
   <div class="container hero">
     <span class="eyebrow">타당성 게이트 · go / no-go</span>
-    <h1 class="display">진입은 타당하다.<br/>단, 8주 PoC를 통과해야 한다.</h1>
-    <p class="lead">모든 산출물을 종합한 의사결정 게이트. 5축 매력도는 충분하나, 재무 스토리의 핵심 전제(전환·CAC0·금융규제·제품)는 아직 가정이다. 현재 정직한 판정은 <b style="color:var(--ink)">조건부 GO</b>다.</p>
+    <h1 class="display">진입은 타당하다.<br/>단, 데이터 파이프라인을 증명해야 한다.</h1>
+    <p class="lead">모든 산출물을 종합한 의사결정 게이트. 5축 매력도는 충분하나, 핵심은 VisaDesk 유료 사용 → Moneeback 환급 활성화 → ForeignID 기반 금융 신호가 실제로 이어지는지다. 현재 정직한 판정은 <b style="color:var(--ink)">조건부 GO</b>다.</p>
     <div class="hero-cta">
       <a class="btn btn-primary" href="#gate">GO 조건 보기</a>
       <a class="btn-text" href="business-case-9fk2x7.html#summary">상세 타당성(13섹션) ›</a>
@@ -283,7 +297,7 @@
         <span class="verdict-stamp">CONDITIONAL GO</span>
       </div>
       <div class="verdict-grade"><span class="ac">조건부 GO</span> · 등급 B+</div>
-      <div class="verdict-sub">시장·경쟁 매력도는 높고, 재무·운영규제는 PoC 게이트 통과를 조건으로 한다. 평균 3.8 / 5점 (가정).</div>
+      <div class="verdict-sub">시장·경쟁 매력도는 높고, 재무·운영규제는 Compliance → Refund → Credit 파이프라인 실측을 조건으로 한다. 평균 3.8 / 5점 (가정).</div>
       <div class="vbars">
         <div class="vbar"><span class="vl">시장</span><span class="track"><span class="fill" style="width:80%"></span></span><span class="vn">4.0</span></div>
         <div class="vbar"><span class="vl">제품</span><span class="track"><span class="fill" style="width:64%"></span></span><span class="vn">3.2</span></div>
@@ -315,14 +329,14 @@
       <div class="card axis">
         <div class="axis-top"><span class="axis-name">제품</span><span class="axis-score">3.2<small> / 5</small></span></div>
         <div class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></div>
-        <p>양면(B2B+B2C) 통합 + ForeignID 인증 인프라라는 <b>구조 자체는 차별적</b>. 그러나 OCR 정확도·ForeignID L1~L3·자동유입 60%는 <b>미검증 가정</b>. 결과화면 전환 누수(mailto) 등 실행 결함도 잔존 — 점수 보류.</p>
+        <p>양면(B2B+B2C) 통합 + ForeignID 인증 인프라라는 <b>구조 자체는 차별적</b>. 다만 제품 타당성은 세 화면이 아니라 <b>기업 재직 데이터→근로자 환급 활성화→동의 기반 금융 신호</b>가 실제로 이어질 때 입증된다. OCR·L1~L3·자동유입 60%는 아직 미검증 가정.</p>
         <a class="cite" href="business-case-9fk2x7.html#product">▸ business-case · 09 Product</a>
       </div>
 
       <div class="card axis">
         <div class="axis-top"><span class="axis-name">경쟁</span><span class="axis-score">4.2<small> / 5</small></span></div>
         <div class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></div>
-        <p>2×2(양면 통합 × 인증 인프라)의 <b>우상단이 비어 있음</b> — "채용 이후 재직관리 OS" 좌표 점유. 클링커즈(중개형)는 기술 해자 약함. 단 해자의 70%(데이터·락인·복리)는 <b>축적 후 검증할 미래 명제</b>로 라벨.</p>
+        <p>2×2(양면 통합 × 인증 인프라)의 <b>우상단이 비어 있음</b> — "채용 이후 재직관리 OS" 좌표 점유. 단순 알림·환급·채용추천은 복제 가능하므로, 진짜 해자는 <b>Compliance → Refund → Credit</b>이 누적된 뒤 검증할 미래 명제로 라벨.</p>
         <a class="cite" href="business-case-9fk2x7.html#competition">▸ business-case · 11 Competition</a>
       </div>
 
@@ -362,7 +376,7 @@
       <div class="quad s">
         <h3>Strengths · 강점</h3>
         <ul>
-          <li><b>양면 데이터 파이프라인</b> — 고용+금융 결합, 자동유입 시 B2C 한계 CAC 0.</li>
+          <li><b>양면 데이터 파이프라인</b> — 재직·체류 compliance file이 Moneeback 환급과 ForeignID 금융 신호로 연결.</li>
           <li><b>정책 정합성</b> — K-Trust·쿼터·임금자문위, 「2030 미래전략」 골든윈도.</li>
           <li><b>보유 전문가망</b> — 행정사 3,360·변호사 365를 상시 유통 채널화.</li>
           <li><b>ROI 자기입증</b> — 1명 리스크만 막아도 연 구독료 회수(가격 방어).</li>
@@ -382,7 +396,7 @@
         <ul>
           <li><b>빈 우상단 좌표</b> — "재직관리 OS" 공개 출처상 미점유 공백.</li>
           <li><b>벌칙 상향</b> — §94 ’26.1.23 상향이 손실회피 수요를 키움.</li>
-          <li><b>D3 금융 업사이드</b> — 데이터→신용스코어→여신(후행 옵션).</li>
+          <li><b>D3 금융 업사이드</b> — 데이터→대안신용 보조 신호→파트너 금융(후행 옵션).</li>
           <li><b>확장 3</b> — 채용매칭·돌봄·KIIP로 동일 인프라 재사용.</li>
         </ul>
       </div>
@@ -492,10 +506,10 @@
 
       <div class="card gate">
         <span class="gk">게이트 2 · B2C 플라이휠 검증</span>
-        <h3>CAC 0 활성화율 실측</h3>
+        <h3>환급 웨지가 실제 활성화를 만드는가</h3>
         <ul>
-          <li><span class="gbox"></span><span>"전환 60%"를 <b>노출 60% / 활성화(KYC L2·환급조회) 40~55%</b>로 분리 정의·계측.</span></li>
-          <li><span class="gbox"></span><span>"초대→가입" 선행 신호를 PoC 중 측정 — <b>CAC 0 전제의 생사</b>가 여기 달림.</span></li>
+          <li><span class="gbox"></span><span>"전환 60%"를 <b>초대 노출 60% / 환급조회·KYC L2 활성화 40~55%</b>로 분리 정의·계측.</span></li>
+          <li><span class="gbox"></span><span>"초대→환급조회→동의" 선행 신호를 PoC 중 측정 — <b>CAC 0 전제와 신뢰 데이터 축적의 생사</b>가 여기 달림.</span></li>
           <li><span class="gbox"></span><span>미달 시 블렌디드 LTV/CAC·Moneeback ARR(3.7→8.2억) <b>하향 재산정</b>.</span></li>
         </ul>
         <p class="src">근거 · GTM 99-storyline O4 / 08 비즈니스 케이스 ③ So-what.</p>
@@ -503,11 +517,11 @@
 
       <div class="card gate">
         <span class="gk">게이트 3 · 금융규제 (D3)</span>
-        <h3>여신은 매출 가정 금지</h3>
+        <h3>금융 신호는 합법성 확인 전 매출 가정 금지</h3>
         <ul>
           <li><span class="gbox"></span><span>D3 여신 <b>ARR 본선 미산입</b> — 24M 업사이드 라인으로만 표기.</span></li>
           <li><span class="gbox"></span><span>신용정보법·개인정보보호법·마이데이터·대출모집인 등록 <b>합법성 사전 게이트</b>(금융규제 변호사).</span></li>
-          <li><span class="gbox"></span><span>송객(모델 A)부터 데이터 축적 후 LOI 타진 — <b>단계적 라이선스</b>.</span></li>
+          <li><span class="gbox"></span><span>초기에는 송객·비교(모델 A)와 동의 기반 심사 보조 리포트 PoC부터 — <b>직접 여신·DB 판매 금지</b>.</span></li>
         </ul>
         <p class="src">근거 · GTM 99-storyline O7·C7 / business-case <a href="business-case-9fk2x7.html#finance-expansion">§10 금융확장</a>.</p>
       </div>
@@ -516,7 +530,7 @@
         <span class="gk">게이트 4 · 제품 입증</span>
         <h3>OCR·ForeignID L1~L3 검증</h3>
         <ul>
-          <li><span class="gbox"></span><span>GPT-4V OCR 정확도 · ForeignID 3단계 인증 <b>실사용 입증</b>(2주차 활성화 게이트).</span></li>
+          <li><span class="gbox"></span><span>GPT-4V OCR 정확도 · ForeignID 3단계 인증 · 데이터 동의 플로우 <b>실사용 입증</b>(2주차 활성화 게이트).</span></li>
           <li><span class="gbox"></span><span>결과화면 <b>mailto → /api/lead</b> 전환 누수 차단(P0).</span></li>
           <li><span class="gbox"></span><span>민감정보 암호화·접근통제·DPA 30일 내 완료.</span></li>
         </ul>
@@ -539,7 +553,7 @@
     <div class="fin-banner">
       <span class="fin-stamp">VERDICT</span>
       <div class="fin-grade"><span class="ac">조건부 GO</span> (Conditional GO)<br/><span style="font-size:.6em;color:var(--dim);font-weight:400">— 8주 PoC 게이트 통과를 조건으로 —</span></div>
-      <p>시장·경쟁 매력도는 진입을 정당화한다(종합 3.8/5). 다만 재무 스토리의 핵심 동력(전환·CAC0·NRR·금융)과 제품은 아직 <b style="color:#fff">가정</b>이다. 따라서 지금은 <b style="color:#fff">풀 GO가 아니라 조건부 GO</b>가 정직한 판정이다.</p>
+      <p>시장·경쟁 매력도는 진입을 정당화한다(종합 3.8/5). 다만 재무 스토리의 핵심 동력은 세 상품의 존재가 아니라 <b style="color:#fff">Compliance → Refund → Credit 데이터 파이프라인</b>이 실제로 작동하는지다. 따라서 지금은 <b style="color:#fff">풀 GO가 아니라 조건부 GO</b>가 정직한 판정이다.</p>
 
       <div class="fin-reasons">
         <div class="r"><span class="rn">근거 1 · 시장·정책</span><p>278.3만 시장 + 「2030 미래전략」 골든윈도 + 빈 "재직관리 OS" 좌표. 시장 4.0·경쟁 4.2로 <b>매력도 충분</b>.</p></div>

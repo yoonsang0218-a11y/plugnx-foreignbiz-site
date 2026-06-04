@@ -21,9 +21,9 @@
     --font:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text",Inter,system-ui,"Apple SD Gothic Neo",sans-serif;
   }
   *{box-sizing:border-box;margin:0;padding:0}
-  html{scroll-behavior:smooth}
+  html{scroll-behavior:smooth;overflow-x:hidden}
   body{font-family:var(--font);background:var(--white);color:var(--ink);line-height:1.47;
-    letter-spacing:-.022em;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+    letter-spacing:-.022em;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:hidden}
   a{color:var(--blue);text-decoration:none}
   .container{max-width:1080px;margin:0 auto;padding:0 22px}
   img{max-width:100%}
@@ -91,7 +91,19 @@
   .subnav .links a:hover{color:var(--ink)}
   .subnav .right{margin-left:auto;display:flex;align-items:center;gap:12px}
   @media(max-width:900px){.subnav .links{display:none}}
-  @media(max-width:560px){.gnav .links-extra{display:none}.subnav .cat{font-size:18px}}
+  @media(max-width:560px){
+    .container{padding:0 20px}
+    .gnav .links-extra{display:none}
+    .subnav .container{gap:10px;min-width:0}
+    .subnav .cat{font-size:18px;min-width:0;white-space:nowrap}
+    .subnav .right{margin-left:auto;min-width:0;gap:8px}
+    .subnav .right .btn{display:none}
+    .langtog button{font-size:12px;padding:6px 9px}
+    .display{font-size:clamp(30px,10vw,39px);line-height:1.14;letter-spacing:0;overflow-wrap:anywhere}
+    .lead{font-size:18px;line-height:1.42}
+    .btn,.btn-text{max-width:100%;white-space:normal;text-align:center;justify-content:center}
+    .hero-cta{gap:10px}
+  }
 
   /* ---- language toggle (frosted subnav) ---- */
   .langtog{display:flex;border:1px solid var(--hair);border-radius:980px;overflow:hidden;background:#fff}
@@ -260,8 +272,8 @@
 <section class="tile light">
   <div class="container hero">
     <span class="eyebrow" data-i18n="hero.badge">PlugNX × Moneeback · 외국인 근로자 환급</span>
-    <h1 class="display" data-i18n="hero.h1">회사에서 알려드립니다 — 못 받은 돈, 지금 확인하세요</h1>
-    <p class="lead" data-i18n="hero.sub">PlugNX와 Moneeback이 함께 만든 외국인 근로자 환급 서비스. 당신의 회사가 준비했습니다.</p>
+    <h1 class="display" data-i18n="hero.h1">못 받은 돈을 찾고,<br/>한국에서의 신뢰를 쌓으세요</h1>
+    <p class="lead" data-i18n="hero.sub">회사 재직·비자 기록과 연결된 Moneeback. 환급·급여 확인에서 시작해, 동의 기반 금융 기회로 이어집니다.</p>
     <div class="hero-cta">
       <a class="btn btn-primary" href="#estimator" data-i18n="hero.cta">내 환급금 확인하기 →</a>
       <a class="btn-text" href="#features" data-i18n="hero.cta2">어떤 기능이 있나요?</a>
@@ -269,7 +281,7 @@
     <div class="hero-pills">
       <span class="chip"><b>🌐</b> <span data-i18n="hero.t1">모국어 지원</span></span>
       <span class="chip"><b>⏱</b> <span data-i18n="hero.t2">30초 확인</span></span>
-      <span class="chip"><b>🔒</b> <span data-i18n="hero.t3">암호화 보호</span></span>
+      <span class="chip"><b>🔒</b> <span data-i18n="hero.t3">동의 기반 신뢰 기록</span></span>
     </div>
   </div>
 </section>
@@ -355,8 +367,39 @@
       <div class="card feat">
         <span class="ic">🏦</span>
         <span class="fn">06</span>
-        <h3 data-i18n="feat.f6.t">대출 비교</h3>
-        <p data-i18n="feat.f6.d">외국인도 가능한 대출 상품을 비교해 보여드립니다.</p>
+        <h3 data-i18n="feat.f6.t">금융 신뢰 프로필</h3>
+        <p data-i18n="feat.f6.d">체류·재직·급여·환급 이력을 동의 기반으로 정리해 파트너 금융 신청을 준비합니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== TRUST PIPELINE — dark ===================== -->
+<section class="tile dark on-dark" id="trust-pipeline">
+  <div class="container">
+    <div class="sec-head">
+      <span class="eyebrow">Moneeback Money Passport</span>
+      <h2 class="h2">환급은 가입 이유,<br/>신뢰 기록은 장기 가치입니다.</h2>
+      <p>근로자는 받을 돈을 확인하려 들어오고, 동의한 범위 안에서 체류·재직·급여·환급 신호가 쌓입니다. 이 신호는 직접 대출이 아니라 파트너 금융 신청을 돕는 보조 자료가 됩니다.</p>
+    </div>
+    <div class="g3">
+      <div class="card feat">
+        <span class="ic">①</span>
+        <span class="fn">Refund Wedge</span>
+        <h3>받을 돈 확인</h3>
+        <p>국민연금·보험·퇴직금·급여 적정성을 모국어로 확인해 근로자가 자발적으로 가입할 이유를 만듭니다.</p>
+      </div>
+      <div class="card feat">
+        <span class="ic">②</span>
+        <span class="fn">Verified Work</span>
+        <h3>재직·체류 연결</h3>
+        <p>회사에서 등록한 재직·비자 기록과 연결되어, 단순 자기입력이 아닌 검증 가능한 근로 이력을 만듭니다.</p>
+      </div>
+      <div class="card feat">
+        <span class="ic">③</span>
+        <span class="fn">Financial Signal</span>
+        <h3>파트너 금융 기회</h3>
+        <p>ForeignID 동의 후 체류 안정성, 근속, 급여, 환급 가능성을 금융사 심사 보조 신호로 전달할 수 있습니다.</p>
       </div>
     </div>
   </div>
@@ -536,11 +579,11 @@ const I18N = {
   ko: {
     "nav.cta":"내 환급금 확인",
     "hero.badge":"PlugNX × Moneeback · 외국인 근로자 환급",
-    "hero.h1":"회사에서 알려드립니다 — 못 받은 돈, 지금 확인하세요",
-    "hero.sub":"PlugNX와 Moneeback이 함께 만든 외국인 근로자 환급 서비스. 당신의 회사가 준비했습니다.",
+    "hero.h1":"못 받은 돈을 찾고,<br/>한국에서의 신뢰를 쌓으세요",
+    "hero.sub":"회사 재직·비자 기록과 연결된 Moneeback. 환급·급여 확인에서 시작해, 동의 기반 금융 기회로 이어집니다.",
     "hero.cta":"내 환급금 확인하기 →",
     "hero.cta2":"어떤 기능이 있나요?",
-    "hero.t1":"모국어 지원","hero.t2":"30초 확인","hero.t3":"암호화 보호",
+    "hero.t1":"모국어 지원","hero.t2":"30초 확인","hero.t3":"동의 기반 신뢰 기록",
     "cat.eyebrow":"받을 수 있는 돈",
     "cat.h2":"외국인 근로자가 받을 수 있는 환급",
     "cat.lead":"출국·퇴직 시점에 받을 수 있는 대표 항목입니다. 금액은 모두 평균 추정치예요.",
@@ -559,7 +602,7 @@ const I18N = {
     "feat.f3.t":"비자 만료 알림","feat.f3.d":"비자 만료 전에 알려드리고 연장 방법을 안내합니다.",
     "feat.f4.t":"전세사기 예방","feat.f4.d":"계약 전 위험 신호를 체크해 전세사기를 예방합니다.",
     "feat.f5.t":"송금 비교","feat.f5.d":"수수료·환율을 비교해 가장 유리한 송금 방법을 찾아드려요.",
-    "feat.f6.t":"대출 비교","feat.f6.d":"외국인도 가능한 대출 상품을 비교해 보여드립니다.",
+    "feat.f6.t":"금융 신뢰 프로필","feat.f6.d":"체류·재직·급여·환급 이력을 동의 기반으로 정리해 파트너 금융 신청을 준비합니다.",
     "est.eyebrow":"환급 계산기","est.h2":"내 환급금, 지금 계산해 보세요",
     "est.lead":"비자유형과 근무기간을 입력하면 항목별 추정 환급액을 보여드립니다. (실제 법령 계산이 아닌 추정값입니다)",
     "est.l.visa":"비자유형","est.l.months":"근무기간","est.l.salary":"월 급여대",
@@ -596,11 +639,11 @@ const I18N = {
   en: {
     "nav.cta":"Check my refund",
     "hero.badge":"PlugNX × Moneeback · Refunds for foreign workers",
-    "hero.h1":"Your company notified you — check your unclaimed money now",
-    "hero.sub":"A refund service for foreign workers, built together by PlugNX and Moneeback. Your company set this up for you.",
+    "hero.h1":"Find your unclaimed money<br/>and build trust in Korea",
+    "hero.sub":"Moneeback connects to your employer-verified work and visa records. It starts with refund and wage checks, then opens consent-based financial opportunities.",
     "hero.cta":"Check my refund →",
     "hero.cta2":"What can it do?",
-    "hero.t1":"Native-language support","hero.t2":"30-second check","hero.t3":"Encrypted & protected",
+    "hero.t1":"Native-language support","hero.t2":"30-second check","hero.t3":"Consent-based trust record",
     "cat.eyebrow":"Money you can get back",
     "cat.h2":"Refunds foreign workers can claim",
     "cat.lead":"These are the main items you can receive when you leave the country or change jobs. All amounts are average estimates.",
@@ -619,7 +662,7 @@ const I18N = {
     "feat.f3.t":"Visa expiry alerts","feat.f3.d":"We remind you before your visa expires and explain how to extend it.",
     "feat.f4.t":"Jeonse-fraud prevention","feat.f4.d":"We check warning signs before you sign a lease to prevent deposit fraud.",
     "feat.f5.t":"Remittance comparison","feat.f5.d":"We compare fees and exchange rates to find the best way to send money home.",
-    "feat.f6.t":"Loan comparison","feat.f6.d":"We compare loan products that are available to foreign residents.",
+    "feat.f6.t":"Financial trust profile","feat.f6.d":"Organize your stay, employment, wage and refund history with consent to prepare partner finance applications.",
     "est.eyebrow":"Refund calculator","est.h2":"Calculate your refund right now",
     "est.lead":"Enter your visa type and work period to see an estimated refund by item. (Estimates only — not an official legal calculation.)",
     "est.l.visa":"Visa type","est.l.months":"Work period","est.l.salary":"Monthly salary range",
@@ -656,11 +699,11 @@ const I18N = {
   vi: {
     "nav.cta":"Kiểm tra tiền hoàn",
     "hero.badge":"PlugNX × Moneeback · Hoàn tiền cho lao động nước ngoài",
-    "hero.h1":"Công ty thông báo cho bạn — kiểm tra khoản tiền chưa nhận ngay",
-    "hero.sub":"Dịch vụ hoàn tiền cho lao động nước ngoài, do PlugNX và Moneeback cùng xây dựng. Công ty của bạn đã chuẩn bị sẵn.",
+    "hero.h1":"Tìm khoản tiền chưa nhận<br/>và xây dựng uy tín tại Hàn Quốc",
+    "hero.sub":"Moneeback kết nối với hồ sơ việc làm và visa do công ty xác nhận. Bắt đầu từ hoàn tiền và kiểm tra lương, sau đó mở ra cơ hội tài chính dựa trên sự đồng ý của bạn.",
     "hero.cta":"Kiểm tra tiền hoàn của tôi →",
     "hero.cta2":"Có những tính năng gì?",
-    "hero.t1":"Hỗ trợ tiếng mẹ đẻ","hero.t2":"Kiểm tra trong 30 giây","hero.t3":"Bảo vệ mã hóa",
+    "hero.t1":"Hỗ trợ tiếng mẹ đẻ","hero.t2":"Kiểm tra trong 30 giây","hero.t3":"Hồ sơ uy tín dựa trên đồng ý",
     "cat.eyebrow":"Số tiền bạn có thể nhận",
     "cat.h2":"Các khoản hoàn lao động nước ngoài có thể nhận",
     "cat.lead":"Đây là các khoản chính bạn có thể nhận khi xuất cảnh hoặc nghỉ việc. Tất cả số tiền đều là ước tính trung bình.",
@@ -679,7 +722,7 @@ const I18N = {
     "feat.f3.t":"Nhắc hết hạn visa","feat.f3.d":"Chúng tôi nhắc trước khi visa hết hạn và hướng dẫn cách gia hạn.",
     "feat.f4.t":"Phòng lừa đảo tiền nhà","feat.f4.d":"Kiểm tra dấu hiệu rủi ro trước khi ký hợp đồng để phòng lừa đảo tiền cọc.",
     "feat.f5.t":"So sánh chuyển tiền","feat.f5.d":"So sánh phí và tỷ giá để tìm cách gửi tiền về nhà có lợi nhất.",
-    "feat.f6.t":"So sánh khoản vay","feat.f6.d":"So sánh các sản phẩm vay mà người nước ngoài cũng có thể vay.",
+    "feat.f6.t":"Hồ sơ uy tín tài chính","feat.f6.d":"Sắp xếp lịch sử cư trú, việc làm, lương và hoàn tiền dựa trên sự đồng ý để chuẩn bị hồ sơ tài chính đối tác.",
     "est.eyebrow":"Máy tính hoàn tiền","est.h2":"Tính tiền hoàn của bạn ngay bây giờ",
     "est.lead":"Nhập loại visa và thời gian làm việc để xem ước tính hoàn tiền theo từng khoản. (Chỉ là ước tính, không phải tính toán pháp lý chính thức.)",
     "est.l.visa":"Loại visa","est.l.months":"Thời gian làm việc","est.l.salary":"Mức lương tháng",
