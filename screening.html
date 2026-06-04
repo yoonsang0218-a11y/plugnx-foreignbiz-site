@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow" />
+<title>0베이스 스크리닝 + 금융확장 — 외국인 라이프사이클 재구상 | PlugNX</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --blue:#0066cc; --blue-focus:#0071e3; --sky:#2997ff;
+    --white:#ffffff; --parch:#f5f5f7; --pearl:#fafafc;
+    --tile:#272729; --tile2:#2a2a2c; --black:#000;
+    --ink:#1d1d1f; --ink80:#333; --ink48:#7a7a7a;
+    --on-dark:#fff; --dim:#cccccc;
+    --hair:#e0e0e0; --divider:#f0f0f0;
+    --danger:#d70015; --danger-d:#ff5a4d;
+    --shadow-prod:rgba(0,0,0,.22) 3px 5px 30px 0;
+    --font:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text",Inter,system-ui,"Apple SD Gothic Neo",sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--font);background:var(--white);color:var(--ink);line-height:1.47;
+    letter-spacing:-.022em;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+  a{color:var(--blue);text-decoration:none}
+  .container{max-width:1080px;margin:0 auto;padding:0 22px}
+  img{max-width:100%}
+
+  /* ---- typography ---- */
+  h1,h2,h3,h4{letter-spacing:-.022em;font-weight:600;color:var(--ink)}
+  .eyebrow{font-size:14px;font-weight:600;color:var(--blue);letter-spacing:0}
+  .display{font-size:clamp(32px,5.4vw,56px);font-weight:600;line-height:1.07;letter-spacing:-.028em}
+  .h2{font-size:clamp(27px,3.6vw,40px);font-weight:600;line-height:1.1;letter-spacing:-.024em}
+  .lead{font-size:clamp(19px,2.2vw,26px);font-weight:400;line-height:1.28;color:var(--ink80)}
+  .body{font-size:17px;font-weight:400;line-height:1.47}
+  .muted{color:var(--ink48)}
+  .on-dark .lead{color:var(--dim)}
+  .on-dark h1,.on-dark h2,.on-dark h3,.on-dark h4{color:var(--on-dark)}
+  .on-dark{color:var(--dim)}
+  .on-dark a{color:var(--sky)}
+  .on-dark .eyebrow{color:var(--sky)}
+
+  /* ---- tiles ---- */
+  .tile{padding:clamp(56px,8vw,88px) 0}
+  .tile.light{background:var(--white)}
+  .tile.parch{background:var(--parch)}
+  .tile.dark{background:var(--tile);color:var(--dim)}
+  .tile.black{background:var(--black);color:var(--dim)}
+  .sec-head{max-width:760px;margin:0 auto clamp(34px,5vw,52px);text-align:center}
+  .sec-head .eyebrow{display:block;margin-bottom:12px}
+  .sec-head .h2{margin-bottom:14px}
+  .sec-head p{font-size:19px;color:var(--ink48);line-height:1.42}
+  .on-dark .sec-head p{color:var(--dim)}
+
+  /* ---- buttons ---- */
+  .btn{display:inline-flex;align-items:center;gap:7px;font-family:var(--font);font-size:17px;
+    font-weight:400;letter-spacing:-.022em;padding:11px 22px;border-radius:980px;border:1px solid transparent;
+    cursor:pointer;transition:transform .12s ease,background .2s,opacity .2s;white-space:nowrap;text-decoration:none}
+  .btn:active{transform:scale(.96)}
+  .btn:focus-visible{outline:2px solid var(--blue-focus);outline-offset:3px}
+  .btn-primary{background:var(--blue);color:#fff;border-color:var(--blue)}
+  .btn-primary:hover{background:#0a6fd6}
+  .btn-secondary{background:transparent;color:var(--blue);border-color:var(--blue)}
+  .btn-secondary:hover{background:rgba(0,102,204,.06)}
+  .on-dark .btn-secondary{color:var(--sky);border-color:var(--sky)}
+  .on-dark .btn-secondary:hover{background:rgba(41,151,255,.12)}
+  .btn-sm{font-size:14px;padding:8px 16px}
+  .btn-dark{background:var(--ink);color:#fff;border-radius:8px;font-size:14px;padding:8px 15px}
+  .btn-dark:active{transform:scale(.96)}
+  .btn-text{color:var(--blue);font-size:17px;font-weight:400;display:inline-flex;align-items:center;gap:5px}
+  .btn-text:hover{text-decoration:underline}
+
+  /* ---- nav ---- */
+  .gnav{background:var(--black);height:44px;position:relative;z-index:60}
+  .gnav .container{height:44px;display:flex;align-items:center;gap:18px}
+  .gnav a{color:#f5f5f7;font-size:12px;font-weight:400;letter-spacing:-.01em;opacity:.85}
+  .gnav a:hover{opacity:1}
+  .wordmark{font-weight:700;font-size:15px;color:#fff;letter-spacing:-.02em}
+  .wordmark .nx{color:#fff;opacity:.62}
+  .gnav .sp{margin-left:auto}
+  .subnav{position:sticky;top:0;z-index:55;height:52px;
+    background:rgba(245,245,247,.82);-webkit-backdrop-filter:saturate(180%) blur(20px);backdrop-filter:saturate(180%) blur(20px);
+    border-bottom:1px solid rgba(0,0,0,.08)}
+  .subnav .container{height:52px;display:flex;align-items:center;gap:22px}
+  .subnav .cat{font-size:21px;font-weight:600;color:var(--ink);letter-spacing:-.02em}
+  .subnav .cat b{color:var(--blue)}
+  .subnav .links{display:flex;gap:22px;margin-left:8px}
+  .subnav .links a{font-size:13px;color:var(--ink80);font-weight:400}
+  .subnav .links a:hover{color:var(--ink)}
+  .subnav .right{margin-left:auto;display:flex;align-items:center;gap:12px}
+  @media(max-width:900px){.subnav .links{display:none}}
+  @media(max-width:560px){.gnav .links-extra{display:none}.subnav .cat{font-size:18px}}
+
+  /* ---- hero ---- */
+  .hero{text-align:center;padding:clamp(48px,7vw,76px) 0 clamp(36px,5vw,56px)}
+  .hero .eyebrow{margin-bottom:14px}
+  .hero .display{margin-bottom:18px}
+  .hero .lead{max-width:680px;margin:0 auto 26px}
+  .hero-cta{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-bottom:14px}
+  .hero-cta .btn-text{padding:11px 4px}
+  .hero-pills{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:6px}
+  .chip{font-size:13px;color:var(--ink48);background:var(--parch);border:1px solid var(--hair);
+    border-radius:980px;padding:6px 13px}
+  .chip b{color:var(--ink)}
+  .on-dark .chip{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.14);color:var(--dim)}
+  .on-dark .chip b{color:#fff}
+
+  /* ---- grids ---- */
+  .g2{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+  .g3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .g4{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+  @media(max-width:900px){.g4{grid-template-columns:repeat(2,1fr)}.g3{grid-template-columns:1fr}}
+  @media(max-width:640px){.g2,.g4{grid-template-columns:1fr}}
+
+  /* ---- cards ---- */
+  .card{background:#fff;border:1px solid var(--hair);border-radius:18px;padding:24px}
+  .on-dark .card{background:var(--tile2);border-color:rgba(255,255,255,.12)}
+  .card h3{font-size:19px;font-weight:600;margin-bottom:8px}
+  .card p{font-size:15px;color:var(--ink48);line-height:1.5}
+  .on-dark .card p{color:var(--dim)}
+  .src{font-size:12px;color:var(--ink48);margin-top:20px;line-height:1.6}
+  .on-dark .src{color:#8a8a8e}
+
+  /* ---- table (cmp) ---- */
+  .tbl-wrap{overflow-x:auto;border:1px solid var(--hair);border-radius:18px;background:#fff}
+  table.cmp{width:100%;border-collapse:collapse;font-size:14px;min-width:660px}
+  table.cmp th{text-align:left;padding:14px 18px;font-size:12px;font-weight:600;color:var(--ink48);
+    text-transform:uppercase;letter-spacing:.03em;border-bottom:1px solid var(--hair)}
+  table.cmp td{padding:14px 18px;color:var(--ink48);border-bottom:1px solid var(--divider);vertical-align:top}
+  table.cmp tr:last-child td{border-bottom:none}
+  table.cmp td.k{color:var(--ink);font-weight:600;white-space:nowrap}
+  table.cmp tr.hl td{background:rgba(0,102,204,.05);color:var(--ink)}
+  table.cmp tr.hl td.k{color:var(--blue)}
+
+  /* ---- eyebrow lens steps (hero) ---- */
+  .lens{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;max-width:760px;margin:8px auto 0}
+  .lens .step{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--ink48)}
+  .lens .step b{color:var(--ink);font-weight:600}
+  .lens .arr{color:var(--blue);opacity:.5}
+
+  /* ---- longlist grid (sectors) ---- */
+  .sector{margin-bottom:14px}
+  .sec-row{display:grid;grid-template-columns:170px 1fr;gap:16px;align-items:start;
+    padding:16px 0;border-bottom:1px solid var(--divider)}
+  .sec-row:last-child{border-bottom:none}
+  .sec-lbl{font-size:14px;font-weight:600;color:var(--ink);line-height:1.4}
+  .sec-lbl small{display:block;font-size:12px;color:var(--ink48);font-weight:400;margin-top:3px;letter-spacing:0}
+  .items{display:flex;flex-wrap:wrap;gap:7px}
+  .it{font-size:12.5px;padding:6px 11px;border-radius:980px;border:1px solid var(--hair);
+    background:#fff;color:var(--ink80);line-height:1.3}
+  .it b{color:var(--blue);font-weight:600}
+  .it.core{border-color:var(--blue);background:rgba(0,102,204,.06);color:var(--ink)}
+  .it.core b{color:var(--blue)}
+  @media(max-width:640px){.sec-row{grid-template-columns:1fr;gap:9px}}
+
+  /* ============ 2x2 INTERACTIVE MATRIX ============ */
+  .matrix-wrap{display:grid;grid-template-columns:1fr 320px;gap:26px;align-items:start}
+  @media(max-width:880px){.matrix-wrap{grid-template-columns:1fr}}
+  .plot{position:relative;width:100%;aspect-ratio:1/1;background:var(--tile2);
+    border:1px solid rgba(255,255,255,.12);border-radius:18px;overflow:hidden}
+  /* quadrant tint */
+  .quad{position:absolute;width:50%;height:50%;display:flex;padding:12px 14px;pointer-events:none}
+  .quad span{font-size:11px;font-weight:600;letter-spacing:.02em;line-height:1.4;color:#7d7d82}
+  .quad.tr{top:0;right:0;justify-content:flex-end;text-align:right;
+    background:linear-gradient(225deg,rgba(0,102,204,.20),transparent 70%)}
+  .quad.tr span{color:var(--sky)}
+  .quad.tl{top:0;left:0}
+  .quad.br{bottom:0;right:0;justify-content:flex-end;align-items:flex-end;text-align:right}
+  .quad.bl{bottom:0;left:0;align-items:flex-end}
+  /* gridlines */
+  .gl{position:absolute;background:rgba(255,255,255,.10)}
+  .gl.v{left:50%;top:0;width:1px;height:100%}
+  .gl.h{top:50%;left:0;height:1px;width:100%}
+  /* axis labels */
+  .axlab{position:absolute;font-size:11px;font-weight:600;color:#8a8a8e;letter-spacing:.02em}
+  .axlab.x{bottom:8px;left:50%;transform:translateX(-50%)}
+  .axlab.y{top:50%;left:8px;transform:translateY(-50%) rotate(-90deg);transform-origin:left center}
+  .axlab.x small,.axlab.y small{font-weight:400;color:#6a6a6e}
+  /* bubbles */
+  .bub{position:absolute;transform:translate(-50%,50%);width:30px;height:30px;border-radius:50%;
+    display:grid;place-items:center;font-size:10px;font-weight:700;cursor:pointer;
+    border:1.5px solid transparent;transition:transform .15s,box-shadow .15s,background .15s;
+    background:rgba(255,255,255,.12);color:#cfcfd4;z-index:2}
+  .bub:hover{transform:translate(-50%,50%) scale(1.22);z-index:5}
+  .bub.core{background:var(--blue);color:#fff;border-color:#3a8fe0;z-index:3}
+  .bub.adj{background:rgba(41,151,255,.30);color:#dfeefc;border-color:rgba(41,151,255,.55)}
+  .bub.hold{background:rgba(255,255,255,.07);color:#8a8a8e;border-color:rgba(255,255,255,.10)}
+  .bub.active{transform:translate(-50%,50%) scale(1.32);
+    box-shadow:0 0 0 3px rgba(41,151,255,.5),0 0 18px rgba(41,151,255,.4);z-index:6}
+  @media(max-width:480px){.bub{width:25px;height:25px;font-size:9px}}
+  /* detail panel */
+  .mdetail{background:var(--tile2);border:1px solid rgba(255,255,255,.12);border-radius:18px;
+    padding:22px;position:sticky;top:68px}
+  .mdetail .dcode{display:inline-block;font-size:13px;font-weight:700;color:#fff;background:var(--blue);
+    border-radius:8px;padding:4px 11px;margin-bottom:12px}
+  .mdetail .dname{font-size:20px;font-weight:600;color:#fff;margin-bottom:4px;line-height:1.2}
+  .mdetail .dtier{font-size:12px;font-weight:600;color:var(--sky);letter-spacing:.02em;margin-bottom:14px}
+  .mdetail .dscore{display:flex;gap:10px;margin-bottom:16px}
+  .mscore{flex:1;background:rgba(255,255,255,.05);border-radius:11px;padding:11px 12px;text-align:center}
+  .mscore .mv{font-size:23px;font-weight:600;color:#fff;letter-spacing:-.02em}
+  .mscore .ml{font-size:11px;color:#8a8a8e;margin-top:2px}
+  .mdetail .ddesc{font-size:14px;color:var(--dim);line-height:1.55}
+  .mlegend{display:flex;gap:16px;flex-wrap:wrap;margin-top:18px;justify-content:center}
+  .mlegend span{font-size:12px;color:#8a8a8e;display:inline-flex;align-items:center;gap:6px}
+  .mlegend i{width:11px;height:11px;border-radius:50%;display:inline-block}
+  .mlegend i.core{background:var(--blue)}.mlegend i.adj{background:rgba(41,151,255,.45)}
+  .mlegend i.hold{background:rgba(255,255,255,.18)}
+
+  /* score table tier tag */
+  .tier-tag{font-size:11px;font-weight:600;padding:3px 9px;border-radius:980px;white-space:nowrap;display:inline-block}
+  .tier-core{color:var(--blue);background:rgba(0,102,204,.1)}
+  .tier-adj{color:#0a6fd6;background:rgba(41,151,255,.12)}
+  .tier-hold{color:var(--ink48);background:var(--parch)}
+
+  /* ---- candidate deep cards ---- */
+  .cand .tag{font-size:12px;font-weight:600;color:var(--blue);background:rgba(0,102,204,.08);
+    border-radius:980px;padding:4px 11px;display:inline-block;margin-bottom:12px}
+  .cand h3{font-size:18px;margin-bottom:10px}
+  .cand .pt{font-size:14px;color:var(--ink80);line-height:1.55;margin-bottom:10px}
+  .cand .pt b{color:var(--ink);font-weight:600}
+  .cand .verdict{font-size:14px;color:var(--ink);background:var(--parch);border-radius:12px;
+    padding:12px 14px;line-height:1.5;margin-top:auto}
+  .cand .verdict b{color:var(--blue)}
+  .cand .stat{display:flex;gap:14px;margin:12px 0;flex-wrap:wrap}
+  .cand .stat .s{flex:1;min-width:88px}
+  .cand .stat .sv{font-size:20px;font-weight:600;color:var(--ink);letter-spacing:-.02em}
+  .cand .stat .sl{font-size:11px;color:var(--ink48);margin-top:2px;line-height:1.3}
+  .cand .src{margin-top:14px;font-size:11px}
+
+  /* ============ FINANCE FLOW (dark) ============ */
+  .flow{display:grid;grid-template-columns:1fr auto 1fr auto 1fr auto 1fr;gap:10px;align-items:center;margin:6px 0 4px}
+  @media(max-width:760px){.flow{grid-template-columns:1fr;gap:8px}}
+  .flow .node{background:var(--tile2);border:1px solid rgba(255,255,255,.14);border-radius:14px;
+    padding:16px 14px;text-align:center}
+  .flow .node.hi{border-color:var(--sky);background:rgba(41,151,255,.10)}
+  .flow .node .ni{font-size:24px;margin-bottom:8px;display:block}
+  .flow .node .nt{font-size:14px;font-weight:600;color:#fff;line-height:1.3}
+  .flow .node .nd{font-size:11px;color:#9a9a9e;margin-top:5px;line-height:1.4}
+  .flow .fa{color:var(--sky);font-size:22px;font-weight:600;text-align:center}
+  @media(max-width:760px){.flow .fa{transform:rotate(90deg);padding:2px 0}}
+
+  /* why banks stat row */
+  .bankstat{display:flex;gap:32px;flex-wrap:wrap;justify-content:center;margin:24px 0 8px}
+  .bankstat .b{text-align:center}
+  .bankstat .bn{font-size:30px;font-weight:600;color:#fff;letter-spacing:-.02em}
+  .bankstat .bn.zero{color:var(--danger-d)}
+  .bankstat .bl{font-size:12px;color:var(--dim);margin-top:4px;max-width:150px;line-height:1.4}
+
+  /* lever list */
+  .lever{display:flex;flex-direction:column;gap:12px;margin-top:6px}
+  .lever .lv{display:flex;gap:13px;align-items:flex-start}
+  .lever .lvn{width:26px;height:26px;border-radius:50%;flex:0 0 auto;display:grid;place-items:center;
+    font-size:13px;font-weight:600;background:rgba(41,151,255,.16);color:var(--sky)}
+  .lever .lvt{font-size:14px;color:var(--dim);line-height:1.5}
+  .lever .lvt b{color:#fff;font-weight:600}
+
+  /* benchmark mini cards */
+  .bmk{display:flex;flex-direction:column;gap:6px}
+  .bmk .bh{font-size:15px;font-weight:600;color:#fff}
+  .bmk .bp{font-size:13px;color:var(--dim);line-height:1.5}
+
+  /* ---- so-what numbered ---- */
+  .sowhat{display:flex;flex-direction:column;gap:0}
+  .sw{display:grid;grid-template-columns:42px 1fr;gap:16px;padding:18px 0;border-bottom:1px solid var(--divider);align-items:start}
+  .sw:last-child{border-bottom:none}
+  .sw .swn{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;font-weight:600;
+    background:rgba(0,102,204,.1);color:var(--blue);font-size:15px}
+  .sw .swt{font-size:16px;color:var(--ink80);line-height:1.55}
+  .sw .swt b{color:var(--ink);font-weight:600}
+  .sw .swt .hl{color:var(--blue);font-weight:600}
+
+  /* final */
+  .final{text-align:center}
+  .final .h2{margin-bottom:14px}
+  .final p{font-size:19px;color:var(--dim);max-width:600px;margin:0 auto 28px}
+  .final .row{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+
+  /* footer */
+  footer{background:var(--parch);padding:56px 0 40px;color:var(--ink48)}
+  .ft-top{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:28px}
+  @media(max-width:760px){.ft-top{grid-template-columns:1fr 1fr}}
+  @media(max-width:460px){.ft-top{grid-template-columns:1fr}}
+  .ft-intro .wordmark{color:var(--ink)}
+  .ft-intro .wordmark .nx{color:var(--ink48)}
+  .ft-intro p{font-size:13px;color:var(--ink48);margin-top:12px;max-width:280px;line-height:1.6}
+  .ft-col h4{font-size:13px;font-weight:600;color:var(--ink);margin-bottom:12px}
+  .ft-col a{display:block;font-size:14px;color:var(--ink48);margin-bottom:10px;line-height:1.4}
+  .ft-col a:hover{color:var(--ink)}
+  .ft-disc{margin-top:34px;padding-top:24px;border-top:1px solid var(--hair);font-size:12px;color:var(--ink48);line-height:1.7}
+  .ft-disc b{color:var(--ink80)}
+</style>
+</head>
+<body>
+
+<!-- ============ GLOBAL NAV ============ -->
+<div class="gnav">
+  <div class="container">
+    <span class="wordmark">PLUG<span class="nx">nx</span></span>
+    <a class="links-extra" href="strategy.html">전략 메모</a>
+    <a class="links-extra" href="visadesk.html">VisaDesk</a>
+    <a class="links-extra" href="business-case-9fk2x7.html#summary">타당성 보고서</a>
+    <a class="sp" href="index.html">산출물 허브</a>
+  </div>
+</div>
+
+<!-- ============ SUB NAV ============ -->
+<div class="subnav">
+  <div class="container">
+    <span class="cat">0베이스 <b>스크리닝</b></span>
+    <div class="links">
+      <a href="#longlist">롱리스트</a>
+      <a href="#matrix">2×2 매트릭스</a>
+      <a href="#deep">재발견 후보</a>
+      <a href="#finance">금융 확장</a>
+      <a href="#sowhat">전략 읽기</a>
+    </div>
+    <div class="right">
+      <a class="btn btn-primary btn-sm" href="#finance">은행연계 보기 ↗</a>
+    </div>
+  </div>
+</div>
+
+<!-- ============ A. HERO — light ============ -->
+<section class="tile light">
+  <div class="container hero">
+    <span class="eyebrow">0베이스 스크리닝 · Zero-base Screening · 금융확장</span>
+    <h1 class="display">결론을 잠시 치우고,<br/>라이프사이클 전체를 다시 그렸습니다.</h1>
+    <p class="lead">VisaDesk·Moneeback·ForeignID라는 답을 일단 내려놓고, 외국인의 삶 전체를 0베이스로 재구상했습니다. 그래도 코어는 우상단에 다시 모였고 — 가장 큰 미개발 업사이드는 <b>데이터 → 신용 → 은행 여신</b>이었습니다.</p>
+    <div class="hero-cta">
+      <a class="btn btn-primary" href="#matrix">2×2 매트릭스 보기</a>
+      <a class="btn-text" href="#finance">은행 외국인 대출 연계 ›</a>
+    </div>
+    <div class="hero-pills">
+      <span class="chip">롱리스트 <b>9섹터 26+</b></span>
+      <span class="chip">최대 업사이드 <b>D3 외국인 대출</b></span>
+      <span class="chip">인터넷은행 외국인 여신 <b>0</b></span>
+    </div>
+    <div class="lens">
+      <span class="step"><b>①</b> 모집·입국전</span><span class="arr">→</span>
+      <span class="step"><b>②</b> 입국·정착</span><span class="arr">→</span>
+      <span class="step"><b>③</b> 취업·체류</span><span class="arr">→</span>
+      <span class="step"><b>④</b> 생활·금융</span><span class="arr">→</span>
+      <span class="step"><b>⑤</b> 정주·통합</span><span class="arr">→</span>
+      <span class="step"><b>⑥</b> 출국·귀국</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ B. LONGLIST — parchment ============ -->
+<section class="tile parch" id="longlist">
+  <div class="container">
+    <div class="sec-head">
+      <span class="eyebrow">롱리스트 · Longlist</span>
+      <h2 class="h2">먼저 넓게 펼쳤습니다.</h2>
+      <p>라이프사이클 6단계를 가로지르는 9개 섹터 · 26개 아이템. 채용부터 출국·귀국까지 외국인이 만나는 거의 모든 접점을 후보로 올렸습니다. (<b style="color:var(--blue)">파란 태그</b> = 코어/강한 인접)</p>
+    </div>
+    <div class="tbl-wrap" style="padding:6px 20px">
+      <div class="sector">
+        <div class="sec-row"><div class="sec-lbl">A. 채용·인력<small>모집·매칭·송출</small></div>
+          <div class="items"><span class="it">A1 해외인력 모집·매칭</span><span class="it"><b>A2</b> 국내 구직·전직</span><span class="it">A3 송출입 SaaS</span><span class="it">A4 사전교육</span></div></div>
+        <div class="sec-row"><div class="sec-lbl">B. 준법·체류<small>RegTech</small></div>
+          <div class="items"><span class="it core"><b>B1</b> 고용·체류 준법</span><span class="it">B2 비자신청 디지털화</span><span class="it"><b>B3</b> K-Trust 컨설팅</span></div></div>
+        <div class="sec-row"><div class="sec-lbl">C. 인증·신원<small>ForeignID</small></div>
+          <div class="items"><span class="it core"><b>C1</b> eKYC</span><span class="it core"><b>C2</b> 외국인 신용스코어</span></div></div>
+        <div class="sec-row"><div class="sec-lbl">D. 금융<small>FinTech</small></div>
+          <div class="items"><span class="it core"><b>D1</b> 환급</span><span class="it">D2 송금</span><span class="it core"><b>D3</b> 외국인 대출·신용</span><span class="it">D4 보험</span><span class="it">D5 급여카드</span></div></div>
+        <div class="sec-row"><div class="sec-lbl">E. 주거<small>거주·기숙사</small></div>
+          <div class="items"><span class="it">E1 임대+전세사기방지</span><span class="it">E2 기숙사관리</span></div></div>
+        <div class="sec-row"><div class="sec-lbl">F. 생활<small>커머스·소통·헬스</small></div>
+          <div class="items"><span class="it">F1 커머스</span><span class="it">F2 통번역</span><span class="it">F3 커뮤니티</span><span class="it">F4 헬스케어</span></div></div>
+        <div class="sec-row"><div class="sec-lbl">G. 정주·교육<small>통합·영주·자녀</small></div>
+          <div class="items"><span class="it">G1 KIIP·한국어</span><span class="it">G2 영주·귀화</span><span class="it">G3 자녀교육·돌봄</span></div></div>
+        <div class="sec-row"><div class="sec-lbl">H. 돌봄<small>확장 시장</small></div>
+          <div class="items"><span class="it">H1 돌봄·간병·가사</span></div></div>
+        <div class="sec-row"><div class="sec-lbl">I. 전문가·B2G<small>마켓·행정</small></div>
+          <div class="items"><span class="it"><b>I1</b> 전문가 마켓</span><span class="it">I2 B2G 행정 SaaS</span></div></div>
+      </div>
+    </div>
+    <p class="src muted">스크리닝은 두 축(시장 매력도 A · 우리 승리가능성 W)으로 채점해 다음 섹션의 2×2 매트릭스로 좁힙니다. 점수는 전략적 판단(가정)이며, 시장 수치는 다음 섹션부터 출처·기준시점을 병기합니다.</p>
+  </div>
+</section>
+
+<!-- ============ C. 2x2 INTERACTIVE MATRIX — dark ============ -->
+<section class="tile dark on-dark" id="matrix">
+  <div class="container">
+    <div class="sec-head">
+      <span class="eyebrow">2×2 매트릭스 · Where to Play</span>
+      <h2 class="h2">넓게 펼친 26개를,<br/>두 축으로 다시 모았습니다.</h2>
+      <p>X축 = 우리 승리가능성(Right-to-Win) · Y축 = 시장 매력도. 버블을 누르면 점수·티어·근거가 오른쪽에 뜹니다. <b style="color:#fff">파란 버블 = 코어</b>, 흐린 버블 = 보류.</p>
+    </div>
+
+    <div class="matrix-wrap">
+      <div>
+        <div class="plot" id="plot">
+          <div class="gl v"></div><div class="gl h"></div>
+          <div class="quad tr"><span>우상 · 집중 (Core)<br/>매력O · 우위O</span></div>
+          <div class="quad tl"><span>좌상 · 매력O · 우위△</span></div>
+          <div class="quad br"><span>우하 · 쉽지만 작음</span></div>
+          <div class="quad bl"><span>좌하 · 보류</span></div>
+          <div class="axlab x">우리 승리가능성 (W) →<br/><small>Right-to-Win · 좌하단 원점</small></div>
+          <div class="axlab y">시장 매력도 (A) →</div>
+          <!-- bubbles injected by JS -->
+        </div>
+        <div class="mlegend">
+          <span><i class="core"></i> 코어</span>
+          <span><i class="adj"></i> 강한 인접·확장</span>
+          <span><i class="hold"></i> 인접·보류</span>
+        </div>
+      </div>
+
+      <div class="mdetail" id="mdetail">
+        <span class="dcode" id="dCode">D3</span>
+        <div class="dname" id="dName">외국인 대출·신용</div>
+        <div class="dtier" id="dTier">코어 (최고 LTV)</div>
+        <div class="dscore">
+          <div class="mscore"><div class="mv" id="dA">4.7</div><div class="ml">시장 매력도 A</div></div>
+          <div class="mscore"><div class="mv" id="dW">4.2</div><div class="ml">승리가능성 W</div></div>
+        </div>
+        <div class="ddesc" id="dDesc">외국인 대출 거대 통증·신용평가 공백을 데이터로 — 은행연계 엔진.</div>
+      </div>
+    </div>
+
+    <!-- score table -->
+    <div class="tbl-wrap" style="margin-top:34px;background:var(--tile2);border-color:rgba(255,255,255,.12)">
+      <table class="cmp" id="scoreTbl">
+        <thead><tr><th>코드 · 아이템</th><th>A 매력</th><th>W 우위</th><th>티어</th><th>한 줄 근거</th></tr></thead>
+        <tbody><!-- rows injected by JS --></tbody>
+      </table>
+    </div>
+    <p class="src">점수(A·W, 5점 만점)는 전략적 판단(가정)입니다. 좌하단이 원점이며 버블 위치 = (W%, A%)로 환산. 코어 = 데이터 한 엔진으로 묶이는 B1·C1·C2·D1·D3.</p>
+  </div>
+  <style>
+    #scoreTbl th{color:#8a8a8e;border-color:rgba(255,255,255,.12)}
+    #scoreTbl td{color:var(--dim);border-color:rgba(255,255,255,.08)}
+    #scoreTbl td.k{color:#fff}
+    #scoreTbl tr.coreRow td{background:rgba(0,102,204,.12)}
+    #scoreTbl tr.coreRow td.k{color:var(--sky)}
+    #scoreTbl .tier-core{color:#fff;background:rgba(0,102,204,.35)}
+    #scoreTbl .tier-adj{color:#dfeefc;background:rgba(41,151,255,.20)}
+    #scoreTbl .tier-hold{color:#9a9a9e;background:rgba(255,255,255,.06)}
+  </style>
+</section>
+
+<!-- ============ D. RE-DISCOVERY DEEP — light ============ -->
+<section class="tile light" id="deep">
+  <div class="container">
+    <div class="sec-head">
+      <span class="eyebrow">재발견 후보 심화 · 실시장 근거</span>
+      <h2 class="h2">0베이스가 다시 끌어올린 3개를,<br/>실제 시장 데이터로 검증했습니다.</h2>
+      <p>A1(매칭)·D3(대출)·I2(B2G) — 점수만으론 매력적으로 보이는 후보를 실측 수치로 다시 봤습니다. 한 개는 좁혀야 살고, 한 개는 최고 엔진, 한 개는 장기 후순위입니다.</p>
+    </div>
+    <div class="g3">
+      <div class="card cand" style="display:flex;flex-direction:column">
+        <span class="tag">A1 · 해외인력 매칭</span>
+        <h3>매력은 있으나, 신규 송출은 역풍</h3>
+        <p class="pt">E-9 쿼터가 <b>16만 → 13만 → 8만</b>(’24→’25→’26, 고용노동부 외국인력정책위)으로 급감 중. 신규 송출 TAM 자체가 줄어듭니다. E-7-4 선발은 ’25 약 <b>3.5만</b>(법무부).</p>
+        <div class="stat">
+          <div class="s"><div class="sv">8만</div><div class="sl">’26 E-9 쿼터(’24 대비 절반)</div></div>
+          <div class="s"><div class="sv">선점</div><div class="sl">코워크 Pre-A·잡플로이·KoMate</div></div>
+        </div>
+        <p class="pt">코워크(’25.11 Pre-A 투자)·잡플로이·사람인 KoMate가 선점 경쟁 중. <span class="muted">(코워크 “연 20~30%·10곳 중 7곳” 주장은 사업자 진술 — 확인 필요)</span></p>
+        <div class="verdict"><b>→ 결론:</b> 신규 송출이 아니라 <b>국내 체류자 전환·이직 재매칭(A2)</b>으로 좁혀야 매력이 산다.</div>
+        <p class="src muted">출처 · 고용노동부 외국인력정책위 쿼터, 법무부 E-7-4 선발. 기준시점·확인 필요.</p>
+      </div>
+
+      <div class="card cand" style="display:flex;flex-direction:column;border-color:var(--blue);border-width:2px;padding:23px">
+        <span class="tag" style="background:var(--blue);color:#fff">D3 · 외국인 대출·신용 ★</span>
+        <h3>닫혀 있는 거대 시장 — 데이터가 열쇠</h3>
+        <p class="pt">외국인 신용대출은 5대 은행에서 <b>사실상 전무</b>. 금리 <b>6~13%</b>. 인터넷은행 외국인 신용대출은 <b>0</b>(토스뱅크 계좌O·여신X / 카카오뱅크 계좌X / 케이뱅크 가입X).</p>
+        <div class="stat">
+          <div class="s"><div class="sv" style="color:var(--blue)">0</div><div class="sl">인터넷은행 외국인 신용대출</div></div>
+          <div class="s"><div class="sv" style="color:var(--danger)">1.7만건</div><div class="sl">불법사금융 신고 ’25</div></div>
+        </div>
+        <p class="pt">병목은 단 하나 — <b>외국인 신용평가 데이터 부재(씬파일러)</b>. PlugNX의 고용·임금 데이터가 정확히 그 빈칸을 메웁니다.</p>
+        <div class="verdict"><b>→ 결론:</b> 환급(CAC 0)으로 <b>진입</b> → 고용·임금 데이터 축적 → 신용스코어 → <b>여신은 후행 확장</b>. ‘대출=수익 엔진’은 최고 LTV의 <b>최종 도착지</b>이지 1단계가 아니다 (business-case 10 ‘여신 후행’과 정합).</div>
+        <p class="src muted">출처 · 뉴스토마토, 금융위 등. 금리·건수는 기준시점에 따라 변동 — 확인 필요.</p>
+      </div>
+
+      <div class="card cand" style="display:flex;flex-direction:column">
+        <span class="tag">I2 · B2G 행정 SaaS</span>
+        <h3>수요는 있으나, 통계·조달 장벽</h3>
+        <p class="pt">외국인주민 <b>258만</b>(행안부 ’24)·다부처 분절 수요가 분명히 있지만, 외국인 행정SW의 <b>1차 시장통계가 부재</b>합니다.</p>
+        <div class="stat">
+          <div class="s"><div class="sv">258만</div><div class="sl">외국인주민(행안부 ’24)</div></div>
+          <div class="s"><div class="sv">장벽</div><div class="sl">나라장터·saas.go.kr·레퍼런스</div></div>
+        </div>
+        <p class="pt">조달(나라장터/saas.go.kr) 진입과 공공 레퍼런스 확보가 무겁습니다. 매력은 있으나 진입 속도가 느립니다.</p>
+        <div class="verdict"><b>→ 결론:</b> 코어가 만든 데이터·레퍼런스 위에 얹는 <b>확장 후순위(장기)</b>.</div>
+        <p class="src muted">출처 · 행안부 외국인주민 현황. 시장규모는 1차 통계 부재로 추정 — 확인 필요.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ E. FINANCE EXPANSION — dark (marquee) ============ -->
+<section class="tile dark on-dark" id="finance">
+  <div class="container">
+    <div class="sec-head">
+      <span class="eyebrow">금융 확장 · 인터넷은행 외국인 대출 연계</span>
+      <h2 class="h2">데이터만 메우면,<br/>닫혀 있던 여신이 열립니다.</h2>
+      <p>인터넷은행은 외국인 계좌를 빠르게 모았지만 여신은 0입니다. 이유는 단 하나 — “외국인은 씬파일러라 신용대출이 어렵다.” 그 빈칸을 PlugNX의 고용·임금 데이터가 메웁니다.</p>
+    </div>
+
+    <!-- 1) Why banks want it -->
+    <div class="card" style="margin-bottom:18px">
+      <span class="eyebrow" style="display:block;margin-bottom:6px">① 왜 은행이 원하는가</span>
+      <div class="bankstat">
+        <div class="b"><div class="bn">21.4만</div><div class="bl">토스뱅크 외국인 계좌</div></div>
+        <div class="b"><div class="bn">2,816억</div><div class="bl">외국인 예치금 (’25.1)</div></div>
+        <div class="b"><div class="bn zero">0</div><div class="bl">그 위에 나간 외국인 여신</div></div>
+      </div>
+      <p style="font-size:15px;color:var(--dim);line-height:1.6;text-align:center;max-width:720px;margin:12px auto 0">
+        은행 공식 입장은 “외국인은 씬파일러라 신용대출이 어렵다.” 뒤집으면 — <b style="color:#fff">데이터만 메우면 닫힌 여신이 열린다.</b>
+        인터넷은행은 외국인 계좌 확보 경쟁 중이라, “외국인 여신”이라는 차별화 카드를 원합니다. 우리가 그 카드를 쥐고 있습니다.</p>
+    </div>
+
+    <!-- 2) Flow -->
+    <div class="card" style="margin-bottom:18px">
+      <span class="eyebrow" style="display:block;margin-bottom:14px">② 데이터 → 신용 → 여신 플로우</span>
+      <div class="flow">
+        <div class="node"><span class="ni">🏢</span><div class="nt">VisaDesk</div><div class="nd">고용·임금·근태·체류 데이터</div></div>
+        <div class="fa">→</div>
+        <div class="node hi"><span class="ni">📊</span><div class="nt">대안신용스코어 C2</div><div class="nd">외국인 씬파일러 → 점수화</div></div>
+        <div class="fa">→</div>
+        <div class="node"><span class="ni">🏦</span><div class="nt">은행 여신심사</div><div class="nd">스코어 기반 한도·금리</div></div>
+        <div class="fa">→</div>
+        <div class="node hi"><span class="ni">💳</span><div class="nt">외국인 대출 D3</div><div class="nd">닫혀 있던 여신 개방</div></div>
+      </div>
+      <p style="font-size:13px;color:#9a9a9e;text-align:center;margin-top:12px">고용 데이터가 신용의 원료가 되고, 신용이 여신을 연다 — 환급(D1)으로 모은 근로자 풀이 곧 송객 채널.</p>
+    </div>
+
+    <!-- 3) 3 models -->
+    <span class="eyebrow" style="display:block;margin-bottom:12px">③ 연계 모델 3안 (규제 난이도 순)</span>
+    <div class="tbl-wrap" style="background:var(--tile2);border-color:rgba(255,255,255,.12);margin-bottom:18px">
+      <table class="cmp" id="modelTbl">
+        <thead><tr><th>모델</th><th>규제난이도</th><th>필요 라이선스 / 등록</th><th>수익 모델</th><th>해자</th></tr></thead>
+        <tbody>
+          <tr class="hl"><td class="k">A. 대출 송객·리드</td><td>낮음</td><td>온라인 대출모집(대출성 상품 중개) 등록</td><td>중개 수수료 <span class="muted">(참고: 빅테크 대환 0.10~0.20%/건)</span></td><td>플라이휠 외국인 풀(CAC0)</td></tr>
+          <tr><td class="k">B. 대안신용 스코어 공급</td><td>중</td><td>전문개인신용평가업(비금융 전문CB) — 자본금 정형 20억 / 비정형 5억, 또는 데이터 제공</td><td>조회·라이선스 + 성과연동</td><td><b style="color:var(--sky)">최대</b> — 유일 데이터 소스</td></tr>
+          <tr><td class="k">C. 공동여신 / 마이데이터</td><td>높음</td><td>본인신용정보관리업(마이데이터)</td><td>통합 금융 플랫폼 수익</td><td>장기 트랙·전환비용 극대</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="g2" style="margin-bottom:18px">
+      <!-- 4) Benchmark -->
+      <div class="card">
+        <span class="eyebrow" style="display:block;margin-bottom:12px">④ 벤치마크</span>
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <div class="bmk"><div class="bh">Nova Credit — “Credit Passport”</div><div class="bp">이민자가 본인 동의로 해외 신용을 한국으로 이전. 20개국+ 커버, 시리즈C 4,500만 달러. <b style="color:#fff">우리가 노릴 한국형 모델의 원형.</b></div></div>
+          <div class="bmk"><div class="bh">카카오페이 스코어</div><div class="bp">비금융 행동 데이터를 여신심사에 활용 — 대안신용의 국내 실증.</div></div>
+          <div class="bmk"><div class="bh">통신3사 비금융 전문CB · 크레파스</div><div class="bp">통신·비정형 데이터로 씬파일러 평가. 우리는 “외국인 고용·임금”이라는 더 직접적인 변수 보유.</div></div>
+        </div>
+      </div>
+
+      <!-- 5) Regulation gates -->
+      <div class="card">
+        <span class="eyebrow" style="display:block;margin-bottom:12px">⑤ 규제 관문 (참고용·확인필요)</span>
+        <div class="tbl-wrap" style="background:transparent;border-color:rgba(255,255,255,.12)">
+          <table class="cmp" style="min-width:0">
+            <tbody>
+              <tr><td class="k">송객</td><td>대출모집업(대출성 상품 판매대리·중개업자) 등록</td></tr>
+              <tr><td class="k">스코어</td><td>전문개인신용평가업(전문CB) 인허가</td></tr>
+              <tr><td class="k">통합</td><td>본인신용정보관리업(마이데이터) 허가</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p style="font-size:13px;color:#9a9a9e;line-height:1.6;margin-top:14px">
+          공통 이슈 — 외국인 신용정보·<b style="color:var(--dim)">외국인등록번호(민감정보)</b> 처리. 수집·이용·제3자 제공 동의, 국내 보관·암호화, 신용정보법·개인정보보호법 적용 범위는 사전 법률·컴플라이언스 검토 필요.</p>
+      </div>
+    </div>
+
+    <!-- 6) PlugNX levers -->
+    <div class="card">
+      <span class="eyebrow" style="display:block;margin-bottom:12px">⑥ PlugNX 협상 레버 — 은행 테이블에서 우리가 쥔 패</span>
+      <div class="lever">
+        <div class="lv"><span class="lvn">1</span><div class="lvt"><b>유일 데이터 소스.</b> 은행이 스스로 못 만드는 외국인 씬파일러 스코어의 원료(고용·임금·근태·체류)를 우리만 보유.</div></div>
+        <div class="lv"><span class="lvn">2</span><div class="lvt"><b>송객 채널(CAC 0).</b> 플라이휠로 모인 외국인 풀이 곧 여신 수요 — 은행이 못 가진 저비용 유입 경로.</div></div>
+        <div class="lv"><span class="lvn">3</span><div class="lvt"><b>정책 정합.</b> 체류 적법성 검증으로 대포통장·불법체류 리스크를 사전 경감 — 은행 리스크·규제 부담을 낮춤.</div></div>
+      </div>
+    </div>
+
+    <p class="src">출처 · 토스뱅크 외국인 계좌·예치금(’25.1 보도), 금융위·신용정보법, Nova Credit·카카오페이 공개자료. 라이선스 요건·자본금·수수료율은 변동되며 법적 효력 없는 참고치 — 금융당국·변호사 확인 필요.</p>
+  </div>
+</section>
+
+<!-- ============ F. STRATEGIC READ + NEXT — light ============ -->
+<section class="tile light" id="sowhat">
+  <div class="container">
+    <div class="sec-head">
+      <span class="eyebrow">전략적 읽기 · So-What</span>
+      <h2 class="h2">0베이스로 다시 돌아도,<br/>결론은 더 단단해졌습니다.</h2>
+      <p>넓게 펼쳐 다시 모았더니 코어는 그대로 우상단에 군집했습니다. 달라진 건 — 이것이 ‘세 제품’이 아니라 ‘하나의 데이터 엔진’이라는 읽기입니다.</p>
+    </div>
+    <div class="g2" style="gap:28px;align-items:start">
+      <div class="sowhat">
+        <div class="sw"><div class="swn">1</div><div class="swt">0베이스 재검증에도 코어는 <b>우상단에 군집</b> — 현 3종(VisaDesk·Moneeback·ForeignID)은 견고. 단, 셋이 아니라 <span class="hl">하나의 데이터 엔진</span>으로 읽어야 한다.</div></div>
+        <div class="sw"><div class="swn">2</div><div class="swt">최대 업사이드는 <b>C2 신용 + D3 대출</b>. <span class="hl">환급(D1)은 미끼, 대출이 수익 엔진</span> — 고용·금융 데이터가 외국인 신용의 유일 연료다.</div></div>
+        <div class="sw"><div class="swn">3</div><div class="swt">재발견된 인접 = <b>전환·이직 재매칭</b>(A1을 A2로 좁히기) · <b>전문가 마켓</b>(I1) · <b>B2G</b>(I2, 장기). 코어가 만든 데이터 위에 얹는다.</div></div>
+        <div class="sw"><div class="swn">4</div><div class="swt">함정 = <b>송금·커머스·커뮤니티</b>. 거대해 보이지만 레드오션·데이터 해자X — <span class="hl">직접 진입보다 제휴</span>로 가볍게.</div></div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div class="card" style="background:var(--parch);border-color:var(--parch)">
+          <div style="font-size:21px;font-weight:600;color:var(--ink);margin-bottom:6px">다음 단계</div>
+          <p class="body muted" style="margin-bottom:14px">스크리닝은 끝났다. 다음은 가장 큰 업사이드를 실증하는 것.</p>
+          <div style="display:flex;flex-direction:column;gap:11px">
+            <div style="display:flex;gap:10px;align-items:flex-start"><span style="color:var(--blue);font-weight:600">1.</span><span class="body" style="font-size:15px">D3·은행연계 PoC — 모델 A(송객)부터 1개 인터넷은행과 LOI 타진.</span></div>
+            <div style="display:flex;gap:10px;align-items:flex-start"><span style="color:var(--blue);font-weight:600">2.</span><span class="body" style="font-size:15px">C2 대안신용스코어 — 보유 고용·임금 데이터로 스코어 프로토타입 설계.</span></div>
+            <div style="display:flex;gap:10px;align-items:flex-start"><span style="color:var(--blue);font-weight:600">3.</span><span class="body" style="font-size:15px"><a href="business-case-9fk2x7.html#summary">feasibility-study</a>로 금융확장 5축 타당성 심화 — 라이선스·자본·규제 비용 정밀화.</span></div>
+          </div>
+        </div>
+        <div class="card">
+          <div style="font-size:17px;font-weight:600;color:var(--ink);margin-bottom:8px">한 줄로</div>
+          <p class="body" style="font-size:16px;color:var(--ink80);line-height:1.55">코어는 옳았다. 가장 큰 미개발 업사이드는 <b style="color:var(--blue)">데이터 → 신용 → 은행 여신</b>이며, 그 문은 은행이 아니라 <b style="color:var(--ink)">우리 데이터</b>가 연다.</p>
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:34px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
+      <a class="btn btn-primary" href="strategy.html">전략 메모로 ↗</a>
+      <a class="btn btn-secondary" href="business-case-9fk2x7.html#summary">상세 타당성 보고서 ↗</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="container">
+    <div class="ft-top">
+      <div class="ft-intro">
+        <span class="wordmark">PLUG<span class="nx">nx</span></span>
+        <p>채용 이후의 모든 것을 하나의 데이터 파이프라인으로. 외국인 라이프사이클을 0베이스로 재구상하고, 데이터→신용→여신의 업사이드를 좇습니다.</p>
+      </div>
+      <div class="ft-col">
+        <h4>이 문서</h4>
+        <a href="#longlist">롱리스트 9섹터</a>
+        <a href="#matrix">2×2 매트릭스</a>
+        <a href="#deep">재발견 후보</a>
+        <a href="#finance">금융 확장·은행연계</a>
+      </div>
+      <div class="ft-col">
+        <h4>함께 보기</h4>
+        <a href="strategy.html">전략 메모</a>
+        <a href="business-case-9fk2x7.html#summary">상세 타당성 보고서</a>
+        <a href="visadesk.html">VisaDesk (B2B)</a>
+      </div>
+      <div class="ft-col">
+        <h4>회사</h4>
+        <a href="index.html">산출물 허브</a>
+        <a href="moneeback.html">Moneeback (B2C)</a>
+        <a href="mailto:ys.cho@bonanza-plug.co.kr">문의하기</a>
+      </div>
+    </div>
+    <div class="ft-disc">
+      <b>참고용 안내.</b> 본 문서의 <b>점수(A·W)는 전략적 판단(가정)</b>이며, <b>시장 수치는 출처·기준시점에 따라 상이</b>합니다(체류외국인 278.3만 ’25.12 SSOT · 법무부 등록 외국인 265만 ’24말 · 행안부 외국인주민 258만 ’24 — 모수·출처가 다름, 병기). 금융·신용·여신·라이선스 관련 서술은 <b>법적 효력이 없는 참고 정보</b>로, 적용 시 금융당국·변호사·전문가 확인과 최신 법령·요율 확인이 필요합니다.
+      개인정보·민감정보(외국인등록번호·여권번호·계좌·신용정보)는 최소 수집·암호화·국내 보관·동의 원칙으로 처리합니다.<br/><br/>
+      © 2026 PlugNX Inc. · 내부 전략 문서 · <a href="index.html">산출물 허브로</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  // ===== 2x2 matrix data (A=매력, W=우위, 5점 만점) =====
+  var ITEMS = [
+    {c:'B1', n:'고용·체류 준법',      a:4.5, w:4.8, tier:'코어',         cls:'core', d:'벌금회피 WTP·고용 데이터 입구·정책정합'},
+    {c:'C2', n:'외국인 신용스코어',    a:4.6, w:4.4, tier:'코어',         cls:'core', d:'고용+금융 데이터 보유 시 외국인 신용스코어 유일 — 금융 전체 연료'},
+    {c:'C1', n:'eKYC',               a:3.5, w:4.6, tier:'코어 인프라',    cls:'core', d:'셋을 묶는 eKYC 기술해자'},
+    {c:'D1', n:'환급',                a:4.0, w:4.4, tier:'코어',         cls:'core', d:'B2B 등록→CAC0 유입·전환 60%+'},
+    {c:'D3', n:'외국인 대출·신용',     a:4.7, w:4.2, tier:'코어 (최고 LTV)', cls:'core', d:'외국인 대출 거대 통증·신용평가 공백을 데이터로 — 은행연계 엔진'},
+    {c:'B3', n:'K-Trust 컨설팅',      a:3.5, w:4.2, tier:'강한 인접',     cls:'adj',  d:'정책정합·VisaDesk 상향판매'},
+    {c:'I1', n:'전문가 마켓',          a:3.5, w:4.0, tier:'강한 인접',     cls:'adj',  d:'보유 전문가망(행정사 3,360·변호사 365)·전환비용'},
+    {c:'A2', n:'국내 구직·전직',       a:3.5, w:3.4, tier:'인접',         cls:'adj',  d:'국내 외국인 전직·재매칭 표준 부재'},
+    {c:'A1', n:'해외인력 모집·매칭',   a:3.5, w:3.2, tier:'매력O·우위△',   cls:'adj',  d:'E-9 쿼터 16만→13만→8만 급감 + 코워크 선점→신규송출 약함, 전환재매칭으로 좁혀야'},
+    {c:'D2', n:'송금',                a:4.5, w:3.0, tier:'매력O·우위△',   cls:'adj',  d:'송금 거대·고빈도지만 와이즈/센트비 레드오션·라이선스'},
+    {c:'E1', n:'임대+전세사기방지',    a:4.0, w:3.0, tier:'매력O·우위△',   cls:'adj',  d:'전세사기 사회통증 큼·부동산망 확보난·데이터시너지 약'},
+    {c:'H1', n:'돌봄·간병·가사',       a:4.0, w:3.0, tier:'매력O·우위△(확장)', cls:'adj', d:'초고령·정책신설 수요폭증·매칭운영 무거움'},
+    {c:'I2', n:'B2G 행정 SaaS',       a:3.8, w:3.3, tier:'확장 후순위',   cls:'adj',  d:'B2G 수요 있으나 1차 통계 부재·조달장벽 김'},
+    {c:'D4', n:'보험',                a:3.5, w:3.5, tier:'인접 부가',     cls:'adj',  d:'고용주·환급 연계 제휴형'},
+    {c:'D5', n:'급여카드',            a:3.5, w:3.5, tier:'인접 부가',     cls:'adj',  d:'고용주 급여 연계'},
+    {c:'B2', n:'비자신청 디지털화',    a:3.5, w:3.5, tier:'중',           cls:'adj',  d:'비자신청 디지털화·행정사 라이선스 이슈'},
+    {c:'E2', n:'기숙사관리',          a:2.5, w:3.5, tier:'부가',         cls:'hold', d:'VisaDesk 부가기능'},
+    {c:'F2', n:'통번역',              a:3.0, w:3.0, tier:'부가',         cls:'hold', d:'전문가망 연계'},
+    {c:'G1', n:'KIIP·한국어',         a:3.0, w:3.0, tier:'확장',         cls:'hold', d:'KIIP·한국어 콘텐츠'},
+    {c:'G2', n:'영주·귀화',           a:3.0, w:3.4, tier:'확장 부가',     cls:'hold', d:'체류데이터 연계 영주·귀화'},
+    {c:'G3', n:'자녀교육·돌봄',        a:3.0, w:2.5, tier:'중하',         cls:'hold', d:'자녀교육·돌봄 — 운영 무거움'},
+    {c:'A3', n:'송출입 SaaS',         a:3.0, w:3.0, tier:'중',           cls:'hold', d:'송출입 SaaS — 송출국 의존'},
+    {c:'A4', n:'사전교육',            a:3.0, w:2.5, tier:'중하',         cls:'hold', d:'사전교육 — 콘텐츠·제휴 의존'},
+    {c:'F4', n:'헬스케어',            a:3.5, w:2.5, tier:'중하',         cls:'hold', d:'운영무거움·제휴의존'},
+    {c:'F1', n:'커머스',              a:3.5, w:2.0, tier:'보류',         cls:'hold', d:'커머스 레드오션·데이터해자X'},
+    {c:'F3', n:'커뮤니티',            a:3.5, w:2.5, tier:'보류',         cls:'hold', d:'커뮤니티 수익화·운영난'}
+  ];
+
+  var plot = document.getElementById('plot');
+  // map score 0..5 to inset % so bubbles never hit the edge (pad 8%..92%)
+  function pos(v){ return 8 + (v/5)*84; }
+
+  var detail = {
+    code:document.getElementById('dCode'), name:document.getElementById('dName'),
+    tier:document.getElementById('dTier'), a:document.getElementById('dA'),
+    w:document.getElementById('dW'), desc:document.getElementById('dDesc')
+  };
+  var currentEl = null;
+
+  function tierClass(cls){ return cls==='core'?'tier-core':(cls==='adj'?'tier-adj':'tier-hold'); }
+
+  function select(item, el){
+    detail.code.textContent = item.c;
+    detail.name.textContent = item.n;
+    detail.tier.textContent = item.tier;
+    detail.a.textContent = item.a.toFixed(1);
+    detail.w.textContent = item.w.toFixed(1);
+    detail.desc.textContent = item.d;
+    if(currentEl) currentEl.classList.remove('active');
+    el.classList.add('active');
+    currentEl = el;
+  }
+
+  // bubbles — slight de-overlap: nudge identical coords apart
+  var seen = {};
+  ITEMS.forEach(function(it){
+    var b = document.createElement('div');
+    b.className = 'bub ' + it.cls;
+    var ax = it.w, ay = it.a;
+    var key = ax+'_'+ay;
+    var n = seen[key]||0; seen[key]=n+1;
+    var jx = (n%3-1)*1.6, jy = (Math.floor(n/3)-0.5)*1.6;  // tiny jitter for stacked codes
+    b.style.left = pos(ax+jx*0.05) + '%';
+    b.style.bottom = pos(ay+jy*0.05) + '%';
+    b.textContent = it.c;
+    b.setAttribute('title', it.c+' · '+it.n+' (A'+it.a+'/W'+it.w+')');
+    b.addEventListener('click', function(){ select(it, b); });
+    b.addEventListener('mouseenter', function(){ select(it, b); });
+    plot.appendChild(b);
+    it._el = b;
+  });
+
+  // ===== score table (sorted by A+W desc) =====
+  var tbody = document.querySelector('#scoreTbl tbody');
+  ITEMS.slice().sort(function(x,y){ return (y.a+y.w)-(x.a+x.w); }).forEach(function(it){
+    var tr = document.createElement('tr');
+    if(it.cls==='core') tr.className='coreRow';
+    tr.innerHTML = '<td class="k">'+it.c+' · '+it.n+'</td>'
+      + '<td>'+it.a.toFixed(1)+'</td><td>'+it.w.toFixed(1)+'</td>'
+      + '<td><span class="tier-tag '+tierClass(it.cls)+'">'+it.tier+'</span></td>'
+      + '<td>'+it.d+'</td>';
+    tr.style.cursor='pointer';
+    tr.addEventListener('click', function(){
+      if(it._el){ select(it, it._el); document.getElementById('matrix').scrollIntoView({behavior:'smooth',block:'start'}); }
+    });
+    tbody.appendChild(tr);
+  });
+
+  // default selected = D3
+  var d3 = ITEMS.filter(function(i){return i.c==='D3';})[0];
+  if(d3 && d3._el) select(d3, d3._el);
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow" />
+<title>GTM 엔게이지먼트 — 임원 readout | PlugNX</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --blue:#0066cc; --blue-focus:#0071e3; --sky:#2997ff;
+    --white:#ffffff; --parch:#f5f5f7; --pearl:#fafafc;
+    --tile:#272729; --tile2:#2a2a2c; --black:#000;
+    --ink:#1d1d1f; --ink80:#333; --ink48:#7a7a7a;
+    --on-dark:#fff; --dim:#cccccc;
+    --hair:#e0e0e0; --divider:#f0f0f0;
+    --danger:#d70015; --danger-d:#ff5a4d;
+    --shadow-prod:rgba(0,0,0,.22) 3px 5px 30px 0;
+    --font:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text",Inter,system-ui,"Apple SD Gothic Neo",sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--font);background:var(--white);color:var(--ink);line-height:1.47;
+    letter-spacing:-.022em;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+  a{color:var(--blue);text-decoration:none}
+  .container{max-width:1080px;margin:0 auto;padding:0 22px}
+  img{max-width:100%}
+
+  /* ---- typography ---- */
+  h1,h2,h3,h4{letter-spacing:-.022em;font-weight:600;color:var(--ink)}
+  .eyebrow{font-size:14px;font-weight:600;color:var(--blue);letter-spacing:0}
+  .display{font-size:clamp(32px,5.4vw,56px);font-weight:600;line-height:1.07;letter-spacing:-.028em}
+  .h2{font-size:clamp(27px,3.6vw,40px);font-weight:600;line-height:1.1;letter-spacing:-.024em}
+  .lead{font-size:clamp(19px,2.2vw,26px);font-weight:400;line-height:1.28;color:var(--ink80)}
+  .body{font-size:17px;font-weight:400;line-height:1.47}
+  .muted{color:var(--ink48)}
+  .on-dark .lead{color:var(--dim)}
+  .on-dark h1,.on-dark h2,.on-dark h3,.on-dark h4{color:var(--on-dark)}
+  .on-dark{color:var(--dim)}
+  .on-dark a{color:var(--sky)}
+  .on-dark .eyebrow{color:var(--sky)}
+
+  /* ---- tiles ---- */
+  .tile{padding:clamp(56px,8vw,88px) 0}
+  .tile.light{background:var(--white)}
+  .tile.parch{background:var(--parch)}
+  .tile.dark{background:var(--tile);color:var(--dim)}
+  .tile.black{background:var(--black);color:var(--dim)}
+  .sec-head{max-width:760px;margin:0 auto clamp(34px,5vw,52px);text-align:center}
+  .sec-head .eyebrow{display:block;margin-bottom:12px}
+  .sec-head .h2{margin-bottom:14px}
+  .sec-head p{font-size:19px;color:var(--ink48);line-height:1.42}
+  .on-dark .sec-head p{color:var(--dim)}
+
+  /* ---- buttons ---- */
+  .btn{display:inline-flex;align-items:center;gap:7px;font-family:var(--font);font-size:17px;
+    font-weight:400;letter-spacing:-.022em;padding:11px 22px;border-radius:980px;border:1px solid transparent;
+    cursor:pointer;transition:transform .12s ease,background .2s,opacity .2s;white-space:nowrap;text-decoration:none}
+  .btn:active{transform:scale(.96)}
+  .btn:focus-visible{outline:2px solid var(--blue-focus);outline-offset:3px}
+  .btn-primary{background:var(--blue);color:#fff;border-color:var(--blue)}
+  .btn-primary:hover{background:#0a6fd6}
+  .btn-secondary{background:transparent;color:var(--blue);border-color:var(--blue)}
+  .btn-secondary:hover{background:rgba(0,102,204,.06)}
+  .on-dark .btn-secondary{color:var(--sky);border-color:var(--sky)}
+  .on-dark .btn-secondary:hover{background:rgba(41,151,255,.12)}
+  .btn-sm{font-size:14px;padding:8px 16px}
+  .btn-dark{background:var(--ink);color:#fff;border-radius:8px;font-size:14px;padding:8px 15px}
+  .btn-dark:active{transform:scale(.96)}
+  .btn-text{color:var(--blue);font-size:17px;font-weight:400;display:inline-flex;align-items:center;gap:5px}
+  .btn-text:hover{text-decoration:underline}
+  .on-dark .btn-text{color:var(--sky)}
+
+  /* ---- nav ---- */
+  .gnav{background:var(--black);height:44px;position:relative;z-index:60}
+  .gnav .container{height:44px;display:flex;align-items:center;gap:18px}
+  .gnav a{color:#f5f5f7;font-size:12px;font-weight:400;letter-spacing:-.01em;opacity:.85}
+  .gnav a:hover{opacity:1}
+  .wordmark{font-weight:700;font-size:15px;color:#fff;letter-spacing:-.02em}
+  .wordmark .nx{color:#fff;opacity:.62}
+  .gnav .sp{margin-left:auto}
+  .subnav{position:sticky;top:0;z-index:55;height:52px;
+    background:rgba(245,245,247,.82);-webkit-backdrop-filter:saturate(180%) blur(20px);backdrop-filter:saturate(180%) blur(20px);
+    border-bottom:1px solid rgba(0,0,0,.08)}
+  .subnav .container{height:52px;display:flex;align-items:center;gap:22px}
+  .subnav .cat{font-size:21px;font-weight:600;color:var(--ink);letter-spacing:-.02em}
+  .subnav .cat b{color:var(--blue)}
+  .subnav .links{display:flex;gap:22px;margin-left:8px}
+  .subnav .links a{font-size:13px;color:var(--ink80);font-weight:400}
+  .subnav .links a:hover{color:var(--ink)}
+  .subnav .right{margin-left:auto;display:flex;align-items:center;gap:12px}
+  @media(max-width:900px){.subnav .links{display:none}}
+  @media(max-width:560px){.gnav .links-extra{display:none}.subnav .cat{font-size:18px}}
+
+  /* ---- hero ---- */
+  .hero{text-align:center;padding:clamp(48px,7vw,76px) 0 clamp(36px,5vw,56px)}
+  .hero .eyebrow{margin-bottom:14px}
+  .hero .display{margin-bottom:18px}
+  .hero .lead{max-width:760px;margin:0 auto 26px}
+  .hero-cta{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-bottom:14px}
+  .hero-cta .btn-text{padding:11px 4px}
+  .hero-pills{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:6px}
+  .chip{font-size:13px;color:var(--ink48);background:var(--parch);border:1px solid var(--hair);
+    border-radius:980px;padding:6px 13px}
+  .chip b{color:var(--ink)}
+
+  /* governing thought card (the one shadow) */
+  .gov{max-width:760px;margin:clamp(34px,5vw,48px) auto 0;background:#fff;border:1px solid var(--hair);
+    border-radius:18px;padding:clamp(24px,4vw,34px);box-shadow:var(--shadow-prod);text-align:left}
+  .gov .gov-ey{font-size:12px;font-weight:600;color:var(--blue);letter-spacing:.04em;margin-bottom:12px;text-transform:uppercase}
+  .gov p{font-size:clamp(17px,2vw,20px);line-height:1.5;color:var(--ink)}
+  .gov p b{font-weight:600}
+  .gov .beach{margin-top:18px;padding-top:18px;border-top:1px solid var(--divider);display:flex;gap:10px;flex-wrap:wrap}
+  .gov .bch{font-size:13px;font-weight:600;color:var(--blue);background:rgba(0,102,204,.08);border-radius:980px;padding:5px 13px}
+
+  /* ---- grids ---- */
+  .g2{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+  .g3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .g4{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+  @media(max-width:900px){.g4{grid-template-columns:repeat(2,1fr)}.g3{grid-template-columns:1fr}}
+  @media(max-width:640px){.g2,.g4{grid-template-columns:1fr}}
+
+  /* ---- cards ---- */
+  .card{background:#fff;border:1px solid var(--hair);border-radius:18px;padding:24px}
+  .on-dark .card{background:var(--tile2);border-color:rgba(255,255,255,.12)}
+  .card h3{font-size:19px;font-weight:600;margin-bottom:8px}
+  .card p{font-size:15px;color:var(--ink48);line-height:1.5}
+  .on-dark .card p{color:var(--dim)}
+
+  /* workstream card */
+  .ws .wsn{font-size:12px;font-weight:600;color:var(--sky);letter-spacing:.04em;display:block;margin-bottom:6px}
+  .ws h3{font-size:18px;font-weight:600;color:#fff;margin-bottom:10px}
+  .ws p{font-size:14px;color:var(--dim);line-height:1.55}
+  .group-label{display:flex;align-items:center;gap:12px;margin:0 0 18px;max-width:none}
+  .group-label .gl-t{font-size:13px;font-weight:600;color:var(--sky);letter-spacing:.04em;white-space:nowrap}
+  .group-label .gl-line{flex:1;height:1px;background:rgba(255,255,255,.16)}
+  .group-block{margin-bottom:34px}
+  .group-block:last-child{margin-bottom:0}
+
+  /* decision cards (light) */
+  .dec .dn{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;font-weight:600;
+    background:rgba(0,102,204,.1);color:var(--blue);margin-bottom:14px;font-size:16px}
+  .dec h3{font-size:18px;font-weight:600;margin-bottom:8px}
+  .dec p{font-size:14px;color:var(--ink48);line-height:1.55}
+  .dec p b{color:var(--ink);font-weight:600}
+  .dec .anchor{margin-top:12px;font-size:13px;font-weight:600;color:var(--blue);
+    background:rgba(0,102,204,.08);border-radius:10px;padding:8px 11px;display:inline-block;line-height:1.4}
+
+  /* 2x2 matrix (dark) */
+  .matrix-wrap{max-width:680px;margin:0 auto}
+  .matrix{position:relative;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;
+    gap:2px;aspect-ratio:1/1;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.14);border-radius:14px;overflow:hidden}
+  .mq{background:var(--tile2);padding:18px;display:flex;flex-direction:column;gap:8px}
+  .mq.win{background:rgba(0,102,204,.16);outline:2px solid var(--sky);outline-offset:-2px;z-index:2}
+  .mq .mq-h{font-size:12px;font-weight:600;color:var(--sky);letter-spacing:.03em}
+  .mq .mq-co{font-size:14px;font-weight:600;color:#fff;line-height:1.35}
+  .mq .mq-d{font-size:12px;color:var(--dim);line-height:1.45}
+  .mq.win .mq-co{color:#fff}
+  .mq.win .badge{display:inline-block;font-size:11px;font-weight:600;color:#fff;background:var(--blue);
+    border-radius:980px;padding:3px 10px;align-self:flex-start}
+  .ax-y{position:absolute;left:-12px;top:50%;transform:translateY(-50%) rotate(-90deg);transform-origin:center;
+    font-size:12px;font-weight:600;color:var(--dim);white-space:nowrap}
+  .ax-x{text-align:center;font-size:12px;font-weight:600;color:var(--dim);margin-top:14px}
+  .ax-row{display:flex;justify-content:space-between;font-size:11px;color:var(--ink48);margin-top:6px}
+  @media(max-width:560px){.ax-y{display:none}}
+
+  /* timeline */
+  .tl{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+  @media(max-width:760px){.tl{grid-template-columns:1fr}}
+  .tl-step .num{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;font-weight:600;
+    background:rgba(0,102,204,.1);color:var(--blue);margin-bottom:14px}
+  .tl-week{font-size:12px;font-weight:600;color:var(--blue);letter-spacing:.04em}
+  .tl-step h3{font-size:17px;font-weight:600;margin:6px 0 8px}
+  .tl-step p{font-size:14px;color:var(--ink48);line-height:1.5}
+  .tl-step .gate{display:inline-block;margin-top:10px;font-size:11px;font-weight:600;color:var(--blue);
+    background:rgba(0,102,204,.08);border-radius:980px;padding:3px 10px}
+  .tl-step.key{border:2px solid var(--blue);padding:23px}
+
+  /* 30/60/90 phases */
+  .phase{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:26px}
+  @media(max-width:760px){.phase{grid-template-columns:1fr}}
+  .phase .ph-w{font-size:12px;font-weight:600;color:var(--blue);letter-spacing:.04em;margin-bottom:8px}
+  .phase h3{font-size:17px;font-weight:600;margin-bottom:10px}
+  .phase ul{list-style:none;display:flex;flex-direction:column;gap:9px}
+  .phase li{font-size:13px;color:var(--ink80);display:flex;gap:8px;align-items:flex-start;line-height:1.45}
+  .phase li:before{content:"";width:5px;height:5px;border-radius:50%;background:var(--blue);margin-top:7px;flex:0 0 auto}
+
+  /* metrics row */
+  .mkt-row{display:flex;gap:36px;flex-wrap:wrap;justify-content:center;margin-top:40px}
+  .mkt{text-align:center}
+  .mkt .n{font-size:30px;font-weight:600;color:#fff;letter-spacing:-.02em}
+  .mkt .l{font-size:13px;color:var(--dim);margin-top:4px}
+
+  /* open issues table */
+  .tbl-wrap{overflow-x:auto;border:1px solid var(--hair);border-radius:18px;background:#fff}
+  table.cmp{width:100%;border-collapse:collapse;font-size:14px;min-width:660px}
+  table.cmp th{text-align:left;padding:14px 18px;font-size:12px;font-weight:600;color:var(--ink48);
+    text-transform:uppercase;letter-spacing:.03em;border-bottom:1px solid var(--hair)}
+  table.cmp td{padding:14px 18px;color:var(--ink48);border-bottom:1px solid var(--divider);vertical-align:top}
+  table.cmp tr:last-child td{border-bottom:none}
+  table.cmp td.k{color:var(--ink);font-weight:600;white-space:nowrap}
+  table.cmp tr.hl td{background:rgba(0,102,204,.05);color:var(--ink)}
+  table.cmp tr.hl td.k{color:var(--blue)}
+
+  .src{font-size:12px;color:var(--ink48);margin-top:20px;line-height:1.6}
+  .on-dark .src{color:#8a8a8e}
+
+  /* final */
+  .final{text-align:center}
+  .final .h2{margin-bottom:14px}
+  .final p{font-size:19px;color:var(--dim);max-width:560px;margin:0 auto 28px}
+  .final .row{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+
+  /* footer */
+  footer{background:var(--parch);padding:56px 0 40px;color:var(--ink48)}
+  .ft-top{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:28px}
+  @media(max-width:760px){.ft-top{grid-template-columns:1fr 1fr}}
+  @media(max-width:460px){.ft-top{grid-template-columns:1fr}}
+  .ft-intro .wordmark{color:var(--ink)}
+  .ft-intro .wordmark .nx{color:var(--ink48)}
+  .ft-intro p{font-size:13px;color:var(--ink48);margin-top:12px;max-width:280px;line-height:1.6}
+  .ft-col h4{font-size:13px;font-weight:600;color:var(--ink);margin-bottom:12px}
+  .ft-col a{display:block;font-size:14px;color:var(--ink48);margin-bottom:10px;line-height:1.4}
+  .ft-col a:hover{color:var(--ink)}
+  .ft-disc{margin-top:34px;padding-top:24px;border-top:1px solid var(--hair);font-size:12px;color:var(--ink48);line-height:1.7}
+  .ft-disc b{color:var(--ink80)}
+</style>
+</head>
+<body>
+
+<!-- ============ GLOBAL NAV ============ -->
+<div class="gnav">
+  <div class="container">
+    <span class="wordmark">PLUG<span class="nx">nx</span></span>
+    <a class="links-extra" href="visadesk.html">VisaDesk</a>
+    <a class="links-extra" href="moneeback.html">Moneeback</a>
+    <a class="sp" href="index.html">산출물 허브</a>
+  </div>
+</div>
+
+<!-- ============ SUB NAV ============ -->
+<div class="subnav">
+  <div class="container">
+    <span class="cat">GTM <b>readout</b></span>
+    <div class="links">
+      <a href="#streams">워크스트림 8</a>
+      <a href="#decisions">핵심 결정 3</a>
+      <a href="#matrix">포지셔닝</a>
+      <a href="#timeline">PoC · 30/60/90</a>
+      <a href="#open">오픈이슈</a>
+    </div>
+    <div class="right">
+      <a class="btn btn-primary btn-sm" href="business-case-9fk2x7.html#summary">비즈니스 케이스 ›</a>
+    </div>
+  </div>
+</div>
+
+<!-- ============ HERO ============ -->
+<section class="tile light">
+  <div class="container hero">
+    <span class="eyebrow">GTM 엔게이지먼트 · 임원 readout</span>
+    <h1 class="display">비치헤드를 좁히고,<br/>양면을 잠근 뒤 데이터 위에서 램프한다.</h1>
+    <p class="lead">VisaDesk(B2B)로 산단 E-9 제조 30~50명 사업장을 8주 PoC 비치헤드로 좁혀 치고, 위험회피 프레임으로 89만을 앵커하며, Moneeback 자동유입(CAC 0)으로 양면을 잠근 뒤 — 그 위에 쌓인 고용·금융 데이터로 ARR 21→60억으로 램프한다.</p>
+    <div class="hero-cta">
+      <a class="btn btn-primary" href="#streams">8개 워크스트림 보기</a>
+      <a class="btn-text" href="#decisions">핵심 결정 3 ›</a>
+    </div>
+    <div class="hero-pills">
+      <span class="chip"><b>비치헤드</b> 산단 E-9 제조 30~50명</span>
+      <span class="chip">요양 E-7-2 <b>양면 검증 등대</b></span>
+      <span class="chip">8주 15사 · 3,300만</span>
+    </div>
+
+    <!-- governing thought : the single shadow -->
+    <div class="gov">
+      <div class="gov-ey">Governing Thought · 지배 메시지</div>
+      <p>VisaDesk(B2B)로 <b>"수도권 남부 산단의 E-9 제조 30~50명 사업장"</b>을 8주 PoC 비치헤드로 좁혀 치고(요양 E-7-2를 양면 검증 등대로 병행), <b>'단속 1건 회피 = 약 1년 구독료'</b>라는 손실회피 프레임으로 89만을 앵커하며, 보유한 행정사·노무사망 + 산단·협회 세미나로 리드를 데워 인사이드세일즈가 닫고, 근로자 Moneeback 자동유입(CAC 0)으로 양면을 잠근 뒤 — 그 위에 쌓인 데이터로 <b>ARR 21→60억과 D3 여신(후행)</b>으로 램프한다.</p>
+      <div class="beach">
+        <span class="bch">Where → 산단 제조 30~50명(S1)</span>
+        <span class="bch">How to win → 위험회피 89만 앵커</span>
+        <span class="bch">Prove → 4주차 유료 결정점</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 8 WORKSTREAMS — dark ============ -->
+<section class="tile dark on-dark" id="streams">
+  <div class="container">
+    <div class="sec-head">
+      <span class="eyebrow">8개 워크스트림 · MECE 통합</span>
+      <h2 class="h2">한 워크스트림 = 한 지배 결론.<br/>Where → How to win → Execute → Prove.</h2>
+      <p>맥킨지형 병렬 엔게이지먼트로 GTM을 8개 워크스트림으로 쪼개 동시 공략하고, 각 산출물의 헤드라인을 하나의 스토리라인으로 묶었습니다.</p>
+    </div>
+
+    <!-- Where to play -->
+    <div class="group-block">
+      <div class="group-label"><span class="gl-t">WHERE TO PLAY · 어디서 싸우나</span><span class="gl-line"></span></div>
+      <div class="g2">
+        <div class="card ws">
+          <span class="wsn">01 · 세그멘테이션 · 타겟팅 · ICP</span>
+          <h3>비치헤드 = 산단 E-9 제조 30~50명(S1)</h3>
+          <p>요양 E-7-2(S3)를 양면 검증 등대로 병행. TAM 49만 명을 약 9.8만 사〔가정〕로 환산 → SAM 1.5만~2만 사 → SOM 300사로 줄 세우고, 매력 높아도 right-to-win 약한 건설(S6)은 의도적으로 버린다.</p>
+        </div>
+        <div class="card ws">
+          <span class="wsn">02 · 고객 인사이트 · JTBD</span>
+          <h3>JTBD = "단속·벌칙 없이 외국인 계속 쓰기"</h3>
+          <p>대표(손실회피)·담당자(행정경감) 2트랙 메시지를 D-60·단속시즌 등 트리거에 발사하고, 행정사·노무사를 채널로 편입. K-Trust 쿼터·송금·시효 훅은 proof 가드로만.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- How to win -->
+    <div class="group-block">
+      <div class="group-label"><span class="gl-t">HOW TO WIN · 왜 우리가 이기나</span><span class="gl-line"></span></div>
+      <div class="g2">
+        <div class="card ws">
+          <span class="wsn">03 · 경쟁 · 포지셔닝 · 해자</span>
+          <h3>비어 있는 우상단 "재직관리 OS" 점유</h3>
+          <p>경쟁사는 양면 통합 × 인증 인프라 2축 중 한 축만 채운다. PlugNX는 비어 있는 우상단을 점유하되, 해자 70%(데이터·락인·복리)는 PoC·규제로 검증할 미래 명제임을 라벨링해 과장 없이 차별화.</p>
+        </div>
+        <div class="card ws">
+          <span class="wsn">04 · 가치제안 · 패키징 · 가격</span>
+          <h3>"사고 1건 회피 ≈ 1년 구독료(2.8배)"</h3>
+          <p>위험회피 프레임으로 89만을 앵커하고, Compliance 업셀로 ARPA를 12개월 144만(1.62배)까지 램프. 정가(29/89/169)는 SSOT 고정, PoC에서 메시지·면제·단가만 A/B 검증.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- How to execute -->
+    <div class="group-block">
+      <div class="group-label"><span class="gl-t">HOW TO EXECUTE · 어떻게 실행하나</span><span class="gl-line"></span></div>
+      <div class="g2">
+        <div class="card ws">
+          <span class="wsn">05 · 채널 · 파트너십 · RTM</span>
+          <h3>행정사·노무사망 2-엔진 믹스</h3>
+          <p>보유 행정사·노무사망(3,360·365)을 사후 외주에서 상시 유통 채널로 전환하고, 산단·협회 세미나로 수요를 데워 인사이드세일즈가 마감. 은행연계(D3)는 CAC0 송객풀 위에서 송객(모델 A)부터 후행 단계화.</p>
+        </div>
+        <div class="card ws">
+          <span class="wsn">06 · 영업 모션 · 퍼널 · 전환</span>
+          <h3>자가진단 PLG + 인사이드 "1.5형 영업"</h3>
+          <p>자가진단 PLG 훅으로 리드를 채우고 인사이드세일즈가 8주 무료 PoC를 운전해 닫는다. 7단계 퍼널·보수30/공격50%〔가정〕 두 트랙·반론6카드/ROI 1장으로 15사 마감. 최우선 P0 = 결과화면 mailto → <code>/api/lead</code>.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Prove it -->
+    <div class="group-block">
+      <div class="group-label"><span class="gl-t">PROVE IT · 어떻게 증명·정당화하나</span><span class="gl-line"></span></div>
+      <div class="g2">
+        <div class="card ws">
+          <span class="wsn">07 · 런치 · PoC · 30/60/90</span>
+          <h3>4주차 첫 월간 리포트 = 유료 결정점</h3>
+          <p>7일 리스크 리포트로 진입해 4주차 첫 월간 리포트를 유료 결정점으로 당기고, 2/4/8주 게이트로 15사·3,300만원과 100사 확대 go/no-go를 8주에 강제한다("실패를 8주에 싸게 사는" 구조).</p>
+        </div>
+        <div class="card ws">
+          <span class="wsn">08 · 비즈니스 케이스 · 유닛이코노믹스</span>
+          <h3>ROI&gt;1 방어 · 블렌디드 LTV/CAC 8:1+</h3>
+          <p>외국인 1명 리스크만 막아도 본전이라 가격이 방어되고, B2C 한계 CAC 0이 블렌디드 LTV/CAC를 8:1+로 견인. ARR 21→60억은 tops-down=bottoms-up 정합, 절반은 NRR 110%가 책임지며 Bear에서도 24M 40억으로 하방이 두텁다. <span class="muted">(목표·가정)</span></p>
+        </div>
+      </div>
+    </div>
+
+    <p class="src">출처 · 8개 워크스트림(<code>output/gtm/01~08</code>) ⑥ 헤드라인을 <code>99-storyline.md</code>로 통합. 핵심 목표(요금제·ARR·PoC·TAM)는 PROJECT.md(사업기획서 v1.0·SSOT) 인용. 재무·전환·CAC·LTV·NRR·BEP는 확정 실적이 아닌 <b>목표·가정</b>으로 PoC 실측 대상.</p>
+  </div>
+</section>
+
+<!-- ============ 3 KEY DECISIONS — light ============ -->
+<section class="tile light" id="decisions">
+  <div class="container">
+    <div class="sec-head">
+      <span class="eyebrow">핵심 의사결정 3 · 먼저 결정할 것</span>
+      <h2 class="h2">지배 메시지를 떠받치는<br/>세 가지 결정.</h2>
+      <p>단위 충돌을 종결하고, 해자의 시제를 분리하며, 퍼널 누수를 막는다 — 이 셋이 막히면 스토리라인 전체가 샙니다.</p>
+    </div>
+    <div class="g3">
+      <div class="card dec">
+        <div class="dn">1</div>
+        <h3>단위 통일 (Where to play)</h3>
+        <p><b>B2B는 사(事業場) 단위 SOM</b>(24M 300사), <b>B2C는 명 단위 도달</b>(광의 10만 도달)으로 분리해 SSOT 단위 충돌을 종결한다. 명·사 분모를 같은 표에 절대 섞지 않는다.</p>
+        <span class="anchor">★C1 · SOM 단위 충돌 종결 — 전 산출물·IR 강제</span>
+      </div>
+      <div class="card dec">
+        <div class="dn">2</div>
+        <h3>해자 시제분리 + 가격닻 (How to win)</h3>
+        <p>지금 파는 해자는 〔보유〕 <b>양면 흐름·정책 정합·전문가망</b>, 데이터 신용스코어·락인·복리는 〔축적 후〕 검증 가설로 라벨링한다. 가격 닻은 기능이 아니라 <b>위험회피(손실회피)</b>.</p>
+        <span class="anchor">§94 최대 3,000만 ÷ 연 구독 1,068만 ≈ 2.8배</span>
+      </div>
+      <div class="card dec">
+        <div class="dn">3</div>
+        <h3>실행 P0 = 전환 누수 차단 (Execute)</h3>
+        <p>자가진단 결과화면을 <b>mailto → <code>/api/lead</code> 리드폼</b>으로 교체(전환·추적 누수 차단). 이게 막히면 퍼널 전체가 새므로 <b>PoC 착수 전 1순위</b>.</p>
+        <span class="anchor">P0 · 회사명·외국인수·연락처 캡처 + lead_submit_success</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 2x2 MATRIX — dark ============ -->
+<section class="tile dark on-dark" id="matrix">
+  <div class="container">
+    <div class="sec-head">
+      <span class="eyebrow">시장 포지셔닝 2×2</span>
+      <h2 class="h2">양면 통합 × 인증 인프라 —<br/>우상단이 비어 있다.</h2>
+      <p>경쟁사는 두 축 중 한 축만 채웁니다. PlugNX는 비어 있는 우상단 "채용 이후 재직관리 OS" 좌표를 점유합니다. (공개 출처상 미확인 공백 — 유일 아님)</p>
+    </div>
+    <div class="matrix-wrap">
+      <div style="position:relative">
+        <span class="ax-y">양면(고용↔금융) 통합 →</span>
+        <div class="matrix">
+          <!-- top-left -->
+          <div class="mq">
+            <span class="mq-h">양면 일부 · 인증 약함</span>
+            <span class="mq-co">생활포털형</span>
+            <span class="mq-d">생활·정착 서비스 묶음, 재직 준법·인증 인프라는 얕음.</span>
+          </div>
+          <!-- top-right : WIN -->
+          <div class="mq win">
+            <span class="badge">PlugNX</span>
+            <span class="mq-co">재직관리 OS</span>
+            <span class="mq-d">고용↔금융 양면 + ForeignID 인증 인프라 결합. 채용 이후 운영 공백을 점유.</span>
+          </div>
+          <!-- bottom-left -->
+          <div class="mq">
+            <span class="mq-h">단변 · 인증 약함</span>
+            <span class="mq-co">중개·매칭형</span>
+            <span class="mq-d">채용 전·송금/환급 단변 기능. 중개형이라 기술·데이터 해자 약함.</span>
+          </div>
+          <!-- bottom-right -->
+          <div class="mq">
+            <span class="mq-h">단변 · 인증 강함</span>
+            <span class="mq-co">핀테크·KYC형</span>
+            <span class="mq-d">인증/송금 단변에 강하나, 고용 데이터와의 양면 결합은 비어 있음.</span>
+          </div>
+        </div>
+        <div class="ax-row"><span>인증 인프라 약함</span><span>인증 인프라(ForeignID L1~L3) 강함 →</span></div>
+        <div class="ax-x">가로축: 인증 인프라 깊이 · 세로축: 양면(고용↔금융) 통합도</div>
+      </div>
+    </div>
+    <p class="src">출처 · 03 경쟁·포지셔닝 워크스트림. 좌표는 공개 출처 기반 정성 배치이며 경쟁사 정량지표(매출·정확도·거래액)는 회사발표·언론 2차정보로 독립검증되지 않음(인용 시 "확인 필요" 라벨). 해자의 70%(데이터·락인·복리)는 PoC·규제로 검증할 미래 명제.</p>
+  </div>
+</section>
+
+<!-- ============ 8주 PoC + 30/60/90 — parchment ============ -->
+<section class="tile parch" id="timeline">
+  <div class="container">
+    <div class="sec-head">
+      <span class="eyebrow">8주 PoC + 30/60/90 게이트</span>
+      <h2 class="h2">"실패를 8주에 싸게 사는" 구조.</h2>
+      <p>2/4/8주 게이트로 15사·3,300만원과 100사 확대 go/no-go를 강제합니다. 4주차 첫 월간 리포트가 유료 결정점입니다.</p>
+    </div>
+    <div class="tl">
+      <div class="card tl-step"><div class="num">1</div><div class="tl-week">DAY 7 · 진입</div><h3>7일 리스크 리포트</h3><p>회사·근로자 등록 후 7일 리스크 리포트로 진입해 첫 가치를 빠르게 보여줍니다.</p></div>
+      <div class="card tl-step"><div class="num">2</div><div class="tl-week">WEEK 2 · G1</div><h3>활성화 게이트</h3><p>활성화율 ≥70%·TTV ≤10일·8사 셋업. 미달 시 셋업 대행 + OCR 보정.<span class="gate">G1 활성화</span></p></div>
+      <div class="card tl-step key"><div class="num">4</div><div class="tl-week">WEEK 4 · G2</div><h3>유료 결정점</h3><p>첫 월간 리포트를 "결재권자용 1장"으로. 전환의향 ≥6사. 미달 시 04 가격 핸드오프.<span class="gate">G2 = 유료 결정점</span></p></div>
+      <div class="card tl-step"><div class="num">8</div><div class="tl-week">WEEK 8 · G3</div><h3>스케일 게이트</h3><p>유료 ≥6사(목표 9)·매출 ≥2,300만(목표 3,300)·NPS ≥0. 미달 시 100사 확대 자동 보류 → 피벗.<span class="gate">G3 스케일</span></p></div>
+    </div>
+
+    <div class="phase">
+      <div class="card">
+        <div class="ph-w">0~30일 · 모집·셋업</div>
+        <h3>전환 누수부터 막는다</h3>
+        <ul>
+          <li><b style="color:var(--ink)">P0</b> 결과화면 mailto → <code>/api/lead</code> 교체</li>
+          <li><b style="color:var(--ink)">P0</b> 퍼널 7단계·두 트랙 대시보드 CRM 세팅</li>
+          <li><b style="color:var(--ink)">P0</b> PoC Charter를 LOI 부속서로 고정</li>
+          <li>행정사·노무사 파트너 프로그램 가동(시드 5곳)</li>
+          <li>산단·협회 공동세미나 2회(제조 1·요양 1)</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="ph-w">31~60일 · 검증·전환</div>
+        <h3>4주차 게이트가 심장</h3>
+        <ul>
+          <li>G1(2주) 활성화 게이트 통과</li>
+          <li>G2(4주) = 유료 결정점, 전환의향 ≥6사</li>
+          <li>코호트2(7사) 온보딩 + 트리거 캠페인</li>
+          <li>가격 실험 E1~E5(정가 훼손 없이 소표본)</li>
+          <li>B2C 자동유입 "초대→가입" 선행 신호 측정</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="ph-w">61~90일 · 안정화·스케일</div>
+        <h3>8주에 go/no-go를 강제</h3>
+        <ul>
+          <li>G3(8주) 스케일 게이트 — 15사·3,300만</li>
+          <li>15사 마감·유료 전환·확대 LOI 수집</li>
+          <li>08 재무표 갱신(LTV/CAC·페이백·NRR 실측)</li>
+          <li>B2G 1곳 파일럿 LOI + D3 은행 LOI 타진(송객까지만)</li>
+          <li>No-go 가드레일 문서화</li>
+        </ul>
+      </div>
+    </div>
+    <p class="src muted">출처 · 07 런치·PoC + 99-storyline 30/60/90 액션. 게이트 기준·전환율·CAC는 <b>목표·가정</b>이며 PoC 실측으로 수렴. 핵심 목표(15사·3,300만·100사 확대)는 SSOT 인용.</p>
+  </div>
+</section>
+
+<!-- ============ OPEN ISSUES — light ============ -->
+<section class="tile light" id="open">
+  <div class="container">
+    <div class="sec-head">
+      <span class="eyebrow">오픈이슈 · PoC 실측 대상</span>
+      <h2 class="h2">확인 필요 → 다음 검증 액션.</h2>
+      <p>스토리라인의 생사를 가르는 가정들. 라벨 없는 숫자는 쓰지 않으며, PoC 8주에 실측해 08 재무·01 분모를 갱신합니다.</p>
+    </div>
+    <div class="tbl-wrap">
+      <table class="cmp">
+        <thead><tr>
+          <th>오픈이슈 (빈칸)</th><th>영향</th><th>다음 검증 액션 (언제)</th>
+        </tr></thead>
+        <tbody>
+          <tr><td class="k">PoC→유료 전환율<br/><span class="muted" style="font-weight:400">보수30/공격50%(가정)</span></td><td>깔때기 역산·15사 달성·ARR 빌드</td><td>두 트랙 대시보드 병기, G3(8주) 실측 수렴</td></tr>
+          <tr><td class="k">채널별 CAC<br/><span class="muted" style="font-weight:400">현재 300~500만 추정</span></td><td>LTV/CAC·페이백·BEP 전부</td><td>세미나·인사이드·파트너 단가 PoC 중 실측, 4주차 게이트에서 가중치 재배분</td></tr>
+          <tr><td class="k">B2C 자동유입 전환 60%<br/><span class="muted" style="font-weight:400">CAC 0 활성화율</span></td><td>CAC 0 전제·블렌디드 LTV/CAC·Moneeback ARR</td><td>"초대→가입" 선행 신호 PoC 측정, 활성화율 SMART 정의</td></tr>
+          <tr><td class="k">사당 평균 외국인 수<br/><span class="muted" style="font-weight:400">현재 5명 가정</span></td><td>TAM 사 수·객단가·CAC 분모 전체</td><td>법무부 사업장규모별 1차 통계 확보 / PoC 15사 실측</td></tr>
+          <tr><td class="k">해자 합법성 게이트<br/><span class="muted" style="font-weight:400">신용스코어 양면결합·D3</span></td><td>해자 핵심(우상단)·D3 전체</td><td>금융규제 변호사·컴플라이언스 사전 검토(D3 진입 전 필수 게이트)</td></tr>
+          <tr class="hl"><td class="k">D3 24M 업사이드<br/><span style="font-weight:400">여신(후행)·ARR 본선 미산입</span></td><td>24M 업사이드·IR 상방</td><td>05 송객(모델 A)부터 데이터 축적 후 LOI 타진, 규제 검토 병행</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="src muted">출처 · 99-storyline §4 오픈이슈·§5 30/60/90. 모든 미해결 항목은 <b>목표·가정</b> 라벨이며 PoC 실측 대상. §94 3,000만·합동단속 4,460만(실집행 평균·각주)·체불 1,163만·932만(순이득) 등 법령·환산 수치는 용도별 라벨을 붙여 혼용 금지, 1차 출처와 전문가 검증 필요.</p>
+  </div>
+</section>
+
+<!-- ============ FINAL CTA — dark ============ -->
+<section class="tile dark on-dark">
+  <div class="container final">
+    <h2 class="h2">결론은 하나입니다.</h2>
+    <p>산단 제조 30~50명을 비치헤드로 좁혀 8주 PoC로 닫고, Moneeback 자동유입으로 양면을 잠근 뒤 데이터 위에서 21→60억으로 램프한다.</p>
+    <div class="row">
+      <a class="btn btn-primary" href="business-case-9fk2x7.html#summary">비즈니스 케이스 보기</a>
+      <a class="btn btn-secondary" href="strategy.html">전략 메모</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="container">
+    <div class="ft-top">
+      <div class="ft-intro">
+        <span class="wordmark">PLUG<span class="nx">nx</span></span>
+        <p>채용 이후의 모든 것을 하나의 데이터 파이프라인으로. 외국인 고용·체류 준법관리부터 근로자 금융까지.</p>
+      </div>
+      <div class="ft-col">
+        <h4>GTM</h4>
+        <a href="#streams">8개 워크스트림</a>
+        <a href="#decisions">핵심 결정 3</a>
+        <a href="#matrix">시장 포지셔닝</a>
+        <a href="#timeline">8주 PoC · 30/60/90</a>
+      </div>
+      <div class="ft-col">
+        <h4>연계 산출물</h4>
+        <a href="strategy.html">전략 메모</a>
+        <a href="screening.html">0베이스 스크리닝</a>
+        <a href="business-case-9fk2x7.html#summary">비즈니스 케이스</a>
+      </div>
+      <div class="ft-col">
+        <h4>제품·허브</h4>
+        <a href="index.html">산출물 허브</a>
+        <a href="visadesk.html">VisaDesk (B2B)</a>
+        <a href="moneeback.html">Moneeback (B2C)</a>
+      </div>
+    </div>
+    <div class="ft-disc">
+      <b>참고용 안내.</b> 본 readout은 8개 GTM 워크스트림 산출물의 통합본으로 법적 효력 없는 <b>참고 정보</b>입니다.
+      재무 수치(전환율·CAC·LTV·페이백·NRR·BEP·ARR 빌드)는 확정 실적이 아닌 <b>목표·가정</b>이며 PoC 실측 대상입니다.
+      요금제·ARR(21·60억)·PoC(15사·3,300만)·TAM 등 핵심 목표는 PROJECT.md(사업기획서 v1.0·SSOT)를 그대로 인용했습니다.
+      비자·고용·환급·과태료(§94 등)·K-Trust·여신·신용평가 관련 사실은 자주 개정되므로 시행일·조문 확인과 행정사·노무사·변호사·세무사·금융규제 전문가 검증, 1차 출처(하이코리아·법무부 출입국·외국인정책본부·고용노동부·국민연금공단·법제처) 최신 확인이 필요합니다.
+      개인정보·민감정보(외국인등록번호·여권번호·계좌)는 최소 수집·암호화·국내 보관 원칙으로 처리합니다.<br/><br/>
+      © 2026 PlugNX Inc. · 내부 데모 · <a href="index.html">산출물 허브로</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
