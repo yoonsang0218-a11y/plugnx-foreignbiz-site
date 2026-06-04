@@ -17,7 +17,7 @@
     --soft:#fafbfc; --warn:#f59e0b; --danger:#ef4444; --ok:#10b981;
   }
   *{box-sizing:border-box;margin:0;padding:0}
-  html{scroll-behavior:smooth}
+  html{scroll-behavior:smooth;overflow-x:hidden}
   body{
     background:var(--bg); color:var(--ink);
     font-family:Inter,"Pretendard","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
@@ -721,60 +721,68 @@
   <div class="wrap">
     <div class="reveal">
       <h2 class="sec">01 · Purpose</h2>
-      <h3 class="title">왜 지금, 왜 이 사업인가</h3>
+      <h3 class="title">왜 이 제품인가 — 데이터 입구에서 라이프사이클 인프라로</h3>
       <p class="lead">
-        한국은 2030년까지 생산연령인구가 313만 명 감소하는 ‘축소사회’에 진입합니다. 정부는 이미
-        「2030 이민정책 미래전략」으로 외국인을 ‘노동 보충’이 아닌 <b style="color:var(--ink)">국가성장 자산</b>으로 재정의했습니다.
-        시장·정책·기술이 동시에 정렬되는 이 시점이 사업 진입의 골든타임입니다.
+        앞 섹션이 “왜 외국인 시장인가”를 답했다면, 이 섹션은 “PlugNX가 어떤 방식으로 그 시장에 들어갈 것인가”를 답합니다.
+        핵심은 <b style="color:var(--ink)">채용 이후 B2B 준법 데이터를 먼저 잡고, 같은 데이터를 근로자 환급·본인확인·파트너 금융으로 확장하는 것</b>입니다.
       </p>
     </div>
-    <div class="grid g3" style="margin-top:36px">
+
+    <div class="grid g3 reveal" style="margin-top:36px">
       <div class="card reveal">
-        <div class="tag">WHY</div>
-        <div class="num">-313<span style="font-size:18px;color:var(--muted);margin-left:2px">만</span></div>
-        <h4>축소사회 진입</h4>
-        <p>생산연령인구 ’20년 3,730만 → ’30년 3,417만. 노동력·소비·복지가 동시에 흔들리는 구조적 변곡점.</p>
+        <div class="tag">Product Thesis 01</div>
+        <div class="num">B2B</div>
+        <h4>VisaDesk가 데이터 입구를 만든다</h4>
+        <p>기업이 외국인 근로자를 등록하면 체류기간·직무·근무처·보험·신고기한이 하나의 준법 데이터로 쌓입니다. 이 입구가 없으면 이후 환급·본인확인·금융 연결도 파편으로 남습니다.</p>
       </div>
       <div class="card reveal">
-        <div class="tag">WHO</div>
-        <div class="num">278<span style="font-size:18px;color:var(--muted);margin-left:2px">만</span></div>
-        <h4>이미 도래한 시장</h4>
-        <p>10년간 1.5배 성장한 체류외국인. 단순 노동시장이 아닌 <b>소비·생활·금융 시장</b>으로 전환 중.</p>
+        <div class="tag">Product Thesis 02</div>
+        <div class="num">B2B2C</div>
+        <h4>기업 등록이 근로자 유입으로 바뀐다</h4>
+        <p>기업이 근로자를 초대하면 Moneeback의 환급·급여·생활 안내가 자연스럽게 열립니다. 직접 광고보다 낮은 CAC로 B2C 접점을 만들고, 근로자 만족은 기업 유지율로 되돌아옵니다.</p>
       </div>
       <div class="card reveal">
-        <div class="tag">HOW</div>
-        <div class="num">5<span style="font-size:18px;color:var(--muted);margin-left:2px">대 과제</span></div>
-        <h4>정책 골든타임</h4>
-        <p>K-Trust 인증제·디지털 비자 행정·임금 자문위원회 등 정책이 민간 SaaS와 직접 연결되는 구조.</p>
+        <div class="tag">Product Thesis 03</div>
+        <div class="num">ID</div>
+        <h4>ForeignID가 확장성을 만든다</h4>
+        <p>여권·외국인등록·계좌·전자서명 흐름을 단계적으로 묶어 환급 신청 준비, 전문가 연결, 파트너 금융의 대안평가 신호까지 확장합니다. 직접 판단보다 안전한 인프라 역할에 집중합니다.</p>
       </div>
     </div>
 
-    <div class="grid g2 reveal" style="margin-top:24px">
-      <div class="card" style="background:var(--soft);border:none">
-        <div class="tag" style="background:#fff2f0;color:var(--danger)">고용주의 페인</div>
-        <ul style="list-style:none;font-size:14px;color:var(--ink);line-height:1.85;margin-top:6px">
-          <li>· 체류만료·불법고용 적발 시 최대 <b>3,000만원</b>(범칙금·벌금)</li>
-          <li>· 비자 갱신 거부 시 인력 공백 평균 <b>1,500만원</b>/3개월</li>
-          <li>· 행정사 반복 수수료 <b>건당 80~150만원</b></li>
-          <li>· K-Trust 등 성실기업 제도 시행 시 쿼터 우대·제한 가능성</li>
-        </ul>
-      </div>
-      <div class="card" style="background:var(--soft);border:none">
-        <div class="tag" style="background:#f0fdf4;color:var(--ok)">근로자의 페인</div>
-        <ul style="list-style:none;font-size:14px;color:var(--ink);line-height:1.85;margin-top:6px">
-          <li>· 미수령 환급 1인 <b>1,000만원대</b> 가능성 (연금·고용·퇴직금 합산 추정)</li>
-          <li>· 외국인 임금체불 연 <b>1,200억원</b> (노동부)</li>
-          <li>· 신용·체류정보 부족으로 금융 선택지 제한</li>
-          <li>· 모국어 안내 부재 → 사기·고금리 사금융 노출</li>
-        </ul>
+    <div class="reveal" style="margin-top:24px">
+      <h4 class="block">제품 비전의 핵심 흐름</h4>
+      <div class="flow">
+        <div class="box src">
+          <div class="bt">Entry</div>
+          <h5>VisaDesk</h5>
+          <p>기업 준법관리·근로자 등록</p>
+        </div>
+        <div class="arr">→</div>
+        <div class="box score">
+          <div class="bt">Data Layer</div>
+          <h5>고용·체류·급여 신호</h5>
+          <p>검증 가능한 외국인 데이터</p>
+        </div>
+        <div class="arr">→</div>
+        <div class="box">
+          <div class="bt">Worker App</div>
+          <h5>Moneeback</h5>
+          <p>환급·급여·생활 안내</p>
+        </div>
+        <div class="arr">→</div>
+        <div class="box out">
+          <div class="bt">Infra</div>
+          <h5>ForeignID</h5>
+          <p>본인확인·전문가·파트너 금융 연결</p>
+        </div>
       </div>
     </div>
 
     <div class="verdict reveal" style="margin-top:32px">
       <div class="label">Vision</div>
       <h2>외국인 고용·생활의 전 라이프사이클 인프라.</h2>
-      <p>‘채용 이후 관리 공백’과 ‘퇴직 이후 환급 공백’ — 두 공백을 하나의 데이터 위에서 잡는다.
-        고용주·근로자 양측에 가치 제공 + 외국인 내부 리스크 지표라는 데이터 해자를 동시에 구축한다.</p>
+      <p>PlugNX의 제품 비전은 단일 앱이 아니라 데이터 흐름입니다. 기업의 준법관리에서 시작해 근로자 권리 회복, 본인확인, 파트너 금융 연결까지 이어지는
+        <b>외국인 라이프사이클 운영체계</b>를 만든다.</p>
     </div>
   </div>
 </section>
@@ -902,7 +910,29 @@
         우리가 푸는 <b style="color:var(--ink)">핵심 페인과 니즈</b>를 양측으로 나눠 정리합니다 — 이 고통의 크기가 곧 시장의 크기입니다.
       </p>
     </div>
-    <div class="needs" style="margin-top:36px">
+
+    <div class="grid g2 reveal" style="margin-top:30px">
+      <div class="card" style="background:var(--soft);border:none">
+        <div class="tag" style="background:#fff2f0;color:var(--danger)">고용주의 비용화된 페인</div>
+        <ul style="list-style:none;font-size:14px;color:var(--ink);line-height:1.85;margin-top:6px">
+          <li>· 체류만료·불법고용 적발 시 최대 <b>3,000만원</b>(범칙금·벌금)</li>
+          <li>· 비자 갱신 거부 시 인력 공백 평균 <b>1,500만원</b>/3개월</li>
+          <li>· 행정사 반복 수수료 <b>건당 80~150만원</b></li>
+          <li>· K-Trust 등 성실기업 제도 시행 시 쿼터 우대·제한 가능성</li>
+        </ul>
+      </div>
+      <div class="card" style="background:var(--soft);border:none">
+        <div class="tag" style="background:#f0fdf4;color:var(--ok)">근로자의 생활·환급 페인</div>
+        <ul style="list-style:none;font-size:14px;color:var(--ink);line-height:1.85;margin-top:6px">
+          <li>· 미수령 환급 1인 <b>1,000만원대</b> 가능성 (연금·고용·퇴직금 합산 추정)</li>
+          <li>· 외국인 임금체불 연 <b>1,200억원</b> (노동부)</li>
+          <li>· 신용·체류정보 부족으로 금융 선택지 제한</li>
+          <li>· 모국어 안내 부재 → 사기·고금리 사금융 노출</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="needs reveal" style="margin-top:24px">
       <div class="pillar b2b" style="border-top:4px solid var(--accent)">
         <span class="ptag" style="background:#eef4ff;color:var(--accent)">고용주 (B2B) · 재직관리</span>
         <h5 style="font-size:17px;margin-bottom:14px">PlugNX VisaDesk가 해소</h5>
