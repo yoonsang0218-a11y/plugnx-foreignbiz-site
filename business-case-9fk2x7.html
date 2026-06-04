@@ -193,7 +193,7 @@
   .axis-label.y{left:12px;top:12px}
   .axis-label.x{right:12px;bottom:12px}
   .market-dot{position:absolute;z-index:4;left:var(--x);top:var(--y);transform:translate(-50%,-50%);display:inline-flex;align-items:center;gap:7px;max-width:168px;padding:8px 10px;border:1px solid var(--border);border-radius:999px;background:#fff;color:var(--ink);font-size:12px;font-weight:650;line-height:1.2;white-space:nowrap}
-  .market-dot .score{display:inline-grid;place-items:center;width:23px;height:23px;border-radius:999px;background:#eef1f4;color:var(--muted);font-size:10px;font-weight:800;letter-spacing:0}
+  .market-dot .score{display:inline-grid;place-items:center;min-width:23px;width:auto;height:23px;padding:0 6px;border-radius:999px;background:#eef1f4;color:var(--muted);font-size:10px;font-weight:800;letter-spacing:0}
   .market-dot.core{border-color:var(--accent);background:#f5f8ff;color:var(--accent)}
   .market-dot.core .score{background:var(--accent);color:#fff}
   .market-dot.option{border-color:#cfd7e6}
@@ -1186,7 +1186,7 @@
     <div class="strategy-shell reveal">
       <div class="matrix-card">
         <h4>8대 신시장 우선순위 2×2</h4>
-        <div class="note">세로축은 시장매력도, 가로축은 PlugNX right-to-win. 점수는 전략 평가(가정), 1=낮음·5=높음.</div>
+        <div class="note">세로축은 시장매력도(A), 가로축은 PlugNX right-to-win(W). 버블 숫자는 A, 정확한 A/W decimal은 아래 표에 표시합니다.</div>
         <div class="strategy-matrix" aria-label="8대 신시장 시장매력도와 right-to-win 2x2 매트릭스">
           <div class="quad q1"><b>집중 진입</b>시장도 크고 우리가 이길 이유가 분명한 코어</div>
           <div class="quad q2"><b>옵션 구축</b>수요는 크지만 운영·경쟁 부담을 검증할 시장</div>
@@ -1194,14 +1194,14 @@
           <div class="quad q4"><b>업셀 모듈</b>독립시장보다 기존 제품 고도화로 흡수</div>
           <div class="axis-label y">시장매력도 ↑</div>
           <div class="axis-label x">Right-to-win →</div>
-          <span class="market-dot core edge-right" style="--x:84%;--y:17%"><span class="score">5/5</span>RegTech</span>
-          <span class="market-dot core edge-right" style="--x:84%;--y:31%"><span class="score">5/5</span>FinTech</span>
-          <span class="market-dot core edge-right" style="--x:82%;--y:45%"><span class="score">4/5</span>HRTech/K-Trust</span>
-          <span class="market-dot option" style="--x:56%;--y:24%"><span class="score">4/3</span>채용매칭</span>
-          <span class="market-dot option" style="--x:35%;--y:27%"><span class="score">4/2</span>돌봄</span>
-          <span class="market-dot option" style="--x:55%;--y:66%"><span class="score">3/3</span>사회통합교육</span>
-          <span class="market-dot partner" style="--x:34%;--y:70%"><span class="score">3/2</span>정착생활</span>
-          <span class="market-dot partner" style="--x:60%;--y:80%"><span class="score">3/3</span>권익보호 리걸테크</span>
+          <span class="market-dot core edge-right" style="--x:87%;--y:22%"><span class="score">4.5</span>RegTech</span>
+          <span class="market-dot core edge-right" style="--x:72%;--y:31%"><span class="score">4.4</span>FinTech</span>
+          <span class="market-dot core edge-right" style="--x:74%;--y:50%"><span class="score">3.5</span>HRTech/K-Trust</span>
+          <span class="market-dot option" style="--x:58%;--y:48%"><span class="score">3.5</span>채용매칭</span>
+          <span class="market-dot option" style="--x:46%;--y:36%"><span class="score">4.0</span>돌봄</span>
+          <span class="market-dot option" style="--x:50%;--y:62%"><span class="score">3.0</span>사회통합교육</span>
+          <span class="market-dot partner" style="--x:54%;--y:29%"><span class="score">4.0</span>정착생활</span>
+          <span class="market-dot partner" style="--x:66%;--y:42%"><span class="score">3.5</span>권익보호 리걸테크</span>
         </div>
       </div>
       <div class="strategy-side">
@@ -1229,23 +1229,23 @@
           <tr>
             <th style="width:18%">8대 신시장</th>
             <th>정의</th>
-            <th>시장매력도</th>
-            <th>Right-to-win</th>
+            <th>시장매력도(A)</th>
+            <th>Right-to-win(W)</th>
             <th style="width:24%">전략 판단</th>
           </tr>
         </thead>
         <tbody>
-          <tr class="core-row"><td><b>RegTech</b></td><td>외국인 고용·체류·비자·임금·서류 준법관리</td><td>5</td><td>5</td><td class="judgement">코어 집중 · VisaDesk</td></tr>
-          <tr class="core-row"><td><b>FinTech</b></td><td>미수령 환급·급여 적정성·송금·금융 제휴</td><td>5</td><td>5</td><td class="judgement">코어 집중 · Moneeback</td></tr>
-          <tr class="core-row"><td><b>HRTech/K-Trust</b></td><td>준법 기록·인증 readiness·근속 데이터를 HR 워크플로화</td><td>4</td><td>5</td><td class="judgement">VisaDesk 업셀 모듈</td></tr>
-          <tr><td><b>채용매칭</b></td><td>검증된 외국인 풀과 기업 수요 연결</td><td>4</td><td>3</td><td>데이터 축적 후 옵션</td></tr>
-          <tr><td><b>돌봄</b></td><td>돌봄·간병·가사 인력의 자격·체류·배치 관리</td><td>4</td><td>2</td><td>버티컬 PoC·제휴</td></tr>
-          <tr><td><b>사회통합교육</b></td><td>KIIP·한국어·정착 교육 이수·증빙 트래킹</td><td>3</td><td>3</td><td>콘텐츠보다 증빙 모듈</td></tr>
-          <tr><td><b>정착생활</b></td><td>주거·통신·송금·보험 등 생활 온보딩</td><td>3</td><td>2</td><td>Moneeback 제휴 허브</td></tr>
-          <tr><td><b>권익보호 리걸테크</b></td><td>체류·노동·환급 분쟁의 전문가 연결·진행 추적</td><td>3</td><td>3</td><td>법률자문이 아닌 referral</td></tr>
+          <tr class="core-row"><td><b>RegTech</b></td><td>외국인 고용·체류·비자·임금·서류 준법관리 (screening B1)</td><td>4.5</td><td>4.8</td><td class="judgement">코어 집중 · VisaDesk</td></tr>
+          <tr class="core-row"><td><b>FinTech</b></td><td>미수령 환급·급여 적정성·송금·금융 제휴 (D1·D3·C2 묶음 평균)</td><td>4.4</td><td>4.3</td><td class="judgement">코어 집중 · Moneeback</td></tr>
+          <tr class="core-row"><td><b>HRTech/K-Trust</b></td><td>준법 기록·인증 readiness·근속 데이터를 HR 워크플로화 (screening B3)</td><td>3.5</td><td>4.2</td><td class="judgement">VisaDesk 업셀 모듈</td></tr>
+          <tr><td><b>채용매칭</b></td><td>검증된 외국인 풀과 기업 수요 연결 (A1·A2 평균)</td><td>3.5</td><td>3.3</td><td>데이터 축적 후 옵션</td></tr>
+          <tr><td><b>돌봄</b></td><td>돌봄·간병·가사 인력의 자격·체류·배치 관리 (H1)</td><td>4.0</td><td>3.0</td><td>버티컬 PoC·제휴</td></tr>
+          <tr><td><b>사회통합교육</b></td><td>KIIP·한국어·정착 교육 이수·증빙 트래킹 (G1)</td><td>3.0</td><td>3.0</td><td>콘텐츠보다 증빙 모듈</td></tr>
+          <tr><td><b>정착생활</b></td><td>주거·통신·송금·보험 등 생활 온보딩 (E1·D2·D4·D5 묶음)</td><td>4.0</td><td>3.1</td><td>Moneeback 제휴 허브</td></tr>
+          <tr><td><b>권익보호 리걸테크</b></td><td>체류·노동·환급 분쟁의 전문가 연결·진행 추적 (I1 기반)</td><td>3.5</td><td>4.0</td><td>법률자문이 아닌 referral</td></tr>
         </tbody>
       </table>
-      <p class="strategy-caveat">주: 위 점수는 확정 시장점유율·실적이 아니라 전략 평가(가정)입니다. ‘8대 신시장’은 PlugNX 사업분류(정부 발표 항목 아님)이며, 비자·환급·금융·법률 판단은 법적 효력이 없는 참고 정보입니다. 최신 법령과 행정사·노무사·변호사·세무사 검증이 필요합니다.</p>
+      <p class="strategy-caveat">주: 위 점수는 확정 시장점유율·실적이 아니라 screening.html의 A(시장매력도)·W(right-to-win) 5점 척도를 인용하거나 인접 항목을 묶어 평균낸 전략 평가(가정)입니다. ‘8대 신시장’은 PlugNX 사업분류(정부 발표 항목 아님)이며, 비자·환급·금융·법률 판단은 법적 효력이 없는 참고 정보입니다. 최신 법령과 행정사·노무사·변호사·세무사 검증이 필요합니다.</p>
     </div>
 
     <div class="core3 reveal">
@@ -1315,7 +1315,7 @@
     <div class="grid g2 reveal" style="margin-top:32px">
       <div class="chartbox">
         <h4>도달 가능 시장</h4>
-        <div class="note">단위: 만 명 · ’25.12 기준</div>
+        <div class="note">B2C 사람 단위 · 만 명 · ’25.12 기준</div>
         <div class="funnel">
           <div class="fl" style="background:linear-gradient(120deg,#1e3a8a,#2563eb)"><div class="lab">TAM · 전체 체류외국인</div><div class="val">278<small style="margin-left:6px">만 명</small></div></div>
           <div class="fl" style="background:linear-gradient(120deg,#0e7490,#06b6d4);margin:0 auto;width:84%"><div class="lab">SAM · 장기체류 잠재 고객</div><div class="val">216<small style="margin-left:6px">만 명</small></div></div>
@@ -1332,6 +1332,38 @@
         <div class="note">인접 시장별 진입 매력도 — 자체 평가</div>
         <div class="canvas-h"><canvas id="radarChart"></canvas></div>
       </div>
+    </div>
+
+    <div class="reveal" style="margin-top:24px;overflow-x:auto">
+      <h4 class="block">B2B와 B2C 시장 단위 분리 — 사 vs 명</h4>
+      <table class="dt">
+        <thead>
+          <tr>
+            <th style="width:18%">축</th>
+            <th>TAM</th>
+            <th>SAM</th>
+            <th>SOM / 24M KPI</th>
+            <th style="width:28%">자릿수 정합</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><b>B2B VisaDesk</b><br/><span style="color:var(--muted);font-size:12px">단위: 사업장(사)</span></td>
+            <td>외국인 고용·고용예정 사업장 전체<br/><span style="color:var(--muted);font-size:12px">정확 모수는 PoC 전 리서치로 확인 필요</span></td>
+            <td>외국인 5~50명 고용 중소·중견 제조·요양·서비스 사업장</td>
+            <td><b>24개월 KPI 300사</b><br/><span style="color:var(--muted);font-size:12px">SSOT 목표</span></td>
+            <td>300사 × 평균 관리 33명 ≈ <b>관리 외국인 1만명</b>. B2B 목표는 기업 수와 관리 인원으로 측정.</td>
+          </tr>
+          <tr>
+            <td><b>B2C Moneeback</b><br/><span style="color:var(--muted);font-size:12px">단위: 사람(명)</span></td>
+            <td>체류외국인 <b>278만명</b></td>
+            <td>장기체류 잠재 고객 <b>216만명</b></td>
+            <td><b>3년 SOM 15만명</b><br/><span style="color:var(--muted);font-size:12px">24개월 KPI 10만명</span></td>
+            <td>24개월 10만명은 3년 SOM 15만명의 약 67%. B2B 관리 1만명 + 앱 직접·추천·환급 입소문 유입을 합산한 공격적 목표.</td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="strategy-caveat">주: B2B의 49만은 기업 수가 아니라 E계열 취업 외국인 근로자 풀입니다. 따라서 B2B 시장은 사업장(사), B2C 시장은 사람(명)으로 분리해 관리합니다.</p>
     </div>
 
     <div class="grid g3 reveal" style="margin-top:24px">
@@ -1468,10 +1500,10 @@
         <div class="card"><div class="tag">축적 후 발생</div><h4>② 차별적 데이터</h4><p>동의 기반 고용·체류·환급·금융 신호가 쌓이면 외국인 내부 리스크 지표가 됩니다. 현재는 <b>축적 가설</b>이며, 대외 CB 확장은 인가·샌드박스 이후 옵션입니다.</p></div>
         <div class="card"><div class="tag">현재 보유 · 정합</div><h4>③ 정책 정합성</h4><p>K-Trust·K-CORE·임금 자문위·쿼터 사전공표와 제품 기능이 직접 매핑됩니다. 정책 변화 추적 자체가 SaaS 가치라는 점은 현재 방어 가능한 논리입니다.</p></div>
         <div class="card"><div class="tag">축적 후 발생</div><h4>④ 전환 비용</h4><p>근로자 데이터·서류·이력·알림 기록이 누적될수록 전환비용이 증가합니다. 고객 0단계의 현재 해자가 아니라 <b>고객 운영 데이터가 생긴 뒤 강화되는 해자</b>입니다.</p></div>
-        <div class="card"><div class="tag">구축 중</div><h4>⑤ 전문가 연결망</h4><p>행정사 3,360·변호사 365·노무사 등은 접근 가능한 전문가 풀입니다. 실제 제휴·LOI·티켓 전환율은 PoC에서 검증해 마켓 네트워크로 전환합니다.</p></div>
+        <div class="card"><div class="tag">현재 보유 · 전문가망</div><h4>⑤ 전문가 연결망</h4><p>행정사 3,360·변호사 365·노무사 등 접근 가능한 전문가 풀은 현재 활용 가능한 GTM 자산입니다. 실제 제휴·LOI·티켓 전환율은 PoC에서 검증합니다.</p></div>
         <div class="card" style="background:var(--soft)"><div class="tag">보조 해자</div><h4>+ 브랜드 신뢰</h4><p>공식 출처 기반 문서화·면책 고지·다국어 안내는 초기 신뢰 자산입니다. 다만 브랜드 신뢰도 역시 고객 사례와 전문가 검증으로 축적해야 합니다.</p></div>
       </div>
-      <p class="strategy-caveat">해자 시제 라벨: 현재 보유/설계 자산은 양면 제품 흐름·정책 매핑·공식 출처 기반 운영 규율입니다. 데이터 해자·전환비용·전문가 네트워크 효과는 PoC 이후 실제 고객·근로자·전문가 데이터가 쌓일 때 발생하는 검증 가설입니다.</p>
+      <p class="strategy-caveat">해자 시제 라벨: 현재 보유/설계 자산은 양면 제품 흐름·정책 매핑·공식 출처 기반 운영 규율·전문가망입니다. 데이터 해자·대안신용/CB 옵션·전환비용/락인은 PoC 이후 실제 고객·근로자 데이터가 쌓일 때 발생하는 검증 가설입니다.</p>
     </div>
 
     <div class="reveal" style="margin-top:32px">
@@ -1531,7 +1563,7 @@
       <table class="dt">
         <thead><tr><th>지표</th><th>목표값 (가정)</th><th>근거 / 가정</th></tr></thead>
         <tbody>
-          <tr><td><b>B2B ARPA (월)</b></td><td>도입형 89만원 / 12M 목표 믹스 144만원 <span style="color:var(--muted);font-size:11px">(가정)</span></td><td>Growth 89는 ROI 예시. ARR 21억 목표는 100사 × 월 144만원 × 12개월 = VisaDesk 약 17.3억으로 산정(Compliance·Enterprise 업셀 포함)</td></tr>
+          <tr><td><b>B2B ARPA (월)</b></td><td>land 89만원 → 12개월차 expand 144만원 <span style="color:var(--muted);font-size:11px">(가정)</span></td><td>Growth 89는 도입 플랜. ARR 21억 목표는 100사 × 월 144만원 × 12개월 = VisaDesk 약 17.3억으로 산정(Compliance·Enterprise 업셀 포함)</td></tr>
           <tr><td><b>B2C ARPU (회당)</b></td><td>약 140만원 (환급 1건)</td><td>1,000만원대 환급 가능성 × 13% 성공보수 가정. 실거래 데이터로 보정 필요</td></tr>
           <tr><td><b>B2C CAC</b></td><td>한계 0 <span style="color:var(--muted);font-size:11px">(B2B CAC로 흡수)</span></td><td>B2B 등록 → 자동 유입 (전환 60%+ 가정) — 완전 0이 아닌 한계 CAC 0</td></tr>
           <tr><td><b>해지율 (Churn)</b></td><td>월 1~2% (가정)</td><td>데이터 축적·전문가 연계로 이탈 비용 큼 · 하방 월 2.5% 병기</td></tr>
