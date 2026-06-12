@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow" />
+<title>주간 리서치 플랜 — 타당성 조사 | PlugNX</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --blue:#0066cc; --blue-focus:#0071e3; --sky:#2997ff;
+    --white:#ffffff; --parch:#f5f5f7; --pearl:#fafafc;
+    --tile:#272729; --tile2:#2a2a2c; --black:#000;
+    --ink:#1d1d1f; --ink80:#333; --ink48:#7a7a7a;
+    --on-dark:#fff; --dim:#cccccc;
+    --hair:#e0e0e0; --divider:#f0f0f0;
+    --danger:#d70015; --danger-d:#ff5a4d;
+    --shadow-prod:rgba(0,0,0,.22) 3px 5px 30px 0;
+    --font:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text",Inter,system-ui,"Apple SD Gothic Neo",sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--font);background:var(--white);color:var(--ink);line-height:1.47;
+    letter-spacing:-.022em;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+  a{color:var(--blue);text-decoration:none}
+  .container{max-width:1080px;margin:0 auto;padding:0 22px}
+
+  h1,h2,h3,h4{letter-spacing:-.022em;font-weight:600;color:var(--ink)}
+  .eyebrow{font-size:14px;font-weight:600;color:var(--blue);letter-spacing:0}
+  .display{font-size:clamp(32px,5.4vw,52px);font-weight:600;line-height:1.07;letter-spacing:-.028em}
+  .h2{font-size:clamp(27px,3.6vw,40px);font-weight:600;line-height:1.1;letter-spacing:-.024em}
+  .lead{font-size:clamp(18px,2.2vw,23px);font-weight:400;line-height:1.32;color:var(--ink80)}
+  .muted{color:var(--ink48)}
+
+  .tile{padding:clamp(56px,8vw,84px) 0}
+  .tile.light{background:var(--white)}
+  .tile.parch{background:var(--parch)}
+  .tile.dark{background:var(--tile);color:var(--dim)}
+  .on-dark h2,.on-dark h3{color:var(--on-dark)}
+  .sec-head{max-width:760px;margin:0 auto clamp(30px,5vw,46px);text-align:center}
+  .sec-head .eyebrow{display:block;margin-bottom:12px}
+  .sec-head .h2{margin-bottom:12px}
+  .sec-head p{font-size:18px;color:var(--ink48);line-height:1.45}
+  .on-dark .sec-head p{color:var(--dim)}
+
+  .gnav{background:var(--black);height:44px;position:relative;z-index:60}
+  .gnav .container{height:44px;display:flex;align-items:center;gap:18px}
+  .gnav a{color:#f5f5f7;font-size:12px;font-weight:400;opacity:.85}
+  .gnav a:hover{opacity:1}
+  .wordmark{font-weight:700;font-size:15px;color:#fff}
+  .wordmark .nx{color:#fff;opacity:.62}
+  .gnav .sp{margin-left:auto}
+  .subnav{position:sticky;top:0;z-index:55;height:52px;
+    background:rgba(245,245,247,.82);-webkit-backdrop-filter:saturate(180%) blur(20px);backdrop-filter:saturate(180%) blur(20px);
+    border-bottom:1px solid rgba(0,0,0,.08)}
+  .subnav .container{height:52px;display:flex;align-items:center;gap:22px}
+  .subnav .cat{font-size:21px;font-weight:600}
+  .subnav .cat b{color:var(--blue)}
+  .subnav .right{margin-left:auto}
+  .btn{display:inline-flex;align-items:center;gap:7px;font-size:14px;font-weight:400;
+    padding:8px 16px;border-radius:980px;border:1px solid var(--blue);color:var(--blue);text-decoration:none;transition:transform .12s}
+  .btn:active{transform:scale(.96)}
+
+  .hero{text-align:center;padding:clamp(44px,6vw,64px) 0 clamp(28px,4vw,40px)}
+  .hero .eyebrow{margin-bottom:14px;display:block}
+  .hero .display{margin-bottom:16px}
+  .hero .lead{max-width:640px;margin:0 auto}
+  .chip{font-size:13px;color:var(--ink48);background:var(--parch);border:1px solid var(--hair);
+    border-radius:980px;padding:6px 13px;display:inline-block;margin:18px 4px 0}
+  .chip b{color:var(--ink)}
+
+  /* timeline */
+  .weeks{max-width:840px;margin:0 auto;display:flex;flex-direction:column;gap:14px}
+  .wk{background:#fff;border:1px solid var(--hair);border-radius:18px;padding:22px 24px;
+    display:flex;gap:18px;align-items:flex-start}
+  .wk .date{flex:0 0 92px;font-size:15px;font-weight:600;color:var(--ink);padding-top:2px}
+  .wk .date small{display:block;font-size:11px;font-weight:600;letter-spacing:.04em;margin-top:4px}
+  .wk.done .date small{color:#1d8a4f}
+  .wk.next .date small{color:var(--blue)}
+  .wk.plan .date small{color:var(--ink48)}
+  .wk .body{flex:1}
+  .wk .line{font-size:15.5px;color:var(--ink);line-height:1.55}
+  .wk .line b{font-weight:600}
+  .wk .why{font-size:13px;color:var(--ink48);margin-top:8px;line-height:1.5}
+  .wk .why b{color:var(--ink80);font-weight:600}
+  .wk.next{border:2px solid var(--blue);padding:21px 23px}
+  @media(max-width:640px){.wk{flex-direction:column;gap:8px}.wk .date{flex:none}}
+
+  /* spare items */
+  .g2{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;max-width:840px;margin:0 auto}
+  @media(max-width:640px){.g2{grid-template-columns:1fr}}
+  .card{background:var(--tile2);border:1px solid rgba(255,255,255,.12);border-radius:18px;padding:20px}
+  .card h4{font-size:15px;font-weight:600;color:#fff;margin-bottom:6px}
+  .card p{font-size:13.5px;color:var(--dim);line-height:1.5}
+
+  footer{background:var(--parch);padding:44px 0 48px;color:var(--ink48)}
+  .ft-disc{font-size:12px;line-height:1.7;max-width:840px}
+  .ft-disc b{color:var(--ink80)}
+  .ft-links{margin-bottom:14px;font-size:14px}
+  .ft-links a{margin-right:16px}
+</style>
+</head>
+<body>
+
+<div class="gnav">
+  <div class="container">
+    <span class="wordmark">PLUG<span class="nx">nx</span></span>
+    <a href="business-case-9fk2x7.html">타당성 보고서</a>
+    <a href="feasibility-gate.html">go/no-go</a>
+    <a class="sp" href="index.html">산출물 허브</a>
+  </div>
+</div>
+
+<div class="subnav">
+  <div class="container">
+    <span class="cat">주간 <b>리서치 플랜</b></span>
+    <div class="right"><a class="btn" href="index.html">허브로</a></div>
+  </div>
+</div>
+
+<section class="tile light">
+  <div class="container hero">
+    <span class="eyebrow">타당성 조사 · 주간 플랜</span>
+    <h1 class="display">매주 업체 한 카테고리씩,<br/>5주면 판정이 나온다.</h1>
+    <p class="lead">"이 사업을 할 만한가"를 외국인 관련 업체 리서치로 검증합니다 — 비자관리 SaaS → 송금·금융 → 채용 → 환급·신용 → 종합 지도 순서. 매주 한 줄이 주간보고가 됩니다.</p>
+    <div>
+      <span class="chip">현 단계 <b>시장조사·타사조사</b></span>
+      <span class="chip">판정 시점 <b>7/13주</b></span>
+      <span class="chip">완료 <b>1 / 6주</b></span>
+    </div>
+  </div>
+</section>
+
+<section class="tile parch">
+  <div class="container">
+    <div class="sec-head">
+      <span class="eyebrow">주차별 한 줄</span>
+      <h2 class="h2">리서치 타임라인</h2>
+      <p>완료 주는 결과로 덮어쓰고, 계획 주는 그 주의 주간보고 "금주 추진계획" 문장이 됩니다.</p>
+    </div>
+    <div class="weeks">
+      <div class="wk done">
+        <div class="date">6/8주<small>완료</small></div>
+        <div class="body">
+          <div class="line">외국인 대상 경쟁 B2C 앱 4사(vivisa·다가치·비잡·glow) 전수조사 — <b>당사 코어(B2B 준법+환급) 비충돌 확인</b>, 진입/회피 영역 도출</div>
+          <div class="why"><b>확인된 것</b> · 4사 전원 B2C 정보/입구 레이어·수익화 미검증 — B2B-입구 모델의 정당성 실증. 워치: vivisa×클링커즈 동맹(비자데이터→대체신용평가).</div>
+        </div>
+      </div>
+      <div class="wk next">
+        <div class="date">6/15주<small>다음 주</small></div>
+        <div class="body">
+          <div class="line"><b>예스퓨처(비비자) 미팅</b>: 외국인 사업 현황·확장 방향 파악(유학생 비자 SaaS·클링커즈 제휴 동향) + 외국인 B2B 관리 SaaS 경쟁조사(자블리 등)</div>
+          <div class="why"><b>판정 기준</b> · 비비자가 E계열(기업)로 북상 중이면 속도전 경고, 유학생×대학에 머물면 제휴 후보(졸업→취업 핸드오프).</div>
+        </div>
+      </div>
+      <div class="wk plan">
+        <div class="date">6/22주<small>계획</small></div>
+        <div class="body">
+          <div class="line">외국인 송금·금융 업체 조사: <b>한패스·GME·E9페이·트래블월렛</b> — 사업모델·수수료·고객확보 방식 비교 (센트비 미팅 대비 사전조사)</div>
+          <div class="why"><b>판정 기준</b> · 송금은 레드오션(직접 진입 ✕) — 고객확보 비용 구조를 보고 "B2B 모객 우위" 가설 검증.</div>
+        </div>
+      </div>
+      <div class="wk plan">
+        <div class="date">6/29주<small>계획</small></div>
+        <div class="body">
+          <div class="line">외국인 채용·인력 플랫폼 조사: <b>코워크·잡플로이·사람인 KoMate·월드잡플러스</b> — 채용 이후(체류관리·금융) 영역 진출 여부 확인</div>
+          <div class="why"><b>판정 기준</b> · 채용 입구 업체가 "채용 이후"로 내려오고 있는지 — 비어 있으면 우리 공백 유지, 진출 중이면 속도전.</div>
+        </div>
+      </div>
+      <div class="wk plan">
+        <div class="date">7/6주<small>계획</small></div>
+        <div class="body">
+          <div class="line">환급·신용평가 업체 조사: <b>삼쩜삼(환급 BM 벤치마크)·크레파스(대안신용)·인터넷은행(토스·케이뱅크)</b> 외국인 금융 현황</div>
+          <div class="why"><b>판정 기준</b> · 환급 성공보수 모델의 단위경제(삼쩜삼)와 외국인 여신 공백(인터넷은행) — 우리 수익모델의 원형 검증.</div>
+        </div>
+      </div>
+      <div class="wk plan">
+        <div class="date">7/13주<small>판정</small></div>
+        <div class="body">
+          <div class="line"><b>외국인 관련 업체 지도 종합</b>(경쟁/제휴/공백 분류) 및 사업 타당성 <b>go/no-go 재판정</b> 보고</div>
+          <div class="why"><b>출구</b> · GO → 8주 PoC 설계 착수 / 조건부 → 부족 축 보강 / NO → 인접 아이템 피벗(<a href="screening.html">스크리닝</a> 활용).</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="tile dark on-dark">
+  <div class="container">
+    <div class="sec-head">
+      <span class="eyebrow">예비 아이템</span>
+      <h2 class="h2">주차 교체·추가용 리서치 카드</h2>
+      <p>미팅 일정·우선순위가 바뀌면 위 주차와 교체해 쓰는 예비 풀입니다.</p>
+    </div>
+    <div class="g2">
+      <div class="card"><h4>산업단지공단·중소기업중앙회</h4><p>입주기업 대상 준법 세미나 공동개최 타진 — 영업 채널 검증 겸용.</p></div>
+      <div class="card"><h4>행정사·노무사 인터뷰</h4><p>외국인 고용 전문 2~3인 — 기업 페인·지불의사·레퍼럴 제휴 수용도.</p></div>
+      <div class="card"><h4>국경간 가상자산 이전업 등록제</h4><p>~12월 시행 요건 확인 — 스테이블코인 결제 협의(헥토·다날)와 연계. <a href="stablecoin-rail.html" style="color:var(--sky)">상세 →</a></p></div>
+      <div class="card"><h4>비자 신청대행 행정사법 경계</h4><p>서비스 표현·범위의 법적 리스크 점검 — "연결·준비 지원"까지가 안전선.</p></div>
+      <div class="card"><h4>타깃 시장 모수 추정</h4><p>고용허가제 업종별 통계로 외국인 5~50명 고용 사업장 수 산정 — 침투율 현실성.</p></div>
+      <div class="card"><h4>K-Trust·연금 환급 통계</h4><p>인증제 시행 일정(법무부)·반환일시금 미수령 규모(공단) — 정책 시장성 근거.</p></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="ft-links">
+      <a href="index.html">산출물 허브</a>
+      <a href="business-case-9fk2x7.html#summary">타당성 보고서</a>
+      <a href="feasibility-gate.html">go/no-go 게이트</a>
+      <a href="screening.html">0베이스 스크리닝</a>
+      <a href="gtm.html">GTM readout</a>
+    </div>
+    <p class="ft-disc">
+      <b>참고용 안내.</b> 본 플랜은 내부 타당성 조사 일정으로 법적 효력이 없는 참고 정보입니다. 업체·시장 정보는 공개 출처 기준이며 미팅·실사로 확인이 필요합니다.
+      비자·환급·금융·법률 관련 판단은 행정사·노무사·변호사·금융 전문가 검증과 최신 법령 확인이 필요합니다.<br/><br/>
+      © 2026 PlugNX Inc. · 내부용 · 주차별 한 줄의 원본은 저장소 <code>WEEKLY.md</code>
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>

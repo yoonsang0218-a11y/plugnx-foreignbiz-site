@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow" />
+<title>스테이블코인 금융 레일 — 규제 지형도·시퀀싱·제휴구조 | PlugNX</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --blue:#0066cc; --blue-focus:#0071e3; --sky:#2997ff;
+    --white:#ffffff; --parch:#f5f5f7; --pearl:#fafafc;
+    --tile:#272729; --tile2:#2a2a2c; --black:#000;
+    --ink:#1d1d1f; --ink80:#333; --ink48:#7a7a7a;
+    --on-dark:#fff; --dim:#cccccc;
+    --hair:#e0e0e0; --divider:#f0f0f0;
+    --danger:#d70015; --danger-d:#ff5a4d;
+    --shadow-prod:rgba(0,0,0,.22) 3px 5px 30px 0;
+    --font:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text",Inter,system-ui,"Apple SD Gothic Neo",sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;overflow-x:hidden}
+  body{font-family:var(--font);background:var(--white);color:var(--ink);line-height:1.47;
+    letter-spacing:-.022em;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:hidden}
+  a{color:var(--blue);text-decoration:none}
+  .container{max-width:1080px;margin:0 auto;padding:0 22px}
+  img{max-width:100%}
+
+  /* ---- typography ---- */
+  h1,h2,h3,h4{letter-spacing:-.022em;font-weight:600;color:var(--ink)}
+  .eyebrow{font-size:14px;font-weight:600;color:var(--blue);letter-spacing:0}
+  .display{font-size:clamp(32px,5.4vw,56px);font-weight:600;line-height:1.07;letter-spacing:-.028em}
+  .h2{font-size:clamp(27px,3.6vw,40px);font-weight:600;line-height:1.1;letter-spacing:-.024em}
+  .lead{font-size:clamp(19px,2.2vw,26px);font-weight:400;line-height:1.28;color:var(--ink80)}
+  .body{font-size:17px;font-weight:400;line-height:1.47}
+  .muted{color:var(--ink48)}
+  .on-dark .lead{color:var(--dim)}
+  .on-dark h1,.on-dark h2,.on-dark h3,.on-dark h4{color:var(--on-dark)}
+  .on-dark{color:var(--dim)}
+  .on-dark a{color:var(--sky)}
+  .on-dark .eyebrow{color:var(--sky)}
+
+  /* ---- tiles ---- */
+  .tile{padding:clamp(56px,8vw,88px) 0}
+  .tile.light{background:var(--white)}
+  .tile.parch{background:var(--parch)}
+  .tile.dark{background:var(--tile);color:var(--dim)}
+  .tile.black{background:var(--black);color:var(--dim)}
+  .sec-head{max-width:760px;margin:0 auto clamp(34px,5vw,52px);text-align:center}
+  .sec-head .eyebrow{display:block;margin-bottom:12px}
+  .sec-head .h2{margin-bottom:14px}
+  .sec-head p{font-size:19px;color:var(--ink48);line-height:1.42}
+  .on-dark .sec-head p{color:var(--dim)}
+
+  /* ---- buttons ---- */
+  .btn{display:inline-flex;align-items:center;gap:7px;font-family:var(--font);font-size:17px;
+    font-weight:400;letter-spacing:-.022em;padding:11px 22px;border-radius:980px;border:1px solid transparent;
+    cursor:pointer;transition:transform .12s ease,background .2s,opacity .2s;white-space:nowrap;text-decoration:none}
+  .btn:active{transform:scale(.96)}
+  .btn:focus-visible{outline:2px solid var(--blue-focus);outline-offset:3px}
+  .btn-primary{background:var(--blue);color:#fff;border-color:var(--blue)}
+  .btn-primary:hover{background:#0a6fd6}
+  .btn-secondary{background:transparent;color:var(--blue);border-color:var(--blue)}
+  .btn-secondary:hover{background:rgba(0,102,204,.06)}
+  .on-dark .btn-secondary{color:var(--sky);border-color:var(--sky)}
+  .on-dark .btn-secondary:hover{background:rgba(41,151,255,.12)}
+  .btn-sm{font-size:14px;padding:8px 16px}
+  .btn-dark{background:var(--ink);color:#fff;border-radius:8px;font-size:14px;padding:8px 15px}
+  .btn-dark:active{transform:scale(.96)}
+  .btn-text{color:var(--blue);font-size:17px;font-weight:400;display:inline-flex;align-items:center;gap:5px}
+  .btn-text:hover{text-decoration:underline}
+
+  /* ---- nav ---- */
+  .gnav{background:var(--black);height:44px;position:relative;z-index:60}
+  .gnav .container{height:44px;display:flex;align-items:center;gap:18px}
+  .gnav a{color:#f5f5f7;font-size:12px;font-weight:400;letter-spacing:-.01em;opacity:.85}
+  .gnav a:hover{opacity:1}
+  .wordmark{font-weight:700;font-size:15px;color:#fff;letter-spacing:-.02em}
+  .wordmark .nx{color:#fff;opacity:.62}
+  .gnav .sp{margin-left:auto}
+  .subnav{position:sticky;top:0;z-index:55;height:52px;
+    background:rgba(245,245,247,.82);-webkit-backdrop-filter:saturate(180%) blur(20px);backdrop-filter:saturate(180%) blur(20px);
+    border-bottom:1px solid rgba(0,0,0,.08)}
+  .subnav .container{height:52px;display:flex;align-items:center;gap:22px}
+  .subnav .cat{font-size:21px;font-weight:600;color:var(--ink);letter-spacing:-.02em}
+  .subnav .cat b{color:var(--blue)}
+  .subnav .links{display:flex;gap:22px;margin-left:8px}
+  .subnav .links a{font-size:13px;color:var(--ink80);font-weight:400}
+  .subnav .links a:hover{color:var(--ink)}
+  .subnav .right{margin-left:auto;display:flex;align-items:center;gap:12px}
+  @media(max-width:900px){.subnav .links{display:none}}
+  @media(max-width:560px){
+    .container{padding:0 20px}
+    .gnav .links-extra{display:none}
+    .subnav .container{gap:10px;min-width:0}
+    .subnav .cat{font-size:18px;min-width:0;white-space:nowrap}
+    .subnav .right{margin-left:auto;min-width:0;gap:8px}
+    .subnav .right .btn{display:none}
+    .display{font-size:clamp(30px,10vw,39px);line-height:1.14;letter-spacing:0;overflow-wrap:anywhere}
+    .lead{font-size:18px;line-height:1.42}
+    .btn,.btn-text{max-width:100%;white-space:normal;text-align:center;justify-content:center}
+    .hero-cta{gap:10px}
+  }
+
+  /* ---- hero ---- */
+  .hero{text-align:center;padding:clamp(48px,7vw,76px) 0 clamp(36px,5vw,56px)}
+  .hero .eyebrow{margin-bottom:14px}
+  .hero .display{margin-bottom:18px}
+  .hero .lead{max-width:660px;margin:0 auto 26px}
+  .hero-cta{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-bottom:14px}
+  .hero-cta .btn-text{padding:11px 4px}
+  .hero-pills{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:6px}
+  .chip{font-size:13px;color:var(--ink48);background:var(--parch);border:1px solid var(--hair);
+    border-radius:980px;padding:6px 13px}
+  .chip b{color:var(--ink)}
+
+  /* product mock (the one shadow) */
+  .mock{max-width:520px;margin:clamp(34px,5vw,52px) auto 0;background:#fff;border:1px solid var(--hair);
+    border-radius:18px;padding:24px;box-shadow:var(--shadow-prod);text-align:left}
+  .mock-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
+  .mock-co{font-size:17px;font-weight:600}
+  .mock-co small{display:block;color:var(--ink48);font-weight:400;font-size:12px;margin-top:2px;letter-spacing:0}
+  .mock-tag{font-size:11px;font-weight:600;color:var(--blue);background:rgba(0,102,204,.08);
+    border-radius:980px;padding:4px 10px}
+  .flow{display:flex;align-items:stretch;gap:0;margin-bottom:4px}
+  .flow-step{flex:1;text-align:center;padding:14px 6px;border:1px solid var(--divider);background:var(--pearl);
+    border-radius:12px;position:relative}
+  .flow-step .fs-ic{font-size:20px;display:block;margin-bottom:6px}
+  .flow-step .fs-t{font-size:12px;font-weight:600;color:var(--ink);line-height:1.3}
+  .flow-step .fs-s{font-size:11px;color:var(--ink48);margin-top:3px;letter-spacing:0}
+  .flow-arrow{display:flex;align-items:center;color:var(--blue);font-size:18px;font-weight:600;padding:0 5px;flex:0 0 auto}
+  @media(max-width:560px){.flow{flex-direction:column}.flow-arrow{transform:rotate(90deg);padding:4px 0;justify-content:center}}
+  .mock-note{font-size:12px;color:var(--ink48);margin-top:14px;line-height:1.5}
+
+  /* ---- grids ---- */
+  .g2{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+  .g3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .g4{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+  @media(max-width:900px){.g4{grid-template-columns:repeat(2,1fr)}.g3{grid-template-columns:1fr}}
+  @media(max-width:640px){.g2,.g4{grid-template-columns:1fr}}
+
+  /* ---- cards ---- */
+  .card{background:#fff;border:1px solid var(--hair);border-radius:18px;padding:24px}
+  .on-dark .card{background:var(--tile2);border-color:rgba(255,255,255,.12)}
+  .card h3{font-size:19px;font-weight:600;margin-bottom:8px}
+  .card p{font-size:15px;color:var(--ink48);line-height:1.5}
+  .on-dark .card p{color:var(--dim)}
+  .feat .fic{font-size:26px;margin-bottom:14px;display:block}
+  .feat .fn{font-size:12px;font-weight:600;color:var(--blue);letter-spacing:.04em;display:block;margin-bottom:6px}
+  .src{font-size:12px;color:var(--ink48);margin-top:20px;line-height:1.6}
+  .on-dark .src{color:#8a8a8e}
+
+  /* table */
+  .tbl-wrap{overflow-x:auto;border:1px solid var(--hair);border-radius:18px;background:#fff}
+  .on-dark .tbl-wrap{border-color:rgba(255,255,255,.12);background:var(--tile2)}
+  table.cmp{width:100%;border-collapse:collapse;font-size:14px;min-width:680px}
+  table.cmp th{text-align:left;padding:14px 18px;font-size:12px;font-weight:600;color:var(--ink48);
+    text-transform:uppercase;letter-spacing:.03em;border-bottom:1px solid var(--hair)}
+  table.cmp td{padding:14px 18px;color:var(--ink48);border-bottom:1px solid var(--divider);vertical-align:top}
+  table.cmp tr:last-child td{border-bottom:none}
+  table.cmp td.k{color:var(--ink);font-weight:600;white-space:nowrap}
+  table.cmp tr.hl td{background:rgba(0,102,204,.05);color:var(--ink)}
+  table.cmp tr.hl td.k{color:var(--blue)}
+  .on-dark table.cmp th{color:#9a9a9e;border-bottom-color:rgba(255,255,255,.14)}
+  .on-dark table.cmp td{color:var(--dim);border-bottom-color:rgba(255,255,255,.08)}
+  .on-dark table.cmp td.k{color:#fff}
+  .on-dark table.cmp tr.hl td{background:rgba(41,151,255,.1);color:#fff}
+  .on-dark table.cmp tr.hl td.k{color:var(--sky)}
+  .verdict{display:inline-block;font-size:12px;font-weight:600;border-radius:980px;padding:3px 11px;white-space:nowrap}
+  .v-no{color:var(--danger);background:rgba(215,0,21,.08)}
+  .v-lim{color:#9a6a00;background:rgba(245,166,35,.12)}
+  .v-mix{color:var(--blue);background:rgba(0,102,204,.08)}
+  .on-dark .v-no{color:var(--danger-d);background:rgba(255,90,77,.14)}
+  .on-dark .v-lim{color:#f5c451;background:rgba(245,166,35,.16)}
+  .on-dark .v-mix{color:var(--sky);background:rgba(41,151,255,.14)}
+
+  /* market stat row */
+  .mkt-row{display:flex;gap:36px;flex-wrap:wrap;justify-content:center;margin-top:8px}
+  .mkt{text-align:center}
+  .mkt .n{font-size:30px;font-weight:600;color:var(--ink);letter-spacing:-.02em}
+  .mkt .l{font-size:13px;color:var(--ink48);margin-top:4px}
+
+  /* solve cards (light) */
+  .solve .num{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;font-weight:600;
+    background:rgba(0,102,204,.1);color:var(--blue);margin-bottom:14px;font-size:16px}
+  .solve .avoid{font-size:12px;font-weight:600;color:var(--ink48);letter-spacing:.02em;display:block;margin-bottom:8px}
+  .solve h3{font-size:18px;font-weight:600;margin-bottom:10px;line-height:1.32}
+  .solve p{font-size:14px;color:var(--ink48);line-height:1.55}
+  .solve .key{color:var(--blue);font-weight:600}
+
+  /* sequencing timeline */
+  .seq{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  @media(max-width:760px){.seq{grid-template-columns:1fr}}
+  .seq-step .ph{font-size:12px;font-weight:600;color:var(--blue);letter-spacing:.04em}
+  .seq-step .num{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;font-weight:600;
+    background:rgba(0,102,204,.1);color:var(--blue);margin-bottom:14px}
+  .seq-step h3{font-size:18px;font-weight:600;margin:6px 0 6px}
+  .seq-step .gate{font-size:12px;color:var(--ink48);margin-bottom:10px}
+  .seq-step p{font-size:14px;color:var(--ink48);line-height:1.55}
+  .seq-step .gate b{color:var(--ink);font-weight:600}
+
+  /* partner structure (dark) */
+  .pstruct{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:8px}
+  @media(max-width:760px){.pstruct{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:440px){.pstruct{grid-template-columns:1fr}}
+  .pnode{background:var(--tile2);border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:18px}
+  .pnode.core{border-color:var(--sky);background:rgba(41,151,255,.07)}
+  .pnode .role{font-size:11px;font-weight:600;color:var(--sky);letter-spacing:.04em;display:block;margin-bottom:6px}
+  .pnode h4{font-size:15px;font-weight:600;color:#fff;margin-bottom:6px}
+  .pnode p{font-size:13px;color:var(--dim);line-height:1.5}
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:24px}
+  @media(max-width:640px){.split{grid-template-columns:1fr}}
+  .keepbox h4{font-size:15px;font-weight:600;color:#fff;margin-bottom:10px}
+  .keepbox ul{list-style:none;display:flex;flex-direction:column;gap:9px}
+  .keepbox li{font-size:14px;color:var(--dim);display:flex;gap:9px;align-items:flex-start;line-height:1.45}
+  .keepbox li:before{content:"";width:5px;height:5px;border-radius:50%;background:var(--sky);margin-top:8px;flex:0 0 auto}
+  .warnbox{background:rgba(255,90,77,.1);border:1px solid rgba(255,90,77,.28);border-radius:14px;padding:18px 20px;margin-top:24px}
+  .warnbox b{color:var(--danger-d);font-weight:600}
+  .warnbox p{font-size:14px;color:var(--dim);line-height:1.55}
+
+  /* gate list (light) */
+  .gates{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:24px}
+  @media(max-width:640px){.gates{grid-template-columns:1fr}}
+  .gate-item{background:#fff;border:1px solid var(--hair);border-radius:14px;padding:16px 18px}
+  .gate-item .gi-n{font-size:12px;font-weight:600;color:var(--blue);letter-spacing:.04em}
+  .gate-item h4{font-size:15px;font-weight:600;margin:5px 0 5px}
+  .gate-item p{font-size:13px;color:var(--ink48);line-height:1.5}
+
+  /* risk list (light) */
+  .risks{display:flex;flex-direction:column;gap:12px;max-width:860px;margin:0 auto}
+  .risk{display:flex;gap:16px;align-items:flex-start;background:#fff;border:1px solid var(--hair);border-radius:14px;padding:16px 20px}
+  .risk .rn{font-size:13px;font-weight:600;color:#fff;background:var(--danger);border-radius:980px;
+    min-width:26px;height:26px;display:grid;place-items:center;flex:0 0 auto;margin-top:1px}
+  .risk h4{font-size:16px;font-weight:600;margin-bottom:4px}
+  .risk p{font-size:14px;color:var(--ink48);line-height:1.5}
+
+  /* verdict banner */
+  .vbanner{max-width:720px;margin:32px auto 0;text-align:center;background:var(--parch);
+    border:1px solid var(--hair);border-radius:18px;padding:28px 26px}
+  .vbanner .vlabel{font-size:13px;font-weight:600;color:var(--blue);letter-spacing:.04em;margin-bottom:8px}
+  .vbanner .vbig{font-size:clamp(22px,3vw,30px);font-weight:600;color:var(--ink);line-height:1.3;letter-spacing:-.02em}
+  .vbanner .vbig b{color:var(--blue)}
+  .vbanner p{font-size:15px;color:var(--ink48);margin-top:12px;line-height:1.6}
+
+  /* disclaimer callout */
+  .legal-note{background:rgba(245,166,35,.08);border:1px solid rgba(245,166,35,.3);border-radius:14px;
+    padding:16px 20px;font-size:13px;color:var(--ink80);line-height:1.6;max-width:860px;margin:0 auto}
+  .legal-note b{color:var(--ink);font-weight:600}
+  .on-dark .legal-note{background:rgba(245,166,35,.1);border-color:rgba(245,166,35,.32);color:var(--dim)}
+  .on-dark .legal-note b{color:#f5c451}
+
+  /* final */
+  .final{text-align:center}
+  .final .h2{margin-bottom:14px}
+  .final p{font-size:19px;color:var(--dim);max-width:600px;margin:0 auto 28px}
+  .final .row{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+
+  /* footer */
+  footer{background:var(--parch);padding:56px 0 40px;color:var(--ink48)}
+  .ft-top{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:28px}
+  @media(max-width:760px){.ft-top{grid-template-columns:1fr 1fr}}
+  @media(max-width:460px){.ft-top{grid-template-columns:1fr}}
+  .ft-intro .wordmark{color:var(--ink)}
+  .ft-intro .wordmark .nx{color:var(--ink48)}
+  .ft-intro p{font-size:13px;color:var(--ink48);margin-top:12px;max-width:280px;line-height:1.6}
+  .ft-col h4{font-size:13px;font-weight:600;color:var(--ink);margin-bottom:12px}
+  .ft-col a{display:block;font-size:14px;color:var(--ink48);margin-bottom:10px;line-height:1.4}
+  .ft-col a:hover{color:var(--ink)}
+  .ft-disc{margin-top:34px;padding-top:24px;border-top:1px solid var(--hair);font-size:12px;color:var(--ink48);line-height:1.7}
+  .ft-disc b{color:var(--ink80)}
+</style>
+</head>
+<body>
+
+<!-- ============ GLOBAL NAV ============ -->
+<div class="gnav">
+  <div class="container">
+    <span class="wordmark">PLUG<span class="nx">nx</span></span>
+    <a class="links-extra" href="visadesk.html">VisaDesk</a>
+    <a class="links-extra" href="moneeback.html">Moneeback</a>
+    <a class="sp" href="index.html">산출물 허브</a>
+  </div>
+</div>
+
+<!-- ============ SUB NAV ============ -->
+<div class="subnav">
+  <div class="container">
+    <span class="cat">Stablecoin <b>Rail</b></span>
+    <div class="links">
+      <a href="#market">시장·왜</a>
+      <a href="#regmap">규제 지형도</a>
+      <a href="#design">규제 설계</a>
+      <a href="#sequencing">시퀀싱</a>
+      <a href="#partners">제휴구조</a>
+      <a href="#gates">KYC/AML</a>
+      <a href="#risk">go/no-go</a>
+    </div>
+    <div class="right">
+      <a class="btn btn-primary btn-sm" href="#risk">현 판정 보기</a>
+    </div>
+  </div>
+</div>
+
+<!-- ============ HERO — light ============ -->
+<section class="tile light">
+  <div class="container hero">
+    <span class="eyebrow">금융 확장 II · 스테이블코인 레일 (탐색)</span>
+    <h1 class="display">비자로 모객하고,<br/>스테이블코인 레일로 번다.</h1>
+    <p class="lead">스테이블코인 급여전환·송금·여신은 외국인 신용 인프라의 <b>Phase 3 수익엔진</b>입니다. VisaDesk가 검증된 고객과 데이터라는 연료를 공급하면, 같은 파이프라인 위에서 코인 레일이 가치를 포착합니다.</p>
+    <div class="hero-cta">
+      <a class="btn btn-primary" href="#regmap">규제 지형도 보기</a>
+      <a class="btn-text" href="#risk">현 판정: 탐색(Explore) ›</a>
+    </div>
+    <div class="hero-pills">
+      <span class="chip">기준 <b>2026.6</b></span>
+      <span class="chip">급여전환 · 송금 · 여신</span>
+      <span class="chip"><b>참고용</b> · 법무·금융당국 확인 필요</span>
+      <span class="chip">보수적 추정</span>
+    </div>
+
+    <!-- product mock : the single shadow -->
+    <div class="mock">
+      <div class="mock-top">
+        <div class="mock-co">PlugNX 금융 레일<small>모객 → 데이터 → 코인 레일</small></div>
+        <span class="mock-tag">개념도</span>
+      </div>
+      <div class="flow">
+        <div class="flow-step">
+          <span class="fs-ic">🪪</span>
+          <div class="fs-t">비자로 모객</div>
+          <div class="fs-s">VisaDesk · 검증 고객</div>
+        </div>
+        <div class="flow-arrow">›</div>
+        <div class="flow-step">
+          <span class="fs-ic">📊</span>
+          <div class="fs-t">데이터 파이프라인</div>
+          <div class="fs-s">고용·급여·체류</div>
+        </div>
+        <div class="flow-arrow">›</div>
+        <div class="flow-step" style="border-color:rgba(0,102,204,.3);background:rgba(0,102,204,.04)">
+          <span class="fs-ic">🪙</span>
+          <div class="fs-t">코인 레일로 수익</div>
+          <div class="fs-s">전환·송금·여신</div>
+        </div>
+      </div>
+      <p class="mock-note">개념 모델 · 실제 적용은 단계별 규제 통과를 전제로 함. 코인 레일은 별도 면허·등록 보유 제휴사를 경유.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ B. MARKET / WHY — parchment ============ -->
+<section class="tile parch" id="market">
+  <div class="container">
+    <div class="sec-head">
+      <span class="eyebrow">시장 · 왜 지금인가</span>
+      <h2 class="h2">송금 시장은 크고,<br/>레일은 아직 비어 있습니다.</h2>
+      <p>외국인 본국 송금은 5년 누적 25조원 규모인데, 기존 채널은 모두 전통 레일·단발 송금입니다. 고용데이터로 모객하고 양면 파이프라인 위에 코인 레일을 얹는 빈 공간이 남아 있습니다.</p>
+    </div>
+    <div class="mkt-row" style="margin-bottom:36px">
+      <div class="mkt"><div class="n">약 25조원</div><div class="l">외국인 송금 5년 누적 (176.3억$, 2020~24)</div></div>
+      <div class="mkt"><div class="n">~34.9억$</div><div class="l">연간 송금액 (2024)</div></div>
+      <div class="mkt"><div class="n">태국 39% · 베트남 16%</div><div class="l">주요 수취국 비중</div></div>
+      <div class="mkt"><div class="n">~86%↓ · 5분</div><div class="l">코인레일 수수료/속도 우위 (SWIFT 대비, 추정)</div></div>
+    </div>
+    <div class="g2">
+      <div class="card">
+        <span class="eyebrow">기존 채널의 한계</span>
+        <h3 style="margin-top:8px">전통 레일 · 단발 송금</h3>
+        <p class="body muted" style="margin-top:6px">한패스·센트비·GME·와이즈·트래블월렛 — 모두 전통 외환 레일 기반의 1회성 송금 서비스입니다. 고객을 모으는 자체 파이프라인이 없고, 송금 그 자체가 상품의 끝입니다.</p>
+      </div>
+      <div class="card" style="border-color:var(--blue);background:rgba(0,102,204,.04)">
+        <span class="eyebrow">PlugNX의 빈 공간</span>
+        <h3 style="margin-top:8px">모객 + 양면 파이프라인 + 코인 레일</h3>
+        <p class="body muted" style="margin-top:6px">VisaDesk가 고용데이터로 고객을 모으고(CAC 우위), Moneeback이 환급·급여로 관계를 유지하며, 그 위에 코인 레일을 얹습니다. 송금은 끝이 아니라 데이터·관계의 한 접점입니다.</p>
+      </div>
+    </div>
+    <p class="src muted">출처 · 한국은행 거주자 대외송금(2020~24 누적 176.3억$, 연 ~34.9억$ 2024). 수취국 비중·수수료/속도 우위는 업계 자료 기반 <b>추정</b>으로 기준시점·환율에 따라 변동, <b>확인 필요</b>. 위 채널명은 시장 예시이며 평가가 아님.</p>
+  </div>
+</section>
+
+<!-- ============ C. REGULATORY MAP — dark ★핵심 ============ -->
+<section class="tile dark on-dark" id="regmap">
+  <div class="container">
+    <div class="sec-head">
+      <span class="eyebrow">★ 규제 지형도 (기준 2026.6)</span>
+      <h2 class="h2">기능마다 판정이 다릅니다.<br/>코인 = 통화가 아닙니다.</h2>
+      <p>스테이블코인 금융을 한 덩어리로 보면 전부 막힌 것처럼 보입니다. 3개 기능으로 쪼개면 각각 다른 병목과 다른 활로가 보입니다.</p>
+    </div>
+    <div class="tbl-wrap">
+      <table class="cmp">
+        <thead><tr>
+          <th>기능</th><th>판정 (2026.6)</th><th>핵심 병목</th>
+        </tr></thead>
+        <tbody>
+          <tr>
+            <td class="k">급여를 스테이블코인으로<br/><span style="font-weight:400">직접 지급</span></td>
+            <td><span class="verdict v-no">불가 (원칙적 금지)</span></td>
+            <td>근로기준법 §43 임금 <b style="color:#fff">통화불 원칙</b>(법정통화 지급). 가상자산은 통화로 인정되지 않아 임금 지급 수단이 될 수 없음</td>
+          </tr>
+          <tr>
+            <td class="k">원화 → USDT/USDC →<br/><span style="font-weight:400">본국 송금</span></td>
+            <td><span class="verdict v-lim">제약 (등록제 신설)</span></td>
+            <td>외국환거래법 개정 <b style="color:#fff">2026.6.2 공포</b> · ~2026.12 시행 예정 <b style="color:#fff">'국경간 가상자산 이전업' 사전등록</b> + 외환망 보고. 등록 전 영위 시 무등록 외국환업무(형사 리스크)</td>
+          </tr>
+          <tr>
+            <td class="k">거래이력 기반<br/><span style="font-weight:400">소액여신</span></td>
+            <td><span class="verdict v-mix">코인담보형 봉쇄 / 데이터형 가능</span></td>
+            <td>DAXA 가이드(2025.9) — 코인 담보·금전성 대여 제한. 단 <b style="color:#fff">'데이터 기반 신용평가 → 제휴사 일반 여신'</b>은 가상자산 대여와 별개 영역</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="g3" style="margin-top:24px">
+      <div class="card">
+        <span class="fn" style="color:var(--sky)">결정변수 ①</span>
+        <h3>국경간 가상자산 이전업 등록제</h3>
+        <p>2026.12 시행 예정 · 확정·임박. 송금 기능의 합법화 전제 조건. 등록 보유 제휴사 경유가 현실적 경로.</p>
+      </div>
+      <div class="card">
+        <span class="fn" style="color:var(--sky)">결정변수 ②</span>
+        <h3>디지털자산기본법 2단계</h3>
+        <p>미통과. 원화 스테이블코인 발행구조를 두고 한국은행(51% 은행컨소시엄) vs 금융위 이견. 발행 가능 여부가 불확실.</p>
+      </div>
+      <div class="card">
+        <span class="fn" style="color:var(--sky)">결정변수 ③</span>
+        <h3>사업 구조 재설계</h3>
+        <p>'지급'이 아닌 '자발적 전환', '코인 담보'가 아닌 '데이터 여신'으로 행위를 재정의해 규제 경계 안에 머무는 설계.</p>
+      </div>
+    </div>
+    <p class="src">출처 · 근로기준법 §43, 외국환거래법 개정(2026.6.2 공포·시행시기 미확정), DAXA 자율규제 가이드(2025.9). <b>입법·시행 진행 중으로 시점·세부 내용 변동 가능 — 변호사·금융위·기재부·한국은행 확인 필요.</b> 판정은 현행 정보 기반 보수적 해석이며 법적 효력 없음.</p>
+  </div>
+</section>
+
+<!-- ============ D. REGULATION DESIGN — light ============ -->
+<section class="tile light" id="design">
+  <div class="container">
+    <div class="sec-head">
+      <span class="eyebrow">규제 회피 설계 · "되게 만드는 법"</span>
+      <h2 class="h2">금지를 피하는 건<br/>행위를 다시 정의하는 일입니다.</h2>
+      <p>같은 결과라도 '누가 무엇을 하는가'를 바꾸면 규제 경계가 달라집니다. 세 가지 핵심 재설계로 막힌 길을 우회합니다.</p>
+    </div>
+    <div class="g3">
+      <div class="card solve">
+        <div class="num">1</div>
+        <span class="avoid">회피 대상 · 임금 통화불 원칙</span>
+        <h3>'지급 방식'이 아니라<br/>'자발적 전환 부가서비스'</h3>
+        <p>회사가 코인으로 급여를 <b>지급</b>하면 §43 위반. 대신 근로자가 <span class="key">원화 급여를 정상 수령한 뒤</span>, 본인 의사로 스테이블코인으로 전환하는 부가서비스로 설계합니다. 임금 지급은 원화로 완결되고, 전환은 별개의 자발적 행위입니다.</p>
+      </div>
+      <div class="card solve">
+        <div class="num">2</div>
+        <span class="avoid">회피 대상 · 가상자산 대여 규제</span>
+        <h3>'코인 담보'가 아니라<br/>'데이터 신용스코어 여신'</h3>
+        <p>코인을 담보로 잡으면 DAXA 가이드에 봉쇄. 대신 <span class="key">고용+금융 데이터로 신용스코어를 산출</span>해 제휴은행의 <b>일반 여신</b>을 중개합니다. 가상자산 대여가 아니며, 기존 데이터 해자와 정합합니다.</p>
+      </div>
+      <div class="card solve">
+        <div class="num">3</div>
+        <span class="avoid">회피 대상 · 원화SC 발행 독점</span>
+        <h3>발행이 막히면<br/>'유통·접점·UX 레이어'로</h3>
+        <p>원화 스테이블코인 발행구조가 은행컨소시엄 독점으로 확정되면 <b>발행은 포기</b>합니다. 대신 <span class="key">유통·고객접점·UX 레이어</span>에 포지셔닝해, 누가 발행하든 외국인 사용자 접점을 PlugNX가 쥡니다.</p>
+      </div>
+    </div>
+    <div class="legal-note" style="margin-top:24px">
+      <b>참고용 설계 가설입니다.</b> '자발적 전환'·'데이터 여신'이 실제로 규제 경계 안에 머무는지는 행위·책임 구조와 계약·아키텍처 설계에 달려 있으며, 시행 전 반드시 변호사·금융당국(금융위·FIU) 검토가 필요합니다. 잘못 설계하면 VASP 의제·무등록 영업으로 간주될 수 있습니다.
+    </div>
+  </div>
+</section>
+
+<!-- ============ E. SEQUENCING — parchment ============ -->
+<section class="tile parch" id="sequencing">
+  <div class="container">
+    <div class="sec-head">
+      <span class="eyebrow">시퀀싱 · 3 Phase</span>
+      <h2 class="h2">규제가 열리는 순서대로<br/>기능을 켭니다.</h2>
+      <p>가장 안전하고 확실한 데이터 여신부터 시작해, 등록제가 시행되면 송금을, 원화SC가 가능해지면 급여전환을 켭니다. 늦고 불확실한 것은 뒤로 미룹니다.</p>
+    </div>
+    <div class="seq">
+      <div class="card seq-step">
+        <div class="num">1</div>
+        <div class="ph">PHASE 1 · 지금</div>
+        <h3>모객 + 데이터 여신</h3>
+        <div class="gate"><b>전제</b> · 코인과 분리 → 규제 독립</div>
+        <p>VisaDesk로 모객하고, 코인과 무관한 <b style="color:var(--ink)">데이터 기반 여신</b>을 제휴사와 시작합니다. 동시에 송금 제휴사 실사와 컴플라이언트 레일을 사전 구축합니다.</p>
+      </div>
+      <div class="card seq-step">
+        <div class="num">2</div>
+        <div class="ph">PHASE 2 · ~2026.12 이후</div>
+        <h3>송금</h3>
+        <div class="gate"><b>전제</b> · 국경간 가상자산 이전업 등록제 시행 후</div>
+        <p>원화 급여 수령 → 근로자 자발적 스테이블코인 전환 → 본국 송금. <b style="color:var(--ink)">등록을 보유한 제휴사</b>를 경유해 무등록 리스크를 회피합니다.</p>
+      </div>
+      <div class="card seq-step">
+        <div class="num">3</div>
+        <div class="ph">PHASE 3 · 가장 늦음</div>
+        <h3>원화SC 급여전환 확장</h3>
+        <div class="gate"><b>전제</b> · 디지털자산기본법 · 원화SC 이후</div>
+        <p>원화 스테이블코인 기반 급여전환으로 확장. 입법·발행구조가 불확실해 <b style="color:var(--ink)">가장 늦고 불확실</b>한 단계로 둡니다.</p>
+      </div>
+    </div>
+    <p class="src muted">시점은 2026.6 기준 입법 현황에 따른 계획이며 시행 일정은 변동될 수 있음 — <b>확인 필요</b>. 각 Phase 진입은 앞 단계 통과와 제휴 실사·규제 검토를 전제로 함.</p>
+  </div>
+</section>
+
+<!-- ============ F. PARTNER STRUCTURE & VALUE CAPTURE — dark ============ -->
+<section class="tile dark on-dark" id="partners">
+  <div class="container">
+    <div class="sec-head">
+      <span class="eyebrow">제휴 구조 & 가치포착</span>
+      <h2 class="h2">면허는 넘기고,<br/>데이터와 고객관계는 쥡니다.</h2>
+      <p>송금·여신의 법적 책임(면허·신고)은 적격 제휴사에 맡기고, PlugNX는 신원·체류·고용·급여 데이터와 고객관계라는 진짜 해자를 보유합니다.</p>
+    </div>
+    <div class="pstruct">
+      <div class="pnode">
+        <span class="role">지갑</span>
+        <h4>트래버스 툭월렛</h4>
+        <p>스테이블코인 지갑·보관 레이어 (제휴 후보)</p>
+      </div>
+      <div class="pnode">
+        <span class="role">AML / 송금</span>
+        <h4>트랜사이트</h4>
+        <p>AML 판정·송금 면허 레이어 (제휴 후보)</p>
+      </div>
+      <div class="pnode">
+        <span class="role">여신</span>
+        <h4>제휴 은행</h4>
+        <p>데이터 신용스코어 기반 일반 여신 심사·실행</p>
+      </div>
+      <div class="pnode core">
+        <span class="role">코어 (PlugNX)</span>
+        <h4>모객 + 데이터 + 관계</h4>
+        <p>ForeignID·VisaDesk가 고객·데이터·관계를 공급</p>
+      </div>
+    </div>
+    <div class="legal-note" style="margin-top:18px">
+      <b>제휴 후보는 공개정보로 확인 불가.</b> 트래버스 툭월렛·트랜사이트 등 제휴 후보의 인가·VASP 신고·등록 현황은 공개 자료로 검증되지 않았습니다. 실제 제휴 전 인가·면허·등록 실사가 필수입니다.
+    </div>
+    <div class="split">
+      <div class="keepbox">
+        <h4>✅ PlugNX가 쥘 것</h4>
+        <ul>
+          <li>신원·체류·고용·급여 데이터 (ForeignID + VisaDesk)</li>
+          <li>외국인 신용스코어의 데이터 원천</li>
+          <li>외국인 고객접점과 고객관계</li>
+        </ul>
+      </div>
+      <div class="keepbox">
+        <h4>➡️ 제휴사에 넘길 것</h4>
+        <ul>
+          <li>VASP 신고 · AML 판정</li>
+          <li>송금 면허 · 외환 등록</li>
+          <li>여신 심사 (법적 책임 = 면허 보유 제휴사)</li>
+        </ul>
+      </div>
+    </div>
+    <div class="warnbox">
+      <p><b>⚠️ VASP 의제 리스크.</b> 앱에서 전환·송금 UX를 직접 통제하면 미신고 가상자산사업(VASP) 영업으로 간주될 수 있습니다. 행위·책임 경계를 계약과 아키텍처로 명확히 분리해, 면허 행위는 제휴사가, 접점·데이터는 PlugNX가 수행하도록 설계해야 합니다.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ G. KYC/AML GATES — light ============ -->
+<section class="tile light" id="gates">
+  <div class="container">
+    <div class="sec-head">
+      <span class="eyebrow">KYC / AML 게이트</span>
+      <h2 class="h2">금융 기능은 인증 레벨로<br/>게이트됩니다.</h2>
+      <p>ForeignID 인증 레벨과 금융 행위를 매핑합니다. 지갑 개설은 L2, 전환·송금·여신은 L3(step-up). 트래블룰 확대 입법예고로 사실상 전 거래가 KYC 대상입니다.</p>
+    </div>
+    <div class="tbl-wrap" style="max-width:760px;margin:0 auto">
+      <table class="cmp" style="min-width:520px">
+        <thead><tr>
+          <th>금융 행위</th><th>필요 ForeignID 레벨</th><th>수집·검증</th>
+        </tr></thead>
+        <tbody>
+          <tr><td class="k">지갑 개설</td><td><span class="verdict v-mix">L2</span></td><td>여권 + 셀카 + 외국인등록증 + 통신 본인확인</td></tr>
+          <tr class="hl"><td class="k">전환 · 송금 · 여신</td><td><span class="verdict v-mix">L3 (step-up)</span></td><td>L2 + 계좌 인증 + 전자서명 — 금융거래 신뢰수준</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="body muted" style="text-align:center;max-width:720px;margin:18px auto 0">트래블룰은 <b style="color:var(--ink)">100만원 미만 전 구간 확대 입법예고</b> 상태 — 사실상 전 거래에 송수신인 정보 식별이 전제됩니다.</p>
+    <div class="gates">
+      <div class="gate-item"><div class="gi-n">GATE 1</div><h4>VASP 적격성</h4><p>제휴사의 가상자산사업자 신고·인가 유효성 검증</p></div>
+      <div class="gate-item"><div class="gi-n">GATE 2</div><h4>트래블룰</h4><p>송수신인 정보 식별·전송 (한도 확대 전제)</p></div>
+      <div class="gate-item"><div class="gi-n">GATE 3</div><h4>스테이블코인 AML</h4><p>코인 흐름 모니터링·의심거래 보고 (입법 진행 중)</p></div>
+      <div class="gate-item"><div class="gi-n">GATE 4</div><h4>외환 면허</h4><p>국경간 가상자산 이전업 등록·외환망 보고</p></div>
+      <div class="gate-item"><div class="gi-n">GATE 5</div><h4>개인정보 충돌</h4><p>고유식별·지갑주소·AML 보존 vs 최소보관 원칙의 긴장</p></div>
+      <div class="gate-item"><div class="gi-n">GATE 6</div><h4>제재 · 환치기</h4><p>제재 대상·자금세탁(환치기) 악용 차단</p></div>
+      <div class="gate-item" style="grid-column:1/-1"><div class="gi-n">GATE 7</div><h4>책임분담 계약</h4><p>면허 행위(제휴사) vs 접점·데이터(PlugNX)의 행위·책임 경계를 계약·아키텍처로 분리 — VASP 의제 회피의 핵심</p></div>
+    </div>
+    <p class="src muted">레벨 매핑은 ForeignID L1~L3 설계 기준. 트래블룰 한도·스테이블코인 AML은 <b>입법 진행 중으로 변동 가능 — 확인 필요</b>. 개인정보 보존·최소보관 충돌은 법무·DPO 검토 필요.</p>
+  </div>
+</section>
+
+<!-- ============ H. RISK + GO/NO-GO — light ============ -->
+<section class="tile light" id="risk">
+  <div class="container">
+    <div class="sec-head">
+      <span class="eyebrow">리스크 · go / no-go</span>
+      <h2 class="h2">규제가 움직이는 표적이라<br/>판정은 '탐색'입니다.</h2>
+      <p>입법이 진행 중이라 모든 판정에 변동 가능성이 있습니다. 가장 안전한 데이터 여신부터 시작하고, 송금은 등록제 시행과 제휴 실사 통과 후로 게이트합니다.</p>
+    </div>
+    <div class="risks">
+      <div class="risk"><span class="rn">1</span><div><h4>규제 이동표적</h4><p>트래블룰 한도·스테이블코인 AML이 입법 진행 중 — 설계 전제가 시행 시점에 바뀔 수 있음.</p></div></div>
+      <div class="risk"><span class="rn">2</span><div><h4>VASP 의제</h4><p>전환·송금 UX를 직접 통제하면 미신고 가상자산 영업으로 간주될 위험.</p></div></div>
+      <div class="risk"><span class="rn">3</span><div><h4>환치기 악용</h4><p>코인 레일이 불법 자금이체(환치기) 통로로 악용될 AML 리스크.</p></div></div>
+      <div class="risk"><span class="rn">4</span><div><h4>외환 ↔ 가상자산 규제 공백</h4><p>외환 규제와 가상자산 규제 사이의 공백·중첩에서 해석 리스크 발생.</p></div></div>
+      <div class="risk"><span class="rn">5</span><div><h4>데이터 책임 역설</h4><p>AML 보존 의무 vs 개인정보 최소보관 원칙이 충돌 — 어느 쪽을 따라도 책임이 남음.</p></div></div>
+    </div>
+    <div class="vbanner">
+      <div class="vlabel">현 판정 (2026.6 기준)</div>
+      <div class="vbig">탐색 <b>(Explore)</b> — Phase 1(데이터 여신)부터,<br/>송금은 2026.12 등록제·제휴 실사 통과 후.</div>
+      <p>모든 리스크는 PlugNX feasibility-gate의 go/no-go 게이트로 연결해 단계별로 재평가합니다. 큰 진입 결정 전 변호사·금융당국 검토를 게이트 통과 조건으로 둡니다.</p>
+    </div>
+    <div style="text-align:center;margin-top:28px">
+      <a class="btn btn-primary" href="feasibility-gate.html">타당성 게이트로 연결 ›</a>
+      <a class="btn btn-secondary" href="business-case-9fk2x7.html#summary" style="margin-left:8px">비즈니스 케이스 보기</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FINAL CTA — dark ============ -->
+<section class="tile dark on-dark">
+  <div class="container final">
+    <h2 class="h2">레일은 천천히, 모객은 지금.</h2>
+    <p>코인 레일은 규제가 열리는 순서대로 켭니다. 그 전에 VisaDesk가 검증된 고객과 데이터를 쌓아 두면, 레일이 열리는 순간 가장 앞에 섭니다.</p>
+    <div class="row">
+      <a class="btn btn-primary" href="gtm.html">GTM 진입전략 보기</a>
+      <a class="btn btn-secondary" href="index.html">산출물 허브</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="container">
+    <div class="ft-top">
+      <div class="ft-intro">
+        <span class="wordmark">PLUG<span class="nx">nx</span></span>
+        <p>채용 이후의 모든 것을 하나의 데이터 파이프라인으로. 비자로 모객하고, 그 위에 금융 레일을 얹습니다.</p>
+      </div>
+      <div class="ft-col">
+        <h4>이 문서</h4>
+        <a href="#regmap">규제 지형도</a>
+        <a href="#design">규제 설계</a>
+        <a href="#sequencing">시퀀싱</a>
+        <a href="#partners">제휴구조</a>
+      </div>
+      <div class="ft-col">
+        <h4>연결 산출물</h4>
+        <a href="index.html">산출물 허브</a>
+        <a href="screening.html">스크리닝</a>
+        <a href="feasibility-gate.html">타당성 게이트</a>
+        <a href="gtm.html">GTM 전략</a>
+      </div>
+      <div class="ft-col">
+        <h4>서비스</h4>
+        <a href="visadesk.html">VisaDesk (B2B)</a>
+        <a href="moneeback.html">Moneeback (B2C)</a>
+        <a href="business-case-9fk2x7.html#summary">비즈니스 케이스</a>
+      </div>
+    </div>
+    <div class="ft-disc">
+      <b>참고용 안내 · 입법 진행 중.</b> 본 문서의 규제·법령·금융 판정은 2026.6 기준 현행 정보에 대한 보수적 해석으로 <b>법적 효력이 없습니다.</b>
+      근로기준법 §43, 외국환거래법 개정, DAXA 가이드, 디지털자산기본법, 트래블룰·스테이블코인 AML은 입법·시행이 진행 중이라 시점·내용이 변동될 수 있으며,
+      급여전환·송금·여신 사업화 전 반드시 <b>변호사·금융당국(금융위·FIU·기재부·한국은행)</b> 확인이 필요합니다.
+      제휴 후보(트래버스 툭월렛·트랜사이트)의 인가·VASP·등록 현황은 공개정보로 확인되지 않아 실사가 필수입니다.
+      개인정보·민감정보(외국인등록번호·여권번호·계좌·지갑주소)는 최소 수집·암호화·국내 보관 원칙으로 처리합니다.<br/><br/>
+      © 2026 PlugNX Inc. · 내부 데모 · <a href="index.html">산출물 허브로</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
