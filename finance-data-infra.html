@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow" />
+<title>외국인 고용·금융 데이터 인프라 기획서 | PlugNX</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --blue:#0066cc; --blue-focus:#0071e3; --sky:#2997ff;
+    --white:#ffffff; --parch:#f5f5f7; --pearl:#fafafc;
+    --tile:#272729; --tile2:#2a2a2c; --black:#000;
+    --ink:#1d1d1f; --ink80:#333; --ink48:#7a7a7a;
+    --on-dark:#fff; --dim:#cccccc;
+    --hair:#e0e0e0; --divider:#f0f0f0;
+    --danger:#d70015; --danger-d:#ff5a4d; --green:#1d8a4f; --amber:#b25e00;
+    --shadow-prod:rgba(0,0,0,.22) 3px 5px 30px 0;
+    --font:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text",Inter,system-ui,"Apple SD Gothic Neo",sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--font);background:var(--white);color:var(--ink);line-height:1.47;
+    letter-spacing:-.022em;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+  a{color:var(--blue);text-decoration:none}
+  .container{max-width:1080px;margin:0 auto;padding:0 22px}
+  h1,h2,h3,h4{letter-spacing:-.022em;font-weight:600;color:var(--ink)}
+  .eyebrow{font-size:14px;font-weight:600;color:var(--blue);letter-spacing:0}
+  .display{font-size:clamp(33px,5.4vw,54px);font-weight:600;line-height:1.06;letter-spacing:-.028em}
+  .h2{font-size:clamp(27px,3.6vw,40px);font-weight:600;line-height:1.1;letter-spacing:-.024em}
+  .lead{font-size:clamp(18px,2.2vw,23px);font-weight:400;line-height:1.34;color:var(--ink80)}
+  .muted{color:var(--ink48)}
+  b{font-weight:600}
+
+  .tile{padding:clamp(54px,7.5vw,82px) 0}
+  .tile.light{background:var(--white)}
+  .tile.parch{background:var(--parch)}
+  .tile.dark{background:var(--tile);color:var(--dim)}
+  .on-dark h2,.on-dark h3,.on-dark h4{color:var(--on-dark)}
+  .sec-head{max-width:780px;margin:0 auto clamp(28px,4.5vw,44px)}
+  .sec-head.ctr{text-align:center;margin-left:auto;margin-right:auto}
+  .sec-head .eyebrow{display:block;margin-bottom:12px}
+  .sec-head .h2{margin-bottom:13px}
+  .sec-head p{font-size:18px;color:var(--ink48);line-height:1.46}
+  .on-dark .sec-head p{color:var(--dim)}
+
+  .gnav{background:var(--black);height:44px;position:relative;z-index:60}
+  .gnav .container{height:44px;display:flex;align-items:center;gap:18px}
+  .gnav a{color:#f5f5f7;font-size:12px;font-weight:400;opacity:.85}
+  .gnav a:hover{opacity:1}
+  .wordmark{font-weight:700;font-size:15px;color:#fff}
+  .wordmark .nx{color:#fff;opacity:.62}
+  .gnav .sp{margin-left:auto}
+  .subnav{position:sticky;top:0;z-index:55;height:52px;
+    background:rgba(245,245,247,.82);-webkit-backdrop-filter:saturate(180%) blur(20px);backdrop-filter:saturate(180%) blur(20px);
+    border-bottom:1px solid rgba(0,0,0,.08)}
+  .subnav .container{height:52px;display:flex;align-items:center;gap:20px}
+  .subnav .cat{font-size:20px;font-weight:600}
+  .subnav .cat b{color:var(--blue)}
+  .subnav .links{display:flex;gap:17px;font-size:13px}
+  .subnav .links a{color:var(--ink80)}
+  .subnav .links a:hover{color:var(--blue)}
+  .subnav .right{margin-left:auto}
+  @media(max-width:820px){.subnav .links{display:none}}
+  .btn{display:inline-flex;align-items:center;gap:7px;font-size:14px;font-weight:400;
+    padding:8px 17px;border-radius:980px;border:1px solid var(--blue);color:var(--blue);transition:transform .12s}
+  .btn:active{transform:scale(.96)}
+  .btn-primary{background:var(--blue);color:#fff}
+
+  .hero{text-align:center;padding:clamp(46px,6vw,68px) 0 clamp(30px,4vw,42px)}
+  .hero .eyebrow{margin-bottom:14px;display:block}
+  .hero .display{margin-bottom:18px}
+  .hero .lead{max-width:720px;margin:0 auto}
+  .chips{margin-top:22px}
+  .chip{font-size:13px;color:var(--ink48);background:var(--parch);border:1px solid var(--hair);
+    border-radius:980px;padding:6px 14px;display:inline-block;margin:5px 4px 0}
+  .chip b{color:var(--ink)}
+
+  /* exec summary box */
+  .exec{max-width:880px;margin:0 auto;background:var(--tile);color:var(--dim);border-radius:22px;
+    padding:clamp(28px,4vw,40px);box-shadow:var(--shadow-prod)}
+  .exec .lab{font-size:13px;font-weight:600;color:var(--sky);letter-spacing:.02em;margin-bottom:8px}
+  .exec h3{color:#fff;font-size:clamp(20px,2.6vw,26px);line-height:1.32;margin-bottom:16px;font-weight:600}
+  .exec p{font-size:15px;line-height:1.62;color:#d6d6d8;margin-bottom:11px}
+  .exec p b{color:#fff}
+  .exec .hl{color:var(--sky)}
+
+  /* stat row */
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;max-width:920px;margin:0 auto}
+  @media(max-width:720px){.stats{grid-template-columns:repeat(2,1fr)}}
+  .stat{background:#fff;border:1px solid var(--hair);border-radius:16px;padding:22px 18px;text-align:center}
+  .stat .n{font-size:clamp(26px,3.4vw,34px);font-weight:600;color:var(--blue);letter-spacing:-.02em}
+  .stat .n.zero{color:var(--danger)}
+  .stat .l{font-size:12.5px;color:var(--ink48);margin-top:6px;line-height:1.4}
+
+  /* pains 3-col */
+  .g3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  @media(max-width:820px){.g3{grid-template-columns:1fr}}
+  .pain{background:var(--tile2);border:1px solid rgba(255,255,255,.1);border-radius:18px;padding:24px}
+  .pain .ic{font-size:24px;margin-bottom:12px}
+  .pain h4{color:#fff;font-size:17px;margin-bottom:8px}
+  .pain p{font-size:13.5px;color:var(--dim);line-height:1.55}
+  .pain .src{font-size:11.5px;color:#8a8a8e;margin-top:10px}
+
+  /* tables */
+  .tbl-wrap{max-width:960px;margin:0 auto;overflow-x:auto;border:1px solid var(--hair);border-radius:16px;background:#fff}
+  table{border-collapse:collapse;width:100%;font-size:14px;min-width:600px}
+  th,td{text-align:left;padding:13px 16px;border-bottom:1px solid var(--divider);vertical-align:top}
+  th{font-weight:600;color:var(--ink);background:var(--pearl);font-size:13px;position:sticky;top:0}
+  tr:last-child td{border-bottom:none}
+  td .k{font-weight:600}
+  tr.hl td{background:rgba(0,102,204,.05)}
+  tr.warn td{background:rgba(215,0,21,.04)}
+  .pill{display:inline-block;font-size:11px;font-weight:600;padding:2px 9px;border-radius:980px;white-space:nowrap}
+  .pill.now{background:rgba(29,138,79,.12);color:var(--green)}
+  .pill.mid{background:rgba(178,94,0,.12);color:var(--amber)}
+  .pill.late{background:rgba(215,0,21,.1);color:var(--danger)}
+  .pill.blue{background:rgba(0,102,204,.1);color:var(--blue)}
+
+  /* portfolio */
+  .horizon{max-width:980px;margin:0 auto 26px}
+  .horizon .htag{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+  .horizon .htag .pill{font-size:12px}
+  .horizon .htag .ht{font-size:15px;font-weight:600;color:var(--ink48)}
+  .pf{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  @media(max-width:900px){.pf{grid-template-columns:1fr}}
+  .item{background:#fff;border:1px solid var(--hair);border-radius:18px;padding:20px;display:flex;flex-direction:column}
+  .item .id{font-size:12px;font-weight:700;color:var(--blue);letter-spacing:.03em}
+  .item h4{font-size:16px;margin:5px 0 9px;line-height:1.3}
+  .item p{font-size:13px;color:var(--ink80);line-height:1.5;margin-bottom:8px}
+  .item .meta{margin-top:auto;font-size:11.5px;color:var(--ink48);border-top:1px solid var(--divider);padding-top:9px}
+  .item .meta b{color:var(--ink80)}
+
+  /* reg paths */
+  .paths{max-width:920px;margin:0 auto;display:flex;flex-direction:column;gap:10px}
+  .path{display:flex;gap:16px;align-items:flex-start;background:var(--tile2);border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:16px 18px}
+  .path .step{flex:0 0 30px;height:30px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px}
+  .path .body{flex:1}
+  .path .body .pt{color:#fff;font-size:15px;font-weight:600}
+  .path .body .pd{color:var(--dim);font-size:13px;margin-top:3px;line-height:1.5}
+  .path .lvl{flex:0 0 auto;font-size:12px;color:#9a9a9e;align-self:center}
+  .s-now .step{background:rgba(41,151,255,.18);color:var(--sky)}
+  .s-mid .step{background:rgba(255,180,80,.16);color:#ffcf8a}
+  .s-late .step{background:rgba(255,90,77,.14);color:var(--danger-d)}
+  .redlines{max-width:920px;margin:22px auto 0;background:rgba(215,0,21,.06);border:1px solid rgba(215,0,21,.18);border-radius:16px;padding:20px 22px}
+  .redlines h4{color:#fff;font-size:15px;margin-bottom:10px}
+  .redlines ol{margin:0;padding-left:20px;color:#e6c9c9}
+  .redlines li{font-size:13px;line-height:1.6;margin-bottom:4px}
+
+  /* roadmap */
+  .road{max-width:920px;margin:0 auto;display:flex;flex-direction:column;gap:0}
+  .ph{display:flex;gap:18px;padding:18px 0;border-bottom:1px solid rgba(255,255,255,.1)}
+  .ph:last-child{border-bottom:none}
+  .ph .pn{flex:0 0 120px}
+  .ph .pn .pk{color:#fff;font-weight:600;font-size:15px}
+  .ph .pn .pt{color:#8a8a8e;font-size:12px;margin-top:3px}
+  .ph .pc{flex:1}
+  .ph .pc .act{color:var(--dim);font-size:14px;line-height:1.55}
+  .ph .pc .gate{color:var(--sky);font-size:12.5px;margin-top:6px}
+
+  /* gonogo */
+  .gng{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;max-width:920px;margin:24px auto 0}
+  @media(max-width:720px){.gng{grid-template-columns:1fr}}
+  .gng .c{border-radius:16px;padding:20px;border:1px solid var(--hair);background:#fff}
+  .gng .c.go{border-color:rgba(29,138,79,.4);background:rgba(29,138,79,.05)}
+  .gng .c.cond{border-color:rgba(178,94,0,.4);background:rgba(178,94,0,.05)}
+  .gng .c.no{border-color:rgba(215,0,21,.35);background:rgba(215,0,21,.04)}
+  .gng .c .t{font-weight:700;font-size:14px;margin-bottom:8px}
+  .gng .c.go .t{color:var(--green)} .gng .c.cond .t{color:var(--amber)} .gng .c.no .t{color:var(--danger)}
+  .gng .c p{font-size:13px;color:var(--ink80);line-height:1.55}
+
+  .note{max-width:920px;margin:26px auto 0;font-size:12.5px;color:var(--ink48);line-height:1.7;
+    background:var(--parch);border-radius:14px;padding:18px 20px}
+  .note b{color:var(--ink80)}
+
+  footer{background:var(--parch);padding:46px 0 50px;color:var(--ink48)}
+  .ft-disc{font-size:12px;line-height:1.7;max-width:900px}
+  .ft-disc b{color:var(--ink80)}
+  .ft-links{margin-bottom:14px;font-size:14px}
+  .ft-links a{margin-right:16px}
+</style>
+</head>
+<body>
+
+<div class="gnav">
+  <div class="container">
+    <span class="wordmark">PLUG<span class="nx">nx</span></span>
+    <a href="screening.html">0베이스 스크리닝</a>
+    <a href="business-case-9fk2x7.html">타당성 보고서</a>
+    <a class="sp" href="index.html">산출물 허브</a>
+  </div>
+</div>
+
+<div class="subnav">
+  <div class="container">
+    <span class="cat">데이터 <b>인프라</b> 기획서</span>
+    <div class="links">
+      <a href="#problem">문제</a>
+      <a href="#market">시장</a>
+      <a href="#model">사업모델</a>
+      <a href="#portfolio">포트폴리오</a>
+      <a href="#roadmap">로드맵</a>
+      <a href="#risk">리스크</a>
+    </div>
+    <div class="right"><a class="btn" href="index.html">허브로</a></div>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="tile light">
+  <div class="container hero">
+    <span class="eyebrow">사업 기획서 · ForeignID Data Infrastructure</span>
+    <h1 class="display">외국인 데이터를,<br/>금융권이 사는 형태로 판다.</h1>
+    <p class="lead">"외국인 신용점수를 직접 파는 회사"가 아니라 — 고용주가 검증한 <b>재직·임금·4대보험·체류</b>를, 금융기관이 사고 싶어 하는 <b>동의 기반 신호·송객</b>으로 가공해 파는 데이터 인프라.</p>
+    <div class="chips">
+      <span class="chip">체류외국인 <b>278.3만</b></span>
+      <span class="chip">인터넷은행 외국인 여신 <b>≈0</b></span>
+      <span class="chip">1순위 고객 <b>인터넷은행</b></span>
+      <span class="chip">판정 <b>조건부 추진</b></span>
+    </div>
+  </div>
+</section>
+
+<!-- EXEC SUMMARY -->
+<section class="tile parch">
+  <div class="container">
+    <div class="exec">
+      <div class="lab">한 장 요약 · Executive Summary</div>
+      <h3>병목은 단 하나 — 외국인은 씬파일러(신용정보 부재)다. 그 빈칸을 <span class="hl">고용주 접점에서 1차 검증</span>으로 메울 수 있는 곳은 PlugNX뿐이다.</h3>
+      <p><b>왜 지금</b> · 체류외국인 278.3만·취업자격 59.4만인데, 인터넷은행 외국인 여신은 토스뱅크를 빼면 사실상 0. 수요는 시중은행이 입증했고(계좌 696만), 인터넷은행 영역이 비어 있다.</p>
+      <p><b>어떻게 파나</b> · "데이터 raw 판매"는 신용정보법상 봉쇄. 합법 활로는 ① 동의 기반 <b class="hl">검증 신호(Signal API)</b> ② <b class="hl">대출 송객</b> ③ <b class="hl">KYC/AML</b> 로 먼저 매출·데이터를 쌓고, 인허가가 필요한 ④ 스코어 ⑤ 마이데이터는 후행 시퀀싱.</p>
+      <p><b>정직한 현실</b> · 9개 아이템 적대검증 결과 규제 <b>9/9 조건부</b>(불법 0·무조건합법 0), 은행 지불의사 <b>low 6·med 3·high 0</b>. → "명백히 산다"는 아이템은 없고 <b class="hl">금융사 LOI 실측이 선행</b>돼야 하는 조건부 추진이다.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<section class="tile dark on-dark" id="problem">
+  <div class="container">
+    <div class="sec-head ctr">
+      <span class="eyebrow">문제 정의</span>
+      <h2 class="h2">세 개의 통증이 동시에 커진다 —<br/>같은 데이터 하나로 풀린다.</h2>
+      <p>기업이 VisaDesk에 외국인 직원을 등록·검증하는 순간, 그 데이터가 세 통증을 동시에 먹인다. 이 단일 파이프라인이 사업의 본질.</p>
+    </div>
+    <div class="g3">
+      <div class="pain">
+        <div class="ic">🏭</div>
+        <h4>기업 — 리스크</h4>
+        <p>외국인 고용·체류 리스크(만료·자격외취업·서류 누락 → 사업주 제재). 엑셀·기억으로 관리 불가.</p>
+        <p class="src">취업자격 외국인 59.4만 · E-9 33.7만 〔법무부〕</p>
+      </div>
+      <div class="pain">
+        <div class="ic">👷</div>
+        <h4>근로자 — 돈</h4>
+        <p>받을 수 있는데 못 받는 돈(연금 반환일시금·퇴직금·보험) + 금융 접근성 부재.</p>
+        <p class="src">반환일시금=제도적 권리 〔국민연금공단〕 · "미수령 N조"는 단정 금지(추정)</p>
+      </div>
+      <div class="pain">
+        <div class="ic">🏦</div>
+        <h4>금융사 — 신뢰정보</h4>
+        <p>소득이 있어도 신용을 구조화해 볼 수 없어 여신 불가. 씬파일러 문제.</p>
+        <p class="src">인터넷은행 외국인 신용대출 ≈0(토스뱅크 제외)</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARKET -->
+<section class="tile light" id="market">
+  <div class="container">
+    <div class="sec-head ctr">
+      <span class="eyebrow">시장 분석 · 기초 데이터</span>
+      <h2 class="h2">모수는 충분하고, 금융 인프라는 비어 있다.</h2>
+    </div>
+    <div class="stats" style="margin-bottom:30px">
+      <div class="stat"><div class="n">278.3만</div><div class="l">체류외국인 ('25말, +5.0%)</div></div>
+      <div class="stat"><div class="n">59.4만</div><div class="l">취업자격 외국인 (+4.8%)</div></div>
+      <div class="stat"><div class="n zero">≈0</div><div class="l">인터넷은행 외국인 여신(토스 제외)</div></div>
+      <div class="stat"><div class="n">696만</div><div class="l">외국인 은행 계좌(수요 입증)</div></div>
+    </div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>구분</th><th>체류자격</th><th>인원(라벨)</th><th>시사점</th></tr></thead>
+        <tbody>
+          <tr><td class="k">취업</td><td>E-9 비전문취업</td><td>약 33.7만 〔'24말〕</td><td>B2B 1차 전장</td></tr>
+          <tr><td></td><td>H-2 방문취업</td><td>약 9.3만 〔'24말〕</td><td>고용허가제</td></tr>
+          <tr><td></td><td>E-7 특정활동</td><td>약 6.4만 〔'24말〕</td><td>ARPA 높은 업셀</td></tr>
+          <tr><td class="k">동포·거주</td><td>F-4 재외동포</td><td>약 55.6만 〔'24말〕</td><td>최대 단일자격</td></tr>
+          <tr><td></td><td>F-5 영주</td><td>증가세 +8.9%</td><td>정착·금융 LTV</td></tr>
+          <tr><td class="k">유학</td><td>D-2·D-4</td><td>증가세 +17.1%</td><td>thin-file→신용형성 진입군</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="muted" style="text-align:center;font-size:12.5px;margin-top:14px">국적: 중국 35.2% · 베트남 12.1% 집중 〔법무부〕. 총계 '25말, 자격별 세부 '24말 연보(일부 '25말 갱신) — 명단위 '25말 확정은 통계월보 추출 필요(미해결).</p>
+  </div>
+</section>
+
+<!-- COMPETITION -->
+<section class="tile parch">
+  <div class="container">
+    <div class="sec-head ctr">
+      <span class="eyebrow">경쟁 분석</span>
+      <h2 class="h2">최대 위협은 EQUAL, 1순위 고객은 인터넷은행.</h2>
+    </div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>플레이어</th><th>무엇</th><th>관계</th><th>대응</th></tr></thead>
+        <tbody>
+          <tr class="warn"><td class="k">EQUAL (통신3사 대안CB)</td><td>"외국인 99% 커버리지", KB·케이뱅크·카드 침투</td><td>최대 위협 — 신용 길목 직접 경쟁</td><td>통신이 못 보는 고용-검증 변수로 차별화 / 보완 피처 공급(협업형)</td></tr>
+          <tr class="hl"><td class="k">인터넷은행(토스·카카오·케이)</td><td>계좌는 모았으나 여신 0~제약</td><td>1순위 고객</td><td>대출 송객 + Signal API 결합 LOI</td></tr>
+          <tr><td class="k">시중은행(신한·KB)</td><td>외국인 여신 이미 진입</td><td>잠재 고객</td><td>여신 게이트(재직·체류·소득)에 신호 공급</td></tr>
+          <tr><td class="k">송금사(한패스 등)</td><td>외국인 풀 보유, 고용데이터 없음</td><td>경쟁자이자 채널</td><td>정면 진출 회피, 데이터 공급+트래픽 양면 제휴</td></tr>
+          <tr><td class="k">vivisa×클링커즈</td><td>비자데이터→대체신용평가 MOU('25.12)</td><td>신용 길목 경쟁 신호</td><td>분기 워치(유학생 입구 vs 고용 입구=속도전)</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note"><b>포지셔닝 한 줄</b> · "통신·생활데이터가 못 주는, 고용주가 검증한 외국인 여신 4대 변수(재직·임금·4대보험·체류)를 동의 기반으로 공급하는 유일한 인프라."</div>
+  </div>
+</section>
+
+<!-- MODEL : regulatory paths -->
+<section class="tile dark on-dark" id="model">
+  <div class="container">
+    <div class="sec-head ctr">
+      <span class="eyebrow">사업 모델 · 규제가 사업구조를 결정한다</span>
+      <h2 class="h2">raw 직판은 봉쇄.<br/>합법 4경로로 시퀀싱한다.</h2>
+      <p>"데이터를 판다"의 길은 난이도순으로 갈린다. 진입장벽 낮은 송객·검증 신호부터, 인허가가 필요한 스코어·마이데이터는 데이터를 쌓은 뒤로.</p>
+    </div>
+    <div class="paths">
+      <div class="path s-now"><div class="step">D</div><div class="body"><div class="pt">대출 송객 (중개)</div><div class="pd">제휴 금융사 상품 비교·연결. 대출성 판매대리·중개업 등록(금소법 §25). 진입장벽 최저.</div></div><div class="lvl">★ 즉시</div></div>
+      <div class="path s-now"><div class="step">D′</div><div class="body"><div class="pt">검증 신호 제공 (Signal API)</div><div class="pd">동의 기반 속성(불리언·구간) — "재직 12개월↑" 등. 신용평가업 아님으로 설계(경계 변호사 확인).</div></div><div class="lvl">★★ 즉시</div></div>
+      <div class="path s-mid"><div class="step">B</div><div class="body"><div class="pt">가명결합 데이터셋</div><div class="pd">데이터전문기관 경유 결합·분석반출. 직판 불법 영역을 결합기관 경유로 합법화.</div></div><div class="lvl">★★★ 12–24m</div></div>
+      <div class="path s-late"><div class="step">C</div><div class="body"><div class="pt">스코어 공급</div><div class="pd">외국인 전용 신뢰점수 결과 제공. 전문개인신용평가업(비금융 CB). 데이터 축적 후.</div></div><div class="lvl">★★★★ 24m+</div></div>
+      <div class="path s-late"><div class="step">A</div><div class="body"><div class="pt">마이데이터 통합</div><div class="pd">본인 동의 데이터 통합 전달. 본인신용정보관리업(자본금 5억·6대 요건). 최장기.</div></div><div class="lvl">★★★★★ 최장기</div></div>
+    </div>
+    <div class="redlines">
+      <h4>⛔ 절대 레드라인 5 (금지)</h4>
+      <ol>
+        <li>외국인 재직·급여·체류 <b>raw DB의 금융사 직접 판매</b></li>
+        <li>외국인등록번호 <b>별도 동의 없는</b> 수집·결합·이전</li>
+        <li>무허가 상태에서 <b>"신용평가/신용점수" 표현</b>으로 스코어 외부 제공</li>
+        <li><b>"대출 승인/한도/금리 보장"</b> 등 중개를 여신결정처럼 단정</li>
+        <li>가명정보를 영리 목적으로 <b>데이터전문기관 미경유</b> 직접 제3자 제공</li>
+      </ol>
+      <p style="font-size:12px;color:#caa;margin-top:10px">공통 게이트: 외국인등록번호 별도 동의·분리보관·암호화·국내저장 — 동의 아키텍처를 제품 1일차부터 분리 설계.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section class="tile light" id="portfolio">
+  <div class="container">
+    <div class="sec-head ctr">
+      <span class="eyebrow">제품 포트폴리오 · 9개 아이템</span>
+      <h2 class="h2">지금 가능한 것부터, 데이터를 쌓아 후행으로.</h2>
+      <p>환급(CAC0)으로 동의풀 → 고용·임금 데이터 축적 → 검증 신호·송객으로 매출 → 성과 라벨로 스코어 학습 → 인허가 후 스코어·마이데이터. "대출=수익엔진"은 최종 도착지이지 1단계가 아니다.</p>
+    </div>
+
+    <div class="horizon">
+      <div class="htag"><span class="pill now">NOW</span><span class="ht">라이선스 부담 최소 · 즉시 추진</span></div>
+      <div class="pf">
+        <div class="item"><div class="id">FW-01</div><h4>Foreign Worker Signal API</h4><p>재직·체류·4대보험 검증 속성 호출. "재직 12개월↑·체류잔여 6개월↑·4대보험 정상납부." KB 전세대출이 이미 이 항목을 입력값으로 사용.</p><div class="meta">고객 <b>인터넷은행·카드·저축은행</b> · 건당+구독</div></div>
+        <div class="item"><div class="id">FW-02</div><h4>대출 송객 (리드)</h4><p>Moneeback 환급 가입자(CAC0 동의풀)에 제휴 대출 비교·연결. 진입장벽 최저. 송객 성과가 FW-06 스코어 학습 라벨이 됨.</p><div class="meta">고객 <b>인터넷은행·저축은행·카드</b> · 중개수수료</div></div>
+        <div class="item"><div class="id">FW-04</div><h4>ForeignID KYC/AML 검증</h4><p>L2·L3 기반 체류 적법성·본인확인. 카카오·케이뱅크의 "외국인 계좌개설 차단"이 바로 이 페인. 여신 라이선스 불요.</p><div class="meta">고객 <b>인터넷은행·송금·가상자산</b> · 건당+구독</div></div>
+      </div>
+    </div>
+
+    <div class="horizon">
+      <div class="htag"><span class="pill mid">12–24M</span><span class="ht">데이터·결합 실증</span></div>
+      <div class="pf">
+        <div class="item"><div class="id">FW-03</div><h4>재직·소득 검증 API</h4><p>Pinwheel/Argyle형. 임대·통신·BNPL·EWA 등 여신 아닌 검증 수요. 고용주 1차검증이라 자격증명 탈취 없는 "최소범위 검증"이 채택 우위.</p><div class="meta">고객 <b>임대·통신·BNPL</b> · 건당+엔터프라이즈</div></div>
+        <div class="item"><div class="id">FW-05</div><h4>가명결합 데이터셋</h4><p>데이터전문기관 경유. 직판 불법 영역을 결합기관 경유로 합법화. thin-file 표본 부재를 해소.</p><div class="meta">고객 <b>은행·CB·보험 모델링</b> · 라이선스</div></div>
+        <div class="item"><div class="id">FW-07</div><h4>미수령 환급 현금흐름 신호</h4><p>출국 시 추심곤란(은행이 외국인 여신 꺼리는 핵심이유)을 상계하는 담보적 신호. 원시 금액 아닌 존재/구간.</p><div class="meta">고객 <b>여신·BNPL·EWA</b> · 건당+성과연동</div></div>
+        <div class="item"><div class="id">FW-08</div><h4>보험 언더라이팅 검증</h4><p>외국인 실손 손해율 104%로 인수강화 중. 건강보험·체류·재직 진위 검증. 같은 파이프라인을 보험 고객으로 재판매.</p><div class="meta">고객 <b>보험사</b> · 건당+인수심사 구독</div></div>
+      </div>
+    </div>
+
+    <div class="horizon">
+      <div class="htag"><span class="pill late">24M+</span><span class="ht">인허가 필요 · 데이터 축적 후</span></div>
+      <div class="pf">
+        <div class="item"><div class="id">FW-06</div><h4>Foreign Worker Trust Score</h4><p>전문개인신용평가업(비금융 외국인 CB). 최대 해자 — FW-01/02/03/05 데이터를 점수로 결정화. EQUAL과 정면충돌 대신 보완 피처 공급도 옵션.</p><div class="meta">고객 <b>전 금융권</b> · 조회당+라이선스+성과</div></div>
+        <div class="item"><div class="id">FW-09</div><h4>마이데이터 외국인 금융 패스포트</h4><p>본인 동의 데이터 통합(+Nova Credit형 본국 신용 이전 인접 확장). 본인신용정보관리업 허가. 최장기.</p><div class="meta">고객 <b>근로자 본인+전 금융권</b> · 라이선스+revshare</div></div>
+        <div class="item" style="background:var(--parch);border-style:dashed"><div class="id" style="color:var(--ink48)">자산 진화</div><h4>3 제품 = 인프라의 발생지점</h4><p><b>VisaDesk</b> 고용 데이터 발생 · <b>Moneeback</b> CAC0 동의풀+환급 신호 · <b>ForeignID</b> KYC+동의 레이어. 모으는 비용을 B2B·B2C가 회수, 그 위에서 금융이 LTV 확장.</p><div class="meta">신규가 아니라 <b>기존 자산의 발전</b></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ROADMAP -->
+<section class="tile dark on-dark" id="roadmap">
+  <div class="container">
+    <div class="sec-head ctr">
+      <span class="eyebrow">실행 로드맵 · LOI-first</span>
+      <h2 class="h2">데이터를 사겠다는 금융사부터 확인한다.</h2>
+    </div>
+    <div class="road">
+      <div class="ph"><div class="pn"><div class="pk">P0 검증</div><div class="pt">0~8주</div></div><div class="pc"><div class="act">VisaDesk PoC 15사(데이터 원천) + <b style="color:#fff">금융사 2~3곳 데이터 검증 미팅/LOI</b>(인터넷은행 우선) + 규제 비조치의견서·변호사 메모</div><div class="gate">게이트 · 금융사 LOI ≥2 · 유료 전환 6사</div></div></div>
+      <div class="ph"><div class="pn"><div class="pk">P1 신호</div><div class="pt">3~9개월</div></div><div class="pc"><div class="act">FW-01 Signal API + FW-02 송객 + FW-04 KYC 파일럿(1개 금융사)</div><div class="gate">게이트 · 첫 유료 데이터 호출</div></div></div>
+      <div class="ph"><div class="pn"><div class="pk">P2 결합</div><div class="pt">9~18개월</div></div><div class="pc"><div class="act">FW-05 가명결합 공동연구 MOU(데이터전문기관) + FW-03/07/08 확장</div><div class="gate">게이트 · 결합 실증·재판매</div></div></div>
+      <div class="ph"><div class="pn"><div class="pk">P3 스코어</div><div class="pt">18~30개월</div></div><div class="pc"><div class="act">데이터 축적 후 FW-06 전문개인신용평가업/혁신금융 샌드박스 타진</div><div class="gate">게이트 · 인허가·스코어 출시</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- RISK / GO-NO-GO -->
+<section class="tile light" id="risk">
+  <div class="container">
+    <div class="sec-head ctr">
+      <span class="eyebrow">리스크 · de-risking</span>
+      <h2 class="h2">정직한 현실 — 그래서 조건부 추진이다.</h2>
+    </div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>리스크</th><th>치명도</th><th>검증/완화</th><th>현 신호</th></tr></thead>
+        <tbody>
+          <tr class="warn"><td class="k">금융사가 데이터를 안 산다</td><td>사업 좌초</td><td>인터넷은행·저축은행·송금사 LOI 2~3곳</td><td>WTP <b>low6/med3/high0</b> → 실측 전 보수</td></tr>
+          <tr><td class="k">규제(신용정보법) 위반</td><td>형사·면허</td><td>비조치의견서·변호사 메모, 송객부터 진입</td><td>blocked 0이나 clear도 0</td></tr>
+          <tr><td class="k">데이터 정확도 부족</td><td>채택 거부</td><td>고용주 1차검증+4대보험 교차, 피드백 루프</td><td>승인율 개선 입증 과제</td></tr>
+          <tr><td class="k">EQUAL 선점</td><td>길목 상실</td><td>보완 피처 공급(협업형) 병행, 고용변수 차별화</td><td>EQUAL 외국인 스코어 실출시 워치</td></tr>
+          <tr><td class="k">표현 리스크</td><td>법적</td><td>레드라인·표현규칙 전면 적용</td><td>산출물 "데이터 판매/보장" 0건</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="gng">
+      <div class="c go"><div class="t">GO</div><p>8주 내 ① VisaDesk PoC 15사·유료 6사 ② <b>금융사 2곳+ 데이터 검증 LOI/미팅</b> ③ 규제 변호사 1차 확인.</p></div>
+      <div class="c cond"><div class="t">조건부</div><p>②가 미팅까지만이면 — 데이터 발생(VisaDesk·Moneeback)에 집중하고 금융 인프라는 6개월 뒤 재타진.</p></div>
+      <div class="c no"><div class="t">NO-GO</div><p>금융사 수요가 전혀 확인 안 되면 — 인프라 thesis 보류, B2B SaaS 또는 B2C 환급 단일로 좁힘.</p></div>
+    </div>
+    <div class="note">
+      <b>미해결·후속 확인</b> · ① 전문개인신용평가업 자본금(감독규정 별표 원문 재확인) ② Signal API의 신용정보법상 지위(비조치의견서) ③ 은행 실제 지불의향가(LOI) ④ EQUAL 실태(분기 워치) ⑤ '25말 자격별·국적별 명단위 ⑥ TAM 'B2B 49만' 산정식.
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="ft-links">
+      <a href="index.html">산출물 허브</a>
+      <a href="screening.html">0베이스 스크리닝</a>
+      <a href="business-case-9fk2x7.html#summary">타당성 보고서</a>
+      <a href="stablecoin-rail.html">스테이블코인 레일</a>
+      <a href="weekly.html">주간 리서치 플랜</a>
+    </div>
+    <p class="ft-disc">
+      <b>참고용 안내.</b> 본 기획서의 모든 재무·시장 수치는 확정 실적이 아닌 <b>목표·가정·추정</b>이며 PoC·LOI 실측 대상이다.
+      금융·신용정보·개인정보·비자·노무 관련 사실은 자주 개정되므로 1차 출처(법무부·금융위·고용노동부·국민연금공단·법제처)와 행정사·노무사·변호사·금융규제 전문가 검토가 필요하다.
+      경쟁사 정량지표는 회사발표·언론 2차정보로 독립검증되지 않았다. 민감정보(외국인등록번호·여권·계좌)는 예시·로그에 실제 값을 남기지 않는다.<br/><br/>
+      © 2026 PlugNX Inc. · 내부용(Confidential) · 원본 <code>output/business-case-research/finance-data-infra-plan.md</code>
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>
