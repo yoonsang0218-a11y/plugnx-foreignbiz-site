@@ -1,0 +1,1440 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>PlugNX Guildbook - Agent Codex</title>
+  <style>
+    :root {
+      --blue: #0066cc;
+      --blue-2: #2997ff;
+      --ink: #1d1d1f;
+      --muted: #6e6e73;
+      --paper: #f5f5f7;
+      --line: #d9dce5;
+      --dark: #171a21;
+      --tile: #252832;
+      --tile-2: #303442;
+      --gold: #d8a928;
+      --red: #d70015;
+      --green: #2e8b57;
+      --violet: #7c5cff;
+      --cyan: #00a7a7;
+      --shadow: rgba(0, 0, 0, .22) 3px 5px 30px 0;
+      color-scheme: light;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", Inter, system-ui, sans-serif;
+      color: var(--ink);
+      background:
+        linear-gradient(90deg, rgba(0, 102, 204, .04) 1px, transparent 1px),
+        linear-gradient(180deg, rgba(0, 102, 204, .04) 1px, transparent 1px),
+        #fff;
+      background-size: 32px 32px;
+      letter-spacing: 0;
+      overflow-x: hidden;
+    }
+
+    button, input {
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    a {
+      color: var(--blue);
+      text-decoration: none;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      border-bottom: 1px solid rgba(0, 0, 0, .08);
+      background: rgba(245, 245, 247, .86);
+      backdrop-filter: saturate(180%) blur(18px);
+    }
+
+    .topbar-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+      min-height: 56px;
+      padding: 8px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .brand-mark {
+      width: 28px;
+      height: 28px;
+      display: grid;
+      place-items: center;
+      color: #fff;
+      background: var(--blue);
+      border: 2px solid #111;
+      box-shadow: 3px 3px 0 #111;
+      image-rendering: pixelated;
+    }
+
+    .top-actions {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .pill {
+      border: 1px solid var(--blue);
+      background: transparent;
+      color: var(--blue);
+      border-radius: 999px;
+      padding: 8px 14px;
+      font-size: 14px;
+      line-height: 1;
+    }
+
+    .pill.active,
+    .primary {
+      background: var(--blue);
+      color: #fff;
+    }
+
+    .primary {
+      border: 1px solid var(--blue);
+      border-radius: 999px;
+      padding: 9px 16px;
+      line-height: 1;
+    }
+
+    .hero {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 56px 20px 40px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.02fr) minmax(320px, .98fr);
+      gap: 36px;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--blue);
+      font-weight: 600;
+      font-size: 14px;
+      margin-bottom: 16px;
+    }
+
+    .h1 {
+      margin: 0;
+      font-size: clamp(38px, 5vw, 64px);
+      line-height: 1.05;
+      letter-spacing: 0;
+      font-weight: 700;
+      overflow-wrap: anywhere;
+    }
+
+    .h1 span {
+      display: block;
+    }
+
+    .hero-copy {
+      margin: 18px 0 0;
+      color: #333;
+      font-size: 19px;
+      line-height: 1.5;
+      max-width: 640px;
+      overflow-wrap: anywhere;
+    }
+
+    .hero-copy span {
+      display: block;
+    }
+
+    .hero-actions {
+      margin-top: 24px;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .party-art {
+      position: relative;
+      margin: 0;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      background: var(--paper);
+      aspect-ratio: 16 / 11;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: var(--shadow);
+    }
+
+    .party-art img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .party-art-label {
+      position: absolute;
+      left: 14px;
+      bottom: 14px;
+      color: #fff;
+      background: rgba(0, 0, 0, .62);
+      border: 1px solid rgba(255, 255, 255, .22);
+      padding: 8px 10px;
+      font-size: 12px;
+      backdrop-filter: blur(8px);
+    }
+
+    .toolbar-wrap {
+      background: var(--dark);
+      color: #fff;
+      padding: 22px 20px;
+    }
+
+    .toolbar {
+      max-width: 1180px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(220px, 340px) 1fr;
+      gap: 14px;
+      align-items: center;
+    }
+
+    .search {
+      width: 100%;
+      min-height: 42px;
+      border: 1px solid rgba(255, 255, 255, .25);
+      color: #fff;
+      background: rgba(255, 255, 255, .08);
+      border-radius: 999px;
+      padding: 0 16px;
+      outline: none;
+    }
+
+    .search:focus {
+      border-color: var(--blue-2);
+      box-shadow: 0 0 0 2px var(--blue-2);
+    }
+
+    .filter-row {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .filter {
+      min-height: 38px;
+      border: 1px solid rgba(255, 255, 255, .22);
+      color: #fff;
+      background: transparent;
+      border-radius: 999px;
+      padding: 0 12px;
+      font-size: 13px;
+    }
+
+    .filter.active {
+      background: #fff;
+      color: var(--ink);
+    }
+
+    .section {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 44px 20px;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 22px;
+    }
+
+    .section h2 {
+      font-size: 30px;
+      line-height: 1.16;
+      margin: 0;
+      letter-spacing: 0;
+    }
+
+    .section-note {
+      color: var(--muted);
+      font-size: 14px;
+      text-align: right;
+    }
+
+    .party-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+      margin-bottom: 28px;
+    }
+
+    .party-panel {
+      border: 1px solid var(--line);
+      background: #fff;
+      padding: 16px;
+      min-height: 132px;
+    }
+
+    .party-panel b {
+      display: block;
+      font-size: 15px;
+      margin-bottom: 8px;
+    }
+
+    .party-panel span {
+      display: block;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .agent-card {
+      position: relative;
+      min-height: 378px;
+      border: 1px solid var(--line);
+      background: #fff;
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      transition: transform .16s ease, border-color .16s ease, background .16s ease;
+    }
+
+    .agent-card:hover {
+      transform: translateY(-3px);
+      border-color: var(--blue);
+      background: #fbfdff;
+    }
+
+    .agent-top {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-width: 0;
+    }
+
+    .sprite {
+      --accent: var(--blue);
+      position: relative;
+      width: 76px;
+      height: 76px;
+      flex: none;
+      image-rendering: pixelated;
+      background:
+        linear-gradient(90deg, transparent 0 8px, rgba(0, 0, 0, .06) 8px 10px, transparent 10px 18px) 0 0 / 18px 18px,
+        var(--paper);
+      border: 2px solid #111;
+      box-shadow: 4px 4px 0 #111;
+    }
+
+    .sprite::before {
+      content: "";
+      position: absolute;
+      left: 25px;
+      top: 9px;
+      width: 26px;
+      height: 23px;
+      background: #f1c7a5;
+      border: 2px solid #111;
+      box-shadow: inset -5px -4px 0 rgba(0, 0, 0, .12);
+    }
+
+    .sprite::after {
+      content: "";
+      position: absolute;
+      left: 20px;
+      top: 34px;
+      width: 36px;
+      height: 30px;
+      background: var(--accent);
+      border: 2px solid #111;
+      box-shadow: inset -7px -6px 0 rgba(0, 0, 0, .18);
+    }
+
+    .sprite .hair,
+    .sprite .tool,
+    .sprite .feet {
+      position: absolute;
+      display: block;
+    }
+
+    .sprite .hair {
+      left: 21px;
+      top: 5px;
+      width: 34px;
+      height: 11px;
+      background: #222;
+      border: 2px solid #111;
+    }
+
+    .sprite .tool {
+      right: 8px;
+      top: 26px;
+      width: 10px;
+      height: 36px;
+      background: #f5c542;
+      border: 2px solid #111;
+      transform: rotate(-16deg);
+      transform-origin: center bottom;
+    }
+
+    .sprite .feet {
+      left: 24px;
+      bottom: 6px;
+      width: 29px;
+      height: 8px;
+      background: #111;
+      box-shadow: 18px 0 0 #111;
+    }
+
+    .agent-meta {
+      min-width: 0;
+    }
+
+    .agent-name {
+      display: block;
+      font-size: 18px;
+      line-height: 1.22;
+      font-weight: 700;
+      word-break: keep-all;
+    }
+
+    .agent-class {
+      display: block;
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.35;
+    }
+
+    .agent-role {
+      display: block;
+      margin-top: 7px;
+      color: var(--blue);
+      font-size: 13px;
+      line-height: 1.45;
+      word-break: keep-all;
+    }
+
+    .badge-row {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .badge {
+      border: 1px solid var(--line);
+      background: var(--paper);
+      color: var(--ink);
+      border-radius: 999px;
+      padding: 5px 8px;
+      font-size: 12px;
+      line-height: 1;
+    }
+
+    .agent-desc {
+      color: #333;
+      font-size: 14px;
+      line-height: 1.5;
+      margin: 0;
+      min-height: 84px;
+    }
+
+    .stat-list {
+      display: grid;
+      gap: 8px;
+      margin-top: auto;
+    }
+
+    .stat {
+      display: grid;
+      grid-template-columns: 40px 1fr 30px;
+      gap: 8px;
+      align-items: center;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .stat-track {
+      height: 8px;
+      background: #e8ebf2;
+      border: 1px solid #d7dce8;
+      overflow: hidden;
+    }
+
+    .stat-fill {
+      display: block;
+      height: 100%;
+      width: calc(var(--v) * 20%);
+      background: var(--accent, var(--blue));
+    }
+
+    .card-actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
+    .card-actions button {
+      min-height: 38px;
+      border: 1px solid var(--blue);
+      border-radius: 999px;
+      background: transparent;
+      color: var(--blue);
+      font-size: 14px;
+    }
+
+    .card-actions button:first-child {
+      background: var(--blue);
+      color: #fff;
+    }
+
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: 40;
+      display: none;
+      background: rgba(0, 0, 0, .62);
+      padding: 20px;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-backdrop.open {
+      display: flex;
+    }
+
+    .modal {
+      width: min(840px, 100%);
+      max-height: min(820px, 92vh);
+      overflow: auto;
+      background: #fff;
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      padding: 0;
+    }
+
+    .modal-header {
+      position: sticky;
+      top: 0;
+      z-index: 1;
+      background: rgba(255, 255, 255, .92);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--line);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      padding: 16px 18px;
+    }
+
+    .modal-title {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+    }
+
+    .mini-sprite {
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      color: #fff;
+      background: var(--blue);
+      border: 2px solid #111;
+      box-shadow: 3px 3px 0 #111;
+      flex: none;
+      font-weight: 700;
+    }
+
+    .close {
+      width: 38px;
+      height: 38px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--paper);
+      color: var(--ink);
+      font-size: 20px;
+      line-height: 1;
+    }
+
+    .modal-body {
+      padding: 20px;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 280px;
+      gap: 18px;
+    }
+
+    .panel {
+      border: 1px solid var(--line);
+      background: var(--paper);
+      padding: 16px;
+    }
+
+    .panel h3,
+    .panel h4 {
+      margin: 0 0 10px;
+      font-size: 16px;
+      letter-spacing: 0;
+    }
+
+    .panel p,
+    .panel li {
+      color: #333;
+      font-size: 14px;
+      line-height: 1.52;
+    }
+
+    .panel ul {
+      margin: 0;
+      padding-left: 18px;
+    }
+
+    .command {
+      width: 100%;
+      white-space: pre-wrap;
+      word-break: keep-all;
+      background: var(--dark);
+      color: #d9f7ff;
+      border: 1px solid #000;
+      padding: 14px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 13px;
+      line-height: 1.5;
+      min-height: 112px;
+    }
+
+    .copy-result {
+      color: var(--green);
+      min-height: 18px;
+      font-size: 13px;
+      margin-top: 8px;
+    }
+
+    .empty {
+      display: none;
+      border: 1px solid var(--line);
+      background: var(--paper);
+      padding: 32px;
+      color: var(--muted);
+      text-align: center;
+      font-size: 15px;
+    }
+
+    .empty.show {
+      display: block;
+    }
+
+    .dark-band {
+      background: var(--dark);
+      color: #fff;
+      padding: 58px 20px;
+    }
+
+    .dark-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+      align-items: start;
+    }
+
+    .dark-card {
+      border: 1px solid rgba(255, 255, 255, .16);
+      background: var(--tile);
+      padding: 24px;
+      min-height: 230px;
+    }
+
+    .dark-card h2 {
+      margin: 0 0 12px;
+      font-size: 26px;
+      line-height: 1.15;
+    }
+
+    .dark-card p,
+    .dark-card li {
+      color: #d5d8e0;
+      font-size: 15px;
+      line-height: 1.55;
+    }
+
+    .dark-card code {
+      color: #fff;
+      background: rgba(255, 255, 255, .08);
+      padding: 2px 5px;
+      border-radius: 4px;
+    }
+
+    .footer {
+      padding: 32px 20px 48px;
+      color: var(--muted);
+      font-size: 13px;
+      text-align: center;
+    }
+
+    @media (max-width: 980px) {
+      .hero,
+      .toolbar,
+      .dark-inner,
+      .modal-body {
+        grid-template-columns: 1fr;
+      }
+
+      .filter-row {
+        justify-content: flex-start;
+      }
+
+      .party-grid,
+      .grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .section-note {
+        text-align: left;
+      }
+    }
+
+    @media (max-width: 620px) {
+      .topbar-inner,
+      .section-head {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .party-grid,
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .agent-card {
+        min-height: 0;
+      }
+
+      .hero {
+        padding-top: 34px;
+        width: 100%;
+        max-width: 100vw;
+      }
+
+      .h1 {
+        max-width: 100%;
+        font-size: 26px;
+        line-height: 1.16;
+        word-break: break-all;
+      }
+
+      .hero-copy {
+        width: 100%;
+        max-width: 100%;
+        font-size: 17px;
+        word-break: break-all;
+      }
+
+      .hero > * {
+        min-width: 0;
+      }
+
+      .card-actions {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">
+        <span class="brand-mark">NX</span>
+        <span>PlugNX Guildbook</span>
+      </div>
+      <div class="top-actions">
+        <a class="pill" href="guild.html">기존 길드</a>
+        <a class="primary" href="#agents">길드원 보기</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div>
+        <div class="eyebrow">Agent Codex · 고전 2D MMORPG풍 길드북</div>
+        <h1 class="h1">
+          <span>외국인 신사업을 움직이는</span>
+          <span>PlugNX</span>
+          <span>하위에이전트 길드</span>
+        </h1>
+        <p class="hero-copy">
+          <span>각 캐릭터는 하나의 전문 판단을 맡습니다.</span>
+          <span>경쟁앱 정찰, B2B 지불의사 검증,</span>
+          <span>규제 레드라인 점검과 GTM 전장 설계까지</span>
+          <span>필요한 순간에 골라 소환할 수 있습니다.</span>
+        </p>
+        <div class="hero-actions">
+          <button class="primary" type="button" data-scroll="#agents">전체 캐릭터 열람</button>
+          <button class="pill" type="button" data-scroll="#summon">소환 규칙 보기</button>
+        </div>
+      </div>
+      <figure class="party-art" aria-label="PlugNX 에이전트 단체 일러스트">
+        <img src="assets/guild-party.png" alt="PlugNX 하위 에이전트들이 작업실에 모인 2D 일러스트">
+        <figcaption class="party-art-label">Strategy room party portrait</figcaption>
+      </figure>
+    </section>
+
+    <section class="toolbar-wrap" aria-label="길드북 필터">
+      <div class="toolbar">
+        <input id="search" class="search" type="search" placeholder="에이전트명, 직업, 역할, 스킬 검색">
+        <div class="filter-row" id="filters"></div>
+      </div>
+    </section>
+
+    <section class="section" id="agents">
+      <div class="section-head">
+        <div>
+          <h2>길드원 도감</h2>
+          <p class="section-note" id="countNote">총 24명의 하위에이전트</p>
+        </div>
+        <button class="pill" type="button" id="resetBtn">필터 초기화</button>
+      </div>
+
+      <div class="party-grid" aria-label="파티 설명">
+        <div class="party-panel">
+          <b>전략 파티</b>
+          <span>시장, 타당성, 사업기획, GTM, 구현을 이어주는 신사업 라이프사이클 파티.</span>
+        </div>
+        <div class="party-panel">
+          <b>도메인 파티</b>
+          <span>VisaDesk, BackWon, ForeignID와 비자·환급·본인인증 사실관계를 지키는 전문 파티.</span>
+        </div>
+        <div class="party-panel">
+          <b>GTM 전략본부</b>
+          <span>세그먼트, 고객 인사이트, 포지셔닝, 가격, 채널, 영업, PoC, 사업성을 병렬로 굴리는 전장 지휘부.</span>
+        </div>
+        <div class="party-panel">
+          <b>특수 검증대</b>
+          <span>경쟁앱 전수조사, B2B 지불의사, 규제 레드라인을 반복 검증하는 소규모 정예 파티.</span>
+        </div>
+      </div>
+
+      <div class="grid" id="agentGrid"></div>
+      <div class="empty" id="empty">검색 조건에 맞는 길드원이 없습니다.</div>
+    </section>
+
+    <section class="dark-band" id="summon">
+      <div class="dark-inner">
+        <div class="dark-card">
+          <h2>소환 규칙</h2>
+          <p>하위에이전트는 이름을 직접 불러도 되고, 담당 임무를 말해도 됩니다. 예를 들어 <code>competitor-app-research-agent로 glow와 Vijob 비교해줘</code>처럼 호출하면 됩니다.</p>
+          <p>깊은 작업은 파일을 나눠 맡기고, `PROJECT.md`의 브랜딩·수치·공통 원칙을 기준으로 교차검증합니다.</p>
+        </div>
+        <div class="dark-card">
+          <h2>전투 진형</h2>
+          <ul>
+            <li>시장 판단: `market-researcher` → `newbiz-strategist`</li>
+            <li>유료화 검증: `b2b-wtp-agent` → `gtm-value-pricing-agent`</li>
+            <li>위험 점검: `regulatory-risk-agent` → `foreign-domain-expert`</li>
+            <li>PoC 실행: `gtm-launch-pilot-agent` → `gtm-sales-motion-agent`</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="modal-backdrop" id="modalBackdrop" role="dialog" aria-modal="true" aria-labelledby="modalName">
+    <article class="modal">
+      <header class="modal-header">
+        <div class="modal-title">
+          <span class="mini-sprite" id="modalSigil">NX</span>
+          <div>
+            <strong id="modalName">Agent</strong>
+            <div class="agent-class" id="modalClass">Class</div>
+            <div class="agent-role" id="modalRole">Role</div>
+          </div>
+        </div>
+        <button class="close" type="button" id="closeModal" aria-label="닫기">x</button>
+      </header>
+      <div class="modal-body">
+        <div class="panel">
+          <h3 id="modalTitle">캐릭터 소개</h3>
+          <p id="modalIntro"></p>
+          <h4>주요 스킬</h4>
+          <ul id="modalSkills"></ul>
+          <h4>필살기</h4>
+          <p id="modalUltimate"></p>
+          <h4>소환하면 좋은 순간</h4>
+          <p id="modalWhen"></p>
+        </div>
+        <aside class="panel">
+          <h3>소환 명령</h3>
+          <div class="command" id="modalCommand"></div>
+          <button class="primary" type="button" id="copyCommand">명령 복사</button>
+          <div class="copy-result" id="copyResult"></div>
+        </aside>
+      </div>
+    </article>
+  </div>
+
+  <footer class="footer">
+    PlugNX Guildbook · `output/plugnx-guildbook.html` · 참고용 캐릭터 도감
+  </footer>
+
+  <script>
+    const parties = [
+      "전체",
+      "전략 파티",
+      "도메인 파티",
+      "확장 파티",
+      "GTM 전략본부",
+      "특수 검증대"
+    ];
+
+    const agents = [
+      {
+        id: "newbiz-strategist",
+        name: "전략 책사",
+        job: "길드마스터 · 신사업 전략가",
+        role: "사업 전체 논리, 투자자 스토리, 우선순위를 한 장으로 정리합니다.",
+        party: "전략 파티",
+        color: "#d8a928",
+        level: 99,
+        intro: "사업기획서, IR, TAM/SAM/SOM, 경쟁우위, 정책지도까지 전체 전장을 한 장의 논리로 묶는 지휘형 캐릭터입니다.",
+        skills: ["사업기획서", "IR 덱", "TAM/SAM/SOM", "경쟁분석", "정책매핑"],
+        ultimate: "Pyramid Strategy: 문제, 시장, 해자, 수익모델, 실행계획을 투자자용 스토리라인으로 압축합니다.",
+        when: "대표님 보고, 투자자 설명, 사업 방향이 흩어질 때 소환합니다.",
+        stats: { 지식: 5, 속도: 3, 심도: 5, 신뢰: 5 }
+      },
+      {
+        id: "market-researcher",
+        name: "시장 정찰병",
+        job: "척후 · 시장 리서처",
+        role: "시장·고객·경쟁·정책 근거를 1차 출처 중심으로 모읍니다.",
+        party: "전략 파티",
+        color: "#00a7a7",
+        level: 82,
+        intro: "외국인 시장, 경쟁사, 정책 변화, 고객여정을 1차 출처 중심으로 훑어오는 정찰형 캐릭터입니다.",
+        skills: ["시장규모", "경쟁지형", "고객여정", "정책스캔"],
+        ultimate: "Source Sweep: 흩어진 자료를 출처와 기준시점이 달린 근거 묶음으로 정리합니다.",
+        when: "감이 아니라 근거가 필요할 때, 경쟁사나 시장 수치를 다시 확인할 때 소환합니다.",
+        stats: { 지식: 5, 속도: 4, 심도: 4, 신뢰: 5 }
+      },
+      {
+        id: "feasibility-analyst",
+        name: "타당성 감정사",
+        job: "심판관 · Go/No-Go 분석가",
+        role: "사업을 계속 밀지, 줄일지, 멈출지 검증 기준으로 판단합니다.",
+        party: "전략 파티",
+        color: "#7c5cff",
+        level: 80,
+        intro: "시장성, 제품성, 경쟁력, 재무성, 규제 리스크를 재단해 사업을 계속 밀지 멈출지 판단합니다.",
+        skills: ["5축 평가", "SWOT", "리스크 등록부", "Go/No-Go"],
+        ultimate: "Gate Verdict: 장밋빛 가정을 걷어내고 다음 실험 기준을 제시합니다.",
+        when: "새 아이템을 추가할지, 기존 아이템을 접을지 판단해야 할 때 소환합니다.",
+        stats: { 지식: 4, 속도: 3, 심도: 5, 신뢰: 5 }
+      },
+      {
+        id: "gtm-strategist",
+        name: "진입 상단장",
+        job: "상단장 · GTM 전략가",
+        role: "첫 고객, 메시지, 채널, PoC 전환 루트를 설계합니다.",
+        party: "전략 파티",
+        color: "#2e8b57",
+        level: 78,
+        intro: "첫 고객을 어디서 만나고, 어떤 메시지로 전환시키며, 어떤 제휴로 확장할지 설계합니다.",
+        skills: ["ICP", "영업깔때기", "랜딩카피", "PoC", "가격실험"],
+        ultimate: "First Customer Route: 세미나, 파트너, 리드폼, PoC까지 이어지는 진입 경로를 만듭니다.",
+        when: "다음 주 업무, 고객 미팅, PoC 캠페인, 리드 수집 전략이 필요할 때 소환합니다.",
+        stats: { 지식: 4, 속도: 5, 심도: 3, 신뢰: 4 }
+      },
+      {
+        id: "tdd-engineer",
+        name: "테스트 장인",
+        job: "대장장이 · TDD 엔지니어",
+        role: "전략을 실제 웹앱, 랜딩, 데모, 리드폼으로 구현합니다.",
+        party: "전략 파티",
+        color: "#303442",
+        level: 75,
+        intro: "랜딩, 대시보드, 리드 API, 정적 산출물을 안정적으로 구현하고 테스트하는 제작형 캐릭터입니다.",
+        skills: ["테스트", "리팩터", "Next.js", "정적사이트"],
+        ultimate: "Red-Green-Ship: 실패 테스트부터 시작해 실제 동작하는 산출물로 마무리합니다.",
+        when: "전략을 웹앱, 랜딩, 데모, 리드폼으로 바꿔야 할 때 소환합니다.",
+        stats: { 지식: 4, 속도: 4, 심도: 4, 신뢰: 5 }
+      },
+      {
+        id: "visadesk-compliance-agent",
+        name: "체류 수문장",
+        job: "수문장 · VisaDesk 컴플라이언스",
+        role: "외국인 직원별 체류·고용 리스크를 관리 가능한 사건으로 바꿉니다.",
+        party: "도메인 파티",
+        color: "#0066cc",
+        level: 77,
+        intro: "비자 만료, 서류 누락, 근무 가능성, 고용 리스크를 직원별로 지키는 방어형 캐릭터입니다.",
+        skills: ["비자만료", "서류체크", "쿼터", "임금준법"],
+        ultimate: "Risk Shield: 외국인 직원 안심관리 리포트와 알림 룰을 설계합니다.",
+        when: "VisaDesk 기능, 알림 룰, 기업용 리스크 체크리스트를 만들 때 소환합니다.",
+        stats: { 지식: 5, 속도: 3, 심도: 4, 신뢰: 5 }
+      },
+      {
+        id: "moneeback-refund-agent",
+        name: "환급 연금술사",
+        job: "연금술사 · BackWon 환급",
+        role: "숨은 환급 가능성을 B2C 가입 명분과 금융 신호로 연결합니다.",
+        party: "도메인 파티",
+        color: "#2e8b57",
+        level: 79,
+        intro: "국민연금 반환일시금, 퇴직금, 보험, 세금 환급 가능성을 근로자용 웨지로 바꾸는 캐릭터입니다.",
+        skills: ["국민연금", "퇴직금", "보험환급", "출국체크"],
+        ultimate: "Money Passport: 숨은 돈 찾기를 가입 명분과 금융 연결 신호로 바꿉니다.",
+        when: "BackWon 제품, 환급 안내, B2C 유입 흐름을 설계할 때 소환합니다.",
+        stats: { 지식: 5, 속도: 3, 심도: 5, 신뢰: 5 }
+      },
+      {
+        id: "foreignid-auth-agent",
+        name: "신원 봉인관",
+        job: "봉인관 · ForeignID 인증",
+        role: "외국인 본인확인, 동의, 신뢰 레벨을 데이터 인프라로 설계합니다.",
+        party: "도메인 파티",
+        color: "#7c5cff",
+        level: 81,
+        intro: "여권, 외국인등록증, 통신, 계좌, 전자서명을 단계별 본인인증 구조로 묶습니다.",
+        skills: ["KYC", "eKYC", "동의관리", "신뢰레벨"],
+        ultimate: "Trust Seal: L1-L3 인증 레벨과 동의 기반 데이터 흐름을 설계합니다.",
+        when: "금융 파트너, 대안신용, 본인인증, 개인정보 동의 구조가 필요할 때 소환합니다.",
+        stats: { 지식: 5, 속도: 3, 심도: 5, 신뢰: 5 }
+      },
+      {
+        id: "foreign-domain-expert",
+        name: "법령 서고관",
+        job: "서고관 · 외국인 도메인 전문가",
+        role: "비자·노무·환급 문구가 사실과 최신 제도에 맞는지 검증합니다.",
+        party: "도메인 파티",
+        color: "#d8a928",
+        level: 84,
+        intro: "출입국, 고용허가제, 외국인 노동, 환급 제도의 사실관계를 최신 1차 출처로 검증합니다.",
+        skills: ["비자", "고용허가제", "노동법", "환급제도"],
+        ultimate: "Primary Source Check: 법령과 기관 출처로 문구의 사실성을 검증합니다.",
+        when: "비자 요건, 법령, 환급 가능성처럼 틀리면 위험한 사실을 확인할 때 소환합니다.",
+        stats: { 지식: 5, 속도: 3, 심도: 5, 신뢰: 5 }
+      },
+      {
+        id: "care-service-agent",
+        name: "돌봄 조율사",
+        job: "조율사 · 돌봄/간병 시장",
+        role: "돌봄·간병·가사 버티컬의 진입 조건과 제도 경계를 봅니다.",
+        party: "확장 파티",
+        color: "#2e8b57",
+        level: 68,
+        intro: "간병, 요양, 가사 인력 시장에서 외국인 채용 가능성과 제도 경계를 살핍니다.",
+        skills: ["돌봄", "간병", "요양", "가사"],
+        ultimate: "Care Route: 돌봄 버티컬 진입 조건과 제도 리스크를 정리합니다.",
+        when: "확장 시장으로 돌봄/요양/가사 인력을 검토할 때 소환합니다.",
+        stats: { 지식: 4, 속도: 3, 심도: 4, 신뢰: 4 }
+      },
+      {
+        id: "recruit-matching-agent",
+        name: "채용 궁수",
+        job: "궁수 · 비자별 채용매칭",
+        role: "비자, 직무, 사업장 조건이 맞는 채용추천 구조를 만듭니다.",
+        party: "확장 파티",
+        color: "#0066cc",
+        level: 70,
+        intro: "비자별로 가능한 직무와 사업장 조건을 겨냥해 채용추천의 차별화 지점을 찾습니다.",
+        skills: ["채용추천", "비자적합성", "직무매칭", "사업장조건"],
+        ultimate: "Visa Fit Shot: 비자-직무-사업장 적합성 점수를 설계합니다.",
+        when: "일반 채용공고가 아니라 비자별 채용추천으로 차별화해야 할 때 소환합니다.",
+        stats: { 지식: 4, 속도: 4, 심도: 4, 신뢰: 4 }
+      },
+      {
+        id: "social-integration-agent",
+        name: "통합 교관",
+        job: "교관 · 사회통합교육",
+        role: "한국어·KIIP·정착교육을 외국인 직원 복지 흐름에 연결합니다.",
+        party: "확장 파티",
+        color: "#00a7a7",
+        level: 66,
+        intro: "KIIP, 한국어, 한국사회 이해 교육을 외국인 정착 여정과 연결합니다.",
+        skills: ["KIIP", "한국어", "교육여정", "정착"],
+        ultimate: "Integration Class: 교육 이수 흐름과 제품 연계 포인트를 만듭니다.",
+        when: "정착교육, 사회통합, 근로자 복지 패키지를 설계할 때 소환합니다.",
+        stats: { 지식: 4, 속도: 3, 심도: 4, 신뢰: 4 }
+      },
+      {
+        id: "gtm-engagement-lead",
+        name: "전장 지휘관",
+        job: "총괄 · GTM 엔게이지먼트 리드",
+        role: "GTM 과제를 8개 워크스트림으로 나누고 최종 권고로 통합합니다.",
+        party: "GTM 전략본부",
+        color: "#d8a928",
+        level: 90,
+        intro: "GTM 문제를 8개 워크스트림으로 쪼개고, 병렬 분석을 하나의 스토리라인으로 통합합니다.",
+        skills: ["분해", "병렬진행", "통합", "스토리라인"],
+        ultimate: "Engagement Command: GTM 전략본부 전체를 소환하고 최종 권고로 묶습니다.",
+        when: "GTM을 풀스코프로 재정리하거나 여러 에이전트를 한 번에 굴릴 때 소환합니다.",
+        stats: { 지식: 5, 속도: 4, 심도: 5, 신뢰: 5 }
+      },
+      {
+        id: "gtm-segmentation-agent",
+        name: "표적 분석가",
+        job: "분석가 · 세그멘테이션",
+        role: "산업·비자·외국인 수 기준으로 먼저 만날 고객군을 고릅니다.",
+        party: "GTM 전략본부",
+        color: "#0066cc",
+        level: 73,
+        intro: "산업, 외국인 수, 비자 유형, 구매 여력으로 가장 먼저 공략할 ICP를 골라냅니다.",
+        skills: ["ICP", "세그먼트", "우선순위", "TAM/SAM"],
+        ultimate: "Target Grid: 매력도와 승리가능성으로 고객군을 배치합니다.",
+        when: "누구부터 만나야 하는지 명확하지 않을 때 소환합니다.",
+        stats: { 지식: 4, 속도: 4, 심도: 4, 신뢰: 4 }
+      },
+      {
+        id: "gtm-customer-insight-agent",
+        name: "고객 심문관",
+        job: "심문관 · JTBD 인사이트",
+        role: "담당자가 돈을 내는 진짜 불안과 구매 트리거를 찾습니다.",
+        party: "GTM 전략본부",
+        color: "#00a7a7",
+        level: 74,
+        intro: "담당자가 실제로 겪는 불안, 귀찮음, 비용, 책임 회피 니즈를 인터뷰 구조로 뽑아냅니다.",
+        skills: ["JTBD", "인터뷰", "페인", "구매트리거"],
+        ultimate: "Hidden Pain Reveal: 고객이 말하지 못한 구매 이유를 구조화합니다.",
+        when: "랜딩 카피나 세일즈 스크립트가 뜬구름처럼 느껴질 때 소환합니다.",
+        stats: { 지식: 4, 속도: 4, 심도: 5, 신뢰: 4 }
+      },
+      {
+        id: "gtm-competitive-positioning-agent",
+        name: "포지셔닝 검객",
+        job: "검객 · 경쟁/포지셔닝",
+        role: "ERP, 행정사, B2C 앱 대비 왜 PlugNX인지 논리화합니다.",
+        party: "GTM 전략본부",
+        color: "#7c5cff",
+        level: 76,
+        intro: "직접 경쟁사, 대체재, ERP, 행정사까지 고객의 실제 선택지를 놓고 왜 PlugNX인지 논증합니다.",
+        skills: ["2x2", "해자", "경쟁대응", "Win-theme"],
+        ultimate: "Why-We-Win Slash: 경쟁사가 아니라 우리를 고를 이유를 세그먼트별로 자릅니다.",
+        when: "더존, glow, Vijob, 행정사가 하면 되지 않냐는 질문에 답해야 할 때 소환합니다.",
+        stats: { 지식: 4, 속도: 4, 심도: 5, 신뢰: 4 }
+      },
+      {
+        id: "gtm-value-pricing-agent",
+        name: "가격 상인",
+        job: "상인 · 가치제안/가격",
+        role: "패키지 기능과 월 구독료가 납득되는 ROI 문장을 만듭니다.",
+        party: "GTM 전략본부",
+        color: "#d8a928",
+        level: 75,
+        intro: "Starter, Growth, Compliance 패키지의 기능 경계와 가격 명분을 설계합니다.",
+        skills: ["패키징", "가격", "ROI", "수익모델"],
+        ultimate: "Value Bridge: 고객 페인을 기능과 월 구독료의 명분으로 연결합니다.",
+        when: "월 29만/89만/169만원 가격표를 설득력 있게 다듬을 때 소환합니다.",
+        stats: { 지식: 4, 속도: 4, 심도: 4, 신뢰: 4 }
+      },
+      {
+        id: "gtm-channel-partnership-agent",
+        name: "제휴 사절",
+        job: "사절 · 채널/파트너십",
+        role: "행정사, 산단, 협회, 송금사, 은행 제휴 루트를 설계합니다.",
+        party: "GTM 전략본부",
+        color: "#2e8b57",
+        level: 72,
+        intro: "행정사, 산단, 협회, 송금사, 인터넷은행과 어떤 순서로 만나야 하는지 설계합니다.",
+        skills: ["제휴", "채널", "RTM", "세미나"],
+        ultimate: "Partner Route: 파트너별 제안 명분과 미팅 질문을 만듭니다.",
+        when: "한패스, 센트비, 산단, 협회, 행정사 미팅을 준비할 때 소환합니다.",
+        stats: { 지식: 4, 속도: 4, 심도: 4, 신뢰: 4 }
+      },
+      {
+        id: "gtm-sales-motion-agent",
+        name: "세일즈 돌격대장",
+        job: "돌격대장 · 영업 모션",
+        role: "후보사 발굴부터 미팅, 제안, PoC 전환까지 영업 순서를 짭니다.",
+        party: "GTM 전략본부",
+        color: "#d70015",
+        level: 74,
+        intro: "리드 발굴, 콜 스크립트, 미팅 질문, 제안서, 계약 전환 흐름을 전투 순서로 만듭니다.",
+        skills: ["영업스크립트", "퍼널", "전환", "리드"],
+        ultimate: "Pipeline Charge: 후보 50사에서 인터뷰와 PoC 후보를 뽑는 영업 움직임을 설계합니다.",
+        when: "다음 주에 실제 고객에게 연락해야 할 때 소환합니다.",
+        stats: { 지식: 3, 속도: 5, 심도: 4, 신뢰: 4 }
+      },
+      {
+        id: "gtm-launch-pilot-agent",
+        name: "파일럿 개척자",
+        job: "개척자 · PoC/런치",
+        role: "8주 PoC와 30/60/90일 실행계획, 성공 기준을 만듭니다.",
+        party: "GTM 전략본부",
+        color: "#0066cc",
+        level: 73,
+        intro: "8주 PoC, 30/60/90일 액션, 성공 기준, 실패 시 대안을 설계합니다.",
+        skills: ["PoC", "30/60/90", "실험", "Go/No-Go"],
+        ultimate: "Pilot Map: 작은 실험을 유료 전환 기준까지 이어지는 지도에 올립니다.",
+        when: "이번 주 업무, 다음 주 실험, PoC 운영안을 짤 때 소환합니다.",
+        stats: { 지식: 4, 속도: 4, 심도: 4, 신뢰: 4 }
+      },
+      {
+        id: "gtm-business-case-agent",
+        name: "수익 계산관",
+        job: "계산관 · 비즈니스 케이스",
+        role: "ARR, ARPA, 고객 수, 패키지 믹스의 숫자 정합성을 검산합니다.",
+        party: "GTM 전략본부",
+        color: "#303442",
+        level: 75,
+        intro: "ARR 목표, 고객 수, ARPA, 패키지 믹스, 유닛이코노믹스를 숫자로 점검합니다.",
+        skills: ["ARR", "ARPA", "Unit Economics", "시나리오"],
+        ultimate: "Number Sanity Check: 숫자의 단위와 자릿수를 검산합니다.",
+        when: "사업계획서 숫자가 말이 되는지 확인해야 할 때 소환합니다.",
+        stats: { 지식: 4, 속도: 3, 심도: 5, 신뢰: 5 }
+      },
+      {
+        id: "competitor-app-research-agent",
+        name: "앱 추적자",
+        job: "추적자 · 경쟁앱 전수조사",
+        role: "Vivisa, Dagachi, Vijob, glow의 강점과 피해야 할 전장을 나눕니다.",
+        party: "특수 검증대",
+        color: "#00a7a7",
+        level: 77,
+        intro: "Vivisa, Dagachi, Vijob, glow처럼 외국인 B2C 앱을 조사하고 PlugNX가 들어갈 곳과 피할 곳을 나눕니다.",
+        skills: ["경쟁앱", "B2C 지형", "BM 분석", "진입/회피"],
+        ultimate: "Competitor Scan: 공식 사이트, 앱스토어, 보도자료를 출처와 함께 정리합니다.",
+        when: "외국인 앱 시장이 이미 붐비는지, 우리가 무엇을 피해야 하는지 볼 때 소환합니다.",
+        stats: { 지식: 5, 속도: 4, 심도: 4, 신뢰: 5 }
+      },
+      {
+        id: "b2b-wtp-agent",
+        name: "지불의사 협상가",
+        job: "협상가 · B2B WTP/가격검증",
+        role: "엑셀·ERP 대신 월 구독료를 내게 할 구매 명분을 검증합니다.",
+        party: "특수 검증대",
+        color: "#d8a928",
+        level: 79,
+        intro: "외국인 고용기업이 왜 월 29만~89만원을 내야 하는지, 엑셀/ERP와 다른 구매 명분을 만듭니다.",
+        skills: ["WTP", "가격실험", "구매트리거", "PoC 전환"],
+        ultimate: "Pay Reason Forge: 고객 페인과 월 구독료를 연결하는 한 문장을 벼립니다.",
+        when: "돈 내게 할 논리가 약하거나 가격 실험을 설계해야 할 때 소환합니다.",
+        stats: { 지식: 4, 속도: 4, 심도: 5, 신뢰: 4 }
+      },
+      {
+        id: "regulatory-risk-agent",
+        name: "레드라인 감찰관",
+        job: "감찰관 · 규제/금지표현",
+        role: "비자·노무·세무·금융·개인정보 레드라인을 잡아냅니다.",
+        party: "특수 검증대",
+        color: "#d70015",
+        level: 83,
+        intro: "비자, 노무, 세무, 금융, 개인정보에서 법률대행이나 금융업처럼 보이는 위험 표현을 잡아냅니다.",
+        skills: ["레드라인", "금지표현", "안전문구", "제품경계"],
+        ultimate: "Red-Amber-Green Audit: 빼야 할 것, 검토할 것, 가능한 것을 색으로 판정합니다.",
+        when: "랜딩, 제안서, 사업계획서가 규제상 위험한 표현을 쓰는지 확인할 때 소환합니다.",
+        stats: { 지식: 5, 속도: 3, 심도: 5, 신뢰: 5 }
+      }
+    ];
+
+    const filters = document.getElementById("filters");
+    const grid = document.getElementById("agentGrid");
+    const search = document.getElementById("search");
+    const empty = document.getElementById("empty");
+    const countNote = document.getElementById("countNote");
+    const resetBtn = document.getElementById("resetBtn");
+    const modal = document.getElementById("modalBackdrop");
+    const copyResult = document.getElementById("copyResult");
+    let activeParty = "전체";
+    let activeAgent = null;
+
+    function partyShort(party) {
+      return party.replace(" 파티", "").replace(" 전략본부", "").replace(" 검증대", "");
+    }
+
+    function commandFor(agent) {
+      return `${agent.id}를 사용해서 다음을 분석해줘: [여기에 요청 입력]\n\n출력은 결론 먼저, 근거와 가정 라벨, PlugNX/VisaDesk/BackWon/ForeignID 브랜딩 기준으로 정리해줘.`;
+    }
+
+    function renderFilters() {
+      filters.innerHTML = parties.map((party) => {
+        const active = party === activeParty ? " active" : "";
+        return `<button class="filter${active}" type="button" data-party="${party}">${party}</button>`;
+      }).join("");
+    }
+
+    function searchable(agent) {
+      return [
+        agent.id,
+        agent.name,
+        agent.job,
+        agent.role,
+        agent.party,
+        agent.intro,
+        agent.skills.join(" "),
+        agent.ultimate,
+        agent.when
+      ].join(" ").toLowerCase();
+    }
+
+    function renderAgents() {
+      const q = search.value.trim().toLowerCase();
+      const filtered = agents.filter((agent) => {
+        const partyOk = activeParty === "전체" || agent.party === activeParty;
+        const queryOk = !q || searchable(agent).includes(q);
+        return partyOk && queryOk;
+      });
+
+      countNote.textContent = `${filtered.length}명 표시 · 전체 ${agents.length}명`;
+      empty.classList.toggle("show", filtered.length === 0);
+      grid.innerHTML = filtered.map((agent) => {
+        const stats = Object.entries(agent.stats).map(([label, value]) => `
+          <div class="stat">
+            <span>${label}</span>
+            <span class="stat-track"><span class="stat-fill" style="--v:${value}; --accent:${agent.color}"></span></span>
+            <span>${value}/5</span>
+          </div>
+        `).join("");
+        const badges = agent.skills.slice(0, 4).map((skill) => `<span class="badge">${skill}</span>`).join("");
+        return `
+          <article class="agent-card" data-id="${agent.id}">
+            <div class="agent-top">
+              <div class="sprite" style="--accent:${agent.color}" aria-hidden="true">
+                <span class="hair"></span>
+                <span class="tool"></span>
+                <span class="feet"></span>
+              </div>
+              <div class="agent-meta">
+                <span class="agent-name">${agent.name}</span>
+                <span class="agent-class">${agent.job}</span>
+                <span class="agent-role">${agent.role}</span>
+              </div>
+            </div>
+            <div class="badge-row">
+              <span class="badge">${partyShort(agent.party)}</span>
+              <span class="badge">Lv.${agent.level}</span>
+              <span class="badge">@${agent.id}</span>
+            </div>
+            <p class="agent-desc">${agent.intro}</p>
+            <div class="badge-row">${badges}</div>
+            <div class="stat-list">${stats}</div>
+            <div class="card-actions">
+              <button type="button" data-open="${agent.id}">소개 보기</button>
+              <button type="button" data-command="${agent.id}">소환문</button>
+            </div>
+          </article>
+        `;
+      }).join("");
+    }
+
+    function openAgent(id) {
+      const agent = agents.find((item) => item.id === id);
+      if (!agent) return;
+      activeAgent = agent;
+      copyResult.textContent = "";
+      document.getElementById("modalSigil").textContent = agent.name.slice(0, 1);
+      document.getElementById("modalSigil").style.background = agent.color;
+      document.getElementById("modalName").textContent = `${agent.name} · Lv.${agent.level}`;
+      document.getElementById("modalClass").textContent = `${agent.job} / ${agent.party}`;
+      document.getElementById("modalRole").textContent = agent.role;
+      document.getElementById("modalTitle").textContent = `@${agent.id}`;
+      document.getElementById("modalIntro").textContent = agent.intro;
+      document.getElementById("modalSkills").innerHTML = agent.skills.map((skill) => `<li>${skill}</li>`).join("");
+      document.getElementById("modalUltimate").textContent = agent.ultimate;
+      document.getElementById("modalWhen").textContent = agent.when;
+      document.getElementById("modalCommand").textContent = commandFor(agent);
+      modal.classList.add("open");
+    }
+
+    function closeAgent() {
+      modal.classList.remove("open");
+    }
+
+    renderFilters();
+    renderAgents();
+
+    filters.addEventListener("click", (event) => {
+      const button = event.target.closest("[data-party]");
+      if (!button) return;
+      activeParty = button.dataset.party;
+      renderFilters();
+      renderAgents();
+    });
+
+    search.addEventListener("input", renderAgents);
+    resetBtn.addEventListener("click", () => {
+      search.value = "";
+      activeParty = "전체";
+      renderFilters();
+      renderAgents();
+    });
+
+    grid.addEventListener("click", (event) => {
+      const open = event.target.closest("[data-open]");
+      const command = event.target.closest("[data-command]");
+      const card = event.target.closest("[data-id]");
+      if (open) {
+        openAgent(open.dataset.open);
+      } else if (command) {
+        openAgent(command.dataset.command);
+        setTimeout(() => document.getElementById("copyCommand").focus(), 0);
+      } else if (card) {
+        openAgent(card.dataset.id);
+      }
+    });
+
+    document.querySelectorAll("[data-scroll]").forEach((button) => {
+      button.addEventListener("click", () => {
+        document.querySelector(button.dataset.scroll)?.scrollIntoView({ behavior: "smooth" });
+      });
+    });
+
+    document.getElementById("closeModal").addEventListener("click", closeAgent);
+    modal.addEventListener("click", (event) => {
+      if (event.target === modal) closeAgent();
+    });
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") closeAgent();
+    });
+    document.getElementById("copyCommand").addEventListener("click", async () => {
+      if (!activeAgent) return;
+      const text = commandFor(activeAgent);
+      try {
+        await navigator.clipboard.writeText(text);
+        copyResult.textContent = "소환 명령을 복사했습니다.";
+      } catch {
+        copyResult.textContent = "브라우저 권한상 자동 복사가 막혔습니다. 명령을 직접 선택해 복사하세요.";
+      }
+    });
+  </script>
+</body>
+</html>

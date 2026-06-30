@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow" />
+<title>PlugNX VisaDesk — 사업 1-Pager</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --blue:#0066cc; --blue-focus:#0071e3; --sky:#2997ff;
+    --white:#ffffff; --parch:#f5f5f7; --pearl:#fafafc;
+    --tile:#272729; --tile2:#2a2a2c; --black:#000;
+    --ink:#1d1d1f; --ink80:#333; --ink48:#7a7a7a;
+    --on-dark:#fff; --dim:#cccccc;
+    --hair:#e0e0e0; --divider:#f0f0f0;
+    --danger:#d70015; --danger-d:#ff5a4d;
+    --font:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text",Inter,system-ui,"Apple SD Gothic Neo",sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:var(--font);background:var(--white);color:var(--ink);line-height:1.47;
+    letter-spacing:-.022em;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+  a{color:var(--blue);text-decoration:none}
+  .container{max-width:1080px;margin:0 auto;padding:0 22px}
+
+  h1,h2,h3,h4{letter-spacing:-.022em;font-weight:600;color:var(--ink)}
+  .eyebrow{font-size:14px;font-weight:600;color:var(--blue);letter-spacing:0}
+  .display{font-size:clamp(30px,5vw,52px);font-weight:600;line-height:1.07;letter-spacing:-.028em}
+  .h2{font-size:clamp(25px,3.4vw,38px);font-weight:600;line-height:1.1;letter-spacing:-.024em}
+  .lead{font-size:clamp(18px,2.1vw,25px);font-weight:400;line-height:1.28;color:var(--ink80)}
+  .muted{color:var(--ink48)}
+
+  .tile{padding:clamp(46px,6.5vw,74px) 0}
+  .tile.light{background:var(--white)}
+  .tile.parch{background:var(--parch)}
+  .tile.dark{background:var(--tile);color:var(--dim)}
+  .tile.black{background:var(--black);color:var(--dim)}
+  .on-dark h2,.on-dark h3,.on-dark h4{color:var(--on-dark)}
+  .on-dark{color:var(--dim)}
+  .on-dark .eyebrow{color:var(--sky)}
+  .sec-head{max-width:780px;margin:0 auto clamp(30px,4.5vw,46px);text-align:center}
+  .sec-head .eyebrow{display:block;margin-bottom:12px}
+  .sec-head .h2{margin-bottom:14px}
+  .sec-head p{font-size:18px;color:var(--ink48);line-height:1.42}
+  .on-dark .sec-head p{color:var(--dim)}
+
+  /* nav */
+  .gnav{background:var(--black);height:44px}
+  .gnav .container{height:44px;display:flex;align-items:center;gap:18px}
+  .gnav a{color:#f5f5f7;font-size:12px;opacity:.85}
+  .wordmark{font-weight:700;font-size:15px;color:#fff;letter-spacing:-.02em}
+  .wordmark .nx{color:#fff;opacity:.62}
+  .gnav .sp{margin-left:auto}
+
+  /* hero */
+  .hero{text-align:center;padding:clamp(44px,6vw,70px) 0 clamp(30px,4vw,48px)}
+  .hero .eyebrow{margin-bottom:14px}
+  .hero .display{margin-bottom:18px}
+  .hero .lead{max-width:760px;margin:0 auto 24px}
+  .hero-pills{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:6px}
+  .chip{font-size:13px;color:var(--ink48);background:var(--parch);border:1px solid var(--hair);
+    border-radius:980px;padding:6px 13px}
+  .chip b{color:var(--ink)}
+
+  /* metric strip */
+  .mkt-row{display:flex;gap:34px;flex-wrap:wrap;justify-content:center}
+  .mkt{text-align:center}
+  .mkt .n{font-size:32px;font-weight:600;color:#fff;letter-spacing:-.02em}
+  .mkt .l{font-size:13px;color:var(--dim);margin-top:4px;line-height:1.4}
+  .mkt .s{font-size:11px;color:#8a8a8e;margin-top:3px}
+
+  /* grids */
+  .g2{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+  .g3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  @media(max-width:900px){.g3{grid-template-columns:1fr}}
+  @media(max-width:640px){.g2{grid-template-columns:1fr}}
+
+  /* cards */
+  .card{background:#fff;border:1px solid var(--hair);border-radius:18px;padding:24px}
+  .on-dark .card{background:var(--tile2);border-color:rgba(255,255,255,.12)}
+  .card h3{font-size:19px;font-weight:600;margin-bottom:8px}
+  .card p{font-size:15px;color:var(--ink48);line-height:1.5}
+  .on-dark .card p{color:var(--dim)}
+  .feat .fn{font-size:12px;font-weight:600;color:var(--blue);letter-spacing:.04em;display:block;margin-bottom:6px}
+  .on-dark .feat .fn{color:var(--sky)}
+
+  /* feature list */
+  .flist{list-style:none;display:flex;flex-direction:column;gap:10px}
+  .flist li{font-size:15px;color:var(--ink80);display:flex;gap:10px;align-items:flex-start;line-height:1.5}
+  .flist li:before{content:"";width:6px;height:6px;border-radius:50%;background:var(--blue);margin-top:8px;flex:0 0 auto}
+  .flist li b{color:var(--ink);font-weight:600}
+
+  /* pain (danger) cards */
+  .pain li{font-size:14px;color:var(--dim);display:flex;justify-content:space-between;gap:14px;
+    padding:11px 0;border-bottom:1px solid rgba(255,255,255,.1);line-height:1.45}
+  .pain li:last-child{border-bottom:none}
+  .pain .v{color:var(--danger-d);font-weight:600;white-space:nowrap;flex:0 0 auto}
+
+  /* pricing */
+  .price-row{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+  @media(max-width:760px){.price-row{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:440px){.price-row{grid-template-columns:1fr}}
+  .pcard{background:#fff;border:1px solid var(--hair);border-radius:18px;padding:22px;text-align:center;position:relative}
+  .pcard.pop{border:2px solid var(--blue);padding:21px}
+  .pop-badge{position:absolute;top:-11px;left:50%;transform:translateX(-50%);font-size:12px;font-weight:600;
+    color:#fff;background:var(--blue);border-radius:980px;padding:4px 14px}
+  .pcard .pn{font-size:13px;font-weight:600;color:var(--ink48);letter-spacing:.04em}
+  .pcard .pp{font-size:30px;font-weight:600;letter-spacing:-.03em;margin:8px 0 2px}
+  .pcard .pp small{font-size:13px;color:var(--ink48);font-weight:400}
+  .pcard .pc{font-size:13px;color:var(--ink48);line-height:1.45}
+
+  /* roi banner */
+  .roi{background:var(--tile2);border:1px solid rgba(255,255,255,.12);border-radius:18px;padding:26px 28px;text-align:center}
+  .roi .verdict{font-size:23px;font-weight:600;color:#fff;letter-spacing:-.02em;margin-bottom:10px}
+  .roi .verdict b{color:var(--sky)}
+  .roi p{font-size:15px;color:var(--dim);max-width:720px;margin:0 auto;line-height:1.6}
+
+  /* steps */
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+  @media(max-width:760px){.steps{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:440px){.steps{grid-template-columns:1fr}}
+  .step{background:#fff;border:1px solid var(--hair);border-radius:18px;padding:20px}
+  .step .sn{font-size:12px;font-weight:600;color:var(--blue);letter-spacing:.04em}
+  .step h3{font-size:16px;font-weight:600;margin:8px 0 6px}
+  .step p{font-size:13px;color:var(--ink48);line-height:1.45}
+
+  .src{font-size:12px;color:var(--ink48);margin-top:22px;line-height:1.6}
+  .on-dark .src{color:#8a8a8e}
+
+  /* final */
+  .final{text-align:center}
+  .final .h2{margin-bottom:14px}
+  .final p{font-size:18px;color:var(--dim);max-width:620px;margin:0 auto 24px}
+  .btn{display:inline-flex;align-items:center;gap:7px;font-size:17px;font-weight:400;letter-spacing:-.022em;
+    padding:11px 22px;border-radius:980px;border:1px solid transparent;text-decoration:none}
+  .btn-primary{background:var(--blue);color:#fff;border-color:var(--blue)}
+
+  footer{background:var(--parch);padding:46px 0 36px;color:var(--ink48)}
+  .ft-disc{font-size:12px;color:var(--ink48);line-height:1.7}
+  .ft-disc b{color:var(--ink80)}
+  .ft-disc .wordmark{color:var(--ink)}
+  .ft-disc .wordmark .nx{color:var(--ink48)}
+
+  /* ---- print ---- */
+  @page{size:A4;margin:14mm 12mm}
+  @media print{
+    body{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    .gnav{display:none}
+    .tile{padding:22px 0;break-inside:avoid}
+    .sec-head{margin-bottom:18px}
+    .card,.pcard,.step,.roi{break-inside:avoid}
+    section{break-inside:avoid-page}
+    a{color:var(--ink)}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ GLOBAL NAV ============ -->
+<div class="gnav">
+  <div class="container">
+    <span class="wordmark">PLUG<span class="nx">nx</span></span>
+    <a href="visadesk.html">VisaDesk</a>
+    <a href="backwon.html">BackWon</a>
+    <a class="sp" href="index.html">산출물 허브</a>
+  </div>
+</div>
+
+<!-- ============ HERO ============ -->
+<section class="tile light">
+  <div class="container hero">
+    <span class="eyebrow">PlugNX VisaDesk · 사업 1-Pager</span>
+    <h1 class="display">외국인 노무관리를<br/>상시·예방·자동으로.</h1>
+    <p class="lead">외국인 고용기업의 <b>체류·비자·임금·서류·환급</b>을 한 플랫폼에서 자동 관리하는 B2B SaaS — 엑셀·캘린더로 떠안던 일을 시스템이 대신 지키고, 적발 1건이 사업을 위협하기 전에 차단한다.</p>
+    <div class="hero-pills">
+      <span class="chip">체류외국인 <b>278만</b></span>
+      <span class="chip">월 <b>29 / 89 / 169만원</b></span>
+      <span class="chip">1건만 막아도 <b>+932만원</b></span>
+      <span class="chip">8주 무료 <b>PoC</b></span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHO / PAIN ============ -->
+<section class="tile dark on-dark">
+  <div class="container">
+    <div class="sec-head">
+      <span class="eyebrow">타깃 · 문제</span>
+      <h2 class="h2">담당자 1명이 엑셀로 떠안고,<br/>적발 1건이 사업을 흔든다</h2>
+      <p>전담 인사팀 없는 영세·중소 사업장(제조·요양/돌봄·농어업·IT/서비스)이 체류만료·임금요건·서류·신고를 사람의 기억으로 관리한다. 정부합동단속은 연 2회 정례화됐다.</p>
+    </div>
+    <div class="g2">
+      <div class="card">
+        <h3 style="color:#fff">규제·법적 리스크</h3>
+        <ul class="pain" style="margin-top:8px">
+          <li><span>체류만료 1건 누락 → 불법고용</span><span class="v">벌금 2,000만원</span></li>
+          <li><span>고용허가 의무 위반</span><span class="v">신규고용 제한 3년</span></li>
+          <li><span>단속 적발 (1인 평균 범칙금)</span><span class="v">약 480만원</span></li>
+          <li><span>임금요건 미달 → 갱신 거부 인력공백</span><span class="v">약 1,500만원</span></li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3 style="color:#fff">운영 난제</h3>
+        <ul class="flist" style="margin-top:8px">
+          <li style="color:var(--dim)">체류만료를 "터지고 나서" 처리하는 사후 대응</li>
+          <li style="color:var(--dim)">담당자 퇴사 시 데이터·노하우 증발</li>
+          <li style="color:var(--dim)">비자별 임금요건 연 1회 고시 갱신 추적 어려움</li>
+          <li style="color:var(--dim)">엑셀·캘린더 분산 관리로 누락 상시 발생</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SOLUTION / FEATURES ============ -->
+<section class="tile light">
+  <div class="container">
+    <div class="sec-head">
+      <span class="eyebrow">솔루션 · 핵심 기능</span>
+      <h2 class="h2">한 플랫폼에서 끝나는<br/>외국인 고용 준법관리</h2>
+      <p>알림·자동점검·문서함·전문가 연계·리스크 점수까지. 문제가 터지기 전에 시스템이 먼저 잡는다.</p>
+    </div>
+    <div class="g3">
+      <div class="card feat">
+        <span class="fn">상시 모니터링</span>
+        <h3>알림 · 자동 점검</h3>
+        <ul class="flist" style="margin-top:10px">
+          <li>체류만료 자동 알림 (D-120/90/60/30)</li>
+          <li>비자별 임금요건 자동 체크 (E-7-1~4)</li>
+          <li>서류 체크리스트·문서함 (누락/만료 추적)</li>
+        </ul>
+      </div>
+      <div class="card feat">
+        <span class="fn">진단 · 리포트</span>
+        <h3>리스크 가시화</h3>
+        <ul class="flist" style="margin-top:10px">
+          <li>기업 리스크 점수 (100점, 월 갱신)</li>
+          <li>K-Trust Readiness A/B/C 등급 진단</li>
+          <li>월간 리스크 리포트 자동 생성</li>
+        </ul>
+      </div>
+      <div class="card feat">
+        <span class="fn">연계 · 상위 플랜</span>
+        <h3>처리 · 확장</h3>
+        <ul class="flist" style="margin-top:10px">
+          <li>전문가 1클릭 연결 (행정사·노무사·변호사)</li>
+          <li>급여 교차검증 · 노무/숙소/안전 서류</li>
+          <li>환급·출국 패키지 · 다사업장/API</li>
+        </ul>
+      </div>
+    </div>
+    <div class="card" style="margin-top:18px;background:var(--parch);border-color:var(--hair)">
+      <span class="fn" style="font-size:12px;font-weight:600;color:var(--blue);letter-spacing:.04em;display:block;margin-bottom:6px">연동 · 근로자용 B2C</span>
+      <h3 style="font-size:18px;margin-bottom:6px">BackWon — 외국인 근로자 금융</h3>
+      <p style="font-size:15px;color:var(--ink80);line-height:1.55">미수령 연금·보험·퇴직금 <b style="color:var(--ink)">환급</b>(1인 평균 약 1,050만원) · AI 급여 적정성 분석 · 송금 비교·대출 중개·신용점수 · 한·영·베·중·태·우즈 <b style="color:var(--ink)">6개 언어</b>. 기업이 등록한 근로자가 자동 유입되는 양면 구조.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PRICING + ROI ============ -->
+<section class="tile parch">
+  <div class="container">
+    <div class="sec-head">
+      <span class="eyebrow">요금제 · ROI</span>
+      <h2 class="h2">월 구독, 단 1건만 막아도 본전</h2>
+      <p>온보딩비 30~100만원 별도 · 모든 플랜 월 단위 해지 가능.</p>
+    </div>
+    <div class="price-row">
+      <div class="pcard">
+        <span class="pn">STARTER</span>
+        <div class="pp">29<small>만원/월</small></div>
+        <div class="pc">10명 · 초과 1만원/인<br/>알림·서류체크·기본 이메일</div>
+      </div>
+      <div class="pcard pop">
+        <span class="pop-badge">대표 플랜</span>
+        <span class="pn">GROWTH</span>
+        <div class="pp">89<small>만원/월</small></div>
+        <div class="pc">30명 · 초과 1.5만원/인<br/>+임금요건·전문가티켓·리포트·BackWon</div>
+      </div>
+      <div class="pcard">
+        <span class="pn">COMPLIANCE</span>
+        <div class="pp">169<small>만원/월</small></div>
+        <div class="pc">50명 · 초과 2만원/인<br/>+K-Trust·급여검증·노무서류</div>
+      </div>
+      <div class="pcard">
+        <span class="pn">ENTERPRISE</span>
+        <div class="pp">별도<small> 견적</small></div>
+        <div class="pc">100명+<br/>+다사업장·API·전담매니저</div>
+      </div>
+    </div>
+    <div class="roi" style="margin-top:24px;background:var(--tile2)">
+      <div class="verdict">외국인 30명 기준 — 단 <b>1건</b>만 차단해도 연 구독료 대비 <b>+932만원</b></div>
+      <p>불법체류 적발 1건 회피 +2,000만원 · 인력공백 1건 회피 +1,500만원 vs Growth 연 구독료 1,068만원. "월 89만원은 비용이 아니라 외국인 30명에게 드는 리스크 보험료."</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHY NOW + FUNNEL ============ -->
+<section class="tile light">
+  <div class="container">
+    <div class="sec-head">
+      <span class="eyebrow">타이밍 · 전환 경로</span>
+      <h2 class="h2">K-Trust 시행 전, 지금 기록을 쌓는 자가 선점한다</h2>
+      <p>K-Trust 성실고용 인증제 2026.3 도입 발표 — 지금부터 관리 기록을 축적하면 제도 시행 시 상위 등급을 선점한다. 임금요건 매년 고시 자동 반영 · E-9→E-7-4 숙련전환 지원.</p>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <span class="sn">STEP 1</span>
+        <h3>1분 무료 진단</h3>
+        <p>9문항 자가진단으로 우리 회사 리스크와 맞춤 플랜 확인</p>
+      </div>
+      <div class="step">
+        <span class="sn">STEP 2</span>
+        <h3>8주 무료 PoC</h3>
+        <p>기업·근로자 등록 → 자동 리스크 분석 → 월간 리포트</p>
+      </div>
+      <div class="step">
+        <span class="sn">STEP 3</span>
+        <h3>운영 안정화</h3>
+        <p>상시 알림·점검으로 적발·공백을 사전 차단</p>
+      </div>
+      <div class="step">
+        <span class="sn">STEP 4</span>
+        <h3>플랜 구독</h3>
+        <p>규모에 맞춰 Starter~Enterprise 선택·확장</p>
+      </div>
+    </div>
+    <div class="mkt-row" style="margin-top:32px">
+      <div class="mkt"><div class="n" style="color:var(--ink)">278만</div><div class="l" style="color:var(--ink48)">체류외국인 ('25)</div></div>
+      <div class="mkt"><div class="n" style="color:var(--ink)">49.3만</div><div class="l" style="color:var(--ink48)">E계열 취업비자</div></div>
+      <div class="mkt"><div class="n" style="color:var(--ink)">63.5만</div><div class="l" style="color:var(--ink48)">동포 H2/F4</div></div>
+      <div class="mkt"><div class="n" style="color:var(--ink)">112.5만</div><div class="l" style="color:var(--ink48)">'30년 인력부족(최소·예상)</div></div>
+    </div>
+    <p class="src" style="text-align:center;max-width:820px;margin-left:auto;margin-right:auto">
+      출처: 라이브 사이트 plugnx-visaops.netlify.app(2026-06-23). 시장 수치는 PlugNX 사업기획서 v1.0(SSOT) 정합. 벌금·범칙금·환급·K-Trust 등 구체 수치는 법령 개정에 따라 변동 → 행정사·노무사·변호사 검증 및 1차 출처(하이코리아·고용노동부) 확인 필요. 비자 판정·환급 가능 여부는 법적 효력 없는 참고 정보.
+    </p>
+  </div>
+</section>
+
+<!-- ============ FINAL CTA ============ -->
+<section class="tile black on-dark">
+  <div class="container final">
+    <span class="eyebrow">PlugNX VisaDesk</span>
+    <h2 class="h2">터지기 전에, 시스템이 먼저 막는다.</h2>
+    <p>체류·비자·임금·서류·환급을 하나로 — 외국인 고용기업의 리스크 보험.</p>
+    <a class="btn btn-primary" href="https://plugnx-visaops.netlify.app/#features">우리 회사 리스크부터 진단 ›</a>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="container">
+    <p class="ft-disc">
+      <span class="wordmark">PLUG<span class="nx">nx</span></span> &nbsp;VisaDesk · 사업 1-Pager &nbsp;·&nbsp; 라이브 사이트 요약(2026-06-23)<br/><br/>
+      <b>참고용 안내.</b> 본 자료는 라이브 사이트 마케팅 카피를 요약한 내부 자료로 법적 효력이 없는 참고 정보다.
+      요금제(29/89/169만원)·시장 수치(체류외국인 278만·E계열 49.3만)는 PlugNX 사업기획서 v1.0(SSOT) 정합값이다.
+      벌금·범칙금·환급액·K-Trust·임금요건 등은 자주 개정되므로 시행일·조문 확인과 행정사·노무사·변호사·세무사 검증, 1차 출처(하이코리아·법무부 출입국·외국인정책본부·고용노동부·국민연금공단) 최신 확인이 필요하다.
+      비자 판정·환급 가능 여부·세무 판단은 참고 정보이며 확정액이 아니다.<br/><br/>
+      © 2026 PlugNX Inc. · 내부 데모 · <a href="index.html">산출물 허브로</a>
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>

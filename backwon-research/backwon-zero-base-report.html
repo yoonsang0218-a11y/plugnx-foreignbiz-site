@@ -1,0 +1,1129 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BackWon 제로베이스 시장조사·사업타당성 보고서 — PlugNX</title>
+<style>
+  :root{
+    --canvas:#ffffff; --parchment:#f5f5f7; --pearl:#fafafc;
+    --tile:#1d1d1f; --tile-2:#272729;
+    --blue:#0066cc; --blue-focus:#0071e3; --sky:#2997ff;
+    --ink:#1d1d1f; --ink-80:#333333; --ink-48:#7a7a7a;
+    --on-dark:#ffffff; --muted-dark:#cccccc;
+    --hairline:#e0e0e0; --divider:#f0f0f0;
+    --danger:#d70015; --danger-dark:#ff5a4d;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text",Inter,system-ui,sans-serif;
+    color:var(--ink); background:var(--canvas); line-height:1.47;
+    -webkit-font-smoothing:antialiased; font-size:17px; letter-spacing:-0.374px;
+  }
+  section{padding:80px 24px}
+  .wrap{max-width:1040px;margin:0 auto}
+  .narrow{max-width:820px;margin:0 auto}
+  h1,h2,h3,h4{font-weight:600;letter-spacing:-0.28px;line-height:1.10}
+  h2{font-size:40px;margin-bottom:8px}
+  h3{font-size:28px;margin:40px 0 12px;letter-spacing:-0.3px;line-height:1.14}
+  h4{font-size:21px;margin:28px 0 10px}
+  p{margin:12px 0}
+  .eyebrow{font-size:14px;font-weight:600;letter-spacing:0.02em;color:var(--blue);text-transform:uppercase;margin-bottom:14px}
+  .lead{font-size:21px;font-weight:400;line-height:1.4;color:var(--ink-80)}
+  a{color:var(--blue);text-decoration:none}
+  a:hover{text-decoration:underline}
+
+  /* dark tiles */
+  .dark{background:var(--tile);color:var(--on-dark)}
+  .dark h2,.dark h3,.dark h4{color:var(--on-dark)}
+  .dark .eyebrow{color:var(--sky)}
+  .dark p{color:var(--muted-dark)}
+  .dark a{color:var(--sky)}
+  .dark .card{background:var(--tile-2);border-color:#3a3a3c}
+  .dark table{color:var(--muted-dark)}
+  .dark th{color:var(--on-dark);border-color:#3a3a3c}
+  .dark td{border-color:#333}
+
+  /* hero */
+  .hero{background:var(--tile);color:var(--on-dark);padding:96px 24px 72px}
+  .hero h1{font-size:56px;line-height:1.07;letter-spacing:-0.5px;margin:10px 0 18px;color:#fff}
+  .hero .lead{color:var(--muted-dark);max-width:760px}
+  .verdict-chip{display:inline-block;background:var(--blue);color:#fff;font-weight:600;font-size:15px;
+    padding:7px 16px;border-radius:9999px;margin-top:22px;letter-spacing:0}
+  .meta-row{margin-top:30px;font-size:14px;color:#9a9a9c;line-height:1.7}
+
+  /* label chips */
+  .lbl{display:inline-block;font-size:11px;font-weight:600;padding:1px 7px;border-radius:9999px;
+    vertical-align:middle;letter-spacing:0;white-space:nowrap}
+  .lbl-1{background:#e7f0fb;color:#0a5bbf}
+  .lbl-2{background:#eee;color:#555}
+  .lbl-o{background:#efeef2;color:#3a3a3c}
+  .lbl-e{background:#f3f1ee;color:#6b6b6b;font-style:italic}
+  .lbl-c{background:#fbeaec;color:var(--danger)}
+  .dark .lbl-1{background:#16324f;color:#7fb5ef}
+  .dark .lbl-2{background:#3a3a3c;color:#cfcfcf}
+  .dark .lbl-o{background:#33333a;color:#cfcfcf}
+  .dark .lbl-e{background:#33312c;color:#cfcfcf}
+  .dark .lbl-c{background:#4a1f24;color:var(--danger-dark)}
+
+  /* tables */
+  table{width:100%;border-collapse:collapse;margin:18px 0;font-size:15px;line-height:1.45}
+  th,td{text-align:left;padding:11px 12px;border-bottom:1px solid var(--hairline);vertical-align:top}
+  th{font-weight:600;font-size:13px;color:var(--ink-48);text-transform:uppercase;letter-spacing:0.02em;border-bottom:1px solid var(--ink)}
+  tbody tr:last-child td{border-bottom:none}
+  .num{white-space:nowrap;font-variant-numeric:tabular-nums}
+
+  /* cards */
+  .grid{display:grid;gap:18px;margin-top:24px}
+  .g2{grid-template-columns:repeat(2,1fr)}
+  .g3{grid-template-columns:repeat(3,1fr)}
+  .card{background:var(--pearl);border:1px solid var(--hairline);border-radius:18px;padding:24px}
+  .card h4{margin:0 0 8px}
+  .card .big{font-size:34px;font-weight:600;letter-spacing:-0.5px;line-height:1.05}
+  .card .sub{font-size:14px;color:var(--ink-48);margin-top:4px}
+  .danger-num{color:var(--danger)}
+  .dark .danger-num{color:var(--danger-dark)}
+
+  /* score dots */
+  .dots{font-size:18px;letter-spacing:2px;color:var(--blue)}
+  .dots .off{color:#cfcfd2}
+
+  /* callouts */
+  .callout{border-left:3px solid var(--blue);background:var(--parchment);padding:18px 22px;border-radius:0 11px 11px 0;margin:22px 0}
+  .callout.warn{border-color:var(--danger);background:#fdf3f4}
+  .callout p{margin:6px 0}
+  .callout .k{font-weight:600;color:var(--ink)}
+
+  /* lists */
+  ul.clean{list-style:none;margin:12px 0}
+  ul.clean li{padding:7px 0 7px 26px;position:relative;border-bottom:1px solid var(--divider)}
+  ul.clean li:before{content:"▶";color:var(--blue);position:absolute;left:0;font-size:11px;top:11px}
+  ul.clean li:last-child{border-bottom:none}
+  ol.steps{counter-reset:s;list-style:none;margin:14px 0}
+  ol.steps li{counter-increment:s;padding:10px 0 10px 44px;position:relative;border-bottom:1px solid var(--divider)}
+  ol.steps li:before{content:counter(s);position:absolute;left:0;top:9px;width:28px;height:28px;background:var(--blue);
+    color:#fff;border-radius:9999px;text-align:center;line-height:28px;font-size:14px;font-weight:600}
+
+  /* TOC */
+  .toc{background:var(--parchment)}
+  .toc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:18px}
+  .toc a{display:block;padding:14px 16px;background:#fff;border:1px solid var(--hairline);border-radius:11px;
+    font-size:15px;color:var(--ink);font-weight:400}
+  .toc a:hover{border-color:var(--blue);text-decoration:none}
+  .toc a b{color:var(--blue);font-weight:600;margin-right:8px}
+
+  .sec-tag{font-size:13px;color:var(--ink-48);font-weight:600;letter-spacing:0.04em}
+  .verify-pill{display:inline-block;font-size:12px;font-weight:600;padding:2px 9px;border-radius:9999px;margin-left:8px}
+  .v-hold{background:#e7f0fb;color:#0a5bbf}
+  .v-part{background:#fbeaec;color:var(--danger)}
+  .v-none{background:#eee;color:#777}
+
+  .fine{font-size:12px;color:var(--ink-48);line-height:1.6}
+  .dark .fine{color:#8a8a8c}
+  hr.soft{border:none;border-top:1px solid var(--divider);margin:34px 0}
+  .src-list{font-size:13px;line-height:1.8;color:var(--ink-80)}
+  .src-list li{margin:3px 0}
+
+  @media(max-width:820px){
+    .g2,.g3,.toc-grid{grid-template-columns:1fr}
+    .hero h1{font-size:40px}
+    h2{font-size:30px}
+    section{padding:56px 20px}
+    table{font-size:13.5px}
+    th,td{padding:9px 8px}
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">PlugNX 외국인 신사업 · 제로베이스 엔게이지먼트</div>
+    <h1>BackWon<br>시장조사·사업타당성 보고서</h1>
+    <p class="lead">체류외국인 B2C 풀스택(미수령 환급 · 급여 적정성 AI · 금융연계)을 기존 결론에 기대지 않고 1차 출처로 재검증한 종합 타당성 분석. 8개 MECE 워크스트림 병렬 리서치 → 핵심주장 적대적 검증 → 5축 종합 → 사업자·재직자·금융권 3자 workflow/BM 재검토.</p>
+    <div class="verdict-chip">종합 판정 — 조건부 GO (단, "환급 사업"이 아니라 "금융 데이터 레이어"로서)</div>
+    <div class="meta-row">
+      작성 2026-06-29 KST · 방법: 멀티에이전트 병렬 엔게이지먼트(8 워크스트림 + 적대적 검증 + feasibility 종합 + WS13 3자 workflow/BM 재검토)<br>
+      라벨 규칙: <span class="lbl lbl-1">1차</span> 정부·공공·법원 &nbsp; <span class="lbl lbl-2">2차</span> 언론·연구 &nbsp; <span class="lbl lbl-o">해외</span> 해외사례 &nbsp; <span class="lbl lbl-e">추정</span> 가공치 &nbsp; <span class="lbl lbl-c">확인필요</span> 1차 미확정<br>
+      면책: 비자·환급·세무·노무·금융 판단은 <b style="color:#bbb">법적 효력 없는 참고 정보</b>. 행정사·노무사·세무사·변호사·국민연금공단(1355)·금융규제 전문가 검증 및 1차 출처 재확인 필수. 모든 재무는 가정·추정.
+    </div>
+  </div>
+</header>
+
+<!-- TOC -->
+<section class="toc">
+  <div class="wrap">
+    <div class="eyebrow">목차</div>
+    <h2>이 보고서의 구조</h2>
+    <div class="toc-grid">
+      <a href="#bluf"><b>01</b>핵심 결론 (BLUF)</a>
+      <a href="#method"><b>02</b>방법론 · 검증 상태</a>
+      <a href="#method-workflow"><b>02B</b>3자 Workflow · BM</a>
+      <a href="#converge"><b>03</b>8 워크스트림 수렴</a>
+      <a href="#axis"><b>04</b>5축 타당성 평가</a>
+      <a href="#market"><b>05</b>시장 규모·구조</a>
+      <a href="#pain"><b>06</b>고객·페인·환급자격</a>
+      <a href="#compete"><b>07</b>경쟁 지형</a>
+      <a href="#reg"><b>08</b>규제 레드라인</a>
+      <a href="#policy"><b>09</b>정책 순풍·역풍</a>
+      <a href="#finance"><b>10</b>금융연계 BM</a>
+      <a href="#unit"><b>11</b>단위경제·재무</a>
+      <a href="#payroll"><b>12</b>급여 적정성 기둥</a>
+      <a href="#empval"><b>12B</b>고용주 가치·WTP</a>
+      <a href="#swot"><b>13</b>SWOT</a>
+      <a href="#risk"><b>14</b>리스크 등록부</a>
+      <a href="#gate"><b>15</b>GO 조건·Kill·디리스킹</a>
+      <a href="#empben"><b>16</b>사장님 베네핏</a>
+      <a href="#adopt"><b>17</b>재직자 확산 GTM</a>
+      <a href="#sources"><b>18</b>주요 출처</a>
+    </div>
+  </div>
+</section>
+
+<!-- BLUF -->
+<section id="bluf" class="dark">
+  <div class="narrow">
+    <div class="eyebrow">01 · 핵심 결론</div>
+    <h2>Answer first</h2>
+    <p class="lead" style="color:#fff;margin-top:18px">
+      "BackWon은 <b style="color:#fff">'환급 스타트업'으로 보면 NO</b>, <b style="color:#fff">'VisaDesk가 CAC 0으로 모은 외국인 모수 위에 동의·데이터를 쌓아 금융사에 신호를 파는 데이터 레이어'로 보면 조건부 GO</b>다."
+    </p>
+    <p>제로베이스 8축 재검증 결과, 8개 독립 분석이 같은 곳에 수렴했다 — <b style="color:#fff">환급은 매출원이 아니라 입구이고, 단위경제의 생사는 "금융연계 attach율" 단 하나에 달려 있다.</b> 기존(2026-06-26) 분석과 결론 단어("조건부 GO")는 같으나, 근거가 환급에서 데이터 레이어로 이동했고 GO 조건이 4개 미해결 게이트로 더 무거워졌다.</p>
+
+    <h4 style="color:#fff">기존 대비 명확히 바뀐 3가지</h4>
+    <div class="grid g3">
+      <div class="card">
+        <h4>① 환급 단독 P&amp;L은 숫자로 NO 확정</h4>
+        <p>1인 평균 반환일시금 <b style="color:#fff">870만원</b> <span class="lbl lbl-1">1차</span>이지만, 정부 무료채널(인천공항 출국장·국세청 원클릭)이 상단을 메우고 자격사법이 고마진 직접과금을 막아 <b style="color:#fff">합법 과금 매출은 건당 0~25만·공헌이익 0~10만</b>. 기존 ARPU 140만 가정은 과대.</p>
+      </div>
+      <div class="card">
+        <h4>② 진짜 전장은 "환급"이 아니라 "고용·임금 신호의 B2B 데이터 공급"</h4>
+        <p>그런데 이 핵심 수익원(신호 라이선스)의 <b style="color:#fff">신용정보법 적격성·은행/CB 지불단가가 둘 다 미입증</b>. 가장 큰 업사이드가 가장 큰 미해결 리스크와 같은 칸에 있다.</p>
+      </div>
+      <div class="card">
+        <h4>③ 정책이 미는 방향과 수익원이 반대</h4>
+        <p>정주화(E-9→E-7-4 숙련전환) 성공 = F/E-7 = <b style="color:#fff">반환일시금 자격 소멸 = 출국 트리거 감소</b>. 정책 순풍이 환급 코어를 갉는다 → 무게중심을 재직 중 금융연계로 이동 불가피.</p>
+      </div>
+    </div>
+
+    <div class="callout" style="background:#272729;border-color:var(--sky)">
+      <p class="k" style="color:#fff">GO의 모든 조건은 4개 미해결 게이트 통과 여부에 달렸다:</p>
+      <p style="color:var(--muted-dark)">ⓐ 금융 attach·신호 라이선스 적격성 &nbsp;·&nbsp; ⓑ NPS·보험 데이터 접근(마이데이터 편입) &nbsp;·&nbsp; ⓒ 자격사 제휴 공급 &nbsp;·&nbsp; ⓓ 비자×국적 교차판정 정확성</p>
+    </div>
+  </div>
+</section>
+
+<!-- METHOD -->
+<section id="method">
+  <div class="narrow">
+    <div class="eyebrow">02 · 방법론</div>
+    <h2>어떻게 검증했나 — 그리고 무엇이 아직 미검증인가</h2>
+    <p>맥킨지형 엔게이지먼트로 GTM/타당성 문제를 8개 MECE 워크스트림으로 쪼개 <b>전문 에이전트가 병렬로 1차 출처 리서치</b> → 각 스트림이 "이게 틀리면 결론이 무너지는" <b>핵심주장 1개를 지목 → 독립 skeptic이 적대적 반증</b> → feasibility 리드가 8개를 종합. 모든 수치에 출처·라벨을 붙였고, 검증에서 깎인 주장은 깎인 채로 반영했다(희망회로 제거).</p>
+
+    <div class="callout warn">
+      <p class="k">투명성 고지 — 검증 커버리지의 한계</p>
+      <p>8개 중 <b>4개 스트림(02 고객·04 규제·06 금융·08 급여)만 핵심주장 적대적 검증을 완료</b>했고, 나머지 4개(01 시장·03 경쟁·05 정책·07 재무)는 리서치·1차 출처 수집은 끝냈으나 <b>독립 반증 패스를 거치지 못했다</b>(엔진 오류로 검증 단계 누락). 해당 4개는 각 스트림이 자체 제시한 반론(cold counter)과 종합 단계의 교차검토로만 보정됐다. 아래 각 섹션에 검증 상태를 표기한다.</p>
+    </div>
+
+    <table>
+      <thead><tr><th>#</th><th>워크스트림</th><th>핵심주장 검증</th></tr></thead>
+      <tbody>
+        <tr><td class="num">01</td><td>시장 규모·구조 (TAM/SAM/SOM·환급 풀)</td><td><span class="verify-pill v-none">미검증</span> 자체 반론·종합 보정</td></tr>
+        <tr><td class="num">02</td><td>고객·페인·JTBD·환급자격 교차표</td><td><span class="verify-pill v-hold">검증: holds</span></td></tr>
+        <tr><td class="num">03</td><td>경쟁 지형 (B2C앱·자격사·해외)</td><td><span class="verify-pill v-none">미검증</span> 자체 반론·종합 보정</td></tr>
+        <tr><td class="num">04</td><td>규제·자격사법·금융·개인정보</td><td><span class="verify-pill v-part">검증: partially</span> (과장 교정)</td></tr>
+        <tr><td class="num">05</td><td>정책 순풍·역풍·타이밍</td><td><span class="verify-pill v-none">미검증</span> 자체 반론·종합 보정</td></tr>
+        <tr><td class="num">06</td><td>금융연계 BM·외국인 금융시장</td><td><span class="verify-pill v-part">검증: partially</span> (과장 교정)</td></tr>
+        <tr><td class="num">07</td><td>단위경제·사업타당성 재무</td><td><span class="verify-pill v-none">미검증</span> 자체 반론·종합 보정</td></tr>
+        <tr><td class="num">08</td><td>급여 적정성 AI 진단 기둥</td><td><span class="verify-pill v-part">검증: partially</span> (과장 교정)</td></tr>
+      </tbody>
+    </table>
+    <p class="fine">상세 원문: <code>output/backwon-research/01~08-*.md</code> · 종합 <code>09-synthesis-feasibility.md</code> · 3자 workflow/BM 재검토 <code>13-three-party-workflow-bm-review.md</code>. 본 HTML은 그 종합본이다.</p>
+
+    <hr class="soft">
+
+    <h3 id="method-workflow">WS13 추가 — 사업자·재직자·금융권 3자 workflow/BM 재검토</h3>
+    <div class="callout">
+      <p class="k">재검토 판정</p>
+      <p><b>BackWon은 "환급 대행 사업"으로는 NO</b>, <b>"VisaDesk가 만든 고용·재직·임금 데이터 위에 근로자 동의를 붙여 금융권에 연결하는 데이터/신호 레이어"로는 조건부 GO</b>. 사업자는 BackWon에 직접 돈을 내는 고객이 아니라 VisaDesk retention·upsell의 고객이고, 재직자는 동의·신뢰 획득의 입구이며, 금융권 workflow가 BM의 생사다.</p>
+    </div>
+
+    <table>
+      <thead><tr><th>대상</th><th>Process flow</th><th>BM 함의</th><th>금지/주의</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><b>사업자</b></td>
+          <td>VisaDesk 계약 → 외국인 근로자 등록·초대 → 보험·고용변동·임금/퇴직금 리스크 관리 → E-7-4·점수제·K-Trust 준비 → 퇴사·출국 정산</td>
+          <td><b>VisaDesk 구독 유지·상향</b>이 현금 접점. BackWon은 무료 복지·준법·정산 옵션으로 retention/upsell 보강</td>
+          <td>고용주에게 금융 데이터 대가를 환급/리베이트하는 구조 금지. K-Trust 혜택은 "예정" 라벨 유지</td>
+        </tr>
+        <tr>
+          <td><b>재직자</b></td>
+          <td>초대 수신 → ForeignID 인증 → 환급/급여 진단 동의 → 국민연금·보험·퇴직금·세무 항목 진단 → 공식기관/전문가 라우팅 → 금융 준비도 리포트</td>
+          <td><b>무료/저가 신뢰 훅</b>. 수익원이 아니라 동의·데이터·반복 금융연계로 이어지는 입구</td>
+          <td>직접 환급 대행, 성공보수 직접 차감, "세금환급/신고대행", 확정 수령액 보장 표현 금지</td>
+        </tr>
+        <tr>
+          <td><b>금융권</b></td>
+          <td>은행·CB·송금·카드 RFI → 필요 데이터 필드 정의 → 본인 동의·제3자 제공 구조 확인 → 송객/신호 파일럿 → CPA·조회료·월정액 정산</td>
+          <td><b>송객 CPA는 단기, 동의기반 재직·임금 신호/API가 중기 핵심 업사이드</b>. 점수 자체는 CB/은행 내부모형에 위임</td>
+          <td>직접 송금, 직접 대출중개 광고, 직접 신용점수/등급 산출·판매는 인허가 전 NO-GO</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h4>BM 구조 — 고정해야 할 돈의 흐름</h4>
+    <table>
+      <thead><tr><th>BM 축</th><th>판정</th><th>이유</th></tr></thead>
+      <tbody>
+        <tr><td>VisaDesk B2B 구독/상향</td><td><b>Main</b></td><td>사업자 지불은 VisaDesk에서 발생. BackWon은 복지·준법·정산 부가가치로 retention/upsell 보강</td></tr>
+        <tr><td>금융사 송객 CPA</td><td><b>Short-term</b></td><td>등록 금융사·송금사·카드사 연결. 단가와 전환율은 RFI/파일럿 필요</td></tr>
+        <tr><td>동의기반 고용·임금 신호 라이선스</td><td><b>Mid-term / 핵심 업사이드</b></td><td>right-to-win의 중심. 단 신용정보법 적격성·은행/CB 지불의사 검증 전 BM 확정 금지</td></tr>
+        <tr><td>환급/정산 전문가 연결</td><td><b>Small / 보조</b></td><td>자격사법 때문에 고마진 직접 과금 불가. 건당 공헌 작고 1회성</td></tr>
+        <tr><td>직접 송금·대출·신용점수·세금환급</td><td><b class="danger-num">NO-GO</b></td><td>외국환거래법·금소법·신용정보법·세무사법 인허가/자격 영역</td></tr>
+      </tbody>
+    </table>
+
+    <h4>최신 기준점과 사업성 재판정</h4>
+    <table>
+      <thead><tr><th>지표/변수</th><th>재확인값·판정</th><th>함의</th></tr></thead>
+      <tbody>
+        <tr><td>국내 체류외국인</td><td><b>2,870,191명</b>(2026.5.31) <span class="lbl lbl-1">1차</span></td><td>SSOT 2025.12 278.3만과 기준시점 분리. PROJECT.md 갱신 후보</td></tr>
+        <tr><td>주요 취업 체류자격</td><td>E-9 350,122 / E-7 85,715 / E-8 82,382 / E-10 20,422 / H-2 43,026 <span class="lbl lbl-1">1차</span></td><td>취업·고용허가층은 여전히 BackWon/VisaDesk 핵심 모수</td></tr>
+        <tr><td>환급 실과금전환</td><td>노출/가입 60%가 아니라 <b>실거래 3~9%</b> 가정</td><td>환급 매출 빌드에서 60% 직접 적용 금지</td></tr>
+        <tr><td>환급 1건 공헌</td><td>0~10만원대 가정</td><td>자격사법·무료채널 때문에 환급 단독 BEP 약함</td></tr>
+        <tr><td>금융 attach BEP</td><td><b>약 15%</b> 가정</td><td>BackWon 독립 사업성의 단일 생사 변수</td></tr>
+      </tbody>
+    </table>
+
+    <h4>GO/NO-GO 게이트</h4>
+    <div class="grid g2">
+      <div class="card">
+        <h4>조건부 GO</h4>
+        <ul class="clean">
+          <li>금융 attach 파일럿 연결률 10% 이상</li>
+          <li>은행·CB 1곳 이상 유료 PoC 의향</li>
+          <li>점수 자체 산출 없는 동의기반 신호 제공의 법률검토 통과</li>
+          <li>사업자 A/B 세그먼트 70% 이상 무료 권유 의향</li>
+          <li>세무·노무·행정사 라우팅 공급 가능</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>NO-GO / 기능 축소</h4>
+        <ul class="clean">
+          <li>금융 attach 5% 미만 + 신호 API 법률검토 부정</li>
+          <li>은행·CB 지불의사 0</li>
+          <li>자격사 제휴 전면 거부</li>
+          <li>본인조회/업로드 전환율 붕괴</li>
+          <li>ICP에서도 근로자 투명화·금융자립을 위협으로 인식</li>
+        </ul>
+      </div>
+    </div>
+
+    <h4>MVP 제품 경계</h4>
+    <table>
+      <thead><tr><th>넣을 것</th><th>뺄 것</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>VisaDesk 근로자 초대 + 별도 동의, BackWon 환급 가능성 진단, 본인 직접조회/업로드 증빙, 급여·보험·퇴직금 차액 리포트, 등록 금융사 송객, 점수 없는 금융 준비도 리포트</td>
+          <td>직접 환급 대행, 세금환급/신고대행 표현, 직접 신용점수, 직접 대출중개 광고, 직접 송금·지갑, 고용주에게 금융 데이터 대가 환급/리베이트</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- CONVERGE -->
+<section id="converge" class="dark">
+  <div class="wrap">
+    <div class="eyebrow">03 · 수렴</div>
+    <h2>8개 워크스트림이 같은 결론으로 수렴</h2>
+    <table>
+      <thead><tr><th>WS</th><th>핵심 결론</th><th>적대적 검증 후 보정</th></tr></thead>
+      <tbody>
+        <tr><td>01 시장</td><td>모수 278.3만 1차 확정. 환급은 "스톡(휴면)"이 아니라 "흐름(연 3,597억)"</td><td>TAM B2C 216만=환급 실효모수로 쓰면 과대. 실효모수 ≈ 연 5~7만 이벤트</td></tr>
+        <tr><td>02 고객</td><td>페인 실재·고액. 비자×국적×가입×최소기간 다축 판정이 right-to-win</td><td><b style="color:#7fb5ef">holds.</b> 단 1,138억 미청구 전부를 TAM처럼 쓰면 과장. 정주화가 환급 코어와 충돌</td></tr>
+        <tr><td>03 경쟁</td><td>"통합 환급 플랫폼 부재"는 유효하나 블루오션 아닌 구조적 봉쇄</td><td>비관 상향. 정부 무료채널 요인 추가. 진짜 전장=신용데이터 선점</td></tr>
+        <tr><td>04 규제</td><td>경계 그으면 "안내·연결" 통합 합법. 세무는 2026.6.24 시행법으로 최고위험</td><td><b style="color:#ff8a80">partially.</b> 행정사 무죄는 1심 단독(일반화 위험). 세금 "전면 금지"는 과장 — 옐로</td></tr>
+        <tr><td>05 정책</td><td>환급=Act now(순풍), 금융연계=창 닫히는 중(한패스 선점)</td><td>"정합≠수요". 한패스 R3 선점은 신규 역풍. 신정법 외국인 명시는 확인필요</td></tr>
+        <tr><td>06 금융</td><td>금융연계는 LTV 유일 활로지만 레드오션 최후도착. 이길 길=B2B 데이터 공급</td><td><b style="color:#ff8a80">partially.</b> 신호 라이선스 적격성·단가 미입증. 전금법 인용 부정확</td></tr>
+        <tr><td>07 재무</td><td>환급 단독 NO(전 시나리오 적자). BEP 분기점=금융 attach 15%</td><td>기존 ARPU 140만 과대. 전환 60%는 노출기준, 실과금 3~9%</td></tr>
+        <tr><td>08 급여</td><td>독립 P&amp;L NO, 무료 유입훅·데이터 펌프·B2B 역연결로는 강한 GO</td><td><b style="color:#ff8a80">partially.</b> 노무사 독점 "직접과금 원천불가"는 과장. "무료라서 정당화"는 반증</td></tr>
+      </tbody>
+    </table>
+    <div class="callout" style="background:#272729;border-color:var(--sky)">
+      <p style="color:#fff"><b>수렴점</b> — ① 환급=입구, 금융=엔진 &nbsp;② CAC 0은 사실이나 약한 단위경제를 못 구함 &nbsp;③ 단위경제 생사=금융 attach·신호 라이선스 &nbsp;④ 모든 합법성은 "직접 대행→진단·연결·송객"으로 경계 고정 시에만.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 5 AXIS -->
+<section id="axis">
+  <div class="wrap">
+    <div class="eyebrow">04 · 타당성</div>
+    <h2>5축 평가 — 시장·제품은 살아있으나 재무·규제가 발목</h2>
+    <table>
+      <thead><tr><th>축</th><th>점수</th><th>결론</th><th>핵심 리스크 → 완화</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><b>시장매력도</b></td>
+          <td class="num"><span class="dots">●●●<span class="off">○○</span></span><br>3/5</td>
+          <td>풀은 크나(연 3,597억 흐름 <span class="lbl lbl-1">1차</span>) 합법 취득 가능 SOM은 한 자리수%. 모수 278.3만 확정 <span class="lbl lbl-1">1차</span></td>
+          <td>정주화로 출국 트리거 감소 → 재직 중 금융·진단으로 무게이동</td>
+        </tr>
+        <tr>
+          <td><b>제품적합 (JTBD)</b></td>
+          <td class="num"><span class="dots">●●●●<span class="off">○</span></span><br>4/5</td>
+          <td>페인 실재·고액·구조적(헌법소원·체불 2배·정보비대칭 <span class="lbl lbl-1">1차</span>). 다국어 진단+교차판정이 하단 공백을 정확히 메움</td>
+          <td>오안내·오진 1건이 신뢰 붕괴 → 항목별 정확도 등급·"확인 권고"로만 출력</td>
+        </tr>
+        <tr>
+          <td><b>경쟁/해자</b></td>
+          <td class="num"><span class="dots">●●●<span class="off">○○</span></span><br>3/5</td>
+          <td>통합 환급은 공백(만국 공통 자격사법 분절). 양면 결합이 유일 우위. 단 glow·한패스·NICE가 인접 길목 진입</td>
+          <td>속도전 패배(은행 자행데이터·NICE 표준) → VisaDesk PoC에 데이터 적재 게이트 포함</td>
+        </tr>
+        <tr>
+          <td><b>재무 (단위경제)</b></td>
+          <td class="num"><span class="dots">●●<span class="off">○○○</span></span><br>2/5</td>
+          <td>환급 단독 적자 확정(전 시나리오 −). 플라이휠도 환급만 1~3억. <b class="danger-num">BEP=금융 attach 15% 단일 변수</b></td>
+          <td>attach 미달 시 BackWon=VisaDesk 부가기능 격하 → attach를 단일 KPI로 승격</td>
+        </tr>
+        <tr>
+          <td><b>운영/규제</b></td>
+          <td class="num"><span class="dots">●●<span class="off">○○○</span></span><br>2/5</td>
+          <td>"안내·연결·송객"은 합법 가능하나 <b class="danger-num">4개 게이트가 전부 미해결</b>(세무 2026.6.24법·신호 라이선스 적격성·마이데이터 편입·자격사 공급)</td>
+          <td>게이트별 법률검토·RFI 선행, 통과 전 해당 기능 비활성</td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="fine">진입 매력도는 "기회 있음, 그러나 실행 게이트가 무겁다"로 정직하게 기록. 시장·제품(3·4)은 살아있으나 재무·운영규제(2·2)가 GO를 조건부로 묶는다.</p>
+  </div>
+</section>
+
+<!-- MARKET -->
+<section id="market" class="dark">
+  <div class="wrap">
+    <div class="eyebrow">05 · 시장 규모·구조 <span class="verify-pill v-none">미검증</span></div>
+    <h2>풀은 "스톡 수백억"이 아니라 "매년 도는 수천억 흐름"</h2>
+    <p>SSOT의 체류외국인 278.3만('25.12)은 1차 확정(법무부 2,783,247명, +5.0% YoY). 그러나 "장기체류 216만 = 환급 TAM"은 과대 — 환급 실효 모수는 <b style="color:#fff">취업자격 59.4만 + 고용허가(E-9·H-2·E-8) 반환일시금 대상층</b>에 집중되고, 연간 환급 이벤트는 <b style="color:#fff">약 5~7만 건</b>이다.</p>
+
+    <div class="grid g3">
+      <div class="card"><h4>반환일시금 연 지급</h4><div class="big">3,597억</div><div class="sub">41,094명 · 2024 <span class="lbl lbl-1">1차</span> (흐름)</div></div>
+      <div class="card"><h4>1인 평균 반환금</h4><div class="big">약 870만</div><div class="sub">2024 실측 <span class="lbl lbl-e">추정</span> (3,597억/4.1만)</div></div>
+      <div class="card"><h4>미청구·휴면 풀</h4><div class="big">약 1,967억</div><div class="sub">연금 미청구 1,138억 + 보험 829억 <span class="lbl lbl-1">1차</span> (스톡, 기간상이)</div></div>
+    </div>
+
+    <h4 style="color:#fff;margin-top:34px">핵심 재해석 — "휴면 307억"의 정체</h4>
+    <p>기존 자료의 "휴면 307억·52,034건"은 <b style="color:#fff">산업인력공단 찾아주기 활동 후 남은 잔존 스톡</b>일 뿐이다. 실제 그림은 ① 반환일시금 <b style="color:#fff">연 3,597억이 도는 정상 흐름</b> ② 그 흐름에서 미청구로 새는 <b style="color:#fff">5.5년간 1,138억</b> ③ 외국인전용보험 미청구+휴면 <b style="color:#fff">약 829억</b>(미청구 290억 + 소멸시효 경과 휴면 539억). 풀의 본질은 "흐름의 통행료를 잡는 것".</p>
+
+    <table>
+      <thead><tr><th>관점</th><th>규모</th><th>라벨</th></tr></thead>
+      <tbody>
+        <tr><td>흐름(연간): 반환일시금 지급</td><td class="num">연 3,597억</td><td><span class="lbl lbl-1">1차</span></td></tr>
+        <tr><td>누수 스톡: 연금 미청구(5.5년) + 보험 미청구·휴면</td><td class="num">약 1,967억</td><td><span class="lbl lbl-1">1차</span> 기간상이 주의</td></tr>
+        <tr><td>잔존 휴면(찾아주기 후)</td><td class="num">307.6억</td><td><span class="lbl lbl-1">1차</span></td></tr>
+        <tr><td>퇴직금·세금환급(외국인 한정)</td><td class="num">미상</td><td><span class="lbl lbl-c">확인필요</span></td></tr>
+      </tbody>
+    </table>
+
+    <div class="callout warn" style="background:#33232a;border-color:var(--danger-dark)">
+      <p class="k" style="color:#fff">미해결 충돌 — 메시지·전환율의 생명선</p>
+      <p>고용허가제(E-9·H-2·E-8)는 국적무관 반환일시금 지급. 그런데 "중국·베트남·몽골 일반 비대상"과 "2024 지급 1위가 중국(23.4%·841억)"이 충돌한다. 사회보장협정·F계열 포함 등 정확한 메커니즘 <span class="lbl lbl-c">확인필요</span>. 단일 카피 마케팅은 전환 0 또는 신뢰·법적 리스크.</p>
+    </div>
+
+    <h4 style="color:#fff">정책 역풍의 모수 보정</h4>
+    <p>E-9 13만→8만('26, −38.5%)은 <b style="color:#fff">신규 유입(B2B 신규영업) 모수만</b> 깎는다. 환급은 이미 들어온 110만+ 재고의 출국 시점에 발생하므로, 향후 2~4년 환급 트리거 모수는 과거 대량 입국분의 만기·출국으로 <b style="color:#fff">고원(plateau)을 유지</b>. + E-8 계절근로는 오히려 증가(고회전 출국 트리거).</p>
+
+    <p class="fine"><b style="color:#fff">So-what:</b> Top-down GMV는 수천억으로 커 보이나 <b style="color:#fff">합법 취득 가능 SOM은 한 자리수 %</b>. 환급은 "큰 풀"이 아니라 "큰 유입 훅". 시장 규모 자체로는 GO를 정당화하기 어렵다.</p>
+  </div>
+</section>
+
+<!-- PAIN -->
+<section id="pain">
+  <div class="wrap">
+    <div class="eyebrow">06 · 고객·페인 <span class="verify-pill v-hold">검증: holds</span></div>
+    <h2>페인은 실재·고액·구조적, 단 공백은 "하단"에 있다</h2>
+    <p>진짜 공백은 정보·의지 있는 상단(정부가 인천공항 출국장 지급·휴면 찾아주기로 메움)이 아니라 <b>하단 — 정보부재·언어·출국 후 동선단절·이탈자</b>다. 페인은 행동까지 이어졌다: 헌법소원(2014헌마367, 출국 후 14일내 지급 조항, 2016 합헌·반대의견 존재) <span class="lbl lbl-1">1차</span>, 외국인 임금체불 피해비중이 고용비중의 약 2배 <span class="lbl lbl-2">2차</span>.</p>
+
+    <h3>반환일시금 자격 — "비자 먼저, 국적 그다음" 다축 매트릭스 <span class="verify-pill v-hold">holds</span></h3>
+    <p>적대적 검증 결과 이 명제는 1차 출처로 성립(반증 실패). 단 정밀하게는 <b>(비자 × 국적 × 국민연금 가입여부 × 국가별 최소기간)</b> 다축 판정이다.</p>
+    <table>
+      <thead><tr><th>구분</th><th>지급 판정</th><th>근거</th></tr></thead>
+      <tbody>
+        <tr><td><b>고용허가제 E-9 / H-2 / E-8</b><br>(+ 국민연금 가입 사업장 고용)</td><td><b style="color:var(--blue)">국적 무관 지급</b></td><td>상호주의의 법정 예외(2007.5.11~). 중·베·몽 국적이어도 대상. 단 결정적 기준은 비자코드가 아니라 "국민연금 가입" 사실 <span class="lbl lbl-1">1차</span></td></tr>
+        <tr><td><b>그 외 F계열·E-7 등</b></td><td>국적 분기</td><td>협정상대국(약 23~24개국, 한국인 동등) 또는 상호주의 적용국(약 25개국, 본국법 상응급여 시). 일부(태국 등)는 최소 가입기간 요건 <span class="lbl lbl-1">1차</span></td></tr>
+      </tbody>
+    </table>
+    <div class="callout">
+      <p class="k">검증관 정밀화 권고</p>
+      <p>진단엔진은 단순 2축이 아니라 <b>가입이력 축·국가별 최소기간 축</b>을 명시하고, 국가목록·산식은 <b>하드코딩 금지 → NPS 런타임 조회 + 기준시점 라벨</b>로 파라미터화. E-8(연수취업)은 사실상 사장된 자격이라 코어는 E-9/H-2 중심.</p>
+    </div>
+
+    <h3>트리거·단가</h3>
+    <div class="grid g2">
+      <div class="card"><h4>페인 트리거</h4><p>출국·퇴직·사업장변경·연말정산에 집중 → 상시구독보다 <b>트리거 진단 BM</b> 적합. <b>매년 반복되는 접점은 연말정산뿐</b>(상시관계·LTV 연장의 유일한 다리, 단 세무사법 §20③ 경계).</p></div>
+      <div class="card"><h4>1인당 환급 잠재액</h4><p>출국 1회당 약 <b>1,400만~1,900만원</b> <span class="lbl lbl-e">추정</span> (출국만기 800~1,200만[퇴직금 상계]+반환일시금 540~700만+귀국비용). WTP 하한은 충족하나, 공단 무료채널이 <b>수수료 WTP 천장을 압박</b>.</p></div>
+    </div>
+
+    <div class="callout warn">
+      <p class="k">냉정한 반론 (검증관 동의)</p>
+      <p>① 정부가 상단을 메우므로 BackWon이 잡는 <b>증분이 미청구 1,138억 중 얼마인지 미검증</b> — 1,138억을 TAM처럼 쓰면 과장. ② 환급은 1회성·귀국 즉시 이탈로 LTV≈1거래 → 환급 자체로는 CAC를 못 넘김. ③ 정주화 정책이 환급 자격·출국 트리거를 동시에 줄인다.</p>
+    </div>
+  </div>
+</section>
+
+<!-- COMPETE -->
+<section id="compete" class="dark">
+  <div class="wrap">
+    <div class="eyebrow">07 · 경쟁 지형 <span class="verify-pill v-none">미검증</span></div>
+    <h2>블루오션이 아니라 "구조적으로 막혀서" 비었다</h2>
+    <p>"통합 환급 플랫폼 부재"는 2026-06-29 기준 여전히 유효. 그러나 비어있는 이유는 블루오션이 아니라 <b style="color:#fff">구조적 봉쇄</b> — ② 자격사법 분절 + ③ 정부 무료채널 선점 + ④ B2C CAC. 일본·유럽도 동일 구조로 통합 부재(강한 적대적 증거).</p>
+
+    <table>
+      <thead><tr><th>원인 가설</th><th>재판정</th><th>핵심 근거</th></tr></thead>
+      <tbody>
+        <tr><td>① 시장 작다/저마진</td><td>부분 참(저마진이 핵심)</td><td>풀은 크나 공단 무료·일본 정액·국세청 원클릭 → 대행 마진 구조적으로 얇음</td></tr>
+        <tr><td>② 규제(자격사법 분절)</td><td><b style="color:#ff8a80">참 — 가장 강함</b></td><td>4영역 합법 통합 불가. 일본·유럽도 동일 구조</td></tr>
+        <tr><td>③ 정부 무료채널 선점</td><td><b style="color:#ff8a80">참 — 비중 상향</b></td><td>인천공항 16통화 현금지급·통합연금포털·국세청 원클릭. 상단 이미 메워짐</td></tr>
+        <tr><td>④ B2C CAC</td><td><b style="color:#ff8a80">참 — 단독이면 치명</b></td><td>B2C 4사 모객은 되나 수익화 정체, 출국 1회성 → CAC&gt;LTV</td></tr>
+        <tr><td>⑤ 데이터 접근(조회권)</td><td>참</td><td>본인동의·조회위임 없으면 "당신 얼마 받는다" 못 띄움 <span class="lbl lbl-c">확인필요</span></td></tr>
+      </tbody>
+    </table>
+
+    <h4 style="color:#fff">경쟁사 변화 — glow·한패스가 인접 길목 진입</h4>
+    <ul class="clean">
+      <li><b style="color:#fff">glow(클링커즈) = 가장 주시할 단일 경쟁사.</b> "Migrant Workforce OS" 재포지셔닝(B2B glow-Apply 채용 + B2C 금융). NPS 환급 가이드 콘텐츠 발행으로 <b style="color:#fff">검색 입구·신뢰 선점 시작</b>(트랜잭션은 아직 무). 단 glow-Apply는 "채용 파이프라인"이지 "고용·체류 준법(VisaDesk)"이 아님 → 재직·체류 데이터 깊이는 우리 우위.</li>
+      <li><b style="color:#fff">vivisa×클링커즈 동맹</b>은 MOU 단계('25.12.18, 외국인 대안신용평가·BNPL·소액대출 공동기획)이나 출시일·제품 미확정 → 신용스코어 길목 경쟁은 "임박"이 아니라 "선언" 단계.</li>
+      <li><b style="color:#fff">삼쩜삼</b>은 국내 유일 환급 productize 성공사례지만 외국인 타깃 아님 + 국세청 원클릭 무료가 직격 → 세금환급 코어화 시 동일 압박 노출.</li>
+      <li><b style="color:#fff">해외:</b> "연금+퇴직금+보험+세금 통합 플랫폼"은 일본(세계 최대급 이주노동)·유럽(세금환급 선진)에도 선례 없음. 단일영역(세금) productize만 검증(taxback 20년+).</li>
+    </ul>
+
+    <div class="callout" style="background:#272729;border-color:var(--sky)">
+      <p style="color:#fff"><b>유일한 진짜 전장:</b> right-to-win은 "환급을 더 잘함"이 아니라 <b style="color:#fff">"환급 입구를 CAC 0으로 가짐 + 그 동의로 신용데이터를 선점"</b>. 이 선점은 vivisa×클링커즈·한패스와 직접 충돌하며, 우위는 데이터 종류·깊이(검증된 고용·재직 vs 채용·송금)와 속도(8주 PoC)에 달림.</p>
+    </div>
+  </div>
+</section>
+
+<!-- REG -->
+<section id="reg">
+  <div class="wrap">
+    <div class="eyebrow">08 · 규제 레드라인 <span class="verify-pill v-part">검증: partially</span></div>
+    <h2>경계를 그으면 "안내·연결" 통합은 합법 — 단 기존 분석은 두 곳에서 틀렸다</h2>
+
+    <div class="grid g2">
+      <div class="card" style="background:#fdf3f4;border-color:#f3c9ce">
+        <h4>교정 ① 퇴직금·체불 = "전부 노무사 독점·행정사 처벌"은 과대</h4>
+        <p>2024년 판례(서울남부지법 2024고정678)는 행정사의 임금체불 <b>진정서 작성·노동청 제출을 무죄</b>로 봤다. 진짜 경계는 <b>대(對)행정기관 서류작성(행정사 가능)</b> vs <b>대(對)사용자 청구·분쟁대리(노무사/변호사 독점)</b>. <span class="lbl lbl-c">단 1심 단독판사 판단, 환급영역 유추는 과신 위험</span></p>
+      </div>
+      <div class="card" style="background:#fdf3f4;border-color:#f3c9ce">
+        <h4>교정 ② 세무사법 §20③ = "세금환급 표현조차 전면 금지"는 과장</h4>
+        <p>2025.12.23 공포 → <b>2026.6.23(업계 6.24) 시행</b>은 사실. 단 수범자는 <b>"세무대리를 할 수 없는 자(무자격자)"</b>이고 처벌요건은 "보장·과장형·직접수행 오인" 맥락. <b>세무사 적법 제휴 + "세무사가 수행" 명시 + 보장 뉘앙스 제거</b>면 노출 가능 → 위험도 <b>레드 아닌 옐로</b>.</p>
+      </div>
+    </div>
+
+    <h3>4종 자격사법 + 금융 레드라인</h3>
+    <table>
+      <thead><tr><th>법</th><th>레드라인</th><th>벌칙</th></tr></thead>
+      <tbody>
+        <tr><td>세무사법 §20③ (2026.6.24)</td><td>무자격자의 세무대리 오인 표시·광고</td><td>1년↓ / 1천만원↓ <span class="lbl lbl-1">1차</span></td></tr>
+        <tr><td>변호사법 §109①</td><td>비변호사 법률사무(상담·대리·유상 알선) — 4종 중 최고형</td><td>7년↓ / 5천만원↓ <span class="lbl lbl-1">1차</span></td></tr>
+        <tr><td>공인노무사법 §2</td><td>대(對)사용자 임금체불 청구·분쟁대리</td><td>노무사 독점 <span class="lbl lbl-1">1차</span></td></tr>
+        <tr><td>행정사법</td><td>제출서류 작성·제출 대행업(대행정기관은 예외 여지)</td><td>판례 분기 <span class="lbl lbl-1">1차</span></td></tr>
+        <tr><td>외국환거래법 소액해외송금업</td><td>미등록 송금 직접취급</td><td>자기자본 10억↑ 등록 <span class="lbl lbl-1">1차</span></td></tr>
+        <tr><td>금융소비자보호법 §22 / 대출모집인</td><td>미등록 대출중개·비판매업자 금융광고</td><td>5년↓ / 2억원↓ <span class="lbl lbl-1">1차</span></td></tr>
+        <tr><td>신용정보법 (전문개인신용평가업)</td><td>"외국인 신용스코어 직접 부여·판매"</td><td>허가업(자본금 50억) <span class="lbl lbl-1">1차</span></td></tr>
+      </tbody>
+    </table>
+
+    <div class="grid g2">
+      <div class="card"><h4>가능 (경계 고정 시)</h4>
+        <ul class="clean">
+          <li>환급 가능성 안내·다국어 서류 가이드·교육 콘텐츠</li>
+          <li>동의 기반 인증(ForeignID)으로 자격사·정부 무료채널 라우팅·연결</li>
+          <li>신용점수 미산출 전제의 <b>동의기반 원천 데이터 신호 제공</b>(신용정보법 §32·33 의무 준수)</li>
+          <li>등록 금융사로의 송객·BaaS형 제휴</li>
+        </ul>
+      </div>
+      <div class="card"><h4>금지</h4>
+        <ul class="clean">
+          <li>"환급 대행/받아드림"·"세금환급 보장"·"예상액 확정"</li>
+          <li>비자격자의 서류 작성·제출 대행, 대사용자 청구 대리</li>
+          <li>송금·대출·선불 <b>직접 취급</b>(무등록 형사처벌)</li>
+          <li>"신용점수 N점" 직접 부여·판매(무허가 평가업)</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="callout warn">
+      <p class="k">검증관 잔여 경고</p>
+      <p>① "안내·연결은 합법"이 너무 깔끔할 수 있다 — 통합 진단→라우팅 + 성공보수·송객수수료 결합 시 <b>전체가 "실질적 대행·세무대리 영업"으로 포괄 판단</b>될 위험(변호사법 §34, 실질판단). ② <b>법적 가능 ≠ 상업적 가능</b> — 자격사·등록 금융사가 외국인 저단가 1회성 제휴를 거부하면 합법 경계는 그려도 공급이 없어 빈 껍데기.</p>
+    </div>
+  </div>
+</section>
+
+<!-- POLICY -->
+<section id="policy" class="dark">
+  <div class="wrap">
+    <div class="eyebrow">09 · 정책 타이밍 <span class="verify-pill v-none">미검증</span></div>
+    <h2>환급은 Act now, 금융연계는 창이 닫히는 중</h2>
+    <p>정책 타이밍은 BackWon 편이다. 단 <b style="color:#fff">환급(R1)은 순풍 강함, 금융연계·신용스코어(R3)는 한패스 선점으로 길목이 닫히기 시작</b>했다. "why now"가 R3에서는 "why late"가 될 위험.</p>
+
+    <table>
+      <thead><tr><th>길목</th><th>방향</th><th>BackWon 함의</th></tr></thead>
+      <tbody>
+        <tr><td>반환일시금 지급 폭증 (869억'19→3,597억'24, 4배)</td><td><b style="color:var(--sky)">열림(순풍)</b></td><td>환급·출국정산 흐름 모수 폭증. 지금이 적기 <span class="lbl lbl-2">2차</span></td></tr>
+        <tr><td>연금 보험료율 매년 인상 (9%→13%/2033)</td><td><b style="color:var(--sky)">열림(순풍)</b></td><td>월 공제 증가 → 급여공제·출국정산 진단 타이밍 매년 강화 <span class="lbl lbl-1">1차</span></td></tr>
+        <tr><td>외국인 기본인적정보 ICAO 표준 통일 ('25.6.21 시행) + 모바일 등록증 금융활용</td><td><b style="color:var(--sky)">열림(순풍)</b></td><td>ForeignID eKYC 정합 <span class="lbl lbl-1">1차</span></td></tr>
+        <tr><td>대안신용·마이데이터 외국인 명시</td><td>반쯤 열림</td><td>외국인 명시 시 R3 API 길목 <span class="lbl lbl-c">확인필요</span></td></tr>
+        <tr><td>한패스 외국인 대출비교·대안신용 ('26.2 출시, 송금 40만건/월)</td><td><b style="color:var(--danger-dark)">닫히는 중(역풍)</b></td><td>R3 정면승부 회피, 고용데이터로 차별화 <span class="lbl lbl-2">2차</span></td></tr>
+        <tr><td>E-9 13만→8만 (−38.5%)</td><td>역풍(제한적)</td><td>B2B 신규영업만 타격, 환급 스톡은 고원 <span class="lbl lbl-1">1차</span></td></tr>
+        <tr><td>가사관리사 본사업 미추진 확정 ('25.12)</td><td>역풍(미세 순풍)</td><td>돌봄 확장↓, 단 종료자 정산 일감 <span class="lbl lbl-1">1차</span></td></tr>
+      </tbody>
+    </table>
+
+    <div class="callout" style="background:#272729;border-color:var(--sky)">
+      <p style="color:#fff"><b>냉정한 카운터:</b> "정합 ≠ 수요". 기조 전환("양적확대→관리·신뢰")은 <b style="color:#fff">VisaDesk에 직접 순풍, BackWon엔 간접</b>이다. BackWon의 진짜 순풍은 기조가 아니라 개별 제도(반환일시금 급증·연금료율 인상). 기조 전환을 IR 주근거로 쓰면 논리 비약.</p>
+    </div>
+    <p class="fine" style="color:#9a9a9c">한패스(송금→대안신용)는 PROJECT.md 경쟁 분석(클링커즈·vivisa만 명시)이 놓친 R3 최대 선두주자 — SSOT 갱신 권고. 단 한패스는 B2B 고용·재직 데이터가 없어, 우리는 "송금 신용"이 아니라 "고용·재직 신호 제공자"로 차별화해야 생존.</p>
+  </div>
+</section>
+
+<!-- FINANCE -->
+<section id="finance">
+  <div class="wrap">
+    <div class="eyebrow">10 · 금융연계 BM <span class="verify-pill v-part">검증: partially</span></div>
+    <h2>LTV를 살리는 유일한 축 — 그러나 가장 늦게 도착한 레드오션</h2>
+    <p>금융연계는 환급의 1회성을 LTV로 바꾸는 유일한 엔진이지만, 송금은 한패스(매출 550억·송금 3조·MAU 40만, 흑자·IPO추진), 대출/신용은 신한 SOL 글로벌론·하나 EZ Loan·NICE Welko('26.6.9), 카드는 E9pay 신한카드가 이미 선점. <b>직접 송금사·CB·대출중개로 가면 진다.</b></p>
+
+    <div class="callout">
+      <p class="k">이길 수 있는 단 하나의 길</p>
+      <p>"다수 고용주에 걸친 <b>검증된 국내 고용·재직·임금 신호의 B2B 데이터 공급자</b>." 신한이 급여흐름을 신용신호로 쓰고(SOL 글로벌론 "급여 3개월 수령") NICE가 본국 CB에만 의존한다는 사실이 역설적으로 <b>그 빈칸을 증명</b>한다.</p>
+    </div>
+
+    <h3>핵심주장 검증 결과 — partially (과장 4건 교정)</h3>
+    <p>"동의 기반 고용·임금 데이터를 은행·CB에 신호로 제공하는 것이 신용평가업 본허가 불요로 합법이며, 은행·CB가 유의미한 단가를 지불한다" — 방향성은 살아있으나:</p>
+    <ul class="clean">
+      <li><b>합법성은 "조건부 적법"이지 "무규제"가 아니다.</b> 직업·직장·소득·근무기간·4대보험 가입은 신용정보법상 개인신용정보 → §32·33 동의·목적제한 의무 전부 적용.</li>
+      <li><b>신용평가로 한 발 더 나가면 허가 발생.</b> EQUAL(크레파스+통신3사)은 전문개인신용평가업 허가 + 혁신금융서비스(샌드박스)까지 동원. 단순 데이터 제공은 본허가 불요, "외국인 대체신용스코어"는 허가 영역.</li>
+      <li><b>전자금융거래법 인용은 부정확.</b> 본 거래는 신용정보법·개인정보보호법 문제(전금법은 자금이체·선불 규율).</li>
+      <li><b>지불의사 방향은 지지(KB-EQUAL·케이뱅크·신한 추진), 그러나 "유의미한 단가"는 공개 출처 미확인 → 추정.</b></li>
+    </ul>
+
+    <div class="card" style="background:#fff;border-color:var(--hairline)">
+      <h4>외국인 금융시장 규모 (매력도 높음, 단가 박리·장기)</h4>
+      <p>5대 은행 외국인 고객 697만('26.3, 3년 +60만) <span class="lbl lbl-1">1차</span> · 개인 해외송금 ~11조원 <span class="lbl lbl-c">확인필요</span> · thin-file 평균 710점 · 금융위 신용평가체계 개편 TF('26.1 킥오프). 단 송금 take rate 디지털 MTO 평균 3.55%, Wise 흑자까지 6년·Remitly 14년 <span class="lbl lbl-2">2차</span>.</p>
+    </div>
+
+    <div class="callout warn">
+      <p class="k">최대 업사이드 = 최대 미해결 리스크</p>
+      <p>핵심 수익원("재직·임금 신호 라이선스")의 신용정보법 적격성과 은행/CB 지불단가가 둘 다 미입증. 동의기반 신호가 본허가 대상으로 판정되거나, 은행/CB가 자행 데이터로 충분하다고 판단하면 <b>지불의사 0 → right-to-win 붕괴</b>. + 반복거래(송금·카드)는 한패스·은행 앱에서 일어나 "직접 거래 LTV" 가설은 취약 → 신호 라이선스 경로만이 실질적 출구.</p>
+    </div>
+  </div>
+</section>
+
+<!-- UNIT ECON -->
+<section id="unit" class="dark">
+  <div class="wrap">
+    <div class="eyebrow">11 · 단위경제·재무 <span class="verify-pill v-none">미검증</span></div>
+    <h2>환급 단독은 전 시나리오 적자 — 생사는 금융 attach 15%</h2>
+    <p>"플라이휠로만 성립"은 옳다. 단 ① 환급 1회 거래의 합법 과금 매출은 ARPU 140만 가정보다 훨씬 낮고(건당 0~25만·공헌 0~10만) ② CAC 0이어도 "1회성·저객단가·자격사법 분절"로 본질이 약하다. <b style="color:#fff">BackWon 단위경제의 break-even은 환급 변수가 아니라 금융 attach율에 거의 전적으로 달려 있다.</b></p>
+
+    <h4 style="color:#fff">시나리오 — 환급 단독 P&amp;L (CAC를 쓸수록 적자 심화)</h4>
+    <table>
+      <thead><tr><th>항목 (12M)</th><th>보수</th><th>기본</th><th>낙관</th></tr></thead>
+      <tbody>
+        <tr><td>유료획득 외국인</td><td class="num">5,000</td><td class="num">15,000</td><td class="num">40,000</td></tr>
+        <tr><td>환급 실과금전환</td><td class="num">5%</td><td class="num">8%</td><td class="num">12%</td></tr>
+        <tr><td>1건 공헌이익(만원)</td><td class="num">3</td><td class="num">7</td><td class="num">12</td></tr>
+        <tr><td><b>순손익(억)</b></td><td class="num danger-num"><b>−12.4</b></td><td class="num danger-num"><b>−21.7</b></td><td class="num danger-num"><b>−26.2</b></td></tr>
+      </tbody>
+    </table>
+    <p class="fine" style="color:#9a9a9c">공헌이익 &lt; CAC이므로 고객을 살수록 적자가 커진다 → 명확한 NO. "단독은 함정"을 숫자로 재확증.</p>
+
+    <h4 style="color:#fff">플라이휠 결합 P&amp;L — BackWon 부분만 (CAC 0)</h4>
+    <table>
+      <thead><tr><th>항목 (12M)</th><th>보수</th><th>기본</th><th>낙관</th></tr></thead>
+      <tbody>
+        <tr><td>환급 공헌이익(억)</td><td class="num">0.12</td><td class="num">1.05</td><td class="num">4.80</td></tr>
+        <tr><td><b>금융 attach율</b></td><td class="num">5%</td><td class="num">15%</td><td class="num">30%</td></tr>
+        <tr><td>금융연계 공헌이익(억)</td><td class="num">0.25</td><td class="num">3.75</td><td class="num">21.6</td></tr>
+        <tr><td><b>BackWon 공헌이익 합(억)</b></td><td class="num"><b>0.37</b></td><td class="num"><b style="color:var(--sky)">4.8</b></td><td class="num"><b style="color:var(--sky)">26.4</b></td></tr>
+      </tbody>
+    </table>
+
+    <div class="grid g2">
+      <div class="card"><h4>"전환 60%"의 분해</h4><p>노출 90% → 활성화 45~54% → 환급조회 18~30% → <b style="color:#fff">실과금 3~9%</b>. "60%"는 노출/가입 기준이지 과금 전환이 아니다. 매출 빌드에 직접 곱하면 ARR 5~10배 과대.</p></div>
+      <div class="card"><h4>민감도 — 단일 분기점</h4><p>금융 attach <b style="color:#fff">15%면 BEP, 5%면 적자, 30%면 핵심 수익엔진</b>. 환급률을 아무리 올려도 자격사법·정부 무료채널 때문에 환급만으론 BEP 불가(~20%+ 필요, 비현실적).</p></div>
+    </div>
+
+    <h4 style="color:#fff">통합 ARR 정합 (SSOT 21억/60억 대비)</h4>
+    <table>
+      <thead><tr><th>시점</th><th>SSOT ARR</th><th>본 WS 재추정 (BackWon)</th><th>차이 원인</th></tr></thead>
+      <tbody>
+        <tr><td>12M</td><td class="num">21억</td><td>VisaDesk 17.3 + <b style="color:var(--sky)">MB 1~5</b> (attach 의존)</td><td>환급 ARPU·실과금 하향</td></tr>
+        <tr><td>24M</td><td class="num">60억</td><td>VisaDesk 51.8 + <b style="color:var(--sky)">MB 3~21</b> (attach 의존)</td><td>금융 attach가 변수</td></tr>
+      </tbody>
+    </table>
+    <p class="fine" style="color:#9a9a9c">SSOT 21억/60억은 VisaDesk(B2B)가 86%+ 캐리하면 달성 가능. BackWon은 ARR 본선이 아니라 <b style="color:#fff">레인지가 큰 옵션가치</b> — 환급만 1~3억(미미), 금융 attach가 살면 8~21억으로 점프.</p>
+  </div>
+</section>
+
+<!-- PAYROLL -->
+<section id="payroll">
+  <div class="wrap">
+    <div class="eyebrow">12 · 급여 적정성 기둥 <span class="verify-pill v-part">검증: partially</span></div>
+    <h2>독립 수익은 약하지만, 가장 강력한 무료 유입훅·데이터 펌프</h2>
+    <p>급여 적정성 AI 진단은 독립 P&amp;L로는 NO지만, BackWon 전체에서 <b>출국 1회뿐인 환급의 약점을 보완하는 "재직 중 매월 발생하는 상시 훅"</b>으로 격상된다. 페인은 1차로 실재 확인됐다.</p>
+
+    <div class="grid g3">
+      <div class="card"><h4>외국인 임금체불</h4><div class="big">1,108억</div><div class="sub">23,254명 · 전체 피해의 8.2% (고용비중의 ~2배) <span class="lbl lbl-1">1차</span></div></div>
+      <div class="card"><h4>1인당 체불액</h4><div class="big">503만</div><div class="sub">2025.7 기준 <span class="lbl lbl-1">1차</span></div></div>
+      <div class="card"><h4>미진정 1차 동인</h4><div class="big">정보·언어</div><div class="sub">진정 어려움 의사소통 58.4% · 미진정 "대응방법 몰라서" 34.4% <span class="lbl lbl-1">1차</span></div></div>
+    </div>
+
+    <p style="margin-top:24px">미진정의 1차 동인은 <b>돈이 아니라 정보·언어 비대칭</b> → 다국어 AI 진단(급여명세·근로계약 업로드 → 최저임금·공제·수당 적정성)이 정확히 그 공백을 메운다. 삼쩜삼 선례(세무사회 4차 고발에도 불기소·항고 기각)로 "AI 진단 + 자격사 연결" 모델의 적법성이 확인됨 — 단 표시광고·자동수임·개인정보는 레드라인.</p>
+
+    <div class="callout warn">
+      <p class="k">검증관 교정 (partially)</p>
+      <p>① "노무사 독점이라 직접과금 원천 불가"는 <b>과장</b> — 진단·상담·지도 여지 있음(대(對)사용자 진정·청구만 독점). ② <b>"무료라서 정당화된다"는 반증</b> — 무료여도 업(業)으로 반복하면 위법 소지. ③ B2B 역연결(체불 신호→VisaDesk) 이해상충: 기업이 자사 근로자 체불 적발 SaaS를 기피할 위험 → 근로자 체불 신고는 <b>본인 동의·본인 주도로 분리</b>, 기업 적발 도구로 설계 금지.</p>
+    </div>
+    <p class="fine">판정: 독립 P&amp;L NO, <b>환급·금융 전환 퍼널 입구 + ForeignID 동의·고용임금 데이터 수집기 + VisaDesk B2B 역연결 트리거로는 강한 GO</b>. LTV 연장의 실질 엔진.</p>
+  </div>
+</section>
+
+<!-- EMPLOYER VALUE / WTP -->
+<section id="empval">
+  <div class="wrap">
+    <div class="eyebrow">12B · 고용주 가치·지불의사 <span class="verify-pill v-part">검증: b2b-wtp</span></div>
+    <h2>고용주는 현금을 내지 않는다 — VisaDesk를 안 끊게 만들 뿐</h2>
+    <p>3면 모델(워커·고용주·금융사)에서 돈은 <b>금융사 한 곳에서만</b> 나온다. 고용주 이득 4가지 중 1차/2차로 실재가 확인되는 것은 <b>②채용·수급과 ③준법·행정부담뿐</b>이고, ①근속·④ESG는 대부분 추정·희망이다. 결정적으로 고용주의 가장 큰 페인인 "이탈"은 정부가 이미 사업장변경 제한(captive 구조)으로 막아줘, <b>일부 영세 고용주에겐 근로자의 금융 자립이 오히려 위협</b>이다. 신용정보법상 고용주는 데이터 판매자가 될 수 없고(본인 동의·이익귀속) 이득이 전부 간접이라, <b>고용주는 BackWon에 신규 현금을 내지 않으며 — 고용주 가치는 100% VisaDesk 구독의 retention·upsell 레버다.</b></p>
+
+    <figure style="margin:30px 0;text-align:center">
+      <svg viewBox="0 0 860 600" role="img" aria-label="BackWon 3면 가치교환 모델: 금융사만 현금을 지불하고, 고용주는 비현금 이득, 재직자는 즉시 금융접근과 이연 환급을 받는다." style="width:100%;max-width:760px;height:auto" font-family="-apple-system,BlinkMacSystemFont,'SF Pro Text',Inter,system-ui,sans-serif">
+        <defs>
+          <marker id="vah" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#8a8a8e"/></marker>
+          <marker id="vahb" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#0066cc"/></marker>
+          <marker id="vahd" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#b0b0b4"/></marker>
+        </defs>
+        <style>
+          .vx-box{fill:#f5f5f7;stroke:#d2d2d7;stroke-width:1.5}
+          .vx-hub{fill:#fff;stroke:#1d1d1f;stroke-width:2}
+          .vx-ttl{fill:#1d1d1f;font-size:17px;font-weight:600}
+          .vx-sub{fill:#6b6b6b;font-size:11.5px}
+          .vx-lbl{fill:#3a3a3c;font-size:12.5px}
+          .vx-lblb{fill:#0066cc;font-size:12.5px;font-weight:700}
+          .vx-lt{stroke:#8a8a8e;stroke-width:1.6;fill:none}
+          .vx-ltb{stroke:#0066cc;stroke-width:3;fill:none}
+          .vx-ltd{stroke:#b0b0b4;stroke-width:1.4;fill:none;stroke-dasharray:5 4}
+          .vx-bgl{fill:#fff;opacity:.82}
+        </style>
+        <path class="vx-lt" d="M410,248 L410,122" marker-end="url(#vah)"/>
+        <path class="vx-ltb" d="M452,120 L452,246" marker-end="url(#vahb)"/>
+        <path class="vx-lt" d="M250,452 L342,366" marker-start="url(#vah)" marker-end="url(#vah)"/>
+        <path class="vx-lt" d="M518,366 L612,452" marker-start="url(#vah)" marker-end="url(#vah)"/>
+        <path class="vx-ltd" d="M330,86 C150,120 60,300 132,452" marker-end="url(#vahd)"/>
+        <g><rect class="vx-bgl" x="236" y="150" width="150" height="40" rx="6"/>
+          <text class="vx-lbl" x="378" y="166" text-anchor="end">BackWon →</text>
+          <text class="vx-lbl" x="378" y="183" text-anchor="end">동의기반 고용·임금 신호</text></g>
+        <g><rect class="vx-bgl" x="474" y="150" width="150" height="40" rx="6"/>
+          <text class="vx-lblb" x="482" y="166">₩ 신호값 지불</text>
+          <text class="vx-lblb" x="482" y="183">= 수익 발생</text></g>
+        <g><rect class="vx-bgl" x="120" y="372" width="194" height="40" rx="6"/>
+          <text class="vx-lbl" x="128" y="388">→ 재직중 금융접근·환급정산</text>
+          <text class="vx-lbl" x="128" y="405">← 동의·환급조회 (데이터)</text></g>
+        <g><rect class="vx-bgl" x="552" y="372" width="214" height="40" rx="6"/>
+          <text class="vx-lbl" x="560" y="388">→ 근속↑·가불↓·채용·준법</text>
+          <text class="vx-lbl" x="560" y="405">← 검증 고용·임금데이터 (CAC 0)</text></g>
+        <g><rect class="vx-bgl" x="22" y="250" width="120" height="36" rx="6"/>
+          <text class="vx-lbl" x="30" y="266" font-size="11.5">여신·카드 승인</text>
+          <text class="vx-lblb" x="30" y="281" font-size="11.5">(재직자 즉시 효용)</text></g>
+        <rect class="vx-box" x="330" y="38" width="200" height="80" rx="14"/>
+        <text class="vx-ttl" x="430" y="72" text-anchor="middle">금융사 (은행·CB)</text>
+        <text class="vx-sub" x="430" y="94" text-anchor="middle">정확한 대안신용평가</text>
+        <rect class="vx-hub" x="330" y="248" width="200" height="114" rx="16"/>
+        <text class="vx-ttl" x="430" y="292" text-anchor="middle" font-size="19">BackWon</text>
+        <text class="vx-sub" x="430" y="314" text-anchor="middle">외국인 금융 데이터 레이어</text>
+        <text class="vx-sub" x="430" y="332" text-anchor="middle">VisaDesk · ForeignID 기반</text>
+        <text class="vx-sub" x="430" y="350" text-anchor="middle" fill="#0066cc">환급=입구 · 신호=수익</text>
+        <rect class="vx-box" x="35" y="452" width="240" height="104" rx="14"/>
+        <text class="vx-ttl" x="155" y="488" text-anchor="middle">외국인 재직자</text>
+        <text class="vx-sub" x="155" y="510" text-anchor="middle">금융접근 = 즉시</text>
+        <text class="vx-sub" x="155" y="528" text-anchor="middle">환급 = 출국 시 이연</text>
+        <rect class="vx-box" x="585" y="452" width="240" height="104" rx="14"/>
+        <text class="vx-ttl" x="705" y="488" text-anchor="middle">사업자 (고용주)</text>
+        <text class="vx-sub" x="705" y="510" text-anchor="middle">데이터 원천 · 비현금 이득</text>
+        <text class="vx-sub" x="705" y="528" text-anchor="middle">근속·채용·준법(K-Trust)</text>
+        <g><line x1="588" y1="40" x2="612" y2="40" class="vx-ltb"/>
+          <text x="618" y="44" class="vx-lbl" font-size="11.5">굵은 파랑 = 현금 흐름(수익)</text>
+          <line x1="588" y1="58" x2="612" y2="58" class="vx-ltd"/>
+          <text x="618" y="62" class="vx-lbl" font-size="11.5">점선 = 금융사→재직자 실여신</text></g>
+      </svg>
+      <figcaption class="fine" style="margin-top:8px">돈은 금융사 한 곳에서만(파란 화살표). 고용주는 데이터 원천이자 비현금 이득, 재직자의 즉시 효용은 환급(이연)이 아니라 실여신(점선).</figcaption>
+    </figure>
+
+    <h3>고용주 이득 4가지 — 실재 vs 추정</h3>
+    <table>
+      <thead><tr><th>#</th><th>이득</th><th>실재 근거</th><th>판정</th></tr></thead>
+      <tbody>
+        <tr><td>①</td><td>이탈·가불↓ → 근속↑</td><td>외국인 이직률 6개월 22.5%·1년 42.3%, 사업장변경 1순위=저임금 24.1% <span class="lbl lbl-2">2차</span>. 가불은 근기법상 원칙 금지(의무 아님)</td><td>부분 실재 / <b>인과 <span class="lbl lbl-e">추정</span></b></td></tr>
+        <tr><td>②</td><td>채용 경쟁력 (CAC0 복지)</td><td>내국인 구인난 61.5%·도입확대 필요 45.2% <span class="lbl lbl-2">2차</span>, E-9 −38.5% <span class="lbl lbl-1">1차</span> = 잔류·유인 경쟁 심화</td><td>실재(시장) / 효과 <span class="lbl lbl-e">추정</span></td></tr>
+        <tr><td>③</td><td>준법·행정부담↓ + K-Trust</td><td>출국만기·임금체불보증·귀국비용·상해+4대보험 가입 의무(15일 내) <span class="lbl lbl-1">1차</span>. 체불 분쟁 상당부분이 출국정산·수당·숙식공제 계산 혼선 <span class="lbl lbl-2">2차</span></td><td><b style="color:var(--blue)">실재 (가장 강함)</b></td></tr>
+        <tr><td>④</td><td>책임고용·ESG</td><td>5~50인 제조·요양이 ESG로 구매한다는 증거 없음</td><td>희망 <span class="lbl lbl-e">추정</span> (IR 컬러만)</td></tr>
+      </tbody>
+    </table>
+
+    <div class="callout">
+      <p class="k">지불의사 판정</p>
+      <p>고용주는 BackWon에 <b>직접 과금되지 않는다(구조적 불가)</b>. 디폴트 행동은 "무료면 직원에게 권유"(채택), 업사이드는 VisaDesk 상위플랜(Compliance 169만) upsell. 금융사 신호값의 <b>고용주 현금 환류는 본인 이익귀속 원칙상 합법 경로 없음</b> → 고용주 몫은 비현금(근속·채용·준법)만.</p>
+    </div>
+
+    <h3>세그먼트 — 어디서 통하고 어디서 역효과인가</h3>
+    <table>
+      <thead><tr><th>세그먼트</th><th>판정</th><th>작동 이득</th></tr></thead>
+      <tbody>
+        <tr><td>A 숙련·고투자 제조(뿌리·정밀, E-7-4 전환)</td><td><b style="color:var(--blue)">통한다</b></td><td>①③② 모두</td></tr>
+        <tr><td>B 요양·돌봄(E-7-2)</td><td><b style="color:var(--blue)">통한다</b></td><td>③①</td></tr>
+        <tr><td>C 산단·일반 중소 제조(대체가능 단순공정)</td><td>부분</td><td>②③ 위주, ① 약함</td></tr>
+        <tr><td>D captive 선호 영세(저임금·열악·체불이력)</td><td><b class="danger-num">역효과 (비타깃)</b></td><td>급여 투명화·금융자립이 위협 — R8 이해상충 정면</td></tr>
+        <tr><td>E 단기·계절(E-8)</td><td><b class="danger-num">안 통함</b></td><td>근속 무의미</td></tr>
+      </tbody>
+    </table>
+
+    <div class="callout warn">
+      <p class="k">냉정한 카운터 3</p>
+      <p>① <b>인과 미입증</b> — 이직 1순위는 저임금이지 '금융 불편'이 아니다. BackWon은 임금을 올려주지 않으므로 근속 효과는 2차적·미미할 수 있다.<br>
+      ② <b>captive 역효과</b> — 상당수 영세 고용주는 '묶어두기'를 원한다(사업장변경 제한 제도가 증명). financial mobility는 이들에겐 이탈 촉진제(R8).<br>
+      ③ <b>고유가치 부재</b> — ③준법은 이미 VisaDesk가 푸는 가치의 재포장이고, "금융케어 있으면 상위플랜으로 올린다"는 upsell 가설은 PoC 실측 0.</p>
+    </div>
+
+    <h4>디리스킹 게이트</h4>
+    <ul class="clean">
+      <li><b>G1 (최우선)</b> 세그먼트 A·B·C 고용주 <b>≥70%가 "무료면 직원에게 권유"</b> → 미달 시 근로자 동의율(=신호 원천) 가설 붕괴, 플라이휠 재설계.</li>
+      <li><b>G2 (업사이드)</b> 상위플랜 +α 지불의사 ≥3개사 또는 PoC 중 실제 상향 1건 → 미달 시 BackWon을 순수 retention 도구로만.</li>
+      <li><b>G4 (이해상충)</b> A·B·C에서 "투명화·금융자립이 부담" 응답 &lt;30% → 초과 시 captive 비중 낮은 하위세그먼트로 GTM 축소.</li>
+    </ul>
+    <p class="fine">상세 원문: <code>output/backwon-research/10-employer-value-wtp.md</code>. 모든 WTP·근속·upsell 효과는 가정·추정이며, 외국인 노무·세무·금융·개인정보(신용정보법 본인 동의·이익귀속) 경계는 전문가 검증·1차 출처 재확인 필요.</p>
+  </div>
+</section>
+
+<!-- SWOT -->
+<section id="swot" class="dark">
+  <div class="wrap">
+    <div class="eyebrow">13 · SWOT</div>
+    <h2>강점·약점·기회·위협</h2>
+    <div class="grid g2">
+      <div class="card">
+        <h4 style="color:var(--sky)">Strengths</h4>
+        <ul class="clean">
+          <li>VisaDesk B2B 유입 = 한계 CAC 0 (4사·송금사·NICE 모두 못 가진 채널)</li>
+          <li>다수 고용주에 걸친 검증된 국내 고용·재직·임금 데이터 (경쟁자가 못 가진 입력값)</li>
+          <li>페인 1차 확인 + 비자×국적 교차판정 정확성이 신뢰 코어</li>
+          <li>양면 역연결(체불 신호→VisaDesk 준법) = 단독 스타트업 복제 불가</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4 style="color:var(--danger-dark)">Weaknesses</h4>
+        <ul class="clean">
+          <li>환급 1회성·저공헌(0~10만)·정부 무료채널 잠식 → 단독 단위경제 적자</li>
+          <li>핵심 수익원(신호 라이선스)의 신용정보법 적격성·지불단가 미입증</li>
+          <li>6개 언어 CS·KYC 운영비는 0이 아님 → CAC 0이어도 흑자 미미</li>
+          <li>B2B 역연결 이해상충 가능성</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4 style="color:var(--sky)">Opportunities</h4>
+        <ul class="clean">
+          <li>반환일시금 4배 급증(869억'19→3,597억'24) = 출국정산 흐름 폭증</li>
+          <li>연금 보험료율 매년 인상(→13%/2033) = 급여공제 진단 타이밍 강화</li>
+          <li>ICAO 표준·모바일 등록증 금융활용 = ForeignID eKYC 정합</li>
+          <li>은행·CB의 외국인 대안신용 도입 의지 실재(KB-EQUAL·케이뱅크·신한)</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4 style="color:var(--danger-dark)">Threats</h4>
+        <ul class="clean">
+          <li>세무사법 §20③ 2026.6.24 시행 = 세금 칸 표현 리스크(옐로)</li>
+          <li>한패스·NICE Welko·vivisa×glow = R3 길목 선점 경쟁</li>
+          <li>정주화 정책 = 출국 트리거·반환일시금 자격 감소</li>
+          <li>NPS·보험 데이터 마이데이터 미편입 시 핵심 UX 법적 불가 <span class="lbl lbl-c">확인필요</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RISK -->
+<section id="risk">
+  <div class="wrap">
+    <div class="eyebrow">14 · 리스크 등록부</div>
+    <h2>10대 리스크와 완화책</h2>
+    <table>
+      <thead><tr><th>#</th><th>리스크</th><th>심각도</th><th>완화책</th></tr></thead>
+      <tbody>
+        <tr><td>R1</td><td>금융 attach율 미달(&lt;5%) → BEP 미도달, 부가기능 격하</td><td><b class="danger-num">high</b></td><td>attach를 단일 KPI 승격. 송금 1개 제휴 파일럿 조기 측정(게이트 ≥10%)</td></tr>
+        <tr><td>R2</td><td>신호 라이선스 적격성 부정/은행·CB 지불의사 0 → right-to-win 붕괴</td><td><b class="danger-num">high</b></td><td>법률검토 선행(점수 미산출=본허가 회피). 은행·CB 유료 PoC 의향 1곳 확보 전 BM 확정 금지</td></tr>
+        <tr><td>R3</td><td>NPS·보험 데이터 마이데이터 미편입 → 동의 자동조회 UX 불가</td><td><b class="danger-num">high</b></td><td>금융위/마이데이터센터 직접 확인. 미편입 시 "본인 직접조회→업로드" 대체 플로우</td></tr>
+        <tr><td>R4</td><td>교차판정/AI 오진 1건이 신뢰·법적 클레임으로 확산</td><td><b class="danger-num">high</b></td><td>다축 판정 + NPS 런타임 조회. "확인 권고"로만 출력, 정확도 등급 노출, 면책 UX</td></tr>
+        <tr><td>R5</td><td>세무사법 §20③ 위반 표현 노출 → 형사처벌</td><td>medium</td><td>세무사 제휴+"세무사가 수행" 명시+보장 뉘앙스 제거. 전면 비활성은 과잉</td></tr>
+        <tr><td>R6</td><td>자격사 제휴 공급 실패 → 합법경계는 그려도 빈 껍데기</td><td>medium</td><td>자격사 RFI 선행(요율·합법성). 송객 모델 적대성 사전 타진</td></tr>
+        <tr><td>R7</td><td>R3 길목 속도전 패배(한패스·NICE·은행 자행데이터 선점)</td><td>medium</td><td>VisaDesk PoC 8주에 고용·임금 데이터 적재+ForeignID 동의를 게이트로</td></tr>
+        <tr><td>R8</td><td>B2B 역연결이 VisaDesk 도입을 위축 → 플라이휠 역작용</td><td>medium</td><td>B2B는 "준법 리스크 사전 가시화"로 포지셔닝, 체불 신고는 본인 주도 분리</td></tr>
+        <tr><td>R9</td><td>행정사 무죄 판례(1심 단독) 일반화 위험</td><td>low</td><td>환급 특화 판례 별도 확인. 대사용자 청구는 노무사/변호사 라우팅 고정</td></tr>
+        <tr><td>R10</td><td>TAM 과장(미청구 1,138억 전부를 TAM처럼 인용)</td><td>low</td><td>"연 흐름 3,597억 + 미청구·휴면 ~2,000억, 합법 SOM 한 자리수%"로 라벨 정정</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- GATES -->
+<section id="gate" class="dark">
+  <div class="wrap">
+    <div class="eyebrow">15 · 의사결정</div>
+    <h2>GO 조건 · Kill 기준 · 디리스킹 순서</h2>
+
+    <div class="grid g2">
+      <div class="card">
+        <h4 style="color:var(--sky)">GO 조건 (충족 시 추진)</h4>
+        <ul class="clean">
+          <li>포지셔닝을 "환급 대행"→"외국인 금융 입구(환급=동의획득 미끼)"로 확정</li>
+          <li>금융 attach 파일럿: 송금 1개 제휴로 attach <b>≥10%</b> 실측</li>
+          <li>신호 라이선스 적격성 법률검토 통과 + 은행/CB 1곳 유료 PoC 의향</li>
+          <li>NPS·보험 데이터 마이데이터 편입 여부 확인(미편입 시 대체 플로우 성립)</li>
+          <li>자격사 제휴 공급 RFI 1차 합의</li>
+          <li>비자×국적×가입×최소기간 다축 엔진 + NPS 런타임 조회</li>
+          <li>세무사법·금소법·신용정보법 카피 전수 점검 통과</li>
+        </ul>
+      </div>
+      <div class="card" style="background:#33232a;border-color:#5a2f36">
+        <h4 style="color:var(--danger-dark)">Kill 기준 (이러면 접는다)</h4>
+        <ul class="clean">
+          <li>금융 attach &lt;5% + 신호 라이선스 적격성 부정 → 독립 BM 폐기, VisaDesk 무료 부가기능으로만 잔존</li>
+          <li>신호 라이선스가 본허가 대상 판정 + 은행·CB 지불의사 0 → NO-GO</li>
+          <li>NPS·보험 마이데이터 미편입 + 본인 직접조회 전환율 붕괴</li>
+          <li>환급 실과금전환 &lt;5% + R3 한패스/NICE에 완전 선점</li>
+          <li>자격사 제휴 전면 거부 → 공급 없어 빈 껍데기</li>
+          <li>B2B 역연결이 VisaDesk 도입을 실제 위축시킴(PoC 확인)</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3 style="color:#fff">디리스킹 실험 — 가장 큰 리스크를 가장 싸게·먼저 (법률검토·RFI는 코딩 전)</h3>
+    <ol class="steps" style="color:var(--muted-dark)">
+      <li><b style="color:#fff">신호 라이선스 적격성 법률검토</b> (신용정보법 §32·33, 본허가 불요 범위) — 통과 못하면 right-to-win 자체가 없음. 1순위.</li>
+      <li><b style="color:#fff">NPS·출국만기보험 마이데이터 전송대상 편입 확인</b> (금융위/마이데이터센터) — 핵심 UX·데이터 가설의 선결.</li>
+      <li><b style="color:#fff">은행·CB RFI</b> (신한·하나·NICE·KCB): "국내 고용·임금 신호 지불의사·단가" — 1곳 유료 PoC 의향이 데이터 BM go 기준.</li>
+      <li><b style="color:#fff">금융 attach 파일럿</b> (VisaDesk 관리외국인 + 송금 1개 제휴): 환급조회→송금 전환율 (게이트 ≥10%).</li>
+      <li><b style="color:#fff">자격사 제휴 RFI</b> (세무사·노무사·행정사·등록 금융사): 요율·합법성·저단가 1회성 수용 여부.</li>
+      <li><b style="color:#fff">환급 실과금전환 실측</b> (PoC 관리외국인 300명): 노출→가입→조회→실거래 깔때기 (게이트 ≥5%).</li>
+      <li><b style="color:#fff">교차판정·AI 진단 정확도 백테스트</b> (명세서 100건, 노무사 라벨 대비; 최저임금축 ≥95%·수당축 ≥80%) + 오진 면책 UX 법률검토.</li>
+      <li><b style="color:#fff">반환일시금 1차 원자료 확정</b> (NPS 통계연보: 중국 지급 1위 메커니즘·국가목록 변동성).</li>
+    </ol>
+
+    <div class="callout" style="background:#272729;border-color:var(--sky)">
+      <p class="k" style="color:#fff">권고 포지셔닝</p>
+      <p style="color:#fff">"BackWon = 환급으로 외국인을 무료(CAC 0)로 모아 동의·고용·임금 데이터를 확보하고, 그 신호를 은행·CB에 공급하는 <b style="color:var(--sky)">외국인 금융 데이터 레이어</b>. 환급·급여진단은 수익원이 아니라 신뢰·동의·데이터를 얻는 입구다."</p>
+      <p style="color:var(--muted-dark);font-size:14px;margin-top:10px"><b>금지 표현:</b> "외국인 환급/대출/송금 슈퍼앱", "신용점수 N점", "환급 대행/받아드림", "세금환급 보장" &nbsp;|&nbsp; <b>권장:</b> "출국정산 내비게이션", "금융 준비도 리포트", "전문가(세무사/노무사) 연결", "검증된 고용·임금 신호 데이터(동의기반)".</p>
+    </div>
+  </div>
+</section>
+
+<!-- EMPLOYER BENEFITS -->
+<section id="empben">
+  <div class="wrap">
+    <div class="eyebrow">16 · 사장님(고용주) 베네핏 <span class="verify-pill v-hold">1차 확정</span></div>
+    <h2>사장님에게 현금 환급은 단 하나 — 나머지는 전부 비현금</h2>
+    <p>사장님에게 직접 현금이 떨어지는 통로는 사실상 <b>출국만기보험의 '1년 미만 근무 정산' 하나뿐</b>이다(1차 확정). 외국인 직원이 1년을 못 채우고 이탈·퇴직하면, 사장님이 납입한 통상임금 8.3% 적립분을 <b>회사가 돌려받는다</b>. 그 외 베네핏은 전부 <b>(a) 손해·처벌 회피</b>와 <b>(b) 정책 자격 충족</b>이지 현금이 아니다 → §12B의 "고용주 가치=비현금" 결론을 1차 출처로 확증.</p>
+
+    <h3>환급·정산 베네핏 (사장님이 실제로 돈/손해를 다루는 곳)</h3>
+    <table>
+      <thead><tr><th>항목</th><th>사장님 이득</th><th>라벨</th></tr></thead>
+      <tbody>
+        <tr><td><b>출국만기보험 1년 미만 정산</b></td><td><b style="color:var(--blue)">유일한 진짜 현금 환급</b> — 직원이 1년 미만 이탈 시 8.3% 적립 일시금을 사용자(회사)가 수령. 보험사가 미청구분 알림톡 발송 → 모르고 안 찾은 돈 실재</td><td><span class="lbl lbl-1">1차·시행</span></td></tr>
+        <tr><td>출국만기 퇴직금 차액 <span style="color:var(--ink-48)">(이면)</span></td><td>1년 이상 근속자는 법정퇴직금&gt;보험금 차액을 <b>사장님이 추가 지급할 의무</b> → 정확 관리 = 체불·분쟁 예방</td><td><span class="lbl lbl-1">1차·시행</span></td></tr>
+        <tr><td>4대보험·전용보험 이탈 정산</td><td>임금체불 아닌 사유(이탈·출국·사망) 해지 시 전용보험 과오납분 일부 환급 가능</td><td><span class="lbl lbl-1">1차</span> <span class="lbl lbl-c">식 확인필요</span></td></tr>
+        <tr><td>국민연금 반환일시금 <span style="color:var(--ink-48)">(반증)</span></td><td>근로자 <b>본인 몫</b>이지 사장님 몫 아님 — "사장님 연금 환급"은 오해</td><td><span class="lbl lbl-1">1차</span></td></tr>
+      </tbody>
+    </table>
+
+    <h3>정책 인센티브 (진짜 당근 — 단 시행단계 라벨 엄수)</h3>
+    <table>
+      <thead><tr><th>레버</th><th>사장님 이득</th><th>시행단계</th></tr></thead>
+      <tbody>
+        <tr><td><b>고용허가제 점수제</b></td><td>쿼터 8만 축소기, <b>점수 높은 사업장이 신규 외국인력 우선배정</b>. 체불·미신고·인권침해는 감점 → VisaDesk 준법이력이 점수 방어</td><td><b style="color:var(--blue)">시행 중</b> <span class="lbl lbl-1">1차</span></td></tr>
+        <tr><td><b>E-9→E-7-4(R) 전환추천</b></td><td>사업주 추천으로 숙련공을 비전문 체류기한에 안 묶이고 <b>장기 보유</b>(107개 지역·2년+) → 재채용·재훈련 비용↓</td><td>시행·공모 중 <span class="lbl lbl-1">1차</span></td></tr>
+        <tr><td>사업주 지원사업</td><td>기숙사 개보수·<b>취업교육비 환급</b>(수료 후 3년 내 신청) 등 정부 보조 실재</td><td>시행(대상 한정) <span class="lbl lbl-1">1차 부분</span></td></tr>
+        <tr><td>K-Trust 성실기업 인증</td><td>성실기업에 체류연장 자동승인 등 인센티브</td><td><b class="danger-num">발표·예정(미시행)</b> <span class="lbl lbl-c">혜택 단정 금지</span></td></tr>
+      </tbody>
+    </table>
+
+    <div class="callout warn">
+      <p class="k">사업주 제재 — 베네핏의 이면</p>
+      <p>전용보험 미가입 = <b>500만원 이하 벌금</b> <span class="lbl lbl-1">1차</span> · 고용변동 15일 내 미신고 = <b>100만원 이하 과태료</b> <span class="lbl lbl-c">차등 최신값 확인필요</span> · 불법고용(출입국관리법 §94) = <b>3년↓ 징역/2천만원↓ 벌금</b> <span class="lbl lbl-c">최신 조문 확인필요</span> · 점수제 감점(체불·산재은폐·인권침해·체납) = 신규 배정 후순위/배제.</p>
+    </div>
+
+    <div class="callout">
+      <p class="k">여전히 미확정 [확인필요] — 인용·영업 전 1차 재확인</p>
+      <p>① K-Trust 인증 요건·배점·혜택('등'에 포함되는 점검 면제·쿼터 우대)·시행 시점 ② 출국만기 1년 미만 정산의 정확한 환급식(경과기간 차감 여부, 전액 반환 가정 금지) ③ 4대 사회보험 사업주 부담분 환급 가능성·금액 ④ 고용변동 미신고 과태료 차등값 / §94 최신 조문 ⑤ 사업주 지원사업 업종 범위(제조·요양 보편 적용 여부) ⑥ EPS 점수제 가·감점 배점표(매년 개정).</p>
+    </div>
+
+    <div class="callout warn">
+      <p class="k">냉정한 카운터 3</p>
+      <p>① <b>"사장님 환급" 시장은 좁다</b> — 1년 미만 정산은 고회전 사업장(C·D·E)에서 주로 발생하는데 이는 우리 ICP(장기근속 A·B)가 아니다. 현금 훅을 GTM 전면에 쓰면 비타깃을 끈다.<br>
+      ② <b>K-Trust를 "확정 혜택"으로 파는 순간 신뢰가 깎인다</b> — 요건·시점 미공개. "예정"을 "시행"처럼 말하면 IR 심사자가 즉시 간파. "발표·예정" 라벨 유지.<br>
+      ③ <b>본질은 끝까지 비현금</b> — 점수제·E-7-4·K-Trust·지원사업 모두 자격 충족·손해 회피이지 현금/매출이 아니다 → 이것은 BackWon(B2C)이 아니라 <b>VisaDesk(B2B 구독) 가치</b>. 사장님 직접 과금 BM은 NO.</p>
+    </div>
+    <p class="fine">상세·출처: <code>output/backwon-research/11-employer-policy-benefits.md</code>. 보험 정산식·과태료/벌금 최신값·점수제 배점·K-Trust 요건은 자주 개정·미공개 → 노무사·세무사·행정사·보험사·각 공단(국민연금 1355·HRD KOREA 1577-0071)·법제처/하이코리아 1차 재확인 필수.</p>
+  </div>
+</section>
+
+<!-- WORKER ADOPTION GTM -->
+<section id="adopt" class="dark">
+  <div class="wrap">
+    <div class="eyebrow">17 · 재직자 확산 GTM <span class="verify-pill v-part">gtm-strategist</span></div>
+    <h2>확산 엔진은 광고가 아니라 고용주 입구 × 트리거 × 모국어 신뢰</h2>
+    <p>정답은 B2C 광고로 외국인을 직접 모으는 것이 아니라, <b style="color:#fff">VisaDesk가 등록한 고용주를 통해 근로자를 CAC 0으로 자동 유입(1순위)</b>시키고, 정부·공공 무료채널과 모국어 동포 구전으로 신뢰를 빌려오는 것(2~3순위)이다. B2C-first 광고는 4사·일본·유럽이 "모객은 되나 잔존·수익화 실패"로 실증한 길. 외국인 채택은 <b style="color:#fff">신뢰 게임</b>(사기·선입금 기피)이라 무료·선입금0·정직 핸드오프·모국어 정확성이 레버. 북극성 지표는 가입자 수가 아니라 <b style="color:#fff">금융 attach율(가정 15%, BEP)</b>.</p>
+
+    <h4 style="color:#fff">세그먼트 우선순위 — "비자 먼저, 국적 그다음"</h4>
+    <table>
+      <thead><tr><th>순위</th><th>세그먼트 (송출국 × 비자)</th><th>왜 우선인가</th></tr></thead>
+      <tbody>
+        <tr><td><b style="color:var(--sky)">P0</b></td><td>베·네팔·인니·캄보디아 × <b>E-9 제조·산단</b></td><td>자격(고용허가제 국적무관)×입구(CAC0)×구전 3박자 = 확산 코어</td></tr>
+        <tr><td><b style="color:var(--sky)">P0</b></td><td>베·인니·태국 × <b>E-8 계절근로</b></td><td>고회전 출국 트리거 밀도 최고</td></tr>
+        <tr><td>P1</td><td>필·인니·태·캄보디아 × <b>E-7-2 요양·돌봄</b></td><td>정주·반복접점(연말정산) = LTV·재방문</td></tr>
+        <tr><td>P2</td><td>우즈벡·카자흐 × <b>H-2 방문취업</b></td><td>자격 명확, 입구 분산</td></tr>
+        <tr><td><b class="danger-num">회피</b></td><td>중·베·몽·우즈벡·네팔 × <b>F계열·E-7(정주)</b></td><td><b style="color:#ff8a80">반환일시금 비대상</b> → "받으세요" 오안내 = 전환0·신뢰붕괴</td></tr>
+      </tbody>
+    </table>
+    <p class="fine" style="color:#9a9a9c">언어 로드맵: 6개 → 베·네팔·인니·크메르·태·우즈벡 우선 → 미얀마·타갈로그/영어·싱할라.</p>
+
+    <h4 style="color:#fff">채널 믹스 (MECE)</h4>
+    <table>
+      <thead><tr><th>채널</th><th>역할</th><th>CAC / 신뢰</th><th>우선순위</th></tr></thead>
+      <tbody>
+        <tr><td><b>C1 B2B 입구</b> (고용주 등록→자동유입)</td><td>확산 엔진. "회사가 깔아준 무료 복지"</td><td>CAC <b style="color:var(--sky)">0</b> / 신뢰 최상</td><td><b style="color:var(--sky)">1순위</b></td></tr>
+        <tr><td>C2 기관 제휴 (EPS센터·외국인노동자지원센터·산단공·다문화센터)</td><td>공공 신뢰 차용 + 오프라인 도달</td><td>저 / 최상</td><td>2순위</td></tr>
+        <tr><td>C3 모국어 구전·KOL (유튜버·페북그룹·종교/동포망)</td><td>awareness 증폭·신뢰 전이</td><td>저~중 / 고</td><td>3순위(보조)</td></tr>
+        <tr><td>C4 경쟁 인접 제휴 (dagachi·vijob에 "채용 이후" 핸드오프)</td><td>트래픽 게임 회피, 입구만 차용</td><td>중 / 중</td><td>4순위(옵션)</td></tr>
+        <tr><td>C5 B2C 유료광고</td><td>—</td><td>CAC <b class="danger-num">高</b> / 신뢰 저</td><td><b class="danger-num">비타깃</b>(4사 실패)</td></tr>
+      </tbody>
+    </table>
+
+    <h4 style="color:#fff">트리거 캠페인 (연중)</h4>
+    <table>
+      <thead><tr><th>트리거</th><th>모국어 훅</th><th>CTA</th></tr></thead>
+      <tbody>
+        <tr><td>T1 입사·등록</td><td>"한국에서 일 시작 — 내 4대보험·적립금, 처음부터 내 손안에"</td><td>무료 가입(L2)·내 적립 현황</td></tr>
+        <tr><td><b>T2 연말정산</b> (매년 1~2월·유일 반복접점)</td><td>"연말정산 시즌 — 더 낸 세금 돌려받을 게 있는지 모국어로 확인"</td><td>무료 자가진단 → 세무사/홈택스 연결</td></tr>
+        <tr><td>T3 사업장 변경</td><td>"회사 바꿔도 내 적립금은 그대로 — 정산 누락 점검"</td><td>무료 누락 점검</td></tr>
+        <tr><td>T4 출국 D-30</td><td>"출국 전 받을 돈, 빠짐없이 — 반환일시금·출국만기·귀국비용 한 번에 추정"</td><td>무료 출국정산 체크 → NPS 1355·인천공항·보험사 연결</td></tr>
+      </tbody>
+    </table>
+    <p class="fine" style="color:#9a9a9c">금지표현 전면 제거: "환급 대행/보장/확정액", "세금환급 보장"(세무사법 §20③), "신용점수 N점". "추정·공단 확인 필요" 라벨 필수.</p>
+
+    <h4 style="color:#fff">퍼널 · 게이트 — 생사는 attach 단일 변수</h4>
+    <table>
+      <thead><tr><th>단계</th><th>전환(가정·추정)</th><th>게이트</th></tr></thead>
+      <tbody>
+        <tr><td>노출 → 가입(ForeignID L2 동의)</td><td>30~60% (고용주경유 高/광고 低)</td><td>고용주 권유 ≥70%</td></tr>
+        <tr><td>가입 → 환급조회</td><td>40~70%</td><td>자격판정 정확도 ≥95%</td></tr>
+        <tr><td>조회 → 실과금</td><td><b>3~9%</b></td><td>≥5%(PoC)</td></tr>
+        <tr><td>조회 → <b style="color:var(--sky)">금융 attach</b></td><td><b style="color:var(--sky)">15% (BEP 분기점)</b></td><td><b>≥10% (단일 핵심 KPI)</b></td></tr>
+      </tbody>
+    </table>
+
+    <h4 style="color:#fff">De-risking 실험 (90일)</h4>
+    <ul class="clean">
+      <li><b>E1</b> 고용주 무료채택·권유 의향(A·B·C 8~12사) — 게이트 권유 ≥70% · D0~30</li>
+      <li><b>E2</b> 계산기 자격판정 정확도 백테스트(100케이스) — ≥95% · D0~30</li>
+      <li><b>E3</b> 연말정산(T2) 모국어 진단→가입·재방문(300명) — 가입 ≥30% · D30~60</li>
+      <li><b>E4</b> 출국(T4) 정직 핸드오프→실과금·구전(E-8 코호트) — 실과금 ≥5% · D30~75</li>
+      <li><b>E5</b> 금융 attach 파일럿(송금 1개 제휴) — attach ≥10% · D60~90</li>
+    </ul>
+    <p class="fine" style="color:#9a9a9c">우선순위: E1·E2(가장 싸고 치명적) → E3·E4 → E5(단위경제 생사).</p>
+
+    <div class="callout" style="background:#33232a;border-color:var(--danger-dark)">
+      <p class="k" style="color:#fff">냉정한 카운터 3</p>
+      <p style="color:var(--muted-dark)">① <b style="color:#fff">바이럴 과신은 환상</b> — 4사가 콘텐츠·커뮤니티로 모객했으나 잔존·수익화 실패. 바이럴은 awareness만, 엔진은 끝까지 C1(고용주 CAC0).<br>
+      ② <b style="color:#fff">1회성 함정</b> — 출국 트리거는 최대 페인이나 LTV≈1거래. 재방문·attach는 연말정산(T2)·정주층(P1)에서만. 출국 캠페인 과배분 시 "모객은 되나 LTV 0".<br>
+      ③ <b style="color:#fff">오안내 리스크가 마케팅보다 먼저</b> — 비자×국적 오판정·F/E-7 오발화·모국어 오역 1건이 동포망을 타고 신뢰를 무너뜨린다. 확산 속도보다 자격판정 정확도·면책 UX·언어 검수가 선결(E2 게이트).</p>
+    </div>
+    <p class="fine">상세: <code>output/backwon-research/12-worker-adoption-gtm.md</code>. 모든 전환·CAC·attach·KPI는 가정·추정.</p>
+  </div>
+</section>
+
+<!-- SOURCES -->
+<section id="sources">
+  <div class="wrap">
+    <div class="eyebrow">18 · 출처</div>
+    <h2>주요 출처 (1차 우선)</h2>
+    <div class="grid g2">
+      <div>
+        <h4>모수·환급·페인</h4>
+        <ul class="src-list">
+          <li><a href="https://www.cppb.go.kr/immigration/1569/subview..do">출입국·외국인정책본부 통계월보</a> <span class="lbl lbl-1">1차</span> — 체류외국인 2,783,247명('25.12 SSOT) · 최신 2,870,191명('26.5)</li>
+          <li><a href="https://www.nps.or.kr/pnsinfo/sclsmise/getOHAF0126M0.do">국민연금공단 — 사회보장협정·반환일시금</a> <span class="lbl lbl-1">1차</span> — 고용허가제 국적무관 지급</li>
+          <li><a href="https://www.nps.or.kr/pnsinfo/ntpsklg/getOHAF0100M0.do">국민연금공단 — 외국인 반환일시금 FAQ</a> <span class="lbl lbl-1">1차</span> — 국적·출국·체류자격 의존 판정</li>
+          <li><a href="https://easylaw.go.kr/CSP/CnpClsMain.laf?popMenu=ov&amp;csmSeq=2042&amp;ccfNo=3&amp;cciNo=1&amp;cnpClsNo=3">찾기쉬운 생활법령 — 외국인근로자 전용보험</a> <span class="lbl lbl-1">1차</span> — 출국만기보험·귀국비용보험</li>
+          <li><a href="https://www.news1.kr/bio/welfare-medical/5955472">뉴스1 — 반환일시금 3,597억·4.1만명·1인 870만('24)</a> <span class="lbl lbl-2">2차</span></li>
+          <li><a href="https://www.hankookilbo.com/News/Read/A2024101816070001940">한국일보 — 외국인 국민연금 미청구 1,138억</a> <span class="lbl lbl-1">1차 인용</span></li>
+          <li><a href="https://www.ekw.co.kr/news/articleView.html?idxno=20009">EKW — 외국인보험 휴면·미청구('25.6 국정감사)</a> <span class="lbl lbl-1">1차 인용</span></li>
+          <li><a href="https://casenote.kr/헌법재판소/2014헌마367">헌재 2014헌마367 — 출국 후 수령제 합헌</a> <span class="lbl lbl-1">1차</span></li>
+          <li><a href="https://repository.kli.re.kr/bitstream/2021.oak/11974/2/2025-100호_임금정보브리프-4.pdf">KLI 임금정보브리프 — 외국인 임금체불 8.2%</a> <span class="lbl lbl-1">1차</span></li>
+        </ul>
+        <h4>경쟁·해외</h4>
+        <ul class="src-list">
+          <li>clinkers.io(glow) · app.glo-w.io NPS 가이드 <span class="lbl lbl-1">1차/공식</span></li>
+          <li><a href="https://www.venturesquare.net/1021390">vivisa×클링커즈 MOU('25.12.18)</a> <span class="lbl lbl-2">2차</span></li>
+          <li><a href="https://www.newsis.com/view/NISX20260225_0003525831">뉴시스 — 한패스 외국인 대출비교('26.2.25)</a> <span class="lbl lbl-2">2차</span></li>
+          <li>일본 nenkin.go.jp 탈퇴일시금 · 연금개혁법('25.6, 5→8년) <span class="lbl lbl-o">해외</span></li>
+          <li>taxback.com / RT Tax — 세금환급 productize <span class="lbl lbl-o">해외</span></li>
+        </ul>
+      </div>
+      <div>
+        <h4>규제</h4>
+        <ul class="src-list">
+          <li><a href="https://www.law.go.kr/LSW/lsRvsDocListP.do?lsId=000639">법제처 — 세무사법 §20③ 개정이력(공포 '25.12.23, 시행 '26.6)</a> <span class="lbl lbl-1">1차</span></li>
+          <li><a href="https://www.taxtimes.co.kr/news/article.html?no=275677">한국세정신문 — 세무대리 오인광고 금지(수범자=무자격자)</a> <span class="lbl lbl-2">2차</span></li>
+          <li><a href="https://www.lawtimes.co.kr/news/207558">법률신문 — 행정사 진정서 작성 무죄(2024고정678)</a> <span class="lbl lbl-1">1차</span></li>
+          <li>국가법령정보센터 — 신용정보법 §32·33, 변호사법 §109, 전자금융거래법 <span class="lbl lbl-1">1차</span></li>
+          <li><a href="https://adm.mydata.go.kr/images/guide.pdf">공공 마이데이터 가이드('25.08) — 외국인등록번호 보유자 이용</a> <span class="lbl lbl-1">1차</span></li>
+        </ul>
+        <h4>정책</h4>
+        <ul class="src-list">
+          <li><a href="https://www.korea.kr/news/policyNewsView.do?newsId=148960240">정책브리핑 — 2030 이민정책 미래전략('26.3.3, 5축)</a> <span class="lbl lbl-1">1차</span></li>
+          <li><a href="https://www.korea.kr/briefing/pressReleaseView.do?newsId=156736250">정책브리핑 — '26 외국인력 8만 도입('25.12.22)</a> <span class="lbl lbl-1">1차</span></li>
+          <li><a href="https://www.mohw.go.kr/menu.es?mid=a10714060000">보건복지부 — 연금개혁(보험료율 9→13%/2033, '26.1.1)</a> <span class="lbl lbl-1">1차</span></li>
+          <li><a href="https://www.korea.kr/news/policyNewsView.do?newsId=148919186">정책브리핑 — 외국인 기본인적정보 ICAO 통일('25.6.21 시행)</a> <span class="lbl lbl-1">1차</span></li>
+        </ul>
+        <h4>금융·재무</h4>
+        <ul class="src-list">
+          <li><a href="https://biz.heraldcorp.com/article/10730679">헤럴드 — 5대은행 외국인 고객 697만</a> <span class="lbl lbl-1">1차 인용</span></li>
+          <li><a href="https://www.pointdaily.co.kr/news/articleView.html?idxno=241297">신한 SOL 글로벌론·하나 EZ Loan(급여 3개월)</a> <span class="lbl lbl-2">2차</span></li>
+          <li><a href="https://www.newswire.co.kr/newsRead.php?no=1036128">NICE Welko 외국인 신용·eKYC('26.6.9)</a> <span class="lbl lbl-2">2차</span></li>
+          <li>한패스 매출·송금(mt.co.kr) · 일본 手続きナビ 수수료 <span class="lbl lbl-2">2차</span> <span class="lbl lbl-o">해외</span></li>
+          <li><a href="https://www.mydataplatform.or.kr/cb/cb.jsp">마이데이터플랫폼 — 개인신용평가업/CB 허가 안내</a> <span class="lbl lbl-1">1차</span></li>
+        </ul>
+      </div>
+    </div>
+    <hr class="soft">
+    <p class="fine"><b>전체 원문(스트림별 상세·전체 URL):</b> <code>output/backwon-research/01-market-sizing.md</code> · <code>02-customer-pain-jtbd.md</code> · <code>03-competition.md</code> · <code>04-regulatory-redlines.md</code> · <code>05-policy-tailwind.md</code> · <code>06-finance-linkage-bm.md</code> · <code>07-unit-economics.md</code> · <code>08-payroll-adequacy.md</code> · <code>09-synthesis-feasibility.md</code> · <code>10-employer-value-wtp.md</code> · <code>11-employer-policy-benefits.md</code> · <code>12-worker-adoption-gtm.md</code> · <code>13-three-party-workflow-bm-review.md</code></p>
+  </div>
+</section>
+
+<!-- DISCLAIMER -->
+<footer class="dark" style="padding:48px 24px">
+  <div class="narrow">
+    <p class="fine" style="color:#8a8a8c">
+      본 산출물은 <b style="color:#cfcfcf">법적 효력 없는 참고 정보</b>입니다. 모든 ARPU·CAC·LTV·attach·BEP·시나리오·TAM/SAM/SOM은 확정 실적이 아닌 가정·추정이며, 외부 통계는 인용 시점·출처를 표기했으나 인용 전 1차 출처 재확인이 필요합니다. 비자·환급·세무·노무·금융규제(신용정보법·마이데이터·대출모집인·세무사법 2026.6.24·자격사법) 판단은 행정사·노무사·세무사·변호사·국민연금공단(1355)·금융규제 전문가 검증이 필수입니다. 외국인등록번호·여권·계좌 등 민감정보는 예시·로그에 실제 값을 남기지 않습니다.
+    </p>
+    <p class="fine" style="color:#6a6a6c;margin-top:14px">
+      PlugNX 외국인 신사업 · BackWon 제로베이스 엔게이지먼트 · 8 워크스트림 병렬 리서치 + 적대적 검증 + feasibility 종합 + WS13 3자 workflow/BM 재검토 · 2026-06-29 KST
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>

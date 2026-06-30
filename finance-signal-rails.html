@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow" />
+<title>금융 신호 수익화 컨셉 — 팔지 말고 두 번 수익화 | PlugNX</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --blue:#0066cc; --blue-focus:#0071e3; --sky:#2997ff;
+    --white:#ffffff; --parch:#f5f5f7; --pearl:#fafafc;
+    --tile:#272729; --tile2:#2a2a2c; --black:#000;
+    --ink:#1d1d1f; --ink80:#333; --ink48:#7a7a7a;
+    --on-dark:#fff; --dim:#cccccc;
+    --hair:#e0e0e0; --divider:#f0f0f0;
+    --danger:#d70015; --danger-d:#ff5a4d; --green:#1d8a4f; --amber:#b25e00;
+    --shadow-prod:rgba(0,0,0,.22) 3px 5px 30px 0;
+    --font:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text",Inter,system-ui,"Apple SD Gothic Neo",sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--font);background:var(--white);color:var(--ink);line-height:1.47;
+    letter-spacing:-.022em;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+  a{color:var(--blue);text-decoration:none}
+  .container{max-width:1080px;margin:0 auto;padding:0 22px}
+  h1,h2,h3,h4{letter-spacing:-.022em;font-weight:600;color:var(--ink)}
+  .eyebrow{font-size:14px;font-weight:600;color:var(--blue);letter-spacing:0}
+  .display{font-size:clamp(33px,5.4vw,54px);font-weight:600;line-height:1.06;letter-spacing:-.028em}
+  .h2{font-size:clamp(27px,3.6vw,40px);font-weight:600;line-height:1.1;letter-spacing:-.024em}
+  .lead{font-size:clamp(18px,2.2vw,23px);font-weight:400;line-height:1.34;color:var(--ink80)}
+  .muted{color:var(--ink48)}
+  b{font-weight:600}
+
+  .tile{padding:clamp(54px,7.5vw,82px) 0}
+  .tile.light{background:var(--white)}
+  .tile.parch{background:var(--parch)}
+  .tile.dark{background:var(--tile);color:var(--dim)}
+  .on-dark h2,.on-dark h3,.on-dark h4{color:var(--on-dark)}
+  .sec-head{max-width:800px;margin:0 auto clamp(28px,4.5vw,44px)}
+  .sec-head.ctr{text-align:center;margin-left:auto;margin-right:auto}
+  .sec-head .eyebrow{display:block;margin-bottom:12px}
+  .sec-head .h2{margin-bottom:13px}
+  .sec-head p{font-size:18px;color:var(--ink48);line-height:1.46}
+  .on-dark .sec-head p{color:var(--dim)}
+
+  .gnav{background:var(--black);height:44px;position:relative;z-index:60}
+  .gnav .container{height:44px;display:flex;align-items:center;gap:18px}
+  .gnav a{color:#f5f5f7;font-size:12px;font-weight:400;opacity:.85}
+  .gnav a:hover{opacity:1}
+  .wordmark{font-weight:700;font-size:15px;color:#fff}
+  .wordmark .nx{color:#fff;opacity:.62}
+  .gnav .sp{margin-left:auto}
+  .subnav{position:sticky;top:0;z-index:55;height:52px;
+    background:rgba(245,245,247,.82);-webkit-backdrop-filter:saturate(180%) blur(20px);backdrop-filter:saturate(180%) blur(20px);
+    border-bottom:1px solid rgba(0,0,0,.08)}
+  .subnav .container{height:52px;display:flex;align-items:center;gap:20px}
+  .subnav .cat{font-size:20px;font-weight:600}
+  .subnav .cat b{color:var(--blue)}
+  .subnav .links{display:flex;gap:17px;font-size:13px}
+  .subnav .links a{color:var(--ink80)}
+  .subnav .links a:hover{color:var(--blue)}
+  .subnav .right{margin-left:auto}
+  @media(max-width:880px){.subnav .links{display:none}}
+  .btn{display:inline-flex;align-items:center;gap:7px;font-size:14px;font-weight:400;
+    padding:8px 17px;border-radius:980px;border:1px solid var(--blue);color:var(--blue);transition:transform .12s}
+  .btn:active{transform:scale(.96)}
+
+  .hero{text-align:center;padding:clamp(46px,6vw,68px) 0 clamp(30px,4vw,42px)}
+  .hero .eyebrow{margin-bottom:14px;display:block}
+  .hero .display{margin-bottom:18px}
+  .hero .lead{max-width:740px;margin:0 auto}
+  .chips{margin-top:22px}
+  .chip{font-size:13px;color:var(--ink48);background:var(--parch);border:1px solid var(--hair);
+    border-radius:980px;padding:6px 14px;display:inline-block;margin:5px 4px 0}
+  .chip b{color:var(--ink)}
+
+  .exec{max-width:900px;margin:0 auto;background:var(--tile);color:var(--dim);border-radius:22px;
+    padding:clamp(28px,4vw,40px);box-shadow:var(--shadow-prod)}
+  .exec .lab{font-size:13px;font-weight:600;color:var(--sky);letter-spacing:.02em;margin-bottom:8px}
+  .exec h3{color:#fff;font-size:clamp(20px,2.6vw,27px);line-height:1.32;margin-bottom:8px;font-weight:600}
+  .exec h3 .hl{color:var(--sky)}
+  .exec p{font-size:14.5px;line-height:1.6;color:#c9c9cc;margin-top:10px}
+
+  /* rail diagram */
+  .diagram{max-width:920px;margin:0 auto}
+  .funnel-box{background:var(--tile);color:#fff;border-radius:16px;padding:20px 24px;text-align:center;box-shadow:var(--shadow-prod)}
+  .funnel-box .t{font-size:13px;color:var(--sky);font-weight:600;letter-spacing:.02em}
+  .funnel-box .d{font-size:15px;color:#fff;font-weight:600;margin-top:6px}
+  .funnel-box .s{font-size:12.5px;color:#a9a9ae;margin-top:6px;line-height:1.5}
+  .arrow{text-align:center;color:var(--ink48);font-size:22px;line-height:1;margin:8px 0}
+  .rails{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  @media(max-width:760px){.rails{grid-template-columns:1fr}}
+  .rail{border-radius:16px;padding:22px;border:1px solid var(--hair);background:#fff}
+  .rail.r1{border-color:rgba(29,138,79,.3);background:rgba(29,138,79,.05)}
+  .rail.r2{border-color:rgba(0,102,204,.3);background:rgba(0,102,204,.05)}
+  .rail .tag{font-size:12px;font-weight:700;letter-spacing:.03em}
+  .rail.r1 .tag{color:var(--green)} .rail.r2 .tag{color:var(--blue)}
+  .rail h4{font-size:17px;margin:6px 0 8px}
+  .rail .who{font-size:12.5px;color:var(--ink48);margin-bottom:10px}
+  .rail .earn{font-size:14px;color:var(--ink);font-weight:600}
+  .rail .gate{font-size:12.5px;color:var(--ink80);margin-top:8px;line-height:1.5}
+  .rail .gate b{color:var(--ink)}
+  .loop{text-align:center;font-size:12.5px;color:var(--ink48);margin-top:14px;background:var(--parch);border-radius:12px;padding:12px 16px}
+  .loop b{color:var(--ink80)}
+
+  .tbl-wrap{max-width:920px;margin:0 auto;overflow-x:auto;border:1px solid var(--hair);border-radius:16px;background:#fff}
+  table{border-collapse:collapse;width:100%;font-size:14px;min-width:600px}
+  th,td{text-align:left;padding:13px 16px;border-bottom:1px solid var(--divider);vertical-align:top}
+  th{font-weight:600;color:var(--ink);background:var(--pearl);font-size:13px}
+  tr:last-child td{border-bottom:none}
+  td .k{font-weight:600}
+  tr.hl td{background:rgba(0,102,204,.05)}
+  .pill{display:inline-block;font-size:11px;font-weight:600;padding:2px 9px;border-radius:980px;white-space:nowrap}
+  .pill.now{background:rgba(29,138,79,.12);color:var(--green)}
+  .pill.mid{background:rgba(178,94,0,.12);color:var(--amber)}
+  .pill.late{background:rgba(215,0,21,.1);color:var(--danger)}
+
+  .g2{display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:920px;margin:0 auto}
+  @media(max-width:760px){.g2{grid-template-columns:1fr}}
+  .way{background:var(--tile2);border:1px solid rgba(255,255,255,.1);border-radius:18px;padding:24px}
+  .way .tag{font-size:12px;font-weight:700;color:var(--sky)}
+  .way h4{color:#fff;font-size:17px;margin:6px 0 9px}
+  .way p{font-size:13.5px;color:var(--dim);line-height:1.55}
+  .way .need{font-size:12px;color:#9a9a9e;margin-top:10px}
+
+  .redlines{max-width:920px;margin:0 auto;background:rgba(215,0,21,.06);border:1px solid rgba(215,0,21,.2);border-radius:16px;padding:22px 24px}
+  .redlines h4{font-size:15px;margin-bottom:10px;color:var(--danger)}
+  .redlines ol{margin:0;padding-left:20px}
+  .redlines li{font-size:13.5px;line-height:1.6;margin-bottom:5px;color:var(--ink80)}
+  .redlines li b{color:var(--ink)}
+
+  .road{max-width:920px;margin:0 auto;display:flex;flex-direction:column;gap:0}
+  .ph{display:flex;gap:18px;padding:18px 0;border-bottom:1px solid rgba(255,255,255,.1)}
+  .ph:last-child{border-bottom:none}
+  .ph .pn{flex:0 0 120px}
+  .ph .pn .pk{color:#fff;font-weight:600;font-size:15px}
+  .ph .pn .pt{color:#8a8a8e;font-size:12px;margin-top:3px}
+  .ph .pc{flex:1}
+  .ph .pc .act{color:var(--dim);font-size:14px;line-height:1.55}
+  .ph .pc .gate{color:var(--sky);font-size:12.5px;margin-top:6px}
+
+  .note{max-width:920px;margin:26px auto 0;font-size:12.5px;color:var(--ink48);line-height:1.7;
+    background:var(--parch);border-radius:14px;padding:18px 20px}
+  .note b{color:var(--ink80)}
+
+  footer{background:var(--parch);padding:46px 0 50px;color:var(--ink48)}
+  .ft-disc{font-size:12px;line-height:1.7;max-width:920px}
+  .ft-disc b{color:var(--ink80)}
+  .ft-links{margin-bottom:14px;font-size:14px}
+  .ft-links a{margin-right:16px}
+</style>
+</head>
+<body>
+
+<div class="gnav">
+  <div class="container">
+    <span class="wordmark">PLUG<span class="nx">nx</span></span>
+    <a href="finance-data-infra.html">데이터 인프라 기획서</a>
+    <a href="backwon-plan.html">BackWon 기획서</a>
+    <a class="sp" href="index.html">산출물 허브</a>
+  </div>
+</div>
+
+<div class="subnav">
+  <div class="container">
+    <span class="cat">금융 신호 <b>수익화 컨셉</b></span>
+    <div class="links">
+      <a href="#concept">컨셉</a>
+      <a href="#diagram">2레일 구조</a>
+      <a href="#signal">신호 출처</a>
+      <a href="#match">맞춤 추천</a>
+      <a href="#red">레드라인</a>
+      <a href="#seq">순서</a>
+    </div>
+    <div class="right"><a class="btn" href="index.html">허브로</a></div>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="tile light">
+  <div class="container hero">
+    <span class="eyebrow">금융 확장 컨셉 · 1-pager</span>
+    <h1 class="display">팔지 말고, 동의받아<br/>두 번 수익화한다.</h1>
+    <p class="lead">외국인의 동의받은 고용·환급 데이터를 "DB로 팔지" 않는다. ① 본인에게는 <b>대출비교·연결</b>(송객 수수료), ② 금융사에는 <b>검증 신호 API</b>(이용료)로 — 한 번 모은 동의를 두 갈래로 수익화한다.</p>
+    <div class="chips">
+      <span class="chip">레일1 <b>대출 송객(중개)</b></span>
+      <span class="chip">레일2 <b>검증 신호 API</b></span>
+      <span class="chip">금지 <b>raw DB 판매·무허가 스코어</b></span>
+      <span class="chip">엔진 <b>ForeignID 동의 + VisaDesk 고용데이터</b></span>
+    </div>
+  </div>
+</section>
+
+<!-- CONCEPT -->
+<section class="tile parch" id="concept">
+  <div class="container">
+    <div class="exec">
+      <div class="lab">한 문장 컨셉</div>
+      <h3>"외국인의 <span class="hl">동의받은</span> 고용·환급 데이터를 팔지 않는다 — 본인에겐 <span class="hl">대출연결</span>, 금융사엔 <span class="hl">검증 신호 API</span>로 두 번 수익화한다."</h3>
+      <p>"DB를 판다"는 신용정보법·개인정보보호법상 봉쇄된다. 합법 활로는 데이터를 *팔지 않고* 동의 기반으로 ① 가공된 신호를 API로 제공하고 ② 본인을 대출에 연결(송객)하는 것. 두 레일은 같은 동의 퍼널을 공유하며 서로를 먹인다.</p>
+    </div>
+  </div>
+</section>
+
+<!-- DIAGRAM -->
+<section class="tile light" id="diagram">
+  <div class="container">
+    <div class="sec-head ctr">
+      <span class="eyebrow">구조 · 한 퍼널, 두 레일</span>
+      <h2 class="h2">한 번 모은 동의가 두 곳에서 돈이 된다.</h2>
+    </div>
+    <div class="diagram">
+      <div class="funnel-box">
+        <div class="t">동의 퍼널 (CAC 0)</div>
+        <div class="d">ForeignID 동의 + VisaDesk 고용데이터 + BackWon 유입</div>
+        <div class="s">= 동의받은 데이터 풀 (B2B가 근로자를 자동 유입 → 마케팅비 0)</div>
+      </div>
+      <div class="arrow">▼</div>
+      <div class="rails">
+        <div class="rail r1">
+          <div class="tag">레일 1 · B2C 앱 → 금융사</div>
+          <h4>대출비교·연결 (송객)</h4>
+          <div class="who">"이 사람에게 맞는 대출" 비교 → 연결</div>
+          <div class="earn">💰 중개수수료 (대출 성사 시 성과연동)</div>
+          <div class="gate"><b>게이트</b> · 금융소비자보호법 대출성 상품 판매대리·중개업 등록 → <b>가장 빨리 현금이 도는 레일</b></div>
+        </div>
+        <div class="rail r2">
+          <div class="tag">레일 2 · API → 금융사</div>
+          <h4>검증 신호 API</h4>
+          <div class="who">"재직 12개월↑·체류잔여 6개월↑·4대보험 정상납부" (불리언/구간)</div>
+          <div class="earn">💰 API 이용료 (건당 + 구독)</div>
+          <div class="gate"><b>게이트</b> · raw 아닌 가공 신호만 / 무허가 "신용점수" 금지 / <b>금융위 비조치의견서</b> + 금융사 LOI 선행</div>
+        </div>
+      </div>
+      <div class="loop">↻ <b>되먹임</b> · 레일1의 대출 성사 결과 = 레일2 신호 정확도를 높이는 학습 라벨 → (24m+·인허가 후) 스코어·마이데이터로 진화</div>
+    </div>
+    <div class="note"><b>왜 "자연스럽게" 도는가</b> · 앱에서 대출연결을 하면 그 과정에서 동의·데이터가 쌓이고, 그게 금융사에 줄 신호의 재료가 된다. 단 <b>레일1(송객 수수료)은 등록만 하면 바로 돌지만, 레일2(API 이용료)는 "사겠다는 금융사 LOI"가 선행</b>돼야 한다("API를 만들면 자동으로 돈"이 아님 — 기존 검증서 은행 지불의사 low6·med3·high0).</div>
+  </div>
+</section>
+
+<!-- SIGNAL SOURCE -->
+<section class="tile parch" id="signal">
+  <div class="container">
+    <div class="sec-head ctr">
+      <span class="eyebrow">신호 출처 · 난이도가 다르다</span>
+      <h2 class="h2">재직증명은 즉시, 이체내역은 마이데이터 후행.</h2>
+      <p>같은 "금융 신호"도 어디서 오느냐에 따라 합법 난이도가 완전히 갈린다.</p>
+    </div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>신호</th><th>출처</th><th>우리가 줄 수 있나</th><th>단계</th></tr></thead>
+        <tbody>
+          <tr class="hl"><td class="k">재직·고용·임금 증명</td><td>VisaDesk (고용주가 검증) = <b>우리 데이터</b></td><td>✅ 동의만 받으면 즉시 제공</td><td><span class="pill now">즉시 · FW-01</span></td></tr>
+          <tr><td class="k">이체내역(계좌 거래) 증명</td><td>은행·계좌 = 금융사 데이터</td><td>⚠️ <b>마이데이터(본인신용정보관리업) 허가</b> 영역 — 직접 수집 불가</td><td><span class="pill late">후행 · FW-09</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note">이체내역을 <b>당장</b> 쓰려면 두 길 — ① <b>사용자 본인제출</b>(본인이 거래내역서 업로드, 가벼움) ② <b>오픈뱅킹·마이데이터 사업자 제휴</b>(자체 허가는 인허가 후행). 재직·고용 신호만으로도 1차 맞춤 비교·연결은 즉시 가능하므로, 이체내역 결합은 "정밀 맞춤"을 위한 후행 강화다.</div>
+  </div>
+</section>
+
+<!-- MATCH -->
+<section class="tile dark on-dark" id="match">
+  <div class="container">
+    <div class="sec-head ctr">
+      <span class="eyebrow">개개인 맞춤 대출 추천·금리 비교</span>
+      <h2 class="h2">누가 "추천·금리"를 정하느냐로 갈린다.</h2>
+      <p>맞춤 추천은 가능하다. 단 추천·금리·승인 결정의 주체가 금융사여야 무허가 신용평가 경계를 넘지 않는다.</p>
+    </div>
+    <div class="g2">
+      <div class="way">
+        <div class="tag">방식 A · 즉시 · 권장 시작점</div>
+        <h4>신호 공급 + 비교·연결</h4>
+        <p>우리는 <b style="color:#fff">검증 신호만</b> 금융사에 주고, <b style="color:#fff">금융사가 자기 금리를 제시</b>하면 우리가 비교·연결(송객). "추천·금리"의 주체는 금융사.</p>
+        <div class="need">필요 · 대출성 상품 판매대리·중개업 등록(금소법) — 그게 전부</div>
+      </div>
+      <div class="way">
+        <div class="tag">방식 B · 후행 · 본격 플랫폼</div>
+        <h4>직접 대출비교 플랫폼 (토스·핀다형)</h4>
+        <p>우리가 직접 "당신에게 A은행 3.5%·B캐피탈 6%" 맞춤 비교를 제시. 더 강력하지만 인허가 부담 큼.</p>
+        <div class="need">필요 · 대출중개업 + 마이데이터(이체내역) + 다수 금융사 제휴</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REDLINES -->
+<section class="tile light" id="red">
+  <div class="container">
+    <div class="sec-head ctr">
+      <span class="eyebrow">넘으면 안 되는 선</span>
+      <h2 class="h2">레드라인 — 이건 하면 안 된다.</h2>
+    </div>
+    <div class="redlines">
+      <h4>⛔ 금지</h4>
+      <ol>
+        <li>재직·급여·체류 <b>raw DB의 금융사 직접 판매</b> (신용정보법)</li>
+        <li>무허가로 <b>"신용평가/신용점수"</b> 산출·제공 — "맞춤 추천"이 우리가 신용을 판정하는 걸로 보이면 경계</li>
+        <li><b>"대출 승인·한도·금리 보장"</b> — 최종 금리·승인은 금융사 권한</li>
+        <li><b>이체내역 무허가 집계</b> (마이데이터 위반)</li>
+        <li>외국인등록번호(고유식별정보) <b>별도 동의 없는</b> 수집·결합·이전</li>
+      </ol>
+    </div>
+    <div class="note"><b>공통 게이트</b> · 외국인등록번호 별도 동의·분리보관·암호화·국내저장을 제품 1일차부터 분리 설계. 표현은 "DB 판매"→"동의 기반 신호 제공", "신용평가"→"대안정보 참고 신호", "대출"→"제휴사 상품 비교·연결(심사는 금융사)". 본 페이지는 참고용이며 신용정보법·금소법·개인정보보호법 조문·시행일은 변호사 검토 필요.</div>
+  </div>
+</section>
+
+<!-- SEQUENCE -->
+<section class="tile dark on-dark" id="seq">
+  <div class="container">
+    <div class="sec-head ctr">
+      <span class="eyebrow">순서 · 명확한 길</span>
+      <h2 class="h2">대출 송객 + 검증 신호부터, 스코어는 인허가 후.</h2>
+    </div>
+    <div class="road">
+      <div class="ph"><div class="pn"><div class="pk">즉시</div><div class="pt">재직신호 기반</div></div><div class="pc"><div class="act">레일1 <b style="color:#fff">대출 송객</b> + 레일2 <b style="color:#fff">검증 신호 API 파일럿</b>(1개 금융사). 맞춤은 방식 A(금융사가 금리 제시).</div><div class="gate">게이트 · 금소법 중개업 등록 · 금융위 비조치의견서 · 금융사 LOI ≥2</div></div></div>
+      <div class="ph"><div class="pn"><div class="pk">12–24m</div><div class="pt">이체내역 결합</div></div><div class="pc"><div class="act">마이데이터 허가/제휴로 <b style="color:#fff">이체내역 결합</b> → 정밀 맞춤 비교(방식 B) + 가명결합 데이터셋.</div><div class="gate">게이트 · 마이데이터 허가/제휴 · 데이터전문기관 결합</div></div></div>
+      <div class="ph"><div class="pn"><div class="pk">24m+</div><div class="pt">인허가 후</div></div><div class="pc"><div class="act">데이터 축적 후 <b style="color:#fff">자체 스코어</b>(전문개인신용평가업)·마이데이터 통합. "대출=수익엔진"의 도착지.</div><div class="gate">게이트 · 인허가</div></div></div>
+    </div>
+    <div class="note" style="background:rgba(255,255,255,.04);color:var(--dim)"><b style="color:#fff">한 줄</b> · "팔지 말고, 동의받아 — 본인에겐 대출연결(수수료), 금융사엔 검증 신호 API(이용료). 점수·DB·스코어는 인허가 후." 이 구조는 <a href="finance-data-infra.html" style="color:var(--sky)">데이터 인프라 기획서</a>의 FW-01·02·09 시퀀싱과 정확히 일치.</div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="ft-links">
+      <a href="index.html">산출물 허브</a>
+      <a href="finance-data-infra.html">데이터 인프라 기획서</a>
+      <a href="backwon-plan.html">BackWon 기획서</a>
+      <a href="eps-gap.html">EPS 공백 wedge</a>
+    </div>
+    <p class="ft-disc">
+      <b>참고용 안내.</b> 본 컨셉의 규제 판단은 법적 효력이 없으며 신용정보법·금융소비자보호법·개인정보보호법·자격사법 조문·시행일은 변호사·금융규제 전문가 검토가 필요하다.
+      Signal API의 신용정보법상 지위는 금융위 비조치의견서로, 대출 송객은 금소법 중개업 등록으로, 이체내역·스코어는 마이데이터·전문개인신용평가업 인허가로만 합법화된다.
+      모든 수익·지불의사 수치는 목표·가정이며 금융사 LOI 실측 대상이다. 민감정보(외국인등록번호·여권·계좌)는 예시·로그에 실제 값을 남기지 않는다.<br/><br/>
+      © 2026 PlugNX Inc. · 내부용(Confidential) · 근거 <code>handoff/backwon-viability-analysis · output/finance-data-infra · 규제 점검(BM-A/B/C)</code>
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow" />
+<title>EPS 공백 기획서 — 정부 시스템이 끝나는 지점 | PlugNX</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --blue:#0066cc; --blue-focus:#0071e3; --sky:#2997ff;
+    --white:#ffffff; --parch:#f5f5f7; --pearl:#fafafc;
+    --tile:#272729; --tile2:#2a2a2c; --black:#000;
+    --ink:#1d1d1f; --ink80:#333; --ink48:#7a7a7a;
+    --on-dark:#fff; --dim:#cccccc;
+    --hair:#e0e0e0; --divider:#f0f0f0;
+    --danger:#d70015; --danger-d:#ff5a4d; --green:#1d8a4f; --amber:#b25e00;
+    --shadow-prod:rgba(0,0,0,.22) 3px 5px 30px 0;
+    --font:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text",Inter,system-ui,"Apple SD Gothic Neo",sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--font);background:var(--white);color:var(--ink);line-height:1.47;
+    letter-spacing:-.022em;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+  a{color:var(--blue);text-decoration:none}
+  .container{max-width:1080px;margin:0 auto;padding:0 22px}
+  h1,h2,h3,h4{letter-spacing:-.022em;font-weight:600;color:var(--ink)}
+  .eyebrow{font-size:14px;font-weight:600;color:var(--blue);letter-spacing:0}
+  .display{font-size:clamp(33px,5.4vw,54px);font-weight:600;line-height:1.06;letter-spacing:-.028em}
+  .h2{font-size:clamp(27px,3.6vw,40px);font-weight:600;line-height:1.1;letter-spacing:-.024em}
+  .lead{font-size:clamp(18px,2.2vw,23px);font-weight:400;line-height:1.34;color:var(--ink80)}
+  .muted{color:var(--ink48)}
+  b{font-weight:600}
+
+  .tile{padding:clamp(54px,7.5vw,82px) 0}
+  .tile.light{background:var(--white)}
+  .tile.parch{background:var(--parch)}
+  .tile.dark{background:var(--tile);color:var(--dim)}
+  .on-dark h2,.on-dark h3,.on-dark h4{color:var(--on-dark)}
+  .sec-head{max-width:800px;margin:0 auto clamp(28px,4.5vw,44px)}
+  .sec-head.ctr{text-align:center;margin-left:auto;margin-right:auto}
+  .sec-head .eyebrow{display:block;margin-bottom:12px}
+  .sec-head .h2{margin-bottom:13px}
+  .sec-head p{font-size:18px;color:var(--ink48);line-height:1.46}
+  .on-dark .sec-head p{color:var(--dim)}
+
+  .gnav{background:var(--black);height:44px;position:relative;z-index:60}
+  .gnav .container{height:44px;display:flex;align-items:center;gap:18px}
+  .gnav a{color:#f5f5f7;font-size:12px;font-weight:400;opacity:.85}
+  .gnav a:hover{opacity:1}
+  .wordmark{font-weight:700;font-size:15px;color:#fff}
+  .wordmark .nx{color:#fff;opacity:.62}
+  .gnav .sp{margin-left:auto}
+  .subnav{position:sticky;top:0;z-index:55;height:52px;
+    background:rgba(245,245,247,.82);-webkit-backdrop-filter:saturate(180%) blur(20px);backdrop-filter:saturate(180%) blur(20px);
+    border-bottom:1px solid rgba(0,0,0,.08)}
+  .subnav .container{height:52px;display:flex;align-items:center;gap:20px}
+  .subnav .cat{font-size:20px;font-weight:600}
+  .subnav .cat b{color:var(--blue)}
+  .subnav .links{display:flex;gap:17px;font-size:13px}
+  .subnav .links a{color:var(--ink80)}
+  .subnav .links a:hover{color:var(--blue)}
+  .subnav .right{margin-left:auto}
+  @media(max-width:880px){.subnav .links{display:none}}
+  .btn{display:inline-flex;align-items:center;gap:7px;font-size:14px;font-weight:400;
+    padding:8px 17px;border-radius:980px;border:1px solid var(--blue);color:var(--blue);transition:transform .12s}
+  .btn:active{transform:scale(.96)}
+  .btn-primary{background:var(--blue);color:#fff}
+
+  .hero{text-align:center;padding:clamp(46px,6vw,68px) 0 clamp(30px,4vw,42px)}
+  .hero .eyebrow{margin-bottom:14px;display:block}
+  .hero .display{margin-bottom:18px}
+  .hero .lead{max-width:740px;margin:0 auto}
+  .chips{margin-top:22px}
+  .chip{font-size:13px;color:var(--ink48);background:var(--parch);border:1px solid var(--hair);
+    border-radius:980px;padding:6px 14px;display:inline-block;margin:5px 4px 0}
+  .chip b{color:var(--ink)}
+
+  .exec{max-width:900px;margin:0 auto;background:var(--tile);color:var(--dim);border-radius:22px;
+    padding:clamp(28px,4vw,40px);box-shadow:var(--shadow-prod)}
+  .exec .lab{font-size:13px;font-weight:600;color:var(--sky);letter-spacing:.02em;margin-bottom:8px}
+  .exec h3{color:#fff;font-size:clamp(20px,2.6vw,26px);line-height:1.32;margin-bottom:16px;font-weight:600}
+  .exec p{font-size:15px;line-height:1.62;color:#d6d6d8;margin-bottom:11px}
+  .exec p b{color:#fff}
+  .exec .hl{color:var(--sky)}
+
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;max-width:920px;margin:0 auto}
+  @media(max-width:720px){.stats{grid-template-columns:repeat(2,1fr)}}
+  .stat{background:#fff;border:1px solid var(--hair);border-radius:16px;padding:22px 18px;text-align:center}
+  .stat .n{font-size:clamp(24px,3.2vw,32px);font-weight:600;color:var(--blue);letter-spacing:-.02em}
+  .stat .n.warn{color:var(--amber)}
+  .stat .l{font-size:12.5px;color:var(--ink48);margin-top:6px;line-height:1.4}
+
+  /* split: 잘함 vs 공백 */
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:980px;margin:0 auto}
+  @media(max-width:820px){.split{grid-template-columns:1fr}}
+  .col{border-radius:18px;padding:26px}
+  .col.does{background:rgba(29,138,79,.06);border:1px solid rgba(29,138,79,.22)}
+  .col.gap{background:rgba(215,0,21,.05);border:1px solid rgba(215,0,21,.2)}
+  .col h3{font-size:18px;margin-bottom:4px}
+  .col .sub{font-size:12.5px;color:var(--ink48);margin-bottom:16px}
+  .col ul{list-style:none;margin:0;padding:0}
+  .col li{font-size:14px;color:var(--ink80);line-height:1.5;padding:8px 0 8px 24px;position:relative;border-top:1px solid var(--divider)}
+  .col li:first-of-type{border-top:none}
+  .col.does li::before{content:"✓";position:absolute;left:0;color:var(--green);font-weight:700}
+  .col.gap li::before{content:"✕";position:absolute;left:0;color:var(--danger);font-weight:700}
+  .col li b{color:var(--ink)}
+
+  .tbl-wrap{max-width:980px;margin:0 auto;overflow-x:auto;border:1px solid var(--hair);border-radius:16px;background:#fff}
+  table{border-collapse:collapse;width:100%;font-size:14px;min-width:640px}
+  th,td{text-align:left;padding:13px 16px;border-bottom:1px solid var(--divider);vertical-align:top}
+  th{font-weight:600;color:var(--ink);background:var(--pearl);font-size:13px;position:sticky;top:0}
+  tr:last-child td{border-bottom:none}
+  td .k{font-weight:600}
+  tr.hl td{background:rgba(0,102,204,.05)}
+  tr.warn td{background:rgba(215,0,21,.04)}
+  .pill{display:inline-block;font-size:11px;font-weight:600;padding:2px 9px;border-radius:980px;white-space:nowrap}
+  .pill.avoid{background:rgba(122,122,122,.14);color:var(--ink48)}
+  .pill.wedge{background:rgba(0,102,204,.1);color:var(--blue)}
+  .pill.comp{background:rgba(29,138,79,.12);color:var(--green)}
+
+  /* wedge cards */
+  .g3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:980px;margin:0 auto}
+  @media(max-width:820px){.g3{grid-template-columns:1fr}}
+  .wcard{background:var(--tile2);border:1px solid rgba(255,255,255,.1);border-radius:18px;padding:24px}
+  .wcard .tag{font-size:12px;font-weight:700;color:var(--sky);letter-spacing:.03em}
+  .wcard h4{color:#fff;font-size:17px;margin:6px 0 9px}
+  .wcard p{font-size:13.5px;color:var(--dim);line-height:1.55}
+  .wcard .src{font-size:11.5px;color:#8a8a8e;margin-top:11px}
+
+  /* boundary mece */
+  .mece{max-width:980px;margin:0 auto;display:flex;flex-direction:column;gap:12px}
+  .mb{display:flex;gap:16px;align-items:flex-start;background:#fff;border:1px solid var(--hair);border-radius:14px;padding:18px 20px}
+  .mb .tagbox{flex:0 0 92px}
+  .mb .tagbox .pill{font-size:11px}
+  .mb .body .t{font-weight:600;font-size:15px;color:var(--ink)}
+  .mb .body .d{font-size:13.5px;color:var(--ink80);margin-top:4px;line-height:1.55}
+
+  .quote{max-width:860px;margin:30px auto 0;background:var(--tile);color:#fff;border-radius:18px;padding:28px 30px;box-shadow:var(--shadow-prod)}
+  .quote .q{font-size:clamp(17px,2.2vw,21px);line-height:1.5;font-weight:500}
+  .quote .q .hl{color:var(--sky)}
+  .quote .by{font-size:12.5px;color:#9a9a9e;margin-top:12px}
+
+  .note{max-width:980px;margin:26px auto 0;font-size:12.5px;color:var(--ink48);line-height:1.7;
+    background:var(--parch);border-radius:14px;padding:18px 20px}
+  .note b{color:var(--ink80)}
+
+  footer{background:var(--parch);padding:46px 0 50px;color:var(--ink48)}
+  .ft-disc{font-size:12px;line-height:1.7;max-width:920px}
+  .ft-disc b{color:var(--ink80)}
+  .ft-links{margin-bottom:14px;font-size:14px}
+  .ft-links a{margin-right:16px}
+</style>
+</head>
+<body>
+
+<div class="gnav">
+  <div class="container">
+    <span class="wordmark">PLUG<span class="nx">nx</span></span>
+    <a href="backwon-plan.html">BackWon 기획서</a>
+    <a href="visadesk.html">VisaDesk</a>
+    <a class="sp" href="index.html">산출물 허브</a>
+  </div>
+</div>
+
+<div class="subnav">
+  <div class="container">
+    <span class="cat">EPS <b>공백</b> 기획서</span>
+    <div class="links">
+      <a href="#thesis">결론</a>
+      <a href="#does">EPS가 하는 것</a>
+      <a href="#usage">사용 실태</a>
+      <a href="#gap">공백·페인</a>
+      <a href="#wedge">PlugNX wedge</a>
+      <a href="#concept">하단 컨셉</a>
+      <a href="#boundary">VisaDesk 경계</a>
+      <a href="#risk">리스크</a>
+    </div>
+    <div class="right"><a class="btn" href="index.html">허브로</a></div>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="tile light">
+  <div class="container hero">
+    <span class="eyebrow">사업 기획서 · 정부 EPS 시스템 공백 분석</span>
+    <h1 class="display">EPS가 끝나는 지점에서<br/>PlugNX가 시작한다.</h1>
+    <p class="lead">고용허가제 EPS(eps.go.kr, HRD KOREA)는 <b>채용~입국~행정신청</b>의 법정 백본을 무료로 잘 덮는다. 그러나 <b>재직관리·출국정산 통합·EPS 밖 비자(E-7·F계열)·본인 셀프 사용성</b>은 구조적 공백 — 우리는 EPS와 경쟁하지 않고 EPS가 멈추는 곳에서 시작한다.</p>
+    <div class="chips">
+      <span class="chip">EPS 적용 <b>E-9·H-2 한정</b></span>
+      <span class="chip">EPS 앱 평점 <b>3.8~4.4</b></span>
+      <span class="chip">반환일시금 연 흐름 <b>3,597억</b> 〔'24·1차〕</span>
+      <span class="chip">미청구·휴면 풀 <b>~2,000억</b> 〔1차〕</span>
+      <span class="chip">307억 = <b>찾아주기 후 잔존 스톡</b></span>
+      <span class="chip">판정 <b>EPS 다음 단계 = 기회</b></span>
+    </div>
+  </div>
+</section>
+
+<!-- EXEC / THESIS -->
+<section class="tile parch" id="thesis">
+  <div class="container">
+    <div class="exec">
+      <div class="lab">한 장 요약 · "EPS가 무료로 다 해주는데 왜?"에 대한 답</div>
+      <h3>EPS는 "근로자를 들여오고 정부에 신고하는 창구"다. 들여온 뒤 <span class="hl">여러 명·여러 비자를 기한 안에, 적정하게, 증빙까지 갖춰 관리</span>하는 건 EPS가 하지 않는다.</h3>
+      <p><b>EPS가 잘하는 것(회피)</b> · 구직등록·근로계약 신고·사업장변경 신청·EPS-TOPIK·보험 가입내역 조회. 법정 독점 채널이라 비집을 틈이 없다 — 여기로 들어가면 "무료 EPS 베끼기" 반론에 정확히 걸린다.</p>
+      <p><b>EPS가 못/안 하는 것(기회)</b> · ① <span class="hl">출국정산 통합</span>(연금+보험+퇴직금+세금이 EPS·삼성화재·NPS·세무로 분절) ② <span class="hl">재직 중 일상관리·급여 적정성</span> ③ <span class="hl">EPS 밖 인구</span>(E-7·E-7-4·F계열 — 취업자격 59.4만 중 다수) ④ <span class="hl">본인 셀프 사용성</span>(앱 로그인조차 실패 → 사실상 회사·통역·행정사 대행).</p>
+      <p><b>정직한 균형</b> · 정부는 상단을 잘 메웠다 — 인천공항 출국장 반환일시금 지급은 ISSA 국제 우수사례다. 그래서 우리 공백은 상단이 아니라 <b>하단</b>(정보부재·언어·타이밍·분절·EPS 밖 비자)이다.</p>
+    </div>
+  </div>
+</section>
+
+<!-- DOES vs GAP -->
+<section class="tile light" id="does">
+  <div class="container">
+    <div class="sec-head ctr">
+      <span class="eyebrow">EPS가 하는 것 vs 안 하는 것</span>
+      <h2 class="h2">좁고 깊은 백본 — 그 밖은 비어 있다.</h2>
+      <p>EPS = 고용허가제(E-9·H-2) 전용 정부 트랜잭션 시스템. "도입~신고"는 독점하지만 "그 이후"는 다루지 않는다.</p>
+    </div>
+    <div class="split">
+      <div class="col does">
+        <h3>✓ EPS가 잘함 (회피 영역)</h3>
+        <div class="sub">법정 독점 채널 — 대체 불가, 진입 명분 약함</div>
+        <ul>
+          <li><b>구직등록·근로계약 신고</b> · 표준근로계약 자동작성</li>
+          <li><b>사업장변경 "신청 행위"</b> · 재고용(취업활동기간 연장)</li>
+          <li><b>EPS-TOPIK·취업교육·입국절차</b> (송출 16개국 경유)</li>
+          <li><b>보험 가입내역 조회</b> · 퇴직금 차액 산정 "지원"</li>
+          <li><b>고용변동신고</b> 입력 (발생 15일 내)</li>
+        </ul>
+      </div>
+      <div class="col gap">
+        <h3>✕ EPS가 안 함 (PlugNX 공백)</h3>
+        <div class="sub">구조적으로 비어 있는 곳 = wedge</div>
+        <ul>
+          <li><b>다수·다자격 직원 통합 캘린더</b> · 만료·신고기한 한 화면 없음</li>
+          <li><b>E-7·E-7-4·F계열 등 EPS 밖 비자</b> 관리 (E-9/H-2 외 전부)</li>
+          <li><b>급여 적정성·4대보험 공제 점검</b> · 임금요건 충족 판정</li>
+          <li><b>출국정산 통합</b> · 연금+보험+퇴직금+세금 한 흐름 (세금환급은 EPS 메뉴에 부재)</li>
+          <li><b>신고기한 사전 알림</b> · 본인 셀프 사용성(다국어·인증)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- USAGE -->
+<section class="tile parch" id="usage">
+  <div class="container">
+    <div class="sec-head ctr">
+      <span class="eyebrow">실제 사용 실태</span>
+      <h2 class="h2">"본인이 직접 쓴다"는 환상 — 사실상 대행이다.</h2>
+    </div>
+    <div class="stats" style="margin-bottom:24px">
+      <div class="stat"><div class="n">4.4 / 3.8</div><div class="l">EPS앱 평점 (구글플레이 / 앱스토어) 〔리뷰〕</div></div>
+      <div class="stat"><div class="n">50만+</div><div class="l">구글플레이 다운로드(사업주 포함 추정)</div></div>
+      <div class="stat"><div class="n">3,597억</div><div class="l">반환일시금 연 지급 흐름 41,094명·1인 평균 약 870만 〔'24, NPS→국회·1차〕</div></div>
+      <div class="stat"><div class="n warn">1,138억</div><div class="l">그 흐름서 새는 미청구 4,794명 〔'19~'24.6, NPS 인용〕</div></div>
+    </div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>관찰</th><th>근거</th><th>함의</th></tr></thead>
+        <tbody>
+          <tr><td class="k">로그인·UI 실패 다수</td><td>"앱 로그인 안 됨·비번찾기 없음·백색화면" 리뷰 〔리뷰〕</td><td>본인 단독 사용 실패 → 회사·통역·행정사 대행</td></tr>
+          <tr><td class="k">정부도 사용성 인정</td><td>차세대 EPS 개편 사유 = "다국어·접근성 불편" 〔1차, 고용노동부〕</td><td>언어·UI가 본인 사용의 장벽이었음을 정부가 인정</td></tr>
+          <tr class="warn"><td class="k">사업장변경 제약</td><td>3년내 3회·계약종료 1개월내 신청·3개월내 미취업 시 강제출국, 헌재 5:4 합헌 〔1차〕</td><td>합법 이직 막히면 불법체류·강제노동 유발 — 강한 페인</td></tr>
+          <tr><td class="k">청구는 EPS 밖</td><td>EPS는 가입내역 조회·차액 "산정지원"까지, 청구는 삼성화재·NPS 별도 〔1차〕</td><td>출국정산이 한 흐름으로 안 묶임 = 분절</td></tr>
+          <tr><td class="k">정보 비대칭</td><td>"안 받고 나간 돈" = 연 흐름 3,597억〔1차〕 + 미청구·휴면 ~2,000억(연금 1,138억+보험 829억)〔1차〕. 307억은 산업인력공단 찾아주기 후 잔존 스톡</td><td>권리·환급 안내 부재의 실증 — 풀은 스톡(수백억)이 아니라 매년 도는 흐름(수천억)</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note"><b>셀프 사용성 판정 (단정 금지)</b> · 인증·언어·접근성 마찰의 <b>신호는 실재</b>한다(앱 평점 격차·로그인 실패 리뷰·정부의 개편 사유 명시). 다만 ① 차세대 EPS 개편('24~)이 이미 상당 개선했을 수 있고 ② 앱스토어 표본(72개)이 작다 → <b>"문제 있다"고 단정하지 말고, 잔존 강도를 근로자 사용성 테스트(20명)로 확정</b>하는 것이 검증 1순위. 과대평가 금지.</div>
+    <p class="muted" style="text-align:center;font-size:12.5px;margin-top:14px">평점은 '26.6 확인 시점·플랫폼별 격차 큼. 다운로드는 사업주 포함 추정(근로자 단독 수 분리 필요). 외국인전용보험 미청구·휴면 풀 약 829억(미지급 290억+휴면 539억)·잔존 307.6억은 '25.6 국정감사 1차, 정의·기준시점은 HRD KOREA·산업인력공단 재확인 필요.</p>
+  </div>
+</section>
+
+<!-- GAP detail -->
+<section class="tile dark on-dark" id="gap">
+  <div class="container">
+    <div class="sec-head ctr">
+      <span class="eyebrow">EPS 밖 인구 — 가장 넓은 공백</span>
+      <h2 class="h2">EPS는 E-9·H-2만. 그 밖은 누구도 안 본다.</h2>
+      <p>EPS = 고용허가제 시스템이라 <b>E-9(비전문취업)·H-2(방문취업) 딱 2종</b>만 다룬다. 취업자격 59.4만 중 약 43만이 EPS 안(E-9 ~33.7만+H-2 ~9.3만), 나머지 E-7·E-7-4와 그 밖 F·D계열(F-4만 ~55.6만)은 <b>정부 통합 시스템 자체가 없다.</b> 수치 '24말 기준.</p>
+    </div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>영역</th><th>EPS 적용?</th><th>근거</th></tr></thead>
+        <tbody>
+          <tr><td class="k">E-9 / H-2 (고용허가제) <span class="muted">≈43만</span></td><td>✅ 적용</td><td>EPS = 고용허가제 전용 시스템 (E-9 ~33.7만+H-2 ~9.3만, '24말)</td></tr>
+          <tr class="warn"><td class="k">E-7·E-7-4(숙련) <span class="muted">~16만</span></td><td>❌ EPS 밖</td><td>전문·숙련 인력. <b>E-9→E-7-4 전환 시 EPS 졸업 → 법무부 하이코리아</b> 〔1차·확인필요〕</td></tr>
+          <tr class="warn"><td class="k">F-4·F-5·F-2·F-6 / D-2·D-4 <span class="muted">F-4만 ~55.6만</span></td><td>❌ EPS 밖</td><td>동포·영주·정착·유학 — 취업·체류·환급·금융 수요 있으나 EPS 무관 〔'24말·확인필요〕</td></tr>
+          <tr class="warn"><td class="k">재직 중 일상 노무관리</td><td>❌ 범위 밖</td><td>EPS는 절차 신청 시스템, 일상관리 SaaS 아님</td></tr>
+          <tr class="warn"><td class="k">급여 적정성·금융 접근</td><td>❌ 범위 밖</td><td>임금 적정성 모니터링·금융 미제공</td></tr>
+          <tr class="warn"><td class="k">다항목 환급 통합 청구</td><td>❌ 지원까지만</td><td>차액 산정지원·내역조회까지, 청구·세금환급은 밖</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note" style="background:rgba(255,255,255,.04);color:var(--dim)"><b style="color:#fff">멀티시스템 분절</b> · 같은 고용변동을 EPS(고용노동부)와 하이코리아(법무부)에 <b style="color:#fff">각각 15일 내 이중 신고</b>해야 한다. 홈택스·4대보험까지 따로 — 통합 뷰가 없다. 이 분절 자체가 VisaDesk 통합 가치의 명분.</div>
+  </div>
+</section>
+
+<!-- WEDGE -->
+<section class="tile light" id="wedge">
+  <div class="container">
+    <div class="sec-head ctr">
+      <span class="eyebrow">PlugNX wedge · EPS가 끝나는 지점</span>
+      <h2 class="h2">경쟁이 아니라, EPS 다음 단계를 메운다.</h2>
+    </div>
+    <div class="g3">
+      <div class="wcard">
+        <div class="tag">WEDGE 1 · BackWon</div>
+        <h4>출국정산 통합 내비게이션</h4>
+        <p>EPS·삼성화재·NPS·세무로 <b style="color:#fff">분절된 출국정산을 한 흐름</b>으로 안내·연결. EPS가 "산정지원"까지만 하는 그 다음(청구 라우팅·세금환급 안내·정보비대칭 해소)을 메운다.</p>
+        <p class="src">레드라인: "대행" 금지 → "안내·연결·서류준비 지원" 레이어로 고정(행정사법·세무사법·노무사 독점)</p>
+      </div>
+      <div class="wcard">
+        <div class="tag">WEDGE 2 · VisaDesk</div>
+        <h4>EPS 밖 비자 + 재직관리 + E-7-4 전환</h4>
+        <p><b style="color:#fff">E-7·F계열 등 EPS 비대상 인구 전체</b> + E-9/H-2의 재직 중 일상관리(체류기한·계약·임금명세·신고기한 알림·증빙함)가 공백. EPS가 "신청"만 하는 그 이후의 OS.</p>
+        <p class="src">정책 정합: E-9→E-7-4 숙련전환 점수제('26 제도화) = EPS→하이코리아 기관 경계 wedge</p>
+      </div>
+      <div class="wcard">
+        <div class="tag">WEDGE 3 · ForeignID</div>
+        <h4>본인인증·동의 (사용성 보완)</h4>
+        <p>EPS 앱의 로그인·인증·다국어 실패 지점을 ForeignID L1~L3로 보완. <b style="color:#fff">본인확인·동의 기반 조회 위임</b>으로 "당신 얼마 받는다"를 띄울 데이터 길을 EPS와 별도로 확보.</p>
+        <p class="src">동의 기반 NPS·보험 가입내역 조회 위임의 법적 가능범위는 검증 필요(마이데이터·전자위임)</p>
+      </div>
+    </div>
+    <div class="quote">
+      <div class="q">"EPS가 잘 덮는 절차 백본으로는 들어가지 말고, <span class="hl">EPS가 끝나는 지점</span>(재직관리·출국정산 통합·EPS 밖 비자·셀프 사용성)에서 시작하라."</div>
+      <div class="by">— "채용 이후의 모든 것"이라는 PlugNX 테제와 정확히 정합</div>
+    </div>
+  </div>
+</section>
+
+<!-- 하단 진입 컨셉 -->
+<section class="tile dark on-dark" id="concept">
+  <div class="container">
+    <div class="sec-head ctr">
+      <span class="eyebrow">하단 진입 컨셉 · 어떤 모습으로 들어가나</span>
+      <h2 class="h2">정부는 "받으러 온 사람"을 처리한다.<br/>우리는 "받을 수 있는지 모르는 사람"을 깨운다.</h2>
+      <p>같은 시장도 상단/하단이 갈린다. 상단은 정부가 이미 메웠으니 우리가 들어갈 곳은 하단 — 그리고 하단에는 명확한 컨셉이 필요하다.</p>
+    </div>
+    <div class="split">
+      <div class="col does" style="background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.12)">
+        <h3 style="color:#fff">상단 — 들어가면 안 됨</h3>
+        <div class="sub" style="color:#9a9a9e">받을 의지·정보 있는 사람 = 정부가 이미 처리</div>
+        <ul>
+          <li style="color:var(--dim)"><b style="color:#fff">인천공항 출국장 반환일시금 지급</b> (ISSA 국제 우수사례)</li>
+          <li style="color:var(--dim)">EPS 전용보험 앱·삼성화재 ARS 단일 청구창구</li>
+          <li style="color:var(--dim)">출국 1개월 전 신청 → 14일 내 지급 체계</li>
+        </ul>
+      </div>
+      <div class="col gap" style="background:rgba(41,151,255,.08);border-color:rgba(41,151,255,.3)">
+        <h3 style="color:#fff">하단 — 우리 자리</h3>
+        <div class="sub" style="color:#9a9a9e">정보·언어·타이밍·분절로 못 받고 나가는 사람</div>
+        <ul>
+          <li style="color:var(--dim)"><b style="color:var(--sky)">연 3,597억 흐름에서 새는 미청구·휴면 ~2,000억의 주인</b></li>
+          <li style="color:var(--dim)">"내가 받을 돈이 있는지조차 모르는" 군</li>
+          <li style="color:var(--dim)">EPS 밖 비자(E-7·F·D계열) — 정부 시스템 없음</li>
+        </ul>
+      </div>
+    </div>
+    <div class="quote" style="margin-top:24px">
+      <div class="q">진입 컨셉 한 문장 — <span class="hl">"안 받고 나가는 돈을 깨워주는 모국어 환급 내비게이션"</span></div>
+      <div class="by">대행(✕)·EPS 복제(✕)가 아니라, EPS가 끝나는 지점부터의 companion 레이어</div>
+    </div>
+    <div class="g3" style="margin-top:22px">
+      <div class="wcard">
+        <div class="tag">WHO · 누구를</div>
+        <h4>하단 = 미수령 군</h4>
+        <p>정보·언어·타이밍·분절로 못 받는 사람 — <b style="color:#fff">E-9/H-2 출국·퇴직자 + EPS 밖 인구 전체</b>. "받을 의지 있는 사람"이 아니라 "받을 수 있는지 모르는 사람".</p>
+      </div>
+      <div class="wcard">
+        <div class="tag">WHAT · 무엇을</div>
+        <h4>발견 → 연결 5단계</h4>
+        <p><b style="color:#fff">발견</b>(다국어 자가진단 "당신은 OO 받을 수 있다") → <b style="color:#fff">안내</b>(단계 길잡이) → <b style="color:#fff">준비</b>(서류팩) → <b style="color:#fff">연결</b>(공식채널·행정사·노무사 라우팅) → <b style="color:#fff">추적</b>(D-day). 대행 아님.</p>
+      </div>
+      <div class="wcard">
+        <div class="tag">HOW · 어떻게 도달</div>
+        <h4>B2B 핸드오프 = CAC 0</h4>
+        <p>하단은 B2C 광고로 못 닿는다(언어·신뢰·1회성 → CAC 폭발). <b style="color:#fff">VisaDesk(B2B)가 퇴직·출국 근로자에게 핸드오프</b> — 하단 도달의 유일한 현실적 채널.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BOUNDARY -->
+<section class="tile parch" id="boundary">
+  <div class="container">
+    <div class="sec-head ctr">
+      <span class="eyebrow">VisaDesk 경계 판정 (MECE)</span>
+      <h2 class="h2">중복은 피하고, 보완·연계로만 들어간다.</h2>
+    </div>
+    <div class="mece">
+      <div class="mb">
+        <div class="tagbox"><span class="pill avoid">① 직접중복</span></div>
+        <div class="body"><div class="t">하지 말 것 — EPS 무료가 이긴다</div><div class="d">고용허가서 발급신청·표준근로계약 체결·사증발급인정서 연계·EPS 내 고용변동신고 입력·전용보험 가입 자체. 다시 만들면 "무료 EPS 베끼기" 반론에 걸린다.</div></div>
+      </div>
+      <div class="mb">
+        <div class="tagbox"><span class="pill wedge">② 보완</span></div>
+        <div class="body"><div class="t">VisaDesk 핵심 명분 — EPS 밖</div><div class="d">다자격 통합 체류/신고 캘린더 · 신고기한 사전 알림(D-60/30/14/7) · 임금요건·4대보험·자격외활동 적정성 점검 · 증빙·단속대응함 · E-9→E-7-4 숙련전환 준비팩.</div></div>
+      </div>
+      <div class="mb">
+        <div class="tagbox"><span class="pill comp">③ 연계</span></div>
+        <div class="body"><div class="t">EPS 데이터를 보완</div><div class="d">EPS·하이코리아·홈택스·4대보험 분절 사건을 이중 신고 체크리스트·증빙으로 한 곳에서 추적(직접 API 연동 아닌 "입력 추적·증빙·알림" 수준). 같은 고용변동을 양 기관 신고했는지 교차 확인.</div></div>
+      </div>
+    </div>
+    <div class="note">
+      <b>숙련전환 = 핵심 wedge 확인</b> · E-7-4 전환 신청은 <b>하이코리아(법무부)</b> 소관이며 K-point 점수제로 운영된다. <b>EPS(고용노동부)는 이 전환을 다루지 않는다</b> — E-9 도입·관리까지가 EPS, E-7-4는 법무부. 이 기관 경계의 사각지대(누가 언제 점수 요건을 채우는지 기업 관점 포트폴리오 뷰가 없음)가 정확히 VisaDesk의 자리. 단 "전환 보장" 금지 → "요건 점검·전환 준비 리포트·전문가 검토용 자료".
+    </div>
+  </div>
+</section>
+
+<!-- RISK -->
+<section class="tile light" id="risk">
+  <div class="container">
+    <div class="sec-head ctr">
+      <span class="eyebrow">한계 · 확인 필요 · 다음 검증</span>
+      <h2 class="h2">wedge 강도를 과대평가하지 않으려면.</h2>
+    </div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>확인 필요</th><th>이유</th><th>검증 방법</th></tr></thead>
+        <tbody>
+          <tr><td class="k">차세대 EPS 개편 후 잔존 페인</td><td>'24~ 개편이 다국어·알림·대시보드를 이미 보강했을 수 있음</td><td>개편 후 앱 리뷰 재수집 + 사업주 화면 실측(데모 계정·기업 인터뷰)</td></tr>
+          <tr><td class="k">취업 59.4만 중 EPS 적용 비중</td><td>E-9/H-2(=EPS) vs 그 외(=EPS 밖) 정확 분해 필요</td><td>출입국 통계월보 1차 추출</td></tr>
+          <tr><td class="k">전용보험 풀 829억·잔존 307억 정의·시점</td><td>'25.6 국정감사 1차이나 미지급/휴면/잔존 구분·기준시점 정밀화 필요</td><td>HRD KOREA·산업인력공단 1차 재확인</td></tr>
+          <tr><td class="k">동의 기반 조회 위임 법적 범위</td><td>NPS·보험 가입내역 본인동의 조회 위임 가능성</td><td>마이데이터·전자위임 법률검토(regulatory-risk)</td></tr>
+          <tr><td class="k">과태료·요율 최신값</td><td>고용변동 미신고·보험 미가입 제재값 연도별 개정</td><td>최신 고시·법령 재확인</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note">
+      <b>한 줄 결론</b> · EPS는 "E-9·H-2 도입~신고"의 정부 백본을 무료로 잘 덮는다. 그러나 <b>재직관리·출국정산 통합·EPS 밖 비자·본인 셀프 사용성</b>은 구조적 공백이며, PlugNX는 EPS를 대체하지 않고 <b>EPS가 끝나는 지점부터</b> 시작한다. 단 EPS 잘하는 영역(절차 신청·EPS-TOPIK·가입내역 조회)으로는 들어가지 않는다.
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="ft-links">
+      <a href="index.html">산출물 허브</a>
+      <a href="eps-backwon-gap-research.html">EPS × BackWon companion</a>
+      <a href="backwon-plan.html">BackWon 기획서</a>
+      <a href="visadesk.html">VisaDesk</a>
+      <a href="business-case-9fk2x7.html#summary">타당성 보고서</a>
+    </div>
+    <p class="ft-disc">
+      <b>참고용 안내.</b> 본 기획서는 공개 출처(eps.go.kr·HRD KOREA·고용노동부·법령)와 앱스토어 리뷰·언론·연구를 교차한 내부 분석으로 법적 효력이 없다.
+      EPS 기능·제재값·보험 요율·비자 요건은 자주 개정되며 차세대 시스템 개편으로 일부 페인이 이미 해소됐을 수 있으므로 1차 출처와 사업주 화면 실측이 필요하다.
+      비자·노무·세무·금융 판단은 행정사·노무사·세무사·변호사 검증이 필요하다. "환급·전환 보장", 비자·노무·세무 "대행" 표현은 사용하지 않으며 PlugNX는 안내·연결·준비지원 레이어로 한정한다.<br/><br/>
+      © 2026 PlugNX Inc. · 내부용(Confidential) · 근거 <code>handoff/backwon-viability-analysis · research-b2c-apps · policy-watch-3yr · PROJECT.md(SSOT)</code>
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>

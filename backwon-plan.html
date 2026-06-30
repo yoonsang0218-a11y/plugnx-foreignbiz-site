@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow" />
+<title>BackWon 사업 기획서 — 외국인 근로자 환급·금융 (B2C) | PlugNX</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --blue:#0066cc; --blue-focus:#0071e3; --sky:#2997ff;
+    --white:#ffffff; --parch:#f5f5f7; --pearl:#fafafc;
+    --tile:#272729; --tile2:#2a2a2c; --black:#000;
+    --ink:#1d1d1f; --ink80:#333; --ink48:#7a7a7a;
+    --on-dark:#fff; --dim:#cccccc;
+    --hair:#e0e0e0; --divider:#f0f0f0;
+    --danger:#d70015; --danger-d:#ff5a4d; --green:#1d8a4f; --amber:#b25e00;
+    --shadow-prod:rgba(0,0,0,.22) 3px 5px 30px 0;
+    --font:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text",Inter,system-ui,"Apple SD Gothic Neo",sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--font);background:var(--white);color:var(--ink);line-height:1.47;
+    letter-spacing:-.022em;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+  a{color:var(--blue);text-decoration:none}
+  .container{max-width:1080px;margin:0 auto;padding:0 22px}
+  h1,h2,h3,h4{letter-spacing:-.022em;font-weight:600;color:var(--ink)}
+  .eyebrow{font-size:14px;font-weight:600;color:var(--blue);letter-spacing:0}
+  .display{font-size:clamp(33px,5.4vw,54px);font-weight:600;line-height:1.06;letter-spacing:-.028em}
+  .h2{font-size:clamp(27px,3.6vw,40px);font-weight:600;line-height:1.1;letter-spacing:-.024em}
+  .lead{font-size:clamp(18px,2.2vw,23px);font-weight:400;line-height:1.34;color:var(--ink80)}
+  .muted{color:var(--ink48)}
+  b{font-weight:600}
+
+  .tile{padding:clamp(54px,7.5vw,82px) 0}
+  .tile.light{background:var(--white)}
+  .tile.parch{background:var(--parch)}
+  .tile.dark{background:var(--tile);color:var(--dim)}
+  .on-dark h2,.on-dark h3,.on-dark h4{color:var(--on-dark)}
+  .sec-head{max-width:780px;margin:0 auto clamp(28px,4.5vw,44px)}
+  .sec-head.ctr{text-align:center;margin-left:auto;margin-right:auto}
+  .sec-head .eyebrow{display:block;margin-bottom:12px}
+  .sec-head .h2{margin-bottom:13px}
+  .sec-head p{font-size:18px;color:var(--ink48);line-height:1.46}
+  .on-dark .sec-head p{color:var(--dim)}
+
+  .gnav{background:var(--black);height:44px;position:relative;z-index:60}
+  .gnav .container{height:44px;display:flex;align-items:center;gap:18px}
+  .gnav a{color:#f5f5f7;font-size:12px;font-weight:400;opacity:.85}
+  .gnav a:hover{opacity:1}
+  .wordmark{font-weight:700;font-size:15px;color:#fff}
+  .wordmark .nx{color:#fff;opacity:.62}
+  .gnav .sp{margin-left:auto}
+  .subnav{position:sticky;top:0;z-index:55;height:52px;
+    background:rgba(245,245,247,.82);-webkit-backdrop-filter:saturate(180%) blur(20px);backdrop-filter:saturate(180%) blur(20px);
+    border-bottom:1px solid rgba(0,0,0,.08)}
+  .subnav .container{height:52px;display:flex;align-items:center;gap:20px}
+  .subnav .cat{font-size:20px;font-weight:600}
+  .subnav .cat b{color:var(--blue)}
+  .subnav .links{display:flex;gap:17px;font-size:13px}
+  .subnav .links a{color:var(--ink80)}
+  .subnav .links a:hover{color:var(--blue)}
+  .subnav .right{margin-left:auto}
+  @media(max-width:860px){.subnav .links{display:none}}
+  .btn{display:inline-flex;align-items:center;gap:7px;font-size:14px;font-weight:400;
+    padding:8px 17px;border-radius:980px;border:1px solid var(--blue);color:var(--blue);transition:transform .12s}
+  .btn:active{transform:scale(.96)}
+  .btn-primary{background:var(--blue);color:#fff}
+
+  .hero{text-align:center;padding:clamp(46px,6vw,68px) 0 clamp(30px,4vw,42px)}
+  .hero .eyebrow{margin-bottom:14px;display:block}
+  .hero .display{margin-bottom:18px}
+  .hero .lead{max-width:720px;margin:0 auto}
+  .chips{margin-top:22px}
+  .chip{font-size:13px;color:var(--ink48);background:var(--parch);border:1px solid var(--hair);
+    border-radius:980px;padding:6px 14px;display:inline-block;margin:5px 4px 0}
+  .chip b{color:var(--ink)}
+
+  .exec{max-width:880px;margin:0 auto;background:var(--tile);color:var(--dim);border-radius:22px;
+    padding:clamp(28px,4vw,40px);box-shadow:var(--shadow-prod)}
+  .exec .lab{font-size:13px;font-weight:600;color:var(--sky);letter-spacing:.02em;margin-bottom:8px}
+  .exec h3{color:#fff;font-size:clamp(20px,2.6vw,26px);line-height:1.32;margin-bottom:16px;font-weight:600}
+  .exec p{font-size:15px;line-height:1.62;color:#d6d6d8;margin-bottom:11px}
+  .exec p b{color:#fff}
+  .exec .hl{color:var(--sky)}
+
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;max-width:920px;margin:0 auto}
+  @media(max-width:720px){.stats{grid-template-columns:repeat(2,1fr)}}
+  .stat{background:#fff;border:1px solid var(--hair);border-radius:16px;padding:22px 18px;text-align:center}
+  .stat .n{font-size:clamp(26px,3.4vw,34px);font-weight:600;color:var(--blue);letter-spacing:-.02em}
+  .stat .n.zero{color:var(--danger)}
+  .stat .l{font-size:12.5px;color:var(--ink48);margin-top:6px;line-height:1.4}
+
+  .g3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  @media(max-width:820px){.g3{grid-template-columns:1fr}}
+  .pain{background:var(--tile2);border:1px solid rgba(255,255,255,.1);border-radius:18px;padding:24px}
+  .pain .ic{font-size:24px;margin-bottom:12px}
+  .pain h4{color:#fff;font-size:17px;margin-bottom:8px}
+  .pain p{font-size:13.5px;color:var(--dim);line-height:1.55}
+  .pain .src{font-size:11.5px;color:#8a8a8e;margin-top:10px}
+  .pain .jtbd{font-size:12.5px;color:var(--sky);margin-top:9px;font-style:italic}
+
+  .tbl-wrap{max-width:960px;margin:0 auto;overflow-x:auto;border:1px solid var(--hair);border-radius:16px;background:#fff}
+  table{border-collapse:collapse;width:100%;font-size:14px;min-width:620px}
+  th,td{text-align:left;padding:13px 16px;border-bottom:1px solid var(--divider);vertical-align:top}
+  th{font-weight:600;color:var(--ink);background:var(--pearl);font-size:13px;position:sticky;top:0}
+  tr:last-child td{border-bottom:none}
+  td .k{font-weight:600}
+  tr.hl td{background:rgba(0,102,204,.05)}
+  tr.warn td{background:rgba(215,0,21,.04)}
+  .pill{display:inline-block;font-size:11px;font-weight:600;padding:2px 9px;border-radius:980px;white-space:nowrap}
+  .pill.now{background:rgba(29,138,79,.12);color:var(--green)}
+  .pill.mid{background:rgba(178,94,0,.12);color:var(--amber)}
+  .pill.late{background:rgba(215,0,21,.1);color:var(--danger)}
+  .pill.blue{background:rgba(0,102,204,.1);color:var(--blue)}
+
+  /* TAM funnel */
+  .funnel{max-width:760px;margin:30px auto 0;display:flex;flex-direction:column;gap:10px}
+  .fn{border-radius:14px;padding:18px 22px;color:#fff;display:flex;justify-content:space-between;align-items:baseline;gap:14px}
+  .fn .lbl{font-weight:600;font-size:15px}
+  .fn .lbl small{display:block;font-weight:400;font-size:12px;opacity:.82;margin-top:3px;letter-spacing:0}
+  .fn .v{font-size:clamp(20px,3vw,28px);font-weight:600;white-space:nowrap}
+  .fn.tam{background:#0a3d80;margin:0 0}
+  .fn.sam{background:#0066cc;width:88%;align-self:center}
+  .fn.som{background:#2997ff;width:72%;align-self:center}
+
+  /* flywheel */
+  .flow{max-width:920px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+  @media(max-width:820px){.flow{grid-template-columns:1fr}}
+  .fl{background:var(--tile2);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:20px;position:relative}
+  .fl .num{font-size:12px;font-weight:700;color:var(--sky);letter-spacing:.04em}
+  .fl h4{color:#fff;font-size:15px;margin:6px 0 8px}
+  .fl p{font-size:12.5px;color:var(--dim);line-height:1.5}
+
+  .road{max-width:920px;margin:0 auto;display:flex;flex-direction:column;gap:0}
+  .ph{display:flex;gap:18px;padding:18px 0;border-bottom:1px solid rgba(255,255,255,.1)}
+  .ph:last-child{border-bottom:none}
+  .ph .pn{flex:0 0 120px}
+  .ph .pn .pk{color:#fff;font-weight:600;font-size:15px}
+  .ph .pn .pt{color:#8a8a8e;font-size:12px;margin-top:3px}
+  .ph .pc{flex:1}
+  .ph .pc .act{color:var(--dim);font-size:14px;line-height:1.55}
+  .ph .pc .gate{color:var(--sky);font-size:12.5px;margin-top:6px}
+
+  .gng{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;max-width:920px;margin:24px auto 0}
+  @media(max-width:720px){.gng{grid-template-columns:1fr}}
+  .gng .c{border-radius:16px;padding:20px;border:1px solid var(--hair);background:#fff}
+  .gng .c.go{border-color:rgba(29,138,79,.4);background:rgba(29,138,79,.05)}
+  .gng .c.cond{border-color:rgba(178,94,0,.4);background:rgba(178,94,0,.05)}
+  .gng .c.no{border-color:rgba(215,0,21,.35);background:rgba(215,0,21,.04)}
+  .gng .c .t{font-weight:700;font-size:14px;margin-bottom:8px}
+  .gng .c.go .t{color:var(--green)} .gng .c.cond .t{color:var(--amber)} .gng .c.no .t{color:var(--danger)}
+  .gng .c p{font-size:13px;color:var(--ink80);line-height:1.55}
+
+  .note{max-width:920px;margin:26px auto 0;font-size:12.5px;color:var(--ink48);line-height:1.7;
+    background:var(--parch);border-radius:14px;padding:18px 20px}
+  .note b{color:var(--ink80)}
+
+  footer{background:var(--parch);padding:46px 0 50px;color:var(--ink48)}
+  .ft-disc{font-size:12px;line-height:1.7;max-width:900px}
+  .ft-disc b{color:var(--ink80)}
+  .ft-links{margin-bottom:14px;font-size:14px}
+  .ft-links a{margin-right:16px}
+</style>
+</head>
+<body>
+
+<div class="gnav">
+  <div class="container">
+    <span class="wordmark">PLUG<span class="nx">nx</span></span>
+    <a href="backwon.html">BackWon 랜딩</a>
+    <a href="business-case-9fk2x7.html">타당성 보고서</a>
+    <a class="sp" href="index.html">산출물 허브</a>
+  </div>
+</div>
+
+<div class="subnav">
+  <div class="container">
+    <span class="cat">BackWon <b>기획서</b></span>
+    <div class="links">
+      <a href="#why">추진배경</a>
+      <a href="#market">시장분석</a>
+      <a href="#needs">시장 니즈</a>
+      <a href="#competition">경쟁</a>
+      <a href="#product">제품·BM</a>
+      <a href="#kbank">케이뱅크</a>
+      <a href="#flywheel">플라이휠</a>
+      <a href="#roadmap">로드맵</a>
+      <a href="#risk">리스크</a>
+    </div>
+    <div class="right"><a class="btn" href="index.html">허브로</a></div>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="tile light">
+  <div class="container hero">
+    <span class="eyebrow">사업 기획서 · BackWon (B2C) · 플라이휠 B2C 축</span>
+    <h1 class="display">받을 돈으로 들어와,<br/>신뢰 신호로 남는다.</h1>
+    <p class="lead">외국인 근로자가 출국·퇴직 때 <b>받을 수 있는데 못 받는 돈</b>(연금·퇴직금·보험)을 모국어로 안내·연결하는 것을 입구로, 사용자 동의 기반으로 <b>외국인 금융 데이터 레이어</b>(고용·임금 신호)로 확장하는 B2C 서비스. 환급·급여진단은 수익원이 아니라 <b>동의·데이터를 얻는 미끼</b>이고, 수익은 금융사에 동의기반 신호를 공급하는 데서 난다. VisaDesk(B2B)가 근로자를 자동 유입(CAC 0)시키는 양면 플라이휠의 수요 측 엔진.</p>
+    <div class="chips">
+      <span class="chip">TAM(장기체류) <b>216만</b> <span class="muted">(환급 실효모수 아님)</span></span>
+      <span class="chip">체류외국인 <b>278.3만</b></span>
+      <span class="chip">언어 <b>6개</b></span>
+      <span class="chip">노출 전환 <b>60%+ (목표)</b> · 환급 실과금 <b>3~9%</b></span>
+      <span class="chip">정면 환급 경쟁자 <b>부재</b></span>
+    </div>
+  </div>
+</section>
+
+<!-- EXEC SUMMARY -->
+<section class="tile parch">
+  <div class="container">
+    <div class="exec">
+      <div class="lab">한 장 요약 · Executive Summary</div>
+      <h3>BackWon은 "환급 사업"이 아니라 <span class="hl">외국인 금융 데이터 레이어</span> — 환급·급여진단은 <span class="hl">동의·데이터를 얻는 입구(미끼)</span>이고, 수익은 금융사에 <span class="hl">동의기반 고용·임금 신호</span>를 공급하는 데서 난다(점수 자체 산출은 금지).</h3>
+      <p><b>왜 지금</b> · 정부 기조가 「양적 확대 → 수급 안정·관리·신뢰」로 전환. E-9 도입이 13만→8만('26, −38.5%)으로 줄며 무게가 <b>신규 유입에서 존량(재직·전환·출국·정착) 관리</b>로 옮겨감 — 출국·퇴직 시 환급은 존량 관리의 정중앙.</p>
+      <p><b>무엇을</b> · ① 국민연금 반환일시금·퇴직금·출국만기/귀국비용보험·고용보험·세금/임금오류를 항목별로 <b class="hl">추정 안내·연결</b>(직접 대행 아님) ② 급여 적정성(AI) 진단 ③ 사용자가 선택한 금융사에 필요한 항목만 보내는 <b class="hl">동의 기반 고용·임금 신호</b>로 확장.</p>
+      <p><b>왜 PlugNX인가</b> · 경쟁 B2C 앱(vivisa·dagachi·vijob·glow·한패스) 중 <b>환급 트랜잭션에 진출한 곳은 없고</b>(glow는 콘텐츠 진입 시작), 우리만 VisaDesk 고용 데이터 + ForeignID 인증을 가져 환급 정확도와 CAC 0 유입을 동시에 확보. <b class="hl">B2C-first가 아니라 B2B가 먹이는 B2C</b>가 차별점.</p>
+      <p><b>정직한 현실</b> · "미수령 N조"식 단정은 금지(추정). 반환일시금은 비자×국적×가입×최소기간 다축으로 갈리고, 확정액은 공단·고용센터·보험사 조회로만 확인. <b>단위경제의 생사는 금융 attach율(가정 15% = BEP) 단 하나</b>에 달렸다 — 환급만이면 12개월 1~3억. DB 판매와 무허가 신용평가(점수 N점)는 금지선으로 둔다.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHY NOW / 추진배경 -->
+<section class="tile dark on-dark" id="why">
+  <div class="container">
+    <div class="sec-head ctr">
+      <span class="eyebrow">추진배경 · 왜 지금, 왜 환급인가</span>
+      <h2 class="h2">정책은 "존량 관리"로,<br/>근로자 통증은 "받을 돈"으로 모인다.</h2>
+      <p>외국인 근로자에게 가장 즉각적이고 금전적인 통증은 출국·퇴직 때 발생한다. 같은 접점이 정책 순풍(존량·정착 관리)과 정확히 겹친다.</p>
+    </div>
+    <div class="g3">
+      <div class="pain">
+        <div class="ic">📉</div>
+        <h4>정책 — 신규에서 존량으로</h4>
+        <p>E-9 도입 13만→8만('26, −38.5%). 신규 유입 둔화로 무게가 재직·전환·<b>출국·정착</b> 관리로 이동. 환급은 출국·퇴직 관리의 핵심.</p>
+        <p class="src">출처: handoff/policy-watch-3yr · E-9 쿼터(확인 필요)</p>
+      </div>
+      <div class="pain">
+        <div class="ic">💸</div>
+        <h4>근로자 — 못 받는 돈</h4>
+        <p>반환일시금·퇴직금·보험은 제도적 권리지만, 절차·언어·정보 부재로 놓치거나 브로커에 수수료를 떼인다. 출국하면 청구가 더 어렵다.</p>
+        <p class="src">반환일시금=제도적 권리〔국민연금공단〕· 미수령 규모는 추정(단정 금지)</p>
+      </div>
+      <div class="pain">
+        <div class="ic">🔗</div>
+        <h4>데이터 — 동의의 입구(미끼)</h4>
+        <p>"받을 돈 확인"은 근로자가 자발적으로 체류·재직·급여 정보를 단계적으로 동의하는 강력한 유인. 환급은 매출원이 아니라 입구이고, 수익은 동의기반 고용·임금 신호를 금융사에 공급하는 데서 난다(점수 자체 산출 금지).</p>
+        <p class="src">금융 확장 근거: output/finance-data-infra(조건부 추진)</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARKET -->
+<section class="tile light" id="market">
+  <div class="container">
+    <div class="sec-head ctr">
+      <span class="eyebrow">시장 분석 · 모수와 환급 발생군</span>
+      <h2 class="h2">모수는 278만, 환급이 발생하는 군이 진짜 시장.</h2>
+    </div>
+    <div class="stats" style="margin-bottom:8px">
+      <div class="stat"><div class="n">278.3만</div><div class="l">체류외국인 ('25.12)</div></div>
+      <div class="stat"><div class="n">216만</div><div class="l">장기체류 외국인 = TAM 〔SSOT〕<br/>(전체이며 환급 실효모수 아님)</div></div>
+      <div class="stat"><div class="n">~50만</div><div class="l">취업·고용허가층(환급 실효모수)<br/>연 환급이벤트 5~7만 [추정]</div></div>
+      <div class="stat"><div class="n">6개</div><div class="l">서비스 언어(확대 로드맵)</div></div>
+    </div>
+
+    <div class="funnel">
+      <div class="fn tam">
+        <div class="lbl">TAM · 장기체류 외국인<small>잠재 환급·금융 대상 전체</small></div>
+        <div class="v">216만</div>
+      </div>
+      <div class="fn sam">
+        <div class="lbl">SAM · 취업·고용허가층 (환급 실효모수)<small>E-9·H-2·E-7 등 출국·퇴직·전환군 ≈ 50만 → 연 환급이벤트 5~7만 [추정]</small></div>
+        <div class="v">≈ 50만</div>
+      </div>
+      <div class="fn som">
+        <div class="lbl">SOM · 플라이휠 유입<small>VisaDesk 재직 근로자 → CAC0 유입(노출 전환 60%+ 목표, 환급 실과금 3~9%)</small></div>
+        <div class="v">초기 수천~수만</div>
+      </div>
+    </div>
+    <p class="muted" style="text-align:center;font-size:12.5px;margin-top:18px">환급 풀: 반환일시금 <b>연 흐름 3,597억('24·1인 평균 약 870만)</b> [1차] + 미청구·휴면 약 2,000억(연금 1,138억+보험 829억) [1차]; 휴면 307억은 찾아주기 후 잔존 스톡일 뿐 풀 전체가 아니다. <b>합법 SOM은 GMV의 한 자리수%</b>. 국적 집중: 중국 35.2% · 베트남 12.1% 〔법무부〕. <b>반환일시금</b>은 <b>고용허가제(E-9·H-2·E-8)는 국적무관 지급</b>, F·E-7만 사회보장협정·상호주의로 국적분기 — 비자×국적×가입×최소기간 다축이 환급 추정·타깃의 핵심 변수(확인 필요).</p>
+  </div>
+</section>
+
+<!-- NEEDS / JTBD -->
+<section class="tile parch" id="needs">
+  <div class="container">
+    <div class="sec-head ctr">
+      <span class="eyebrow">시장 니즈 · Jobs-to-be-Done</span>
+      <h2 class="h2">세 주체가 같은 신호로 다른 일을 끝낸다.</h2>
+      <p>근로자는 돈을, 기업은 정산 리스크 해소를, 금융은 사용자가 동의한 검증 정보를 원한다. BackWon은 근로자 측 JTBD로 진입해 나머지로 확장한다.</p>
+    </div>
+    <div class="g3">
+      <div class="pain">
+        <div class="ic">👷</div>
+        <h4>근로자</h4>
+        <p>"출국·퇴직 전에 내가 받을 수 있는 돈을 모국어로 빠짐없이 확인하고, 브로커 없이 안전하게 받고 싶다."</p>
+        <p class="jtbd">JTBD · 받을 돈 발견 → 신청 절차 안내 → 급여가 제대로 들어왔는지 확인</p>
+      </div>
+      <div class="pain">
+        <div class="ic">🏭</div>
+        <h4>기업(연계)</h4>
+        <p>"퇴직·출국하는 외국인의 퇴직금·보험·정산을 깔끔히 끝내 분쟁·민원을 없애고 싶다."</p>
+        <p class="jtbd">JTBD · VisaDesk 출국정산 체크 → BackWon로 근로자 핸드오프</p>
+      </div>
+      <div class="pain">
+        <div class="ic">🏦</div>
+        <h4>금융사(확장)</h4>
+        <p>"외국인의 소득·재직·체류를 사용자가 동의한 범위에서 확인하고, 적합한 송금·여신·보험 상품을 제안하고 싶다."</p>
+        <p class="jtbd">JTBD · 사용자 선택형 제휴 리드·검증 신호(직접 여신·신용평가 아님)</p>
+      </div>
+    </div>
+    <div class="note"><b>구매·가입을 움직이는 핵심 트리거(가설, 7/6주 인터뷰 검증 예정)</b> · ① 출국 결정·예정 ② 퇴직·이직 ③ 1년차 도달(퇴직금 발생) ④ 연말정산 시즌 ⑤ 송금·대출 필요. 이 다섯이 BackWon 진입 유입 캠페인의 타이밍 훅.</div>
+  </div>
+</section>
+
+<!-- COMPETITION -->
+<section class="tile light" id="competition">
+  <div class="container">
+    <div class="sec-head ctr">
+      <span class="eyebrow">경쟁 분석 · 외국인 B2C 앱 전수조사</span>
+      <h2 class="h2">환급 트랜잭션은 비어 있다 — 다들 정보·트래픽·송금·금융 레이어.</h2>
+      <p>B2C 외국인 앱 전수조사 결과(2026.6), 어느 곳도 환급 트랜잭션·자체 인증·B2B 고용데이터를 동시에 갖지 않는다. 단 송금·대안신용 길목(한패스·glow)은 R3에서 선점이 진행 중이다.</p>
+    </div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>플레이어</th><th>본질</th><th>환급</th><th>우리와의 관계 / 대응</th></tr></thead>
+        <tbody>
+          <tr><td class="k">vivisa (비비자)</td><td>대학판 VisaDesk — 유학생(D계열)×대학 B2B + B2C 앱</td><td>없음</td><td>유학생 입구 선점 · D-10→E-7 북상만 워치 · <b>클링커즈 동맹(신용 길목)</b> 분기 워치</td></tr>
+          <tr><td class="k">dagachi (다가치)</td><td>16개 언어 커뮤니티·생활정보</td><td>없음</td><td>트래픽 레이어 · 정면 경쟁 회피, <b>환급 콘텐츠 제휴</b> 채널로 활용</td></tr>
+          <tr><td class="k">vijob (비잡)</td><td>베트남 특화 채용 입구</td><td>없음</td><td>"채용 이후는 PlugNX" 핸드오프 제휴 후보</td></tr>
+          <tr class="hl"><td class="k">glow (클링커즈)</td><td>B2C 금융·생활 슈퍼앱(15~17개 언어·대출중개)</td><td>환급 트랜잭션 미진출(콘텐츠는 진입 시작)</td><td>가장 인접 · <b>환급·자체 인증·B2B 데이터 미보유</b>가 우리 공백 우위 · 환급 기능 출시 워치</td></tr>
+          <tr class="hl"><td class="k">한패스 (HanPass)</td><td>송금→대안신용 — '26.2 대출비교 출시, R3 선두</td><td>없음(송금·대안신용 길목 선점)</td><td>R3 금융연계 길목 최대 경쟁 · 송금 3조·MAU 40만 · <b>속도전 워치</b>(자행데이터·표준 선점 리스크)</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="g3" style="margin-top:18px">
+      <div class="pain" style="background:rgba(0,102,204,.06);border-color:rgba(0,102,204,.2)">
+        <h4 style="color:var(--ink)">🟦 빈 공간 = 우리 자리</h4>
+        <p style="color:var(--ink80)"><b>환급 트랜잭션 + 자체 인증(ForeignID) + B2B 고용데이터(VisaDesk)</b>의 조합. 4사 중 누구도 보유하지 않음. 양면 결합이 해자.</p>
+      </div>
+      <div class="pain" style="background:rgba(178,94,0,.06);border-color:rgba(178,94,0,.2)">
+        <h4 style="color:var(--ink)">🟧 보강 갭</h4>
+        <p style="color:var(--ink80)"><b>언어 6개 vs glow·dagachi 15~16개.</b> 환급·금융은 신뢰 게임 → 핵심 송출국(베·인니·네팔·태·우즈벡·몽골) 우선 확대 필요.</p>
+      </div>
+      <div class="pain" style="background:rgba(215,0,21,.05);border-color:rgba(215,0,21,.2)">
+        <h4 style="color:var(--ink)">🟥 진입 금지(no-go)</h4>
+        <p style="color:var(--ink80)">B2C 커뮤니티·생활 슈퍼앱(트래픽 게임)·채용 입구·비자 "대행" 표현. 만들지 말고 <b>제휴·연결</b>로만.</p>
+      </div>
+    </div>
+    <div class="note"><b>전략적 함의</b> · 4사 전원 "B2C 모객 먼저, 수익화 나중" 모델이 시드 수준에서 정체 — <b>B2C-first로 진입하면 안 되는 이유의 실증</b>. BackWon은 환급이라는 트랜잭션 동기 + VisaDesk CAC0 유입으로 이 함정을 우회한다. (근거: handoff/research-b2c-apps)</div>
+  </div>
+</section>
+
+<!-- PRODUCT / BM -->
+<section class="tile dark on-dark" id="product">
+  <div class="container">
+    <div class="sec-head ctr">
+      <span class="eyebrow">제품 구성 · 환급 항목과 수익 모델</span>
+      <h2 class="h2">환급으로 시작해, 적정성·금융으로 LTV를 늘린다.</h2>
+    </div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>환급 항목</th><th>발생 조건(요지)</th><th>대상 비자(예)</th><th>비고(라벨)</th></tr></thead>
+        <tbody>
+          <tr><td class="k">국민연금 반환일시금</td><td>출국 시 일시금 — 고용허가제(E-8·E-9·H-2)는 국적무관 지급, F·E-7만 사회보장협정·상호주의로 국적분기</td><td>E-8·E-9·H-2 등</td><td>비자×국적×가입×최소기간 다축(확인 필요)</td></tr>
+          <tr><td class="k">퇴직금</td><td>1년 이상 계속근로 후 퇴직</td><td>전 취업자격</td><td>법정 — 미지급 분쟁 빈발</td></tr>
+          <tr><td class="k">출국만기보험</td><td>E-9·H-2 사업주 가입 의무, 출국 시 수령</td><td>E-9·H-2</td><td>퇴직금 갈음 성격</td></tr>
+          <tr><td class="k">귀국비용보험</td><td>근로자 가입, 귀국 시 수령</td><td>E-9·H-2</td><td>소액·누락 빈번</td></tr>
+          <tr><td class="k">고용보험 관련</td><td>가입·체류상황에 따라 제한적</td><td>가입자</td><td>적용 범위 협소(확인 필요)</td></tr>
+          <tr><td class="k">세금·임금 오류</td><td>연말정산 환급·임금 미산정·공제 오류</td><td>전체</td><td>급여 적정성(AI) 진단 연계</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="sec-head ctr" style="margin-top:42px;margin-bottom:24px">
+      <span class="eyebrow">수익 모델 · 난이도순 시퀀싱</span>
+      <h2 class="h2" style="font-size:clamp(22px,3vw,30px)">진입장벽 낮은 환급·진단부터, 금융 연계는 후행.</h2>
+    </div>
+    <div class="road">
+      <div class="ph"><div class="pn"><div class="pk">R1 출국정산</div><div class="pt">즉시 · ★</div></div><div class="pc"><div class="act"><b style="color:#fff">VisaDesk 출국정산 패키지</b> — 기업이 비용을 내고 근로자는 무료 사용. 권리맵·서류팩·공식 채널 안내·진행 체크리스트를 제공하고, 직접 대행은 하지 않음.</div><div class="gate">검증 · 기업 HR 지불의사·서류 누락/민원 감소 효과</div></div></div>
+      <div class="ph"><div class="pn"><div class="pk">R2 진단</div><div class="pt">즉시 · ★★</div></div><div class="pc"><div class="act"><b style="color:#fff">급여 적정성(AI) 진단</b> — 최저임금·4대보험·공제 오류 신호. 프리미엄/기업 연계 과금 옵션.</div><div class="gate">검증 · 오류 검출 정확도·근로자 신뢰</div></div></div>
+      <div class="ph"><div class="pn"><div class="pk">R3 금융 제휴</div><div class="pt">6~18개월 · ★★★</div></div><div class="pc"><div class="act"><b style="color:#fff">사용자 선택형 송금·대출 제휴 리드</b> — 사용자가 금융사를 선택하고, 제공받는 자·목적·항목·보유기간을 고지한 뒤 필요한 항목만 전송. 직접 여신·신용평가·DB 판매가 아님.</div><div class="gate">검증 · 금융사 LOI·대출성 상품 중개업 등록/제휴 구조·동의 UX</div></div></div>
+      <div class="ph"><div class="pn"><div class="pk">R4 신용평가</div><div class="pt">24개월+ · ★★★★</div></div><div class="pc"><div class="act">고용·환급·급여 성과 라벨을 외국인 대안신용 모델로 확장 — 전문개인신용평가업 등 인허가 또는 허가 사업자 제휴 이후에만 추진.</div><div class="gate">게이트 · 인허가·모형 검증·데이터량·민원 대응체계</div></div></div>
+    </div>
+    <div class="tbl-wrap" style="margin-top:28px">
+      <table>
+        <thead><tr><th>BM 후보</th><th>판정</th><th>수정해야 할 구조</th><th>하면 안 되는 것</th></tr></thead>
+        <tbody>
+          <tr class="warn"><td class="k">외국인 DB를 금융권에 판매</td><td>NO-GO</td><td>개인 DB 판매가 아니라 사용자가 특정 금융사를 선택한 뒤 개별 동의로 필요한 항목만 전송. 통계·연구 목적은 가명/익명 집계로 별도 처리.</td><td>동의 없이 체류·급여·계좌·신용성 정보를 묶어 판매, 마케팅 리스트 제공, "외국인 대출 DB" 표현</td></tr>
+          <tr><td class="k">대출 제휴·송객</td><td>조건부 GO</td><td>금융사가 수수료를 지급하는 리드/제휴 모델. 대출성 상품 비교·추천·중개를 하면 등록 사업자 구조 또는 등록 파트너가 필요.</td><td>대출 승인 보장, 소비자에게 별도 사례금 요구, 미등록 대출모집, 대출 계약 대리 체결</td></tr>
+          <tr><td class="k">전문가 연결</td><td>조건부 GO</td><td>디렉토리·예약·고정 광고·SaaS 과금 중심. 사용자가 직접 전문가를 선택하고, 사건 정보 제공은 별도 동의로 제한.</td><td>특정 변호사·노무사 사건 수임 알선 대가 수취, 전문가 업무 수익 배분, BackWon이 법률·노무 판단 확정</td></tr>
+          <tr><td class="k">환급 대행</td><td>초기 NO-GO</td><td>공식 채널 안내, 서류 준비팩, 진행 체크리스트, 전문가 라우팅으로 제한. 실제 제출·대리·청구는 자격자 또는 공식 시스템에서 수행.</td><td>EPS/공단/세무/고용센터 로그인 대행, 계좌 입력 대행, 확정액 보장, 성공보수 중심 브로커 모델</td></tr>
+          <tr><td class="k">B2B 출국정산 패키지</td><td>GO</td><td>VisaDesk 고객사가 비용을 내고 근로자에게 무료 제공. 기업은 분쟁·민원·서류 누락 감소에 비용을 지불.</td><td>근로자에게 필수 서비스처럼 오인시키거나 개인정보 제공 동의를 강제</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note" style="background:rgba(255,255,255,.04);color:var(--dim)"><b style="color:#fff">표현 레드라인</b> · ① "외국인 DB 판매" 금지 → "사용자 동의 기반 제휴 리드/검증 신호"로 ② "환급 보장"·"무조건 받는다" 금지 → "추정·가능성·확인 필요"로 ③ 비자·노무·세무·행정 "대행" 금지 → "안내·서류 준비·전문가 연결"로 ④ "신용평가/신용점수" 무허가 표현 금지 → "검증 신호/적합성 확인"으로 ⑤ 외국인등록번호·여권·계좌는 최소 수집·별도 동의·분리보관·암호화. 확정액은 국민연금공단·고용센터·보험사 조회로만 확정.</div>
+  </div>
+</section>
+
+<!-- KBANK PARTNERSHIP -->
+<section class="tile parch" id="kbank">
+  <div class="container">
+    <div class="sec-head ctr">
+      <span class="eyebrow">금융 제휴 1순위 · 케이뱅크 외국인대출</span>
+      <h2 class="h2">케이뱅크에는 “외국인 DB”가 아니라 “BackWon 대출 준비도 패키지”로 제안한다.</h2>
+      <p>케이뱅크의 공개 신용대출 요건은 재직기간·연 환산소득·국민건강보험 가입 근로소득자 여부가 핵심이다. BackWon은 외부 인증 체계나 고용주 확인 없이도, 사용자가 직접 입력·업로드한 급여·근속·보험·환급 정보를 정리해 대출 전 단계의 증빙 완성도를 높일 수 있다.</p>
+    </div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>케이뱅크가 궁금한 것</th><th>BackWon 단독으로 줄 수 있는 신호</th><th>주의할 표현</th></tr></thead>
+        <tbody>
+          <tr><td class="k">재직·근속 요건을 갖췄는가</td><td>사용자 입력 입사월, 근속기간 구간, 근로계약서 업로드 여부, 사업장 수</td><td>고용주 확인 재직증명이 아니라 사용자 제출자료 요약</td></tr>
+          <tr><td class="k">소득이 꾸준한가</td><td>급여명세서 OCR, 최근 3~6개월 급여 일관성, 공제·체불 이상 신호, 연 환산소득 추정</td><td>확정 소득이 아니라 사용자 제출 자료 기반 추정</td></tr>
+          <tr><td class="k">근로소득자성 증빙이 있는가</td><td>건강보험·국민연금·고용보험 가입 여부 자가체크와 증빙 업로드 상태</td><td>공단 API 확인값이 아니라 증빙 준비 상태</td></tr>
+          <tr><td class="k">상환 여력을 설명할 자료가 있는가</td><td>퇴직금 발생 가능성, 국민연금 반환일시금, 출국만기·귀국비용보험, 환급 예상 범위</td><td>담보·보증·확정 수령액 아님</td></tr>
+          <tr><td class="k">대출 고객으로 전환될 가능성이 있는가</td><td>Loan Readiness Check 완료, 필수 증빙 준비율, 케이뱅크 제공 동의, 상담 희망 언어</td><td>DB 판매가 아니라 사용자 선택형 제휴 리드</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note">
+      <b>PoC 제안</b> · 4주간 BackWon 유입 외국인 50~100명에게 Loan Readiness Check를 돌리고, 케이뱅크가 원하는 필수 증빙과 실제 자료 보완 감소 효과를 확인한다. 자세한 제휴 메모는 <a href="kbank-backwon-partnership.html">케이뱅크 × BackWon-only 제휴안</a> 참조.
+    </div>
+  </div>
+</section>
+
+<!-- FLYWHEEL -->
+<section class="tile light" id="flywheel">
+  <div class="container">
+    <div class="sec-head ctr">
+      <span class="eyebrow">전략 위치 · 양면 플라이휠의 B2C 축</span>
+      <h2 class="h2">BackWon은 단독 앱이 아니라, B2B가 먹이는 수요 엔진.</h2>
+      <p>경쟁사가 못 푼 "B2C 모객 비용" 문제를, VisaDesk(B2B)가 근로자를 자동 유입시켜 CAC 0으로 해결한다.</p>
+    </div>
+    <div class="flow">
+      <div class="fl"><div class="num">① B2B</div><h4>기업이 근로자 등록</h4><p>VisaDesk에 외국인 직원 등록·검증 → 재직·체류·급여 데이터 발생.</p></div>
+      <div class="fl"><div class="num">② 유입</div><h4>근로자 BackWon 유입</h4><p>"받을 돈" 동기로 자발적 가입(CAC 0). 노출/가입 목표 60%+, 단 환급 실과금전환은 3~9%.</p></div>
+      <div class="fl"><div class="num">③ B2C</div><h4>환급·진단 만족</h4><p>모국어 환급·급여 적정성 → 신뢰·재방문 → 사용자 동의 기반 검증 신호 축적.</p></div>
+      <div class="fl"><div class="num">④ 되먹임</div><h4>근속·유지 ↑</h4><p>근로자 만족 → 기업 근속률↑ → VisaDesk 유지·확장 → ①로 순환.</p></div>
+    </div>
+    <div class="note"><b>5겹 해자</b> · ① 양면 네트워크 ② 고용+임금+동의 이력 = 금융사에 공급하는 동의기반 신호(점수 자체 산출 아님) ③ 정책 정합성(K-Trust·존량관리) ④ 전환비용 ⑤ ForeignID 인증 인프라. BackWon 단독으로는 ②③⑤가 약하지만, 플라이휠 안에서는 전부 작동. <b>ARR 21/60억은 VisaDesk(B2B)가 86%+ 캐리</b> 전제이고, BackWon 기여는 금융 attach 의존(환급만이면 12M 1~3억).</div>
+  </div>
+</section>
+
+<!-- ROADMAP -->
+<section class="tile parch" id="roadmap">
+  <div class="container">
+    <div class="sec-head ctr">
+      <span class="eyebrow">실행 로드맵 · 현장검증 → PoC</span>
+      <h2 class="h2">데스크 가정을 인터뷰로 검증하고 PoC에 태운다.</h2>
+    </div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>구간</th><th>핵심 활동</th><th>산출물 / 게이트</th></tr></thead>
+        <tbody>
+          <tr><td class="k">~6/25 (완료)</td><td>아이템 선별·경쟁 전수조사·시장 모수·5축 타당성·예상 화면(랜딩·계산기)</td><td>조건부 GO · BackWon 데모(backwon.html)</td></tr>
+          <tr class="hl"><td class="k">6/29~7/13</td><td>근로자·기업·행정사·노무사 인터뷰 — 환급 수요·출국정산 패키지 WTP·전문가 연결 수요·트리거 검증</td><td>수요 증거 로그, WTP 노트, 상위 5 트리거</td></tr>
+          <tr><td class="k">7/20~8/3</td><td>MVP 범위 동결(환급 자가진단·출국정산 체크) + 환급 표현·동의 레드라인 전문가 검증</td><td>기능 범위표·필수 데이터 필드·안전 문구표</td></tr>
+          <tr><td class="k">8/10~ (PoC)</td><td>VisaDesk PoC 고객사 근로자 대상 BackWon 동시 온보딩 — CAC0 전환율·권리맵 완료율·공식 채널 이동률 실측</td><td>전환율·환급 발생률·NPS, 금융 제휴 LOI 타진</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- RISK / GO-NO-GO -->
+<section class="tile dark on-dark" id="risk">
+  <div class="container">
+    <div class="sec-head ctr">
+      <span class="eyebrow">리스크 · de-risking</span>
+      <h2 class="h2">정직한 현실 — 데이터와 대행은 금지선이 먼저다.</h2>
+      <p>그래서 플라이휠 안에서, 출국정산 패키지와 전문가 연결을 1차 BM으로 두고 금융 제휴는 동의·등록 구조를 갖춘 뒤 추진한다.</p>
+    </div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>리스크</th><th>치명도</th><th>검증/완화</th></tr></thead>
+        <tbody>
+          <tr class="warn"><td class="k">외국인 DB 판매를 BM으로 오해</td><td>개인정보·신용정보</td><td>DB 판매 금지. 사용자 선택형 금융 제휴 리드, 개별 동의 전송, 익명·가명 통계로 재설계</td></tr>
+          <tr><td class="k">환급 단독 과금으로 단위경제 약함(환급만 12M 1~3억)</td><td>수익성</td><td><b>단위경제 생사 = 금융 attach율(가정 15% = BEP) 단일 변수.</b> attach를 단일 KPI로 승격, 송금 1개 제휴 파일럿으로 조기 측정(게이트 ≥10%). 미달 시 환급=무료훅 격하</td></tr>
+          <tr><td class="k">반환일시금 비대상 국적(F·E-7 미협정)</td><td>전환 저하</td><td>고용허가제(E-9·H-2·E-8)는 국적무관 지급 · F·E-7만 협정·상호주의 분기 → 비자×국적×가입×최소기간 다축 필터 · 퇴직금·보험으로 보완 안내</td></tr>
+          <tr><td class="k">행정사법(비자·환급 "대행") 경계</td><td>법적</td><td>안내·서류 준비·공식 채널 라우팅만. 제출·대리·청구는 자격자 또는 공식 시스템에서 수행</td></tr>
+          <tr><td class="k">전문가 연결 수수료 구조</td><td>법적</td><td>특정 사건 수임 알선 대가 금지. 디렉토리·예약·광고·SaaS 과금 중심으로 설계</td></tr>
+          <tr><td class="k">민감정보(외국인등록번호·계좌) 처리</td><td>개인정보·금융</td><td>최소 수집·별도 동의·분리보관·암호화·보관기간·삭제권 · ForeignID 동의 아키텍처</td></tr>
+          <tr><td class="k">언어 커버리지 부족(6 vs 15~16)</td><td>전환·신뢰</td><td>핵심 송출국 우선 확대 로드맵 · 환급 흐름 우선 다국어화</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="gng">
+      <div class="c go"><div class="t">GO</div><p>환급 수요 + 기업 출국정산 WTP + 전문가 연결 수요 + VisaDesk PoC 근로자 CAC0 전환 실측 → 플라이휠 B2C 축 정식 추진.</p></div>
+      <div class="c cond"><div class="t">조건부</div><p>전환은 되나 1차 수익이 약하면 — 환급은 유입·동의 획득용 무료 훅으로 두고, 수익은 B2B 패키지와 금융 제휴 LOI 중심으로 이동.</p></div>
+      <div class="c no"><div class="t">NO-GO</div><p>환급 수요·전환·금융 연계 모두 미확인이면 — BackWon 독립 추진 보류, VisaDesk B2B 단일에 집중.</p></div>
+    </div>
+    <div class="note">
+      <b>미해결·후속 확인</b> · ① 국적·비자별 반환일시금 수급 매트릭스(협정국 목록) ② 출국정산 패키지·전문가 연결의 법적 허용 범위 ③ 출국만기/귀국비용보험 청구 절차·평균 수령액(추정 근거) ④ 대출성 금융상품 중개업 등록 또는 등록 파트너 구조 ⑤ 개인정보·개인신용정보 제3자 제공 동의 UX ⑥ 송출국별 언어 우선순위 ⑦ "미수령 규모" 정량화의 근거(단정 금지).
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="ft-links">
+      <a href="index.html">산출물 허브</a>
+      <a href="backwon.html">BackWon 랜딩</a>
+      <a href="business-case-9fk2x7.html#summary">타당성 보고서</a>
+      <a href="kbank-backwon-partnership.html">케이뱅크 제휴안</a>
+      <a href="eps-backwon-gap-research.html#bm">BM 레드라인</a>
+      <a href="finance-data-infra.html">금융 데이터 인프라</a>
+      <a href="weekly.html">주간 리서치 플랜</a>
+    </div>
+    <p class="ft-disc">
+      <b>참고용 안내.</b> 본 기획서의 환급 항목·금액·시장·재무 수치는 확정 실적이 아닌 <b>목표·가정·추정</b>이며 인터뷰·PoC 실측 대상이다.
+      환급 가능 여부와 확정액은 국민연금공단·고용센터·보험사·세무·노무 확인으로만 결정되며, 비자·노무·금융·개인정보 관련 사실은 자주 개정되므로 1차 출처(국민연금공단·고용노동부·법무부·금융위·개인정보보호위원회·법제처)와 행정사·노무사·변호사·세무사 검토가 필요하다.
+      경쟁사 정량지표는 회사발표·언론 2차정보로 독립검증되지 않았다. 민감정보(외국인등록번호·여권·계좌)는 예시·로그에 실제 값을 남기지 않는다.<br/><br/>
+      © 2026 PlugNX Inc. · 내부용(Confidential) · 근거 <code>PROJECT.md(SSOT) · handoff/research-b2c-apps · output/finance-data-infra · output/business-case</code>
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>

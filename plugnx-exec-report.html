@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow" />
+<title>PlugNX 외국인 신사업 — 경영진 보고서 (1-Pager)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --blue:#0066cc; --blue-focus:#0071e3; --sky:#2997ff;
+    --white:#ffffff; --parch:#f5f5f7; --pearl:#fafafc;
+    --ink:#1d1d1f; --ink80:#333; --ink48:#7a7a7a;
+    --hair:#e0e0e0; --divider:#f0f0f0;
+    --tile:#272729; --tile2:#2a2a2c;
+    --danger:#d70015; --pos:#1d8a4f;
+    --font:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text",Inter,system-ui,"Apple SD Gothic Neo",sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:var(--font);background:var(--parch);color:var(--ink);line-height:1.5;
+    letter-spacing:-.014em;-webkit-font-smoothing:antialiased}
+  a{color:var(--blue);text-decoration:none}
+
+  /* document sheet */
+  .sheet{max-width:980px;margin:26px auto;background:#fff;padding:46px 54px 40px;
+    box-shadow:rgba(0,0,0,.10) 0 4px 30px}
+  @media(max-width:680px){.sheet{padding:28px 22px;margin:0}}
+
+  /* masthead */
+  .mast{display:flex;justify-content:space-between;align-items:flex-end;
+    border-bottom:2px solid var(--ink);padding-bottom:14px;margin-bottom:6px}
+  .wordmark{font-weight:700;font-size:20px;color:var(--ink);letter-spacing:-.02em}
+  .wordmark .nx{color:var(--ink48)}
+  .mast .meta{text-align:right;font-size:11px;color:var(--ink48);line-height:1.6}
+  .doctype{font-size:12px;font-weight:600;color:var(--blue);letter-spacing:.12em;text-transform:uppercase;margin-top:18px}
+  .title{font-size:30px;font-weight:600;line-height:1.12;letter-spacing:-.022em;margin:8px 0 4px}
+  .subtitle{font-size:15px;color:var(--ink48)}
+
+  /* governing message */
+  .govern{background:var(--ink);color:#fff;border-radius:12px;padding:22px 26px;margin:22px 0 8px}
+  .govern .k{font-size:11px;font-weight:600;color:var(--sky);letter-spacing:.12em;text-transform:uppercase;margin-bottom:8px}
+  .govern p{font-size:17px;line-height:1.55;color:#f0f0f2}
+  .govern p b{color:#fff}
+
+  /* section */
+  section{margin-top:26px}
+  .sec-no{display:inline-block;font-size:12px;font-weight:700;color:#fff;background:var(--blue);
+    width:24px;height:24px;line-height:24px;text-align:center;border-radius:6px;margin-right:9px;vertical-align:2px}
+  h2.sec{font-size:19px;font-weight:600;letter-spacing:-.02em;line-height:1.3;display:flex;align-items:flex-start;
+    border-bottom:1px solid var(--hair);padding-bottom:9px;margin-bottom:14px}
+  h2.sec span.t{flex:1}
+  .lead{font-size:14.5px;color:var(--ink80);line-height:1.62;margin-bottom:12px}
+  .lead b{color:var(--ink);font-weight:600}
+
+  /* key callout (consulting "so what") */
+  .sowhat{border-left:3px solid var(--blue);background:var(--pearl);padding:11px 16px;margin:12px 0;
+    font-size:14px;color:var(--ink80);line-height:1.55}
+  .sowhat b{color:var(--blue);font-weight:600}
+
+  /* tables */
+  table{width:100%;border-collapse:collapse;font-size:13px;margin:8px 0 4px}
+  th{text-align:left;background:var(--parch);color:var(--ink48);font-weight:600;font-size:11px;
+    text-transform:uppercase;letter-spacing:.04em;padding:9px 12px;border-bottom:2px solid var(--hair)}
+  td{padding:9px 12px;color:var(--ink80);border-bottom:1px solid var(--divider);vertical-align:top;line-height:1.5}
+  td.k{color:var(--ink);font-weight:600;white-space:nowrap}
+  tr.hl td{background:rgba(0,102,204,.05)}
+  tr.hl td.k{color:var(--blue)}
+  .pos{color:var(--pos);font-weight:600}
+  .neg{color:var(--danger);font-weight:600}
+
+  /* two columns */
+  .cols{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+  @media(max-width:680px){.cols{grid-template-columns:1fr}}
+  .col h3{font-size:15px;font-weight:600;margin-bottom:4px}
+  .col .tag{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.06em;border-radius:980px;
+    padding:3px 10px;margin-bottom:9px;text-transform:uppercase}
+  .tag.b2b{color:#fff;background:var(--blue)}
+  .tag.b2c{color:#fff;background:var(--ink)}
+  ul.clean{list-style:none;display:flex;flex-direction:column;gap:6px;margin-top:4px}
+  ul.clean li{font-size:13px;color:var(--ink80);display:flex;gap:8px;align-items:flex-start;line-height:1.5}
+  ul.clean li:before{content:"";width:5px;height:5px;border-radius:50%;background:var(--blue);margin-top:7px;flex:0 0 auto}
+  ul.clean li b{color:var(--ink);font-weight:600}
+  .col.b2c ul.clean li:before{background:var(--ink)}
+
+  /* flywheel strip */
+  .fly{display:grid;grid-template-columns:1fr 18px 1fr 18px 1fr;gap:8px;align-items:stretch;margin:6px 0}
+  @media(max-width:680px){.fly{grid-template-columns:1fr;}.fly .ar{display:none}}
+  .fly .node{border:1px solid var(--hair);border-radius:10px;padding:14px 14px}
+  .fly .node .r{font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--blue);margin-bottom:5px}
+  .fly .node h4{font-size:15px;font-weight:600;margin-bottom:5px}
+  .fly .node p{font-size:12px;color:var(--ink48);line-height:1.45}
+  .fly .ar{display:grid;place-items:center;color:var(--blue);font-size:20px;font-weight:700}
+  .fly-loop{font-size:12.5px;color:var(--ink48);text-align:center;margin-top:8px;line-height:1.55}
+  .fly-loop b{color:var(--ink)}
+
+  /* metric chips */
+  .metrics{display:flex;gap:10px;flex-wrap:wrap;margin:10px 0 2px}
+  .metric{flex:1;min-width:130px;border:1px solid var(--hair);border-radius:10px;padding:13px 15px}
+  .metric .n{font-size:23px;font-weight:600;letter-spacing:-.02em;color:var(--ink)}
+  .metric .l{font-size:11.5px;color:var(--ink48);margin-top:2px;line-height:1.4}
+
+  /* disclaimer */
+  .disc{margin-top:30px;padding-top:16px;border-top:1px solid var(--hair);font-size:11px;color:var(--ink48);line-height:1.7}
+  .disc b{color:var(--ink80)}
+
+  @page{size:A4;margin:12mm 11mm}
+  @media print{
+    body{background:#fff}
+    .sheet{box-shadow:none;margin:0;max-width:none;padding:0}
+    section{break-inside:avoid}
+    table,.fly,.cols{break-inside:avoid}
+    .govern{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  }
+</style>
+</head>
+<body>
+<div class="sheet">
+
+  <!-- ===== MASTHEAD ===== -->
+  <div class="mast">
+    <span class="wordmark">PLUG<span class="nx">nx</span></span>
+    <div class="meta">
+      외국인 신사업 · 경영진 보고서<br/>
+      작성 2026-06-23 · 내부용(CONFIDENTIAL)<br/>
+      근거: 사업기획서 v1.0(SSOT) · 라이브 서비스
+    </div>
+  </div>
+  <div class="doctype">Executive Readout · 1-Pager</div>
+  <h1 class="title">외국인 고용 시장의 "채용 이후"를<br/>한 데이터 파이프라인으로 잠근다</h1>
+  <p class="subtitle">B2B <b style="color:var(--blue)">VisaDesk</b>(준법관리)로 진입 → B2C <b style="color:var(--ink)">BackWon</b>(환급·금융)을 CAC 0로 자동 확보하는 양면 플랫폼</p>
+
+  <!-- ===== GOVERNING MESSAGE ===== -->
+  <div class="govern">
+    <div class="k">핵심 메시지 — 무엇을 말하고자 하는가</div>
+    <p>인구구조상 <b>비가역적으로 커지는 278만 외국인 시장</b>에서, 관리·금융은 아직 엑셀에 머물러 있다. PlugNX는 <b>VisaDesk(B2B 준법관리)로 기업을 확보</b>하고, 그 기업이 등록한 근로자를 <b>BackWon(B2C 환급·금융)으로 추가 획득비 없이(CAC 0) 자동 점등</b>한다. 정책 골든윈도(K-Trust 2026.3) 안에서 <b>데이터 입구를 먼저 선점</b>하고, <b>8주 PoC로 가설을 싸게 검증</b>한 뒤 ARR 21억→60억으로 램프한다. 핵심은 단일 기능이 아니라 <b>"등록 → 자동유입 → 데이터 원장"의 양면 구조</b>다.</p>
+  </div>
+
+  <!-- ===== A. 상황·문제 (SCQA) ===== -->
+  <section>
+    <h2 class="sec"><span class="sec-no">A</span><span class="t">시장 수요는 비가역인데, 관리·금융은 비어 있다 — 양면의 페인이 동시에 존재한다</span></h2>
+    <p class="lead"><b>Situation.</b> 생산연령인구 감소로 외국인 인력 의존은 구조적·비가역. 체류외국인 <b>278만 명</b>('25), '30년 인력부족은 최소 112.5만 명으로 추정된다. <b>Complication.</b> 기업은 체류만료·임금요건·서류를 담당자 1명이 엑셀로 떠안고, 적발 1건이 사업을 위협한다. 동시에 근로자는 받을 수 있는 환급(1인 평균 약 1,050만 원)을 모른 채 출국한다.</p>
+    <table>
+      <thead><tr><th style="width:34%">누가 아픈가</th><th>핵심 페인</th><th style="width:26%">손해/규모</th></tr></thead>
+      <tbody>
+        <tr><td class="k">고용 기업 (B2B)</td><td>체류만료 1건 누락 → 불법고용 적용 · 단속 연 2회 정례화</td><td class="neg">벌금 2,000만 + 신규고용 제한 3년</td></tr>
+        <tr><td class="k">고용 기업 (B2B)</td><td>임금요건 미달 → 비자 갱신 거부 → 인력 공백</td><td class="neg">약 1,500만 / 건</td></tr>
+        <tr><td class="k">외국인 근로자 (B2C)</td><td>미수령 연금·퇴직금·보험을 모른 채 출국 · 급여 명세 이해 난</td><td class="neg">약 1,050만 / 인 미수령</td></tr>
+        <tr><td class="k">근로자 (B2C)</td><td>대출·비자 갱신 시 반복되는 회사 서류 요청, 금융 신뢰 증명 부재</td><td class="neg">금융 접근 배제</td></tr>
+      </tbody>
+    </table>
+    <div class="sowhat"><b>So what.</b> 양면(기업·근로자)의 페인이 <b>같은 데이터(고용·체류·급여)</b>에서 나온다. 이 데이터를 한 번에 쥐는 사업자가 시장 입구를 선점한다.</div>
+  </section>
+
+  <!-- ===== B. 솔루션 구조 / 플라이휠 ===== -->
+  <section>
+    <h2 class="sec"><span class="sec-no">B</span><span class="t">하나의 데이터 위에서 B2B와 B2C가 서로를 키우는 양면 플라이휠</span></h2>
+    <div class="fly">
+      <div class="node">
+        <div class="r">B2B · 진입</div>
+        <h4>VisaDesk</h4>
+        <p>기업의 체류·비자·임금·서류 준법관리 SaaS. 근로자 등록 = 데이터의 시작점.</p>
+      </div>
+      <div class="ar">→</div>
+      <div class="node">
+        <div class="r">B2C · 자동확보 (CAC 0)</div>
+        <h4>BackWon</h4>
+        <p>등록 근로자가 자동 유입. 미수령 환급·급여분석·금융 신뢰신호. 6개 언어.</p>
+      </div>
+      <div class="ar">→</div>
+      <div class="node">
+        <div class="r">인프라 · 해자</div>
+        <h4>ForeignID</h4>
+        <p>L1~L3 본인인증(여권→등록증→계좌·전자서명). 고용+소득 데이터 원장.</p>
+      </div>
+    </div>
+    <p class="fly-loop"><b>플라이휠:</b> 기업이 근로자 등록 → 근로자 BackWon 자동 유입 → B2C 만족 → 기업 근속률↑ → B2B 유지·확장. <b>하나의 B2B 영업비용으로 두 수익원</b>을 동시에 획득한다.</p>
+  </section>
+
+  <!-- ===== C. 두 제품 (B2B vs B2C) ===== -->
+  <section>
+    <h2 class="sec"><span class="sec-no">C</span><span class="t">B2B는 VisaDesk, B2C는 BackWon — 같은 데이터를 양쪽 고객에게 다른 가치로 판다</span></h2>
+    <div class="cols">
+      <div class="col b2b">
+        <span class="tag b2b">B2B · 기업용</span>
+        <h3>VisaDesk</h3>
+        <div class="subtitle" style="font-size:12.5px;margin-bottom:8px">외국인 고용·체류 준법관리 SaaS<br/><a href="https://plugnx-visaops.netlify.app/">plugnx-visaops.netlify.app</a></div>
+        <ul class="clean">
+          <li>체류만료 자동 알림 (D-120/90/60/30)</li>
+          <li>비자별 임금요건 자동 체크 (E-7-1~4)</li>
+          <li>서류 체크리스트·문서함 (누락/만료 추적)</li>
+          <li>기업 리스크 점수(100점) · 월간 리포트</li>
+          <li><b>K-Trust Readiness</b> A/B/C 등급 진단</li>
+          <li>전문가 1클릭 연결(행정사·노무사·변호사)</li>
+          <li>(상위) 급여 교차검증 · 노무/숙소 서류 · 다사업장·API</li>
+        </ul>
+      </div>
+      <div class="col b2c">
+        <span class="tag b2c">B2C · 근로자용</span>
+        <h3>BackWon</h3>
+        <div class="subtitle" style="font-size:12.5px;margin-bottom:8px">BackWon 외국인 근로자 환급·금융 "Work Passport"<br/><a href="https://moneeback.vercel.app/">기존 moneeback.vercel.app</a></div>
+        <ul class="clean">
+          <li><b>환급 추적</b>: 연금·퇴직금·출국보험·세금 (1인 평균 약 1,050만)</li>
+          <li>급여 명세 분석 · 자산 캘린더</li>
+          <li>금융 사전심사 · 비자 추적기(D-day 60일)</li>
+          <li>고용증명 요청(WORK PROOF) · 송금·전세보증</li>
+          <li><b>Trust Packet</b>: 동의 기반 금융 신뢰신호(7요소)</li>
+          <li>6개 언어: 한·영·베트남·중·스페인·아랍</li>
+          <li><b>VisaDesk 연동 시</b> 회사 계약·급여·체류 데이터로 증명 정확도↑</li>
+        </ul>
+      </div>
+    </div>
+    <div class="sowhat"><b>연결 고리.</b> VisaDesk가 기업으로부터 받은 <b>계약·급여·체류 데이터</b>가 BackWon 근로자 측으로 흘러 "동의 기반 신뢰신호(원본·신선도·신뢰도 표기)"가 된다 — <b>원본 DB 판매가 아니라</b> 근로자 동의 신호의 구조화.</div>
+  </section>
+
+  <!-- ===== D. 비즈니스 모델 ===== -->
+  <section>
+    <h2 class="sec"><span class="sec-no">D</span><span class="t">월 구독으로 land, 서로 잠식하지 않는 4개 수익원으로 expand</span></h2>
+    <table>
+      <thead><tr><th style="width:22%">플랜 (VisaDesk)</th><th>월 요금 / 포함 인원</th><th>핵심 포함</th></tr></thead>
+      <tbody>
+        <tr><td class="k">Starter</td><td>29만원 · 10명 (초과 1만/인)</td><td>체류만료 알림 · 서류체크 · 기본 이메일</td></tr>
+        <tr class="hl"><td class="k">Growth · 대표</td><td>89만원 · 30명 (초과 1.5만/인)</td><td>+임금요건 · 전문가티켓 · 월간 리포트 · BackWon 연동</td></tr>
+        <tr><td class="k">Compliance</td><td>169만원 · 50명 (초과 2만/인)</td><td>+K-Trust 진단 · 급여 교차검증 · 노무/숙소 서류</td></tr>
+        <tr><td class="k">Enterprise</td><td>별도 견적 · 100명+</td><td>+다사업장 통합 · API · 전담 매니저</td></tr>
+      </tbody>
+    </table>
+    <p class="lead" style="margin-top:10px"><b>4개 비잠식 수익원:</b> ① VisaDesk 구독(ARR 엔진) · ② BackWon 환급 성공보수 · ③ 전문가 연계 레퍼럴 · ④ D3 데이터·여신 송객(후행). 온보딩비 30~100만 별도, 월 단위 해지.</p>
+    <div class="sowhat"><b>ROI 논리(가격 방어).</b> 외국인 30명 기준 <b>단 1건만 막아도 +932만 원</b>(불법체류 회피 +2,000만 / 인력공백 회피 +1,500만 vs Growth 연 1,068만). "월 89만은 비용이 아니라 리스크 보험료."</div>
+  </section>
+
+  <!-- ===== E. 시장 ===== -->
+  <section>
+    <h2 class="sec"><span class="sec-no">E</span><span class="t">시장은 비가역적으로 커지고, B2B는 "사", B2C는 "명"으로 분모가 다르다</span></h2>
+    <div class="metrics">
+      <div class="metric"><div class="n">278만</div><div class="l">체류외국인 총계 ('25, SSOT)</div></div>
+      <div class="metric"><div class="n">49만</div><div class="l">TAM B2B · E계열 취업비자</div></div>
+      <div class="metric"><div class="n">216만</div><div class="l">TAM B2C · 전체 장기체류</div></div>
+      <div class="metric"><div class="n">112.5만</div><div class="l">'30 인력부족(최소·추정)</div></div>
+    </div>
+    <div class="sowhat"><b>단위 규약(혼용 금지).</b> ARR 빌드의 분모는 <b>B2B "사업장 수"</b>(TAM 49만 명 → 약 9.8만 사 → SOM 300사). B2C는 <b>"명"</b> 도달(216만). 같은 표에 명과 사를 섞지 않는다.</div>
+  </section>
+
+  <!-- ===== F. 경쟁 해자 ===== -->
+  <section>
+    <h2 class="sec"><span class="sec-no">F</span><span class="t">오늘 가진 해자와, 데이터가 쌓인 뒤 입증할 해자를 분리해 정직하게 본다</span></h2>
+    <table>
+      <thead><tr><th style="width:30%">해자</th><th>내용</th><th style="width:20%">시제</th></tr></thead>
+      <tbody>
+        <tr><td class="k">양면 자동유입</td><td>B2B 등록이 B2C를 CAC 0로 점등 — 중개형 경쟁사엔 없는 락인 입구</td><td class="pos">보유 · 작동</td></tr>
+        <tr><td class="k">정책 정합성</td><td>K-Trust·K-CORE·쿼터·임금요건에 기능 매핑(2030 미래전략 코어 3)</td><td class="pos">보유 · 작동</td></tr>
+        <tr><td class="k">전문가 네트워크</td><td>행정사 3,360 · 변호사 365를 사후 외주 → 상시 유통 채널로 전환</td><td class="pos">보유 · 작동</td></tr>
+        <tr><td class="k">외국인 신용스코어</td><td>고용+소득+환급 결합 — 재직 외국인 실소득·근속을 보는 유일 좌표</td><td>축적 후 · 검증</td></tr>
+        <tr><td class="k">전환비용 락인</td><td>원장·이력이 쌓일수록 이탈비용↑ (NRR 110% 목표 근거)</td><td>축적 후 · 검증</td></tr>
+      </tbody>
+    </table>
+    <div class="sowhat"><b>경쟁.</b> 클링커즈(glow) 등은 <b>중개형</b>이라 데이터·양면 락인이 얕다. '양면 통합 × 인증 인프라'의 <b>우상단("재직관리 OS")은 공개 출처상 비어 있다.</b> (경쟁사 정량지표는 2차정보로 독립검증 전.)</div>
+  </section>
+
+  <!-- ===== G. 재무 ===== -->
+  <section>
+    <h2 class="sec"><span class="sec-no">G</span><span class="t">8주 PoC로 검증한 위에 ARR 21억→60억, 하방도 두텁다 (전부 목표·가정)</span></h2>
+    <table>
+      <thead><tr><th style="width:24%">시나리오</th><th>전환·churn·NRR</th><th>12M ARR</th><th>24M ARR</th></tr></thead>
+      <tbody>
+        <tr><td class="k">Bear (보수)</td><td>20% · 2.5% · 100%</td><td>약 14억</td><td>약 40억</td></tr>
+        <tr class="hl"><td class="k">Base (기준·SSOT)</td><td>30% · 1.7% · 110%</td><td>21억</td><td>60억</td></tr>
+        <tr><td class="k">Bull (낙관)</td><td>40% · 1.0% · 115%+</td><td>약 27~30억</td><td>약 78~85억</td></tr>
+      </tbody>
+    </table>
+    <div class="metrics" style="margin-top:10px">
+      <div class="metric"><div class="n">8주·15사</div><div class="l">PoC 목표 · 3,300만 원 (SSOT)</div></div>
+      <div class="metric"><div class="n">100사</div><div class="l">12개월 → ARR 21억</div></div>
+      <div class="metric"><div class="n">300사</div><div class="l">24개월 → ARR 60억</div></div>
+      <div class="metric"><div class="n">8:1+</div><div class="l">블렌디드 LTV/CAC · 페이백 4~6M</div></div>
+    </div>
+    <div class="sowhat"><b>De-risking.</b> 큰 베팅 전에 8주·15사·3,300만으로 <b>CAC 0 전제·전환율·고정비를 실측</b>한다. B2C 한계 CAC 0(자동유입 60%+)·총마진 80% 가정에 민감 → PoC로 갱신.</div>
+  </section>
+
+  <!-- ===== H. 타이밍·실행·Ask ===== -->
+  <section>
+    <h2 class="sec"><span class="sec-no">H</span><span class="t">정책 골든윈도(K-Trust 2026.3) 안에서, 지금 시작해 입구를 먼저 잠근다</span></h2>
+    <table>
+      <thead><tr><th style="width:18%">단계</th><th>액션</th><th style="width:28%">go/no-go 게이트 (목표)</th></tr></thead>
+      <tbody>
+        <tr><td class="k">Why now</td><td>K-Trust 성실고용 인증제 2026.3 도입 — 지금 기록 축적 = 시행 시 상위 등급 선점</td><td>—</td></tr>
+        <tr><td class="k">진입(비치헤드)</td><td>수도권 산단 E-9 제조 30~50명 사업장(요양 E-7-2 병행). 자가진단 PLG + 행정사·협회 채널</td><td>리드·세미나→PoC 파이프</td></tr>
+        <tr><td class="k">PoC (8주)</td><td>등록→자동 리스크 분석→월간 리포트(유료 결정점)</td><td>유료 15사·3,300만 + B2C 활성화 ≥40%</td></tr>
+        <tr><td class="k">12개월</td><td>검증 모션을 100사로 확대</td><td>ARR 21억 · 페이백 &lt;12M · NRR ≥105%</td></tr>
+        <tr><td class="k">24개월</td><td>300사 · D3 데이터·여신 PoC 착수(후행)</td><td>ARR 60억 · NRR ≥110%</td></tr>
+      </tbody>
+    </table>
+    <div class="sowhat"><b>경영진 의사결정 포인트.</b> ① 8주 PoC(15사·3,300만) 실행 승인 · ② 비치헤드(산단 E-9 제조) 집중 합의 · ③ BackWon "대출 중개" 등 <b>금융 표현 규제 게이트</b> 통과를 D3 진입 전 필수 조건으로 고정.</div>
+  </section>
+
+  <!-- ===== 리스크 ===== -->
+  <section>
+    <h2 class="sec"><span class="sec-no">I</span><span class="t">핵심 리스크는 "CAC 0 전제·금융규제·정책 변동" — 모두 게이트로 관리한다</span></h2>
+    <table>
+      <thead><tr><th style="width:26%">리스크</th><th>영향</th><th style="width:30%">완화책</th></tr></thead>
+      <tbody>
+        <tr><td class="k">B2C 자동유입 미달</td><td>블렌디드 LTV/CAC 전제 붕괴</td><td>활성화율을 선행 KPI로 승격, 8주 실측</td></tr>
+        <tr><td class="k">금융·여신 규제</td><td>신용정보법·대출모집인·마이데이터 외국인 적용</td><td>D3 진입 전 전문가 게이트 필수, ARR 본선 미산입</td></tr>
+        <tr><td class="k">정책 수치 변동</td><td>비자·과태료·K-Trust 가감폭 개정 잦음</td><td>1차 출처·시행일·조문 proof 가드, 수익원 분산</td></tr>
+        <tr><td class="k">표현 리스크</td><td>"대출 중개" 등 금융 대행 오인</td><td>랜딩·IR 노출 전 규제 표현 점검(regulatory-risk)</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ===== DISCLAIMER ===== -->
+  <div class="disc">
+    <b>참고용 안내.</b> 본 보고서는 경영 검토용 내부 자료로 법적 효력이 없는 참고 정보다.
+    재무 수치(ARR·LTV/CAC·페이백·NRR·시나리오·PoC)는 확정 실적이 아닌 <b>목표·가정</b>이며 8주 PoC 실측 대상이다.
+    요금제(29/89/169만)·ARR(21·60억)·PoC(15사·3,300만)·TAM(B2B 49만·B2C 216만)·체류외국인 278만 명 등 핵심 수치는 PlugNX 사업기획서 v1.0(SSOT)을 인용했다.
+    벌금·범칙금·환급액·K-Trust·임금요건·여신 관련 사실은 자주 개정되므로 시행일·조문 확인과 행정사·노무사·변호사·세무사·금융규제 전문가 검증, 1차 출처(하이코리아·법무부 출입국·외국인정책본부·고용노동부·국민연금공단) 최신 확인이 필요하다.
+    BackWon은 대출·환급·비자 결과를 보증하지 않는다. 경쟁사 정량지표는 2차정보로 독립검증되지 않았다. 민감정보(여권·외국인등록번호·계좌)는 최소수집·암호화·국내보관 원칙으로 처리한다.<br/><br/>
+    © 2026 PlugNX Inc. · 외국인 신사업 경영진 보고서 · 출처: 사업기획서 v1.0, VisaDesk·BackWon 라이브 서비스(2026-06-23)
+  </div>
+
+</div>
+</body>
+</html>
