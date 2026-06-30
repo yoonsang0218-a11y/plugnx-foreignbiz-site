@@ -8,7 +8,7 @@
 
 ## 🚨 P0 · 라이브 데모 브랜딩 위반 (본문 외부 운영 액션, IR 전 필수)
 §07이 "MVP 라이브"의 근거로 링크하는 **plugnx-visaops.netlify.app**가 브랜딩 규칙을 정면 위반:
-- `/workers` 헤더·푸터 **"Plug&X VisaOps"**, **"© 2026 Plug&X × Moneeback"** / 랜딩 **"PlugNX Crew"** / `/dashboard` **"Plug&X VisaOps"** / 도메인에 폐기 코드네임 **visaops**.
+- `/workers` 헤더·푸터 **"Plug&X VisaOps"**, **"© 2026 Plug&X × BackWon"** / 랜딩 **"PlugNX Crew"** / `/dashboard` **"Plug&X VisaOps"** / 도메인에 폐기 코드네임 **visaops**.
 - PROJECT.md L42 `Plug&X 절대 금지`, L45 `VisaOps·Crew 폐기`. 본문은 `VisaDesk`를 쓰는데 링크 도착지가 불일치 → 투자자가 클릭 시 신뢰 역전.
 - **액션**: 라이브 리브랜딩(Plug&X→PlugNX, VisaOps/Crew→VisaDesk, 도메인 교체). 웹 소스 `C:\Users\admin\plugnx-foreign-finance-opportunity\webapp\`. business-case 본문 변경 아님 — **제품/배포 작업**.
 
@@ -27,7 +27,7 @@
   <thead><tr><th>정부 5대 과제 (2026.3.3 · 사실)</th><th>PlugNX 대응 시장 (해석)</th><th>진입 등급</th></tr></thead>
   <tbody>
     <tr><td>② 비자체계·이민행정 혁신 (E계열 10종 39개→3단계, Hi-Korea 통합·AI 분류심사)</td><td>RegTech (VisaDesk)</td><td><b>코어 — 집중</b></td></tr>
-    <tr><td>⑤ 권익보호 + ③ 외국인 임금 자문위원회(임금 적정성)</td><td>FinTech (Moneeback)</td><td><b>코어 — 집중</b></td></tr>
+    <tr><td>⑤ 권익보호 + ③ 외국인 임금 자문위원회(임금 적정성)</td><td>FinTech (BackWon)</td><td><b>코어 — 집중</b></td></tr>
     <tr><td>④ 성실기업 우대 (고용 컴플라이언스)</td><td>HRTech / K-Trust</td><td><b>코어 — 업셀</b></td></tr>
     <tr><td>① 우수·필수인력 유치 (채용 파이프라인)</td><td>채용매칭</td><td>확장 — 옵션</td></tr>
     <tr><td>① 외국인 요양보호사 양성대학 지정</td><td>돌봄</td><td>확장 — 버티컬 PoC</td></tr>
@@ -51,21 +51,21 @@
   <tbody>
     <tr><td>UI·정보구조·고객 플로우</td><td style="color:var(--ok)"><b>검증됨</b></td><td>랜딩·자가진단·/workers·/dashboard 라이브 렌더링</td></tr>
     <tr><td>모던 스택 안정성</td><td style="color:var(--ok)"><b>검증됨</b></td><td>Next.js 15·React 19·Tailwind 4·Supabase·Vercel/Netlify</td></tr>
-    <tr><td>B2B 대시보드 화면</td><td style="color:var(--warn)">약 20여 개</td><td>코어 8 + Moneeback 3 + 확장 9~11 (본문 ‘25’ 보정)</td></tr>
+    <tr><td>B2B 대시보드 화면</td><td style="color:var(--warn)">약 20여 개</td><td>코어 8 + BackWon 3 + 확장 9~11 (본문 ‘25’ 보정)</td></tr>
     <tr><td>다국어</td><td style="color:var(--warn)">3개 라이브</td><td>한·영·베 라이브 + 중·태·우즈벡 확대 중(목표)</td></tr>
     <tr><td>GPT-4V OCR (여권·외국인등록증)</td><td style="color:var(--danger)">미검증</td><td>/dashboard/documents는 수동 상태 트래커(282건, 사람 기재) — OCR 증거 없음</td></tr>
     <tr><td>환급 산정 정확도 / ForeignID L1~L3 / 리드 백엔드</td><td style="color:var(--danger)">미검증</td><td>표시 환급액은 추정치 · 인증·신용스코어·/api/lead 실가동 미확인</td></tr>
   </tbody>
 </table>
 ```
-**(c) Moneeback 환급 셀 보정**: "표시 금액(평균 1,050만)은 예시 평균이며, 실제 환급액은 체류자격·국적·사회보장협정·납부이력·출국여부에 따라 달라지는 추정치(확정액은 소관기관 조회)."
+**(c) BackWon 환급 셀 보정**: "표시 금액(평균 1,050만)은 예시 평균이며, 실제 환급액은 체류자격·국적·사회보장협정·납부이력·출국여부에 따라 달라지는 추정치(확정액은 소관기관 조회)."
 **(d) 6개 언어 SSOT 보정**: PROJECT.md L16 ‘6개 언어’는 라이브(3개)와 불일치 → ‘3개 라이브 + 3개 확대 중’으로 SSOT 보정 권고.
 **(e) 출처 각주**: "라이브 상태·화면 수·기능 성숙도는 2026.6.2 plugnx-visaops.netlify.app 직접 접근 기준(데모는 수시 업데이트)."
 
 ## §12 KPI — 선행지표·게이트·벤치마크 라벨
 **(a) 전환 단계 분해 각주**: "‘전환 30%’는 세미나→계약(50→15) 기준. 분해 시 세미나→미팅 40%, 미팅→유료 75%. self-serve 무료체험 중앙값(4~6%)과 직접 비교 부적절(범주 오류) — 이건 ‘무료 준법진단=가치 입증 세션’."
 **(b) ARR 벤치마크 각주**: "ARR 21억(12M)→60억(24M)=YoY 약 186%. 전통 B2B SaaS($1~5M) 중앙값 40%·AI-네이티브 110% 상회하는 상위 사분위 공격 목표(초기 <$1M 구간은 상위 사분위 최대 300% YoY). NRR>110%·CAC payback<12M 병기 권고."
-**(c) 유저 10만 분해 각주**: "24M ‘Moneeback 유저 10만’ = 관리외국인 1만의 10배 = (a)캡티브 전환분(관리외국인×자동유입 60%+) + (b)B2C 단독유입(앱 직접·추천·환급 입소문). ‘전환 60%+’는 B2B 등록자 기준 자동유입률."
+**(c) 유저 10만 분해 각주**: "24M ‘BackWon 유저 10만’ = 관리외국인 1만의 10배 = (a)캡티브 전환분(관리외국인×자동유입 60%+) + (b)B2C 단독유입(앱 직접·추천·환급 입소문). ‘전환 60%+’는 B2B 등록자 기준 자동유입률."
 **(d) 후행지표 행 추가**: NRR(100→105→110%·가정)·GRR(88→90→90%·가정).
 **(e) PoC go/no-go 게이트 박스** (2주/4주/8주 3단계 게이트) — `r3-kpi.md` 참조.
 **(f) 섹션 말미 고지**: 모든 KPI는 가정 기반 목표치 · SSOT 인용.

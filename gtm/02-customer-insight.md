@@ -1,7 +1,7 @@
 # 02 고객 인사이트·JTBD — 비치헤드 고용주의 JTBD는 "단속·벌칙·고용제한 없이 외국인 인력을 계속 쓰는 일"이며, 이를 여는 트리거(D-60·갱신·단속)에 손실회피 훅으로 진입하라
 
 > 작성: gtm-customer-insight-agent · 기준: PROJECT.md(SSOT)·00-engagement-brief.md·business-case-research/03-needs-pain.md·business-case-9fk2x7.html(03 Needs, 읽기전용)·strategy.html
-> 규칙: SSOT 수치만 인용 · 새 가정="가정" · 외부통계=출처·기준시점 · 추정="추정" · 브랜딩 PlugNX/VisaDesk/Moneeback/ForeignID 엄수
+> 규칙: SSOT 수치만 인용 · 새 가정="가정" · 외부통계=출처·기준시점 · 추정="추정" · 브랜딩 PlugNX/VisaDesk/BackWon/ForeignID 엄수
 > ⚠️ 비자·환급·법률 판단은 법적 효력 없는 **참고 정보**. 벌칙·범칙금·요율·환급 한도·쿼터는 자주 개정되므로 행정사·노무사·변호사·세무사 검증과 최신 법령 확인이 필요하다.
 
 ---
@@ -50,7 +50,7 @@
 | **인지** | 단속 뉴스·동종업계 적발 소문·갱신 거부 경험으로 "우리도 위험한가?" | "내가 뭘 놓치고 있나?" | 위험을 체감 못 함(정상화 편향) | 산단·요양협회 세미나, 무료 리스크 진단 캠페인(business-case Day 0–30) |
 | **고려** | 무료진단으로 리스크 점수 확인 → 행정사 외주 vs SaaS 비교 | "행정사면 충분한데 왜 구독?" | 기존 대체재(행정사)·예산 | 리스크 리포트 재공유 요청, ROI를 예산 언어로 번역(business-case 검증게이트: 재공유 50%+) |
 | **결정** | Starter 29 또는 Growth 89로 진입 | "얼마나 들고, 깔끔히 되나?" | 가격·온보딩 수고·도입 리스크 | Starter 29만 진입 + 온보딩비 30~100만(SSOT) · PoC로 도입 리스크 흡수 |
-| **온보딩** | 외국인 근로자 등록(명부·서류·체류정보 입력) | "데이터 옮기는 게 일 아닌가?" | 초기 데이터 입력 공수 | ForeignID L1~L3 + GPT-4V OCR로 입력 자동화(PROJECT.md) → **근로자 Moneeback 자동유입 시작점** |
+| **온보딩** | 외국인 근로자 등록(명부·서류·체류정보 입력) | "데이터 옮기는 게 일 아닌가?" | 초기 데이터 입력 공수 | ForeignID L1~L3 + GPT-4V OCR로 입력 자동화(PROJECT.md) → **근로자 BackWon 자동유입 시작점** |
 | **확장** | Compliance 169·Enterprise·K-Trust 컨설팅 업셀 | "더 보호받을 수 있나?" | 추가 예산 정당화 | land 89 → 12개월차 144만 도달(NRR 110% 가정, brief) |
 
 ### 2.4 페인 정량화 (1차 출처·SSOT·가정 라벨)

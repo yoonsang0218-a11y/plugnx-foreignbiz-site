@@ -1,7 +1,7 @@
 # 영업 모션·퍼널·전환 — 자가진단 PLG 훅으로 리드를 잡고, 인사이드+파트너 SLG로 8주 PoC를 거쳐 유료 전환시키는 "1.5형 영업 머신"
 
 > 작성: gtm-sales-motion-agent · 입력: `00-engagement-brief.md` + `PROJECT.md`(SSOT) + `output/strategy.html`·`output/business-case-9fk2x7.html`·`output/visadesk.html`(읽기 전용)
-> 규칙: 전환율·CAC 등 재무는 모두 **목표(가정)** 라벨 · SSOT 수치만 인용 · 브랜딩 PlugNX/VisaDesk/Moneeback/ForeignID 엄수 · 비자·금융·법률은 참고용(전문가 확인 필요)
+> 규칙: 전환율·CAC 등 재무는 모두 **목표(가정)** 라벨 · SSOT 수치만 인용 · 브랜딩 PlugNX/VisaDesk/BackWon/ForeignID 엄수 · 비자·금융·법률은 참고용(전문가 확인 필요)
 
 ---
 
@@ -46,7 +46,7 @@
 | 5 | **PoC (8주 무료)** | 근로자 등록·리스크 리포트 가동 | Week2 첫 리포트 수령 + Week4 액션 1건 이상 처리 (`poc_started`) | 온보딩 CS | Week1 등록 완료, Week2 리포트 |
 | 6 | **Contract (유료전환)** | 유료 플랜 계약·결제 | 계약서 서명·결제수단 등록 (`contract_signed`) | 인사이드 AE | PoC Week6 전환 미팅, Week8 클로징 |
 | 7 | **Onboarding** | 유료 운영 정착 | 알림·체크리스트 일상화·관리자 2인 활성 | CS | 30일 내 정착 |
-| 8 | **Expansion** | 업셀(Compliance/Enterprise)·근로자 Moneeback 유입 | 플랜 업그레이드 OR 근로자 60%+ Moneeback 활성(가정) | CS/AM | 90일/QBR 주기 |
+| 8 | **Expansion** | 업셀(Compliance/Enterprise)·근로자 BackWon 유입 | 플랜 업그레이드 OR 근로자 60%+ BackWon 활성(가정) | CS/AM | 90일/QBR 주기 |
 
 ### 2-3. 전환 산수(Conversion math) — 단계별 가정 전환율 & 병목 가설
 
@@ -89,7 +89,7 @@
 2. (2분) **D-120/90/60/30 자동 알림** 타임라인 — "D-30에 발견하던 일이 사라진다"
 3. (2분) **비자별 임금요건 자동 점검**(미달 경고) + **서류 체크리스트** 누락 하이라이트
 4. (1분) **전문가 원클릭 연결**(행정사·노무사 라우팅) — "사람 손이 필요한 순간 끊김 없음"
-5. (1분) **K-Trust 준비 진단** + Moneeback 플라이휠("근로자도 환급 혜택 → 근속↑")
+5. (1분) **K-Trust 준비 진단** + BackWon 플라이휠("근로자도 환급 혜택 → 근속↑")
 6. (30초) **8주 무료 PoC** 제안으로 마무리
 
 **(D) ROI 대화 — 1장 멘트 (Growth/외국인 30명 기준, visadesk.html 일관)**

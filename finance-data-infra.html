@@ -335,6 +335,11 @@
       <div class="path s-late"><div class="step">C</div><div class="body"><div class="pt">스코어 공급</div><div class="pd">외국인 전용 신뢰점수 결과 제공. 전문개인신용평가업(비금융 CB). 데이터 축적 후.</div></div><div class="lvl">★★★★ 24m+</div></div>
       <div class="path s-late"><div class="step">A</div><div class="body"><div class="pt">마이데이터 통합</div><div class="pd">본인 동의 데이터 통합 전달. 본인신용정보관리업(자본금 5억·6대 요건). 최장기.</div></div><div class="lvl">★★★★★ 최장기</div></div>
     </div>
+    <div style="max-width:920px;margin:22px auto 0;background:rgba(41,151,255,.08);border:1px solid rgba(41,151,255,.28);border-radius:16px;padding:20px 22px">
+      <h4 style="color:#fff;font-size:15px;margin-bottom:10px">🔌 신호 출처와 "맞춤 대출 추천"의 합법 경계</h4>
+      <p style="font-size:13.5px;color:var(--dim);line-height:1.62">신호도 <b style="color:#fff">출처에 따라 난이도가 다르다</b>. <b style="color:var(--sky)">재직·고용·임금 신호</b>는 VisaDesk가 원천이라 동의만 받으면 <b style="color:#fff">즉시 제공(FW-01)</b>하지만, <b style="color:var(--sky)">이체내역(계좌 거래)</b>은 <b style="color:#fff">마이데이터(본인신용정보관리업) 허가 영역</b>이라 직접 수집은 <b style="color:#fff">후행(FW-09)</b> — 그 전엔 본인제출 또는 마이데이터 사업자 제휴로만 가능하다.<br/><br/>
+      "개개인 맞춤 대출 추천·금리 비교"도 두 방식으로 갈린다. <b style="color:#fff">방식 A(즉시)</b> — 우리는 검증 신호만 주고 <b>금융사가 자기 금리를 제시</b>하면 우리가 비교·연결(송객, 금소법 중개업 등록). <b style="color:#fff">방식 B(후행)</b> — 우리가 직접 대출비교 플랫폼이 되면 중개업+마이데이터+다수 제휴 필요. <b style="color:var(--sky)">어느 경우든 '추천·금리·승인 결정'은 금융사가 하고 우리는 신호 공급과 연결만</b> 한다 — 그래야 무허가 신용평가 경계를 넘지 않는다.</p>
+    </div>
     <div class="redlines">
       <h4>⛔ 절대 레드라인 5 (금지)</h4>
       <ol>
@@ -362,7 +367,7 @@
       <div class="htag"><span class="pill now">NOW</span><span class="ht">라이선스 부담 최소 · 즉시 추진</span></div>
       <div class="pf">
         <div class="item"><div class="id">FW-01</div><h4>Foreign Worker Signal API</h4><p>재직·체류·4대보험 검증 속성 호출. "재직 12개월↑·체류잔여 6개월↑·4대보험 정상납부." KB 전세대출이 이미 이 항목을 입력값으로 사용.</p><div class="meta">고객 <b>인터넷은행·카드·저축은행</b> · 건당+구독</div></div>
-        <div class="item"><div class="id">FW-02</div><h4>대출 송객 (리드)</h4><p>Moneeback 환급 가입자(CAC0 동의풀)에 제휴 대출 비교·연결. 진입장벽 최저. 송객 성과가 FW-06 스코어 학습 라벨이 됨.</p><div class="meta">고객 <b>인터넷은행·저축은행·카드</b> · 중개수수료</div></div>
+        <div class="item"><div class="id">FW-02</div><h4>대출 송객 (리드)</h4><p>BackWon 환급 가입자(CAC0 동의풀)에 제휴 대출 비교·연결. 진입장벽 최저. 송객 성과가 FW-06 스코어 학습 라벨이 됨.</p><div class="meta">고객 <b>인터넷은행·저축은행·카드</b> · 중개수수료</div></div>
         <div class="item"><div class="id">FW-04</div><h4>ForeignID KYC/AML 검증</h4><p>L2·L3 기반 체류 적법성·본인확인. 카카오·케이뱅크의 "외국인 계좌개설 차단"이 바로 이 페인. 여신 라이선스 불요.</p><div class="meta">고객 <b>인터넷은행·송금·가상자산</b> · 건당+구독</div></div>
       </div>
     </div>
@@ -382,7 +387,7 @@
       <div class="pf">
         <div class="item"><div class="id">FW-06</div><h4>Foreign Worker Trust Score</h4><p>전문개인신용평가업(비금융 외국인 CB). 최대 해자 — FW-01/02/03/05 데이터를 점수로 결정화. EQUAL과 정면충돌 대신 보완 피처 공급도 옵션.</p><div class="meta">고객 <b>전 금융권</b> · 조회당+라이선스+성과</div></div>
         <div class="item"><div class="id">FW-09</div><h4>마이데이터 외국인 금융 패스포트</h4><p>본인 동의 데이터 통합(+Nova Credit형 본국 신용 이전 인접 확장). 본인신용정보관리업 허가. 최장기.</p><div class="meta">고객 <b>근로자 본인+전 금융권</b> · 라이선스+revshare</div></div>
-        <div class="item" style="background:var(--parch);border-style:dashed"><div class="id" style="color:var(--ink48)">자산 진화</div><h4>3 제품 = 인프라의 발생지점</h4><p><b>VisaDesk</b> 고용 데이터 발생 · <b>Moneeback</b> CAC0 동의풀+환급 신호 · <b>ForeignID</b> KYC+동의 레이어. 모으는 비용을 B2B·B2C가 회수, 그 위에서 금융이 LTV 확장.</p><div class="meta">신규가 아니라 <b>기존 자산의 발전</b></div></div>
+        <div class="item" style="background:var(--parch);border-style:dashed"><div class="id" style="color:var(--ink48)">자산 진화</div><h4>3 제품 = 인프라의 발생지점</h4><p><b>VisaDesk</b> 고용 데이터 발생 · <b>BackWon</b> CAC0 동의풀+환급 신호 · <b>ForeignID</b> KYC+동의 레이어. 모으는 비용을 B2B·B2C가 회수, 그 위에서 금융이 LTV 확장.</p><div class="meta">신규가 아니라 <b>기존 자산의 발전</b></div></div>
       </div>
     </div>
   </div>
@@ -425,7 +430,7 @@
     </div>
     <div class="gng">
       <div class="c go"><div class="t">GO</div><p>8주 내 ① VisaDesk PoC 15사·유료 6사 ② <b>금융사 2곳+ 데이터 검증 LOI/미팅</b> ③ 규제 변호사 1차 확인.</p></div>
-      <div class="c cond"><div class="t">조건부</div><p>②가 미팅까지만이면 — 데이터 발생(VisaDesk·Moneeback)에 집중하고 금융 인프라는 6개월 뒤 재타진.</p></div>
+      <div class="c cond"><div class="t">조건부</div><p>②가 미팅까지만이면 — 데이터 발생(VisaDesk·BackWon)에 집중하고 금융 인프라는 6개월 뒤 재타진.</p></div>
       <div class="c no"><div class="t">NO-GO</div><p>금융사 수요가 전혀 확인 안 되면 — 인프라 thesis 보류, B2B SaaS 또는 B2C 환급 단일로 좁힘.</p></div>
     </div>
     <div class="note">

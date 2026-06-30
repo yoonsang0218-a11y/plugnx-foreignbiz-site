@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Moneeback A-Z 서비스 기획·구축 기능상세서 — PlugNX Moneeback</title>
+<title>BackWon A-Z 서비스 기획·구축 기능상세서 — PlugNX BackWon</title>
 <style>
   :root {
     --canvas:#ffffff;
@@ -591,9 +591,9 @@
 <header class="hero">
   <div class="wrap hero-grid">
     <div>
-      <p class="eyebrow">PlugNX Moneeback · Service Blueprint</p>
-      <h1>Moneeback A-Z 하단 유저 커버 서비스 기획</h1>
-      <p class="lead">Moneeback을 단순 환급앱이 아니라 외국인 재직자의 생활·근로·정산·금융 준비를 한 번에 커버하는 데이터 인프라로 재설계한 제품 블루프린트. 이번 버전에는 실제 구축용 유저플로우와 기능상세서를 연결했다.</p>
+      <p class="eyebrow">PlugNX BackWon · Service Blueprint</p>
+      <h1>BackWon A-Z 하단 유저 커버 서비스 기획</h1>
+      <p class="lead">BackWon을 단순 환급앱이 아니라 외국인 재직자의 생활·근로·정산·금융 준비를 한 번에 커버하는 데이터 인프라로 재설계한 제품 블루프린트. 이번 버전에는 실제 구축용 유저플로우와 기능상세서를 연결했다.</p>
       <div class="hero-actions">
         <a class="btn" href="#0-answer-first">핵심 결론 보기</a>
         <a class="btn" href="#13-구축-기능상세서">기능상세서 보기</a>
@@ -606,12 +606,12 @@
         <p><span>작성 기준일</span>2026-06-30 KST</p>
         <p><span>요청</span>&quot;하단 유저문제를 A-Z까지 전부 커버한다고 생각하고 서비스 기획&quot;</p>
         <p><span>사용 스킬</span><code>moneeback-refund</code> · <code>foreignid-auth</code> · <code>foreign-visa-kb</code> · <code>pm-execution:create-prd</code></p>
-        <p><span>핵심 관점</span>Moneeback은 외국인 재직자에게는 <strong>무료 생활·정산·금융 준비 도우미</strong>, 금융권/CB에는 <strong>동의기반 신용 보강 리포트 인프라</strong>다.</p>
+        <p><span>핵심 관점</span>BackWon은 외국인 재직자에게는 <strong>무료 생활·정산·금융 준비 도우미</strong>, 금융권/CB에는 <strong>동의기반 신용 보강 리포트 인프라</strong>다.</p>
         <p><span>면책</span>비자·노무·세무·법률·금융 판단은 법적 효력 없는 참고 정보다. 제품화 전 행정사·노무사·세무사·변호사·금융규제 전문가 검토와 최신 1차 출처 확인이 필요하다.</p>
       </div>
-      <div class="visual" aria-label="Moneeback Passport product concept">
+      <div class="visual" aria-label="BackWon Passport product concept">
         <div class="visual-top">
-          <div class="visual-title">Moneeback Passport</div>
+          <div class="visual-title">BackWon Passport</div>
           <div class="pill">Credit Signal Ready</div>
         </div>
         <div class="signal-grid">
@@ -620,7 +620,7 @@
           <div class="signal"><b>Readiness Report</b><span>scoreless credit enhancement signals</span></div>
           <div class="signal"><b>Help Router</b><span>official, expert, financial routing</span></div>
         </div>
-        <div class="mini-flow" aria-label="Moneeback build flow">
+        <div class="mini-flow" aria-label="BackWon build flow">
           <div class="mini-step"><b>01 · ForeignID</b><span>L1-L3 step-up</span></div>
           <div class="mini-step"><b>02 · Refund Check</b><span>NPS/EPS/퇴직금</span></div>
           <div class="mini-step"><b>03 · Readiness Report</b><span>점수 없는 금융 신호</span></div>
@@ -654,20 +654,20 @@
   <section id="visual-overview" class="report-section visual-overview">
     <div class="wrap">
       <p class="section-kicker">VISUAL MAP</p>
-      <h2>한눈에 보는 Moneeback 구조</h2>
-      <p>Moneeback은 데이터를 팔기 위해 외국인을 모으는 서비스가 아니다. 외국인 재직자·구직자에게 먼저 실질 가치를 주고, 사업자에게 운영·복지 가치를 만든 뒤, 그 결과로 금융권이 필요로 하는 신뢰 신호가 생기는 구조다.</p>
+      <h2>한눈에 보는 BackWon 구조</h2>
+      <p>BackWon은 데이터를 팔기 위해 외국인을 모으는 서비스가 아니다. 외국인 재직자·구직자에게 먼저 실질 가치를 주고, 사업자에게 운영·복지 가치를 만든 뒤, 그 결과로 금융권이 필요로 하는 신뢰 신호가 생기는 구조다.</p>
 
       <div class="diagram-grid">
         <div class="diagram-board">
           <h3>서비스 플라이휠</h3>
-          <div class="loop-diagram" aria-label="Moneeback service flywheel diagram">
+          <div class="loop-diagram" aria-label="BackWon service flywheel diagram">
             <div class="loop-line v"></div>
             <div class="loop-line h"></div>
             <div class="loop-node n1"><b>외국인 가치</b><span>구직·재직·정산·금융 준비</span></div>
             <div class="loop-node n2"><b>사업자 가치</b><span>온보딩·복지·준법·근속</span></div>
             <div class="loop-node n3"><b>신뢰 자산</b><span>본인 소유 Work Passport</span></div>
             <div class="loop-node n4"><b>금융권 신호</b><span>동의 기반 리포트/API</span></div>
-            <div class="loop-center"><b>Moneeback Passport</b><span>외국인 재직자의 개인 운영 대장</span></div>
+            <div class="loop-center"><b>BackWon Passport</b><span>외국인 재직자의 개인 운영 대장</span></div>
           </div>
         </div>
 
@@ -722,7 +722,7 @@
     <div class="wrap">
       <p class="section-kicker">VALUE-FIRST STRATEGY</p>
       <h2>사업 방향: 외국인 가치가 먼저다</h2>
-      <p class="lead">Moneeback의 앞면은 데이터 사업이 아니라 외국인 재직자·구직자의 신뢰 자산을 만들어주는 서비스여야 한다. 금융권 수익은 이 신뢰 자산이 충분히 유용하고 최신일 때 따라오는 결과다.</p>
+      <p class="lead">BackWon의 앞면은 데이터 사업이 아니라 외국인 재직자·구직자의 신뢰 자산을 만들어주는 서비스여야 한다. 금융권 수익은 이 신뢰 자산이 충분히 유용하고 최신일 때 따라오는 결과다.</p>
 
       <div class="value-stack" aria-label="Value first business direction">
         <div class="value-step"><div class="num">1</div><b>외국인 개인 가치</b><span>구직자는 더 좋은 일자리를 준비하고, 재직자는 급여·체류·정산·금융 문제를 해결한다.</span></div>
@@ -740,17 +740,17 @@
         </div>
       </div>
 
-      <blockquote><p>정리하면 Moneeback은 "외국인 정보를 금융권에 파는 서비스"가 아니라, 외국인이 한국에서 일한 기록을 본인 소유의 신뢰 자산으로 바꿔주는 서비스다. 금융권 데이터 BM은 그 결과물이다.</p></blockquote>
+      <blockquote><p>정리하면 BackWon은 "외국인 정보를 금융권에 파는 서비스"가 아니라, 외국인이 한국에서 일한 기록을 본인 소유의 신뢰 자산으로 바꿔주는 서비스다. 금융권 데이터 BM은 그 결과물이다.</p></blockquote>
     </div>
   </section>
   <section id="0-answer-first" class="report-section dark">
     <div class="wrap">
       <p class="section-kicker">01</p>
       <h2>0. Answer First</h2>
-      <p><strong>Moneeback은 &quot;외국인 근로자의 한국 생활 운영체제&quot;처럼 보여야 한다.</strong> 하단 유저는 제도가 없어서 막히는 게 아니라, 제도가 너무 흩어져 있고 한국어·서류·시점·전문가 판단·금융 번역이 안 돼서 막힌다. 따라서 서비스는 A-Z를 커버하되, 모든 기능은 아래 하나의 목적에 복무해야 한다.</p>
+      <p><strong>BackWon은 &quot;외국인 근로자의 한국 생활 운영체제&quot;처럼 보여야 한다.</strong> 하단 유저는 제도가 없어서 막히는 게 아니라, 제도가 너무 흩어져 있고 한국어·서류·시점·전문가 판단·금융 번역이 안 돼서 막힌다. 따라서 서비스는 A-Z를 커버하되, 모든 기능은 아래 하나의 목적에 복무해야 한다.</p>
       <blockquote><p><strong>재직·소득·체류·보험·주거·정산 데이터를 본인 동의로 쌓아, 금융권이 조회 가능한 Foreign Worker Credit Enhancement Report로 전환한다.</strong></p></blockquote>
       <p><strong>제품 한 줄</strong></p>
-      <blockquote><p>Moneeback Passport: 외국인 재직자가 한국에서 일하고, 살고, 돈을 받고, 금융을 이용하고, 이직/전환/출국까지 준비하는 다국어 개인 운영 대장.</p></blockquote>
+      <blockquote><p>BackWon Passport: 외국인 재직자가 한국에서 일하고, 살고, 돈을 받고, 금융을 이용하고, 이직/전환/출국까지 준비하는 다국어 개인 운영 대장.</p></blockquote>
       <p><strong>핵심 원칙</strong></p>
       <ol>
         <li>유저에게는 <strong>무료</strong>가 기본이다. 돈을 받으면 하단 유저 데이터 축적이 줄어든다.</li>
@@ -785,7 +785,7 @@
       <div class="table-wrap">
         <table>
           <thead>
-            <tr><th>표면 문제</th><th>실제 병목</th><th>Moneeback이 맡을 일</th></tr>
+            <tr><th>표면 문제</th><th>실제 병목</th><th>BackWon이 맡을 일</th></tr>
           </thead>
           <tbody>
             <tr><td>&quot;어디서 신청하는지 모르겠다&quot;</td><td>기관이 흩어짐</td><td>공식 경로 라우팅</td></tr>
@@ -957,7 +957,7 @@
       <p class="section-kicker">04</p>
       <h2>3. 정보 구조 IA</h2>
       <h3>3.1 첫 화면</h3>
-      <pre><code>Moneeback Passport
+      <pre><code>BackWon Passport
 ├─ 오늘 해야 할 일
 │  ├─ 체류 만기 D-xx
 │  ├─ 이번 달 급여명세 업로드
@@ -1043,7 +1043,7 @@
           </tbody>
         </table>
       </div>
-      <p><strong>중요:</strong> Moneeback은 금융권에 &quot;이 사람은 720점&quot;을 주지 않는다. &quot;급여 입금 3개월 확인됨&quot;, &quot;체류만기 11개월&quot;, &quot;보험가입 증빙 있음&quot; 같은 원천 신호를 제공한다.</p>
+      <p><strong>중요:</strong> BackWon은 금융권에 &quot;이 사람은 720점&quot;을 주지 않는다. &quot;급여 입금 3개월 확인됨&quot;, &quot;체류만기 11개월&quot;, &quot;보험가입 증빙 있음&quot; 같은 원천 신호를 제공한다.</p>
       <hr class="soft">
     </div>
   </section>
@@ -1090,7 +1090,7 @@
             <tr><td>수임대가 쉐어 금지</td><td>변호사·세무사 등은 소개/알선 대가 금지 리스크가 큼</td></tr>
             <tr><td>디렉토리·광고형 우선</td><td>유저가 선택, 광고 표시, 수임 여부와 무관한 정액 과금</td></tr>
             <tr><td>전문가용 SaaS 가능</td><td>intake, 번역, 서류관리, 예약 도구 월정액</td></tr>
-            <tr><td>본인 주도 문서</td><td>Moneeback은 본인 입력/보관/출력 도구, 대리 작성/제출 아님</td></tr>
+            <tr><td>본인 주도 문서</td><td>BackWon은 본인 입력/보관/출력 도구, 대리 작성/제출 아님</td></tr>
             <tr><td>상담 전 패키지</td><td>유저가 전문가에게 직접 전달하는 증빙 묶음</td></tr>
           </tbody>
         </table>
@@ -1316,7 +1316,7 @@
     <div class="wrap">
       <p class="section-kicker">12</p>
       <h2>11. 최종 제품 정의</h2>
-      <p><strong>Moneeback A-Z는 아래 4개 제품의 묶음이다.</strong></p>
+      <p><strong>BackWon A-Z는 아래 4개 제품의 묶음이다.</strong></p>
       <ol>
         <li><strong>Passport</strong>: 신원·체류·주소·언어·동의</li>
         <li><strong>Money &amp; Work Wallet</strong>: 급여·재직·보험·주거·송금 증빙</li>
@@ -1336,7 +1336,7 @@
       <div class="product-map">
         <div class="module-card">
           <span class="badge">User App</span>
-          <h4>Moneeback Passport</h4>
+          <h4>BackWon Passport</h4>
           <p>언어 선택, ForeignID 인증, 오늘 해야 할 일, 서류 월렛, 환급 체크, 금융 준비도, 도움받기를 한 홈에 묶는다.</p>
         </div>
         <div class="module-card">
@@ -1352,7 +1352,7 @@
       </div>
 
       <h3>13.1 실제 유저플로우</h3>
-      <div class="flow-lane" aria-label="Moneeback user flow">
+      <div class="flow-lane" aria-label="BackWon user flow">
         <div class="flow-node"><b>언어·가입</b><span>6개 언어, L0 계정, 관심사 선택</span></div>
         <div class="flow-node"><b>ForeignID</b><span>L1 여권+셀카, L2 ARC+통신, L3 계좌+전자서명</span></div>
         <div class="flow-node"><b>서류 월렛</b><span>계약서, 급여명세, 입금내역, 보험/NPS, 주거</span></div>
@@ -1422,7 +1422,7 @@
         </table>
       </div>
 
-      <blockquote><p>풀버전 기능상세서는 <a href="16-moneeback-user-flow-refund-finance-functional-spec.md">WS16 — Moneeback 실제 구축 기능상세서</a>에 작성했다. 해당 문서에는 데이터 모델, API, 수용 테스트, 보안·컴플라이언스 가드레일까지 포함한다.</p></blockquote>
+      <blockquote><p>풀버전 기능상세서는 <a href="16-moneeback-user-flow-refund-finance-functional-spec.md">WS16 — BackWon 실제 구축 기능상세서</a>에 작성했다. 해당 문서에는 데이터 모델, API, 수용 테스트, 보안·컴플라이언스 가드레일까지 포함한다.</p></blockquote>
       <hr class="soft">
     </div>
   </section>
