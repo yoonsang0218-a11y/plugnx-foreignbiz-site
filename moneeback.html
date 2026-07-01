@@ -55,8 +55,8 @@
   .gnav .container{height:44px;display:flex;align-items:center;gap:18px}
   .gnav a{color:#f5f5f7;font-size:12px;opacity:.85}
   .gnav a:hover{opacity:1;text-decoration:none}
-  .wordmark{font-weight:700;font-size:15px;color:#fff}
-  .wordmark .nx{opacity:.62}
+  .wordmark{display:inline-flex;align-items:baseline;gap:1px;font-weight:700;font-size:15px;color:#fff;letter-spacing:0}
+  .wordmark .nx{color:var(--sky);opacity:1}
   .gnav .sp{margin-left:auto}
   .subnav{position:sticky;top:0;z-index:55;height:52px;background:rgba(245,245,247,.84);-webkit-backdrop-filter:saturate(180%) blur(20px);backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid rgba(0,0,0,.08)}
   .subnav .container{height:52px;display:flex;align-items:center;gap:22px}
@@ -77,6 +77,11 @@
   .chip{display:inline-flex;align-items:center;gap:6px;border:1px solid rgba(255,255,255,.16);border-radius:9999px;padding:7px 13px;color:var(--dim);font-size:13px}
   .chip b{color:#fff}
 
+  .brand-hero{background:#fbfbf8;color:var(--ink);border-radius:8px;overflow:hidden;box-shadow:var(--shadow-prod);border:1px solid rgba(255,255,255,.1)}
+  .brand-hero img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover}
+  .brand-caption{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 16px;background:#fff;border-top:1px solid var(--hair)}
+  .brand-caption b{font-size:14px;color:var(--ink)}
+  .brand-caption span{font-size:12px;color:var(--ink48);text-align:right}
   .passport-ui{background:var(--pearl);color:var(--ink);border-radius:18px;padding:20px;box-shadow:var(--shadow-prod)}
   .passport-top{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:18px}
   .passport-title{font-size:21px;font-weight:600}
@@ -141,7 +146,7 @@
   footer{background:var(--parch);padding:54px 0 40px;color:var(--ink48)}
   .ft-top{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:28px}
   .ft-intro .wordmark{color:var(--ink)}
-  .ft-intro .wordmark .nx{color:var(--ink48)}
+  .ft-intro .wordmark .nx{color:var(--blue)}
   .ft-intro p{font-size:13px;line-height:1.6;margin-top:12px;max-width:310px}
   .ft-col h4{font-size:13px;color:var(--ink);margin-bottom:12px}
   .ft-col a{display:block;color:var(--ink48);font-size:14px;margin-bottom:10px}
@@ -166,6 +171,8 @@
     .subnav .cat{font-size:18px}
     .subnav .right .btn{display:none}
     .ft-top{grid-template-columns:1fr}
+    .brand-caption{align-items:flex-start;flex-direction:column}
+    .brand-caption span{text-align:left}
     .passport-top{align-items:flex-start;flex-wrap:wrap}
     .passport-title{max-width:210px}
     .pill{margin-left:auto}
@@ -180,7 +187,7 @@
 
 <div class="gnav">
   <div class="container">
-    <span class="wordmark">PLUG<span class="nx">nx</span></span>
+    <span class="wordmark" aria-label="PLUGnx">PLUG<span class="nx">nx</span></span>
     <a class="links-extra" href="visadesk.html">VisaDesk</a>
     <a class="links-extra" href="dashboard.html">대시보드</a>
     <a class="sp" href="index.html">산출물 허브</a>
@@ -219,18 +226,13 @@
         <span class="chip"><b>3</b> 동의 기반 금융 신호</span>
       </div>
     </div>
-    <aside class="passport-ui" aria-label="BackWon Passport preview">
-      <div class="passport-top">
-        <div class="passport-title">BackWon Work Passport</div>
-        <div class="pill">Ready to Work</div>
-      </div>
-      <div class="task-list">
-        <div class="task"><div class="dot">W</div><div><b>재직·급여 증빙</b><span>계약서, 급여명세, 입금내역을 한 곳에</span></div><small>최신</small></div>
-        <div class="task"><div class="dot">J</div><div><b>구직 준비도</b><span>비자별 지원 가능 일자리와 필요 서류</span></div><small>진행</small></div>
-        <div class="task"><div class="dot">M</div><div><b>정산 체크</b><span>국민연금, 퇴직금, EPS 보험 가능성</span></div><small>확인</small></div>
-        <div class="task"><div class="dot">F</div><div><b>금융 준비도</b><span>점수 없는 신용 보강 리포트</span></div><small>동의</small></div>
-      </div>
-    </aside>
+    <figure class="brand-hero" aria-label="BackWon brand image">
+      <img src="assets/backwon-brand-logo.svg" alt="BACKWON tax refund service for foreign workers logo">
+      <figcaption class="brand-caption">
+        <b>BackWon Financial Passport</b>
+        <span>refund, payroll, documents, and finance readiness</span>
+      </figcaption>
+    </figure>
   </div>
 </header>
 
@@ -415,7 +417,7 @@
   <div class="container">
     <div class="ft-top">
       <div class="ft-intro">
-        <span class="wordmark">PLUG<span class="nx">nx</span> × BackWon</span>
+        <span class="wordmark" aria-label="PLUGnx × BackWon">PLUG<span class="nx">nx</span> × BackWon</span>
         <p>외국인 재직자와 구직자의 일·돈·체류·서류 기록을 본인 소유의 신뢰 자산으로 바꾸는 Work Passport.</p>
       </div>
       <div class="ft-col">
