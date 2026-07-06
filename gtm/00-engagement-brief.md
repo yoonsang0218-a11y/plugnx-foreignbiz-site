@@ -1,7 +1,7 @@
 # GTM 엔게이지먼트 브리프 (공통 입력) — 모든 워크스트림이 먼저 읽는다
 
 > 작성: gtm-engagement-lead 총괄 · 기준: PROJECT.md(SSOT) + strategy.html·screening.html·business-case(재리뷰 통과)·business-case-research/
-> 규칙: 수치는 SSOT에서만 인용 · 새 가정="가정" · 외부통계=출처·기준시점 · 추정="추정" · 브랜딩 PlugNX/VisaDesk/BackWon/ForeignID(`Plug&X`·`VisaOps`·`Crew` 금지) · 비자·금융·법률은 참고용(전문가 확인 필요).
+> 규칙: 수치는 SSOT에서만 인용 · 새 가정="가정" · 외부통계=출처·기준시점 · 추정="추정" · 브랜딩 PlugNX/VisaDesk/BackWon/ForeignID(`폐기 브랜드명`·`폐기 코드네임`·`폐기 기업앱 코드명` 금지) · 비자·금융·법률은 참고용(전문가 확인 필요).
 
 ## 문제정의 (한 문장)
 **VisaDesk(B2B)로 "외국인 5~50명을 고용하는 중소·중견 사업장"을 첫 비치헤드로 잡아, 8주 PoC 15사·3,300만원을 확보하고 → BackWon(B2C, CAC 0 유입) → D3 데이터·신용·여신(후행)으로 확장하는 GTM을 어떻게 설계·실행하는가.**

@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow" />
+<title>VisaDesk 화면 프로토타입 | PlugNX</title>
+<style>
+  :root{
+    --blue:#0066cc;
+    --blue-focus:#0071e3;
+    --sky:#2997ff;
+    --white:#ffffff;
+    --parch:#f5f5f7;
+    --pearl:#fafafc;
+    --black:#000000;
+    --tile:#272729;
+    --tile2:#2a2a2c;
+    --ink:#1d1d1f;
+    --ink80:#333333;
+    --ink48:#7a7a7a;
+    --hair:#e0e0e0;
+    --line:#f0f0f0;
+    --red:#d70015;
+    --amber:#b25a00;
+    --green:#1d8a4f;
+    --dim:#cccccc;
+    --font:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text",Inter,system-ui,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    --shadow:rgba(0,0,0,.22) 3px 5px 30px 0;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;
+    font-family:var(--font);
+    color:var(--ink);
+    background:var(--white);
+    letter-spacing:0;
+    line-height:1.47;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+    overflow-x:hidden;
+  }
+  a{color:var(--blue);text-decoration:none}
+  button,input,select{font-family:inherit}
+  .container{max-width:1180px;margin:0 auto;padding:0 24px}
+  .top{
+    height:44px;
+    background:var(--black);
+    color:#f5f5f7;
+    position:sticky;
+    top:0;
+    z-index:50;
+  }
+  .top .container{height:44px;display:flex;align-items:center;gap:20px}
+  .brand{font-weight:700;font-size:15px;color:#fff}
+  .brand span{opacity:.62}
+  .top a{font-size:12px;color:#f5f5f7;opacity:.82}
+  .top .spacer{flex:1}
+  .sub{
+    position:sticky;
+    top:44px;
+    z-index:45;
+    height:auto;
+    min-height:56px;
+    border-bottom:1px solid rgba(0,0,0,.08);
+    background:rgba(245,245,247,.86);
+    -webkit-backdrop-filter:saturate(180%) blur(20px);
+    backdrop-filter:saturate(180%) blur(20px);
+  }
+  .sub .container{min-height:56px;display:flex;align-items:center;gap:14px;flex-wrap:wrap;padding-top:8px;padding-bottom:8px}
+  .cat{font-size:21px;font-weight:600;color:var(--ink);white-space:nowrap}
+  .cat b{color:var(--blue)}
+  .tabs{display:flex;gap:8px;flex-wrap:wrap;margin-left:auto}
+  .tab{
+    border:1px solid var(--hair);
+    background:#fff;
+    color:var(--ink80);
+    border-radius:999px;
+    padding:7px 12px;
+    font-size:12px;
+    cursor:pointer;
+  }
+  .tab:hover,.tab.active{border-color:var(--blue);color:var(--blue);background:rgba(0,102,204,.06)}
+  .screen{padding:72px 0;border-bottom:1px solid var(--line)}
+  .screen.dark{background:var(--tile);color:var(--dim)}
+  .screen.parch{background:var(--parch)}
+  .kicker{display:block;font-size:14px;font-weight:600;color:var(--blue);margin-bottom:12px}
+  .dark .kicker{color:var(--sky)}
+  h1,h2,h3,h4,p{margin-top:0;letter-spacing:0}
+  h1{font-size:56px;line-height:1.07;font-weight:600;margin-bottom:18px}
+  h2{font-size:40px;line-height:1.1;font-weight:600;margin-bottom:14px}
+  h3{font-size:21px;line-height:1.18;font-weight:600;margin-bottom:8px}
+  p.lead{font-size:24px;line-height:1.3;color:var(--ink80);max-width:720px;margin-bottom:26px}
+  .dark h1,.dark h2,.dark h3,.dark h4{color:#fff}
+  .dark p.lead,.dark p,.dark .muted{color:var(--dim)}
+  .muted{color:var(--ink48)}
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    border:1px solid transparent;
+    border-radius:999px;
+    padding:11px 22px;
+    font-size:17px;
+    line-height:1;
+    cursor:pointer;
+    white-space:nowrap;
+  }
+  .btn:active{transform:scale(.96)}
+  .btn:focus-visible{outline:2px solid var(--blue-focus);outline-offset:3px}
+  .primary{background:var(--blue);border-color:var(--blue);color:#fff}
+  .secondary{background:transparent;border-color:var(--blue);color:var(--blue)}
+  .ghost{background:#fff;border-color:var(--hair);color:var(--ink80)}
+  .sm{font-size:14px;padding:8px 14px}
+  .hero-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(360px,520px);gap:46px;align-items:center}
+  .hero-grid>*{min-width:0}
+  .mobile-break{display:none}
+  .mobile-copy{display:none}
+  .cta-row{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+  .chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}
+  .chip{
+    display:inline-flex;
+    align-items:center;
+    min-height:30px;
+    padding:6px 12px;
+    border-radius:999px;
+    border:1px solid var(--hair);
+    background:var(--parch);
+    font-size:13px;
+    color:var(--ink48);
+  }
+  .chip b{color:var(--ink);font-weight:600}
+  .product-shot{
+    background:#fff;
+    border:1px solid var(--hair);
+    border-radius:8px;
+    box-shadow:var(--shadow);
+    overflow:hidden;
+    max-width:100%;
+  }
+  .shot-head{height:40px;background:var(--pearl);border-bottom:1px solid var(--hair);display:flex;align-items:center;gap:8px;padding:0 14px}
+  .dot{width:9px;height:9px;border-radius:50%;background:#c7c7cc}
+  .shot-body{padding:20px}
+  .score-row{display:grid;grid-template-columns:112px 1fr;gap:18px;align-items:center;margin-bottom:18px}
+  .score{
+    height:112px;
+    border-radius:8px;
+    border:1px solid var(--hair);
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    background:#fff;
+  }
+  .score b{font-size:34px;line-height:1;color:var(--blue)}
+  .score span{font-size:12px;color:var(--ink48);margin-top:6px}
+  .bar{height:8px;border-radius:999px;background:#e8e8ed;overflow:hidden}
+  .bar span{display:block;height:100%;background:var(--blue);border-radius:999px}
+  .metric-list{display:grid;gap:8px}
+  .metric{display:flex;justify-content:space-between;gap:12px;font-size:13px;align-items:center}
+  .status{display:inline-flex;align-items:center;min-height:22px;padding:3px 8px;border-radius:999px;font-size:11px;font-weight:600;border:1px solid transparent}
+  .red{background:rgba(215,0,21,.08);border-color:rgba(215,0,21,.18);color:var(--red)}
+  .amber{background:rgba(178,90,0,.08);border-color:rgba(178,90,0,.2);color:var(--amber)}
+  .green{background:rgba(29,138,79,.08);border-color:rgba(29,138,79,.2);color:var(--green)}
+  .blue{background:rgba(0,102,204,.08);border-color:rgba(0,102,204,.18);color:var(--blue)}
+  .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+  .card{
+    background:#fff;
+    border:1px solid var(--hair);
+    border-radius:8px;
+    padding:20px;
+  }
+  .dark .card{background:var(--tile2);border-color:rgba(255,255,255,.12)}
+  .card p{font-size:15px;color:var(--ink48);margin-bottom:0}
+  .dark .card p{color:var(--dim)}
+  .screen-title{display:flex;align-items:flex-end;justify-content:space-between;gap:18px;margin-bottom:24px}
+  .screen-title p{font-size:17px;color:var(--ink48);max-width:650px;margin-bottom:0}
+  .dark .screen-title p{color:var(--dim)}
+  .app-shell{
+    display:grid;
+    grid-template-columns:236px minmax(0,1fr);
+    min-height:720px;
+    background:#fff;
+    border:1px solid var(--hair);
+    border-radius:8px;
+    overflow:hidden;
+  }
+  .side{
+    background:var(--parch);
+    border-right:1px solid var(--hair);
+    padding:18px 14px;
+  }
+  .side-brand{font-weight:700;font-size:19px;margin-bottom:18px}
+  .side-brand span{color:var(--ink48)}
+  .side-sec{font-size:11px;font-weight:600;text-transform:uppercase;color:var(--ink48);margin:18px 8px 7px}
+  .navitem{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px;
+    min-height:36px;
+    border-radius:8px;
+    padding:8px 10px;
+    color:var(--ink80);
+    font-size:13px;
+  }
+  .navitem.active{background:rgba(0,102,204,.08);color:var(--blue);font-weight:600}
+  .main{min-width:0;background:#fff}
+  .app-top{
+    min-height:64px;
+    border-bottom:1px solid var(--hair);
+    display:flex;
+    align-items:center;
+    gap:14px;
+    padding:14px 22px;
+  }
+  .app-top .company b{display:block;font-size:16px}
+  .app-top .company span{display:block;font-size:12px;color:var(--ink48)}
+  .app-top .actions{margin-left:auto;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+  .app-content{padding:22px;background:#fff}
+  .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:16px}
+  .kpi{border:1px solid var(--hair);border-radius:8px;padding:16px;background:#fff}
+  .kpi .label{font-size:12px;color:var(--ink48)}
+  .kpi .value{font-size:30px;font-weight:600;margin-top:6px}
+  .kpi .note{font-size:12px;margin-top:3px}
+  .split{display:grid;grid-template-columns:1.4fr .9fr;gap:16px}
+  .table-wrap{overflow:auto;border:1px solid var(--hair);border-radius:8px;background:#fff}
+  table{width:100%;border-collapse:collapse;min-width:720px;font-size:14px}
+  th,td{padding:12px 14px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+  th{font-size:12px;font-weight:600;color:var(--ink48);background:var(--pearl)}
+  tr:last-child td{border-bottom:none}
+  .person{display:flex;align-items:center;gap:10px}
+  .avatar{
+    width:34px;height:34px;border-radius:50%;background:rgba(0,102,204,.09);
+    color:var(--blue);display:grid;place-items:center;font-weight:600;font-size:13px;flex:0 0 auto;
+  }
+  .person b{display:block}
+  .person small{display:block;color:var(--ink48);font-size:12px}
+  .queue{display:grid;gap:10px}
+  .task{
+    border:1px solid var(--hair);
+    border-radius:8px;
+    padding:13px;
+    display:grid;
+    grid-template-columns:1fr auto;
+    gap:12px;
+    align-items:start;
+    background:#fff;
+  }
+  .task b{display:block;font-size:14px}
+  .task span{display:block;font-size:12px;color:var(--ink48);margin-top:3px}
+  .filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+  .filter{border:1px solid var(--hair);background:#fff;border-radius:999px;padding:7px 12px;font-size:13px;color:var(--ink80)}
+  .filter.active{border-color:var(--blue);color:var(--blue);background:rgba(0,102,204,.06)}
+  .detail-layout{display:grid;grid-template-columns:320px 1fr;gap:16px}
+  .profile-head{text-align:center;padding:8px 0 16px;border-bottom:1px solid var(--hair);margin-bottom:16px}
+  .avatar.big{width:68px;height:68px;margin:0 auto 12px;font-size:22px}
+  .info-list{display:grid;gap:10px}
+  .info{display:flex;justify-content:space-between;gap:12px;font-size:13px}
+  .info span:first-child{color:var(--ink48)}
+  .timeline{display:grid;gap:12px}
+  .event{display:grid;grid-template-columns:110px 1fr auto;gap:12px;border-bottom:1px solid var(--line);padding-bottom:12px;font-size:14px}
+  .event:last-child{border-bottom:none;padding-bottom:0}
+  .date{color:var(--ink48);font-size:13px}
+  .checklist{display:grid;gap:10px}
+  .check{display:grid;grid-template-columns:18px 1fr auto;gap:10px;align-items:center;font-size:14px}
+  .box{width:18px;height:18px;border:1px solid var(--hair);border-radius:5px;background:#fff}
+  .box.done{background:var(--blue);border-color:var(--blue)}
+  .readiness{display:grid;grid-template-columns:300px 1fr;gap:18px}
+  .readiness-score{display:flex;flex-direction:column;justify-content:center;text-align:center;min-height:300px}
+  .readiness-score b{font-size:64px;color:var(--blue);line-height:1}
+  .readiness-score span{font-size:13px;color:var(--ink48);margin-top:8px}
+  .dimension{display:grid;grid-template-columns:150px 1fr 44px;gap:12px;align-items:center;margin-bottom:14px}
+  .dimension b{font-size:13px}
+  .dimension em{font-style:normal;font-size:13px;color:var(--ink48);text-align:right}
+  .kanban{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+  .lane{background:var(--parch);border:1px solid var(--hair);border-radius:8px;padding:12px;min-height:420px}
+  .lane h3{font-size:14px;margin-bottom:12px}
+  .candidate{background:#fff;border:1px solid var(--hair);border-radius:8px;padding:13px;margin-bottom:10px}
+  .candidate b{display:block;font-size:14px;margin-bottom:4px}
+  .candidate small{display:block;color:var(--ink48);font-size:12px;margin-bottom:8px}
+  .phone-wrap{display:grid;grid-template-columns:1fr 340px;gap:36px;align-items:center}
+  .phone{
+    width:320px;
+    max-width:100%;
+    margin-left:auto;
+    background:#fff;
+    border:1px solid var(--hair);
+    border-radius:28px;
+    padding:12px;
+    box-shadow:var(--shadow);
+  }
+  .phone-screen{border:1px solid var(--hair);border-radius:20px;overflow:hidden;background:#fff;min-height:620px}
+  .phone-head{padding:18px;border-bottom:1px solid var(--hair);background:var(--pearl)}
+  .phone-head b{display:block;font-size:18px}
+  .phone-head span{display:block;font-size:12px;color:var(--ink48);margin-top:4px}
+  .phone-list{padding:14px;display:grid;gap:10px}
+  .mobile-task{border:1px solid var(--hair);border-radius:8px;padding:12px;display:grid;grid-template-columns:32px 1fr;gap:10px;align-items:start}
+  .num{width:32px;height:32px;border-radius:50%;background:rgba(0,102,204,.08);color:var(--blue);display:grid;place-items:center;font-size:13px;font-weight:600}
+  .mobile-task b{display:block;font-size:13px}
+  .mobile-task span{display:block;font-size:12px;color:var(--ink48);margin-top:3px}
+  .flow{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:20px}
+  .flow-step{border:1px solid var(--hair);border-radius:8px;background:#fff;padding:18px}
+  .flow-step .n{width:30px;height:30px;border-radius:50%;background:var(--blue);color:#fff;display:grid;place-items:center;font-size:13px;font-weight:600;margin-bottom:10px}
+  .settlement-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:16px}
+  .amounts{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+  .amount{border:1px solid var(--hair);border-radius:8px;padding:15px;background:#fff}
+  .amount b{display:block;font-size:22px}
+  .amount span{display:block;font-size:12px;color:var(--ink48);margin-top:4px}
+  .api-layout{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:start}
+  .code{
+    background:#0f1115;
+    color:#e6edf3;
+    border-radius:8px;
+    padding:18px;
+    overflow:auto;
+    font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+    font-size:13px;
+    line-height:1.55;
+  }
+  .source-note{font-size:12px;color:var(--ink48);line-height:1.65;margin-top:18px}
+  .footer{background:var(--black);color:#86868b;padding:36px 0;font-size:12px;line-height:1.65}
+  .footer b{color:#f5f5f7}
+  @media(max-width:1040px){
+    .hero-grid,.phone-wrap,.api-layout,.readiness,.detail-layout,.settlement-grid,.split{grid-template-columns:1fr}
+    .phone{margin:0 auto}
+    .kanban,.kpis,.grid-4{grid-template-columns:repeat(2,1fr)}
+  }
+  @media(max-width:760px){
+    .top .container{gap:12px;overflow:hidden}
+    .top a:not(.brand){display:none}
+    .sub .container{min-width:0}
+    .cat{width:100%;white-space:normal}
+    .tabs{max-width:100%;min-width:0}
+    h1{font-size:32px;line-height:1.2;word-break:keep-all}
+    h2{font-size:26px;line-height:1.2;word-break:normal;overflow-wrap:anywhere}
+    h3{word-break:keep-all}
+    p.lead{word-break:normal;overflow-wrap:anywhere}
+    p{overflow-wrap:anywhere}
+    .mobile-break{display:block}
+    .desktop-copy{display:none}
+    .mobile-copy{display:inline}
+    p.lead{font-size:18px}
+    .screen{padding:52px 0}
+    .container{padding:0 18px}
+    .tabs{width:100%;margin-left:0;overflow:auto;flex-wrap:nowrap;padding-bottom:4px}
+    .tab{flex:0 0 auto}
+    .hero-grid,.grid-2,.grid-3,.grid-4,.kpis,.kanban,.flow,.amounts{grid-template-columns:1fr}
+    .app-shell{grid-template-columns:1fr}
+    .side{display:none}
+    .event{grid-template-columns:1fr}
+    .dimension{grid-template-columns:1fr}
+    .app-top .actions{width:100%;margin-left:0}
+    .screen-title{display:block}
+    .score-row{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+  <header class="top">
+    <div class="container">
+      <a class="brand" href="#landing">PLUG<span>nx</span></a>
+      <a href="#landing">VisaDesk</a>
+      <a href="#dashboard">기업 콘솔</a>
+      <a href="#worker">근로자 화면</a>
+      <span class="spacer"></span>
+      <a href="#risk">무료 진단</a>
+    </div>
+  </header>
+
+  <nav class="sub">
+    <div class="container">
+      <div class="cat">VisaDesk <b>Prototype</b></div>
+      <div class="tabs" aria-label="화면 바로가기">
+        <a class="tab active" href="#landing">공개 웹</a>
+        <a class="tab" href="#risk">리스크 진단</a>
+        <a class="tab" href="#dashboard">대시보드</a>
+        <a class="tab" href="#employees">직원 원장</a>
+        <a class="tab" href="#detail">직원 상세</a>
+        <a class="tab" href="#ktrust">K-Trust</a>
+        <a class="tab" href="#e74">E-7-4</a>
+        <a class="tab" href="#worker">근로자</a>
+        <a class="tab" href="#settlement">출국정산</a>
+        <a class="tab" href="#api">금융 API</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <section id="landing" class="screen">
+      <div class="container hero-grid">
+        <div>
+          <span class="kicker">PlugNX VisaDesk</span>
+          <h1><span class="desktop-copy">외국인 고용 리스크를 직원별 업무 큐로 전환합니다.</span><span class="mobile-copy">외국인 고용 리스크를<br>직원별 업무 큐로<br>전환합니다.</span></h1>
+          <p class="lead"><span class="desktop-copy">비자 만료, 서류 누락, 숙련전환, 출국정산, 근로자 본인인증까지 기업의 외국인 인력 운영을 한 화면에서 관리합니다.</span><span class="mobile-copy">비자·서류·숙련전환·출국정산·본인인증 관리.</span></p>
+          <div class="cta-row">
+            <a class="btn primary" href="#risk">무료 리스크 진단</a>
+            <a class="btn secondary" href="#dashboard">제품 화면 보기</a>
+          </div>
+          <div class="chips">
+            <span class="chip"><b>타깃</b>&nbsp;외국인 10명 이상 고용기업</span>
+            <span class="chip"><b>패키지</b>&nbsp;K-Trust</span>
+            <span class="chip"><b>연동</b>&nbsp;ForeignID · BackWon</span>
+          </div>
+        </div>
+        <div class="product-shot" aria-label="VisaDesk 대시보드 미리보기">
+          <div class="shot-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+          <div class="shot-body">
+            <div class="score-row">
+              <div class="score"><b>72</b><span>K-Trust 준비도</span></div>
+              <div class="metric-list">
+                <div class="metric"><span>체류만료 30일 이내</span><b>4명</b></div>
+                <div class="metric"><span>서류 누락</span><b>12건</b></div>
+                <div class="metric"><span>E-7-4 전환 후보</span><b>6명</b></div>
+                <div class="metric"><span>BackWon 동의 완료</span><b>71%</b></div>
+              </div>
+            </div>
+            <div class="metric-list">
+              <div><div class="metric"><span>체류·비자</span><span>68%</span></div><div class="bar"><span style="width:68%"></span></div></div>
+              <div><div class="metric"><span>임금·보험</span><span>81%</span></div><div class="bar"><span style="width:81%"></span></div></div>
+              <div><div class="metric"><span>숙소·안전</span><span>54%</span></div><div class="bar"><span style="width:54%"></span></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="risk" class="screen parch">
+      <div class="container">
+        <div class="screen-title">
+          <div>
+            <span class="kicker">Screen 01</span>
+            <h2>무료 외국인 고용 리스크 진단</h2>
+          </div>
+          <p>랜딩의 전환 장치입니다. 기업 담당자가 2분 안에 현재 리스크를 입력하고 PDF 리포트와 PoC 상담으로 넘어갑니다.</p>
+        </div>
+        <div class="grid-2">
+          <div class="card">
+            <h3>사업장 기본 정보</h3>
+            <div class="grid-2" style="margin-top:16px">
+              <label>업종<br><select style="width:100%;margin-top:6px;padding:11px;border:1px solid var(--hair);border-radius:8px"><option>제조업</option><option>요양·돌봄</option><option>조선·부품</option></select></label>
+              <label>외국인 근로자 수<br><input value="28명" style="width:100%;margin-top:6px;padding:11px;border:1px solid var(--hair);border-radius:8px"></label>
+              <label>주요 비자<br><select style="width:100%;margin-top:6px;padding:11px;border:1px solid var(--hair);border-radius:8px"><option>E-9 / E-7 / F-4 혼합</option></select></label>
+              <label>현재 관리 방식<br><select style="width:100%;margin-top:6px;padding:11px;border:1px solid var(--hair);border-radius:8px"><option>엑셀 + 행정사 + 담당자 수기</option></select></label>
+            </div>
+            <h3 style="margin-top:24px">빠른 체크</h3>
+            <div class="checklist" style="margin-top:12px">
+              <div class="check"><span class="box done"></span><span>체류 만료일을 월 1회 이상 점검한다</span><span class="status green">예</span></div>
+              <div class="check"><span class="box"></span><span>직원별 최신 서류가 한 곳에 모여 있다</span><span class="status amber">부분</span></div>
+              <div class="check"><span class="box"></span><span>숙소·안전·보험 증빙을 보관한다</span><span class="status red">미흡</span></div>
+              <div class="check"><span class="box done"></span><span>E-7-4 전환 후보를 관리한다</span><span class="status amber">일부</span></div>
+            </div>
+            <div class="cta-row" style="margin-top:24px">
+              <button class="btn primary">리포트 생성</button>
+              <button class="btn ghost">입력값 저장</button>
+            </div>
+          </div>
+          <div class="card">
+            <h3>리스크 리포트 미리보기</h3>
+            <div class="score-row" style="margin-top:18px">
+              <div class="score"><b>62</b><span>현재 점수</span></div>
+              <div class="metric-list">
+                <div class="task"><div><b>High 3건</b><span>30일 이내 체류만료, 숙소 증빙 누락, 보험 확인 필요</span></div><span class="status red">조치</span></div>
+                <div class="task"><div><b>Medium 8건</b><span>고용계약서 번역본, 근무지 변경 이력, 서류 유효기간</span></div><span class="status amber">점검</span></div>
+                <div class="task"><div><b>Opportunity 6명</b><span>숙련전환 후보군으로 관리 가능한 직원</span></div><span class="status blue">전환</span></div>
+              </div>
+            </div>
+            <div class="source-note">결과는 운영 보조용 진단이며 법적 판단이 아닙니다. 경계 사안은 행정사·노무사 검토가 필요합니다.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="dashboard" class="screen">
+      <div class="container">
+        <div class="screen-title">
+          <div>
+            <span class="kicker">Screen 02</span>
+            <h2>기업 콘솔 대시보드</h2>
+          </div>
+          <p>담당자가 매일 들어와서 오늘 처리할 리스크와 직원별 상태를 확인하는 유료 SaaS의 홈 화면입니다.</p>
+        </div>
+        <div class="app-shell">
+          <aside class="side">
+            <div class="side-brand">PLUG<span>nx</span></div>
+            <div class="side-sec">VisaDesk</div>
+            <div class="navitem active">대시보드 <span class="status red">4</span></div>
+            <div class="navitem">직원 원장 <span>128</span></div>
+            <div class="navitem">서류함</div>
+            <div class="navitem">알림 센터</div>
+            <div class="side-sec">Workflows</div>
+            <div class="navitem">K-Trust 준비</div>
+            <div class="navitem">E-7-4 전환</div>
+            <div class="navitem">온보딩</div>
+            <div class="navitem">출국정산</div>
+            <div class="side-sec">Integrations</div>
+            <div class="navitem">ForeignID</div>
+            <div class="navitem">BackWon</div>
+          </aside>
+          <div class="main">
+            <div class="app-top">
+              <div class="company"><b>세림정밀 주식회사</b><span>외국인 근로자 128명 · 제조업 · 안산</span></div>
+              <div class="actions">
+                <button class="btn ghost sm">리포트 다운로드</button>
+                <button class="btn primary sm">직원 초대</button>
+              </div>
+            </div>
+            <div class="app-content">
+              <div class="kpis">
+                <div class="kpi"><div class="label">오늘 처리</div><div class="value">17</div><div class="note red">High 4건</div></div>
+                <div class="kpi"><div class="label">체류만료 30일</div><div class="value">4</div><div class="note amber">서류 준비 필요</div></div>
+                <div class="kpi"><div class="label">서류 완성도</div><div class="value">81%</div><div class="note green">전월 대비 +9%</div></div>
+                <div class="kpi"><div class="label">BackWon 동의</div><div class="value">91</div><div class="note blue">전체 71%</div></div>
+              </div>
+              <div class="split">
+                <div class="card">
+                  <h3>오늘의 업무 큐</h3>
+                  <div class="queue" style="margin-top:14px">
+                    <div class="task"><div><b>응우옌 반 안 체류만료 D-27</b><span>여권 사본, 고용계약서 최신본 확인 필요</span></div><span class="status red">High</span></div>
+                    <div class="task"><div><b>숙소 안전 체크 증빙 5건 누락</b><span>K-Trust 준비도 항목에 반영됩니다</span></div><span class="status amber">Medium</span></div>
+                    <div class="task"><div><b>E-7-4 전환 후보 2명 요건 업데이트</b><span>한국어 교육 이수 내역 연결 가능</span></div><span class="status blue">Review</span></div>
+                  </div>
+                </div>
+                <div class="card">
+                  <h3>준비도 요약</h3>
+                  <div class="metric-list" style="margin-top:18px">
+                    <div><div class="metric"><span>체류·비자</span><b>68%</b></div><div class="bar"><span style="width:68%"></span></div></div>
+                    <div><div class="metric"><span>임금·보험</span><b>81%</b></div><div class="bar"><span style="width:81%"></span></div></div>
+                    <div><div class="metric"><span>숙소·안전</span><b>54%</b></div><div class="bar"><span style="width:54%"></span></div></div>
+                    <div><div class="metric"><span>근로자 동의</span><b>71%</b></div><div class="bar"><span style="width:71%"></span></div></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="employees" class="screen parch">
+      <div class="container">
+        <div class="screen-title">
+          <div>
+            <span class="kicker">Screen 03</span>
+            <h2>외국인 직원 원장</h2>
+          </div>
+          <p>엑셀을 대체하는 핵심 화면입니다. 비자, 체류만료, 서류, 보험, ForeignID, BackWon 동의 상태가 직원 단위로 쌓입니다.</p>
+        </div>
+        <div class="card">
+          <div class="filters">
+            <button class="filter active">전체 128</button>
+            <button class="filter">High 4</button>
+            <button class="filter">D-60 이내 11</button>
+            <button class="filter">E-7-4 후보 6</button>
+            <button class="filter">동의 미완료 37</button>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>직원</th><th>비자</th><th>체류만료</th><th>서류</th><th>ForeignID</th><th>BackWon</th><th>다음 조치</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><div class="person"><span class="avatar">NA</span><div><b>Nguyen Van An</b><small>베트남 · 생산 2팀</small></div></div></td>
+                  <td>E-9</td><td><span class="status red">D-27</span></td><td>8/11</td><td><span class="status green">L2 완료</span></td><td><span class="status blue">동의</span></td><td>체류연장 서류 준비</td>
+                </tr>
+                <tr>
+                  <td><div class="person"><span class="avatar">RS</span><div><b>Rina Sari</b><small>인도네시아 · 품질</small></div></div></td>
+                  <td>E-7</td><td><span class="status amber">D-54</span></td><td>10/11</td><td><span class="status green">L3 완료</span></td><td><span class="status blue">동의</span></td><td>보험 증빙 갱신</td>
+                </tr>
+                <tr>
+                  <td><div class="person"><span class="avatar">MB</span><div><b>Munhbat Bold</b><small>몽골 · 설비</small></div></div></td>
+                  <td>E-9</td><td><span class="status green">D-188</span></td><td>9/11</td><td><span class="status amber">L1</span></td><td><span class="status amber">대기</span></td><td>E-7-4 후보 검토</td>
+                </tr>
+                <tr>
+                  <td><div class="person"><span class="avatar">LG</span><div><b>Li Guo</b><small>중국 · 용접</small></div></div></td>
+                  <td>F-4</td><td><span class="status green">D-244</span></td><td>11/11</td><td><span class="status green">L3 완료</span></td><td><span class="status blue">동의</span></td><td>정상</td>
+                </tr>
+                <tr>
+                  <td><div class="person"><span class="avatar">KP</span><div><b>Kumar Prasad</b><small>네팔 · 생산 1팀</small></div></div></td>
+                  <td>E-9</td><td><span class="status red">D-18</span></td><td>6/11</td><td><span class="status amber">L1</span></td><td><span class="status amber">미동의</span></td><td>전문가 검토 요청</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="detail" class="screen">
+      <div class="container">
+        <div class="screen-title">
+          <div>
+            <span class="kicker">Screen 04</span>
+            <h2>직원 상세 페이지</h2>
+          </div>
+          <p>직원별 체류 타임라인, 서류함, 임금·보험 체크, BackWon 동의 이력이 한 페이지에 모입니다.</p>
+        </div>
+        <div class="detail-layout">
+          <div class="card">
+            <div class="profile-head">
+              <div class="avatar big">NA</div>
+              <h3>Nguyen Van An</h3>
+              <p>베트남 · 생산 2팀 · E-9</p>
+            </div>
+            <div class="info-list">
+              <div class="info"><span>체류만료</span><b class="red" style="background:none;border:0;padding:0">2026.07.30</b></div>
+              <div class="info"><span>근무지</span><b>안산 2공장</b></div>
+              <div class="info"><span>ForeignID</span><b>L2 완료</b></div>
+              <div class="info"><span>BackWon</span><b>동의 완료</b></div>
+              <div class="info"><span>전문가 검토</span><b>필요</b></div>
+            </div>
+            <div class="cta-row" style="margin-top:20px">
+              <button class="btn primary sm">서류 요청</button>
+              <button class="btn ghost sm">전문가 연결</button>
+            </div>
+          </div>
+          <div class="grid-2">
+            <div class="card">
+              <h3>체류·고용 타임라인</h3>
+              <div class="timeline" style="margin-top:16px">
+                <div class="event"><span class="date">2026.07.03</span><span>체류연장 D-27 알림 생성</span><span class="status red">High</span></div>
+                <div class="event"><span class="date">2026.06.28</span><span>BackWon 급여진단 동의 완료</span><span class="status blue">Data</span></div>
+                <div class="event"><span class="date">2026.05.14</span><span>근무지 변경 확인서 업로드</span><span class="status green">완료</span></div>
+                <div class="event"><span class="date">2025.08.01</span><span>최초 고용계약 등록</span><span class="status green">완료</span></div>
+              </div>
+            </div>
+            <div class="card">
+              <h3>준비 서류</h3>
+              <div class="checklist" style="margin-top:16px">
+                <div class="check"><span class="box done"></span><span>여권 사본</span><span class="status green">완료</span></div>
+                <div class="check"><span class="box done"></span><span>외국인등록증</span><span class="status green">완료</span></div>
+                <div class="check"><span class="box"></span><span>최신 고용계약서</span><span class="status red">누락</span></div>
+                <div class="check"><span class="box"></span><span>보험 가입 증빙</span><span class="status amber">갱신</span></div>
+                <div class="check"><span class="box done"></span><span>임금대장 확인</span><span class="status green">완료</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="ktrust" class="screen parch">
+      <div class="container">
+        <div class="screen-title">
+          <div>
+            <span class="kicker">Screen 05</span>
+            <h2>K-Trust Readiness</h2>
+          </div>
+          <p>정책 변화에 맞춘 기업용 프리미엄 화면입니다. 인증 준비도, 증빙자료, 개선 업무를 한 번에 보여줍니다.</p>
+        </div>
+        <div class="readiness">
+          <div class="card readiness-score">
+            <b>72</b>
+            <span>예상 준비도 점수</span>
+            <div class="cta-row" style="justify-content:center;margin-top:20px">
+              <button class="btn primary sm">월간 리포트 생성</button>
+            </div>
+          </div>
+          <div class="card">
+            <h3>평가 영역별 상태</h3>
+            <div style="margin-top:20px">
+              <div class="dimension"><b>체류·비자 관리</b><div class="bar"><span style="width:68%"></span></div><em>68</em></div>
+              <div class="dimension"><b>임금·보험</b><div class="bar"><span style="width:81%"></span></div><em>81</em></div>
+              <div class="dimension"><b>숙소·안전</b><div class="bar"><span style="width:54%"></span></div><em>54</em></div>
+              <div class="dimension"><b>서류 보존</b><div class="bar"><span style="width:76%"></span></div><em>76</em></div>
+              <div class="dimension"><b>근로자 안내·동의</b><div class="bar"><span style="width:71%"></span></div><em>71</em></div>
+            </div>
+            <div class="queue" style="margin-top:24px">
+              <div class="task"><div><b>숙소 점검표 7건 필요</b><span>사진, 주소, 점검일, 담당자 확인을 증빙으로 저장</span></div><span class="status amber">개선</span></div>
+              <div class="task"><div><b>근로자 안내문 다국어 서명 37명 미완료</b><span>ForeignID 초대 링크로 전자서명 수집</span></div><span class="status blue">초대</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="e74" class="screen">
+      <div class="container">
+        <div class="screen-title">
+          <div>
+            <span class="kicker">Screen 06</span>
+            <h2>E-7-4 숙련전환 관리</h2>
+          </div>
+          <p>좋은 외국인 직원을 장기근속으로 묶는 화면입니다. 후보 발굴, 부족 항목, 교육·서류 로드맵을 관리합니다.</p>
+        </div>
+        <div class="kanban">
+          <div class="lane">
+            <h3>후보 발굴 6</h3>
+            <div class="candidate"><b>Munhbat Bold</b><small>근속 3년 2개월 · 설비</small><div class="bar"><span style="width:66%"></span></div></div>
+            <div class="candidate"><b>Kumar Prasad</b><small>근속 2년 9개월 · 생산</small><div class="bar"><span style="width:58%"></span></div></div>
+          </div>
+          <div class="lane">
+            <h3>요건 보완 4</h3>
+            <div class="candidate"><b>Rina Sari</b><small>한국어 교육 이력 연결 필요</small><span class="status amber">교육</span></div>
+            <div class="candidate"><b>Temuulen Gan</b><small>임금 요건 확인 필요</small><span class="status red">검토</span></div>
+          </div>
+          <div class="lane">
+            <h3>서류 준비 3</h3>
+            <div class="candidate"><b>Nguyen Bao</b><small>경력증명, 고용추천서 준비</small><span class="status blue">서류</span></div>
+          </div>
+          <div class="lane">
+            <h3>전문가 검토 2</h3>
+            <div class="candidate"><b>Li Wei</b><small>직무 적합성 경계 사안</small><span class="status red">전문가</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="worker" class="screen dark">
+      <div class="container phone-wrap">
+        <div>
+          <span class="kicker">Screen 07</span>
+          <h2>근로자 온보딩 링크</h2>
+          <p class="lead">기업이 직원을 초대하면 근로자는 모바일 웹에서 ForeignID 인증, 다국어 안내문 서명, BackWon 환급·급여진단 동의를 진행합니다.</p>
+          <div class="flow">
+            <div class="flow-step"><div class="n">1</div><h3>초대</h3><p>기업 원장에서 직원 정보 입력 후 SMS 또는 메신저 링크 발송</p></div>
+            <div class="flow-step"><div class="n">2</div><h3>인증</h3><p>여권, 외국인등록증, 계좌, 전자서명 단계별 확인</p></div>
+            <div class="flow-step"><div class="n">3</div><h3>연결</h3><p>BackWon 환급·급여진단 동의와 금융 파트너 연결</p></div>
+          </div>
+        </div>
+        <div class="phone">
+          <div class="phone-screen">
+            <div class="phone-head">
+              <b>세림정밀 온보딩</b>
+              <span>Nguyen Van An님, 입사 준비 6단계</span>
+            </div>
+            <div class="phone-list">
+              <div class="mobile-task"><span class="num">1</span><div><b>ForeignID L1 인증</b><span>여권 + 셀카 확인</span></div></div>
+              <div class="mobile-task"><span class="num">2</span><div><b>외국인등록증 확인</b><span>L2 인증으로 체류 정보 연결</span></div></div>
+              <div class="mobile-task"><span class="num">3</span><div><b>급여계좌 등록</b><span>임금 지급 및 금융연계 동의</span></div></div>
+              <div class="mobile-task"><span class="num">4</span><div><b>안전교육 확인</b><span>베트남어 안내문 확인 및 서명</span></div></div>
+              <div class="mobile-task"><span class="num">5</span><div><b>BackWon 급여진단</b><span>환급·정산·금융혜택 안내 동의</span></div></div>
+              <div class="mobile-task"><span class="num">6</span><div><b>완료증 발급</b><span>기업 VisaDesk 원장에 자동 저장</span></div></div>
+              <button class="btn primary" style="width:100%;margin-top:8px">다음 단계 진행</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="settlement" class="screen parch">
+      <div class="container">
+        <div class="screen-title">
+          <div>
+            <span class="kicker">Screen 08</span>
+            <h2>출국정산·환급 관리</h2>
+          </div>
+          <p>BackWon의 진입점입니다. 퇴직·출국 이벤트를 기준으로 국민연금, 보험, 퇴직정산, 급여공제 확인 업무를 묶습니다.</p>
+        </div>
+        <div class="settlement-grid">
+          <div class="card">
+            <h3>정산 예정자</h3>
+            <div class="table-wrap" style="margin-top:14px">
+              <table>
+                <thead><tr><th>직원</th><th>예정일</th><th>체크 항목</th><th>상태</th></tr></thead>
+                <tbody>
+                  <tr><td>Nguyen Bao</td><td>2026.08.12</td><td>국민연금, 출국만기보험, 퇴직금</td><td><span class="status amber">서류 준비</span></td></tr>
+                  <tr><td>Kumar Prasad</td><td>2026.09.03</td><td>급여공제, 보험, 계좌 정리</td><td><span class="status red">검토 필요</span></td></tr>
+                  <tr><td>Rina Sari</td><td>2026.11.20</td><td>연금 반환 가능성, 정산 안내</td><td><span class="status green">정상</span></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="card">
+            <h3>BackWon 정산 미리보기</h3>
+            <div class="amounts" style="margin-top:16px">
+              <div class="amount"><b>₩8.7M</b><span>예상 국민연금 반환</span></div>
+              <div class="amount"><b>₩1.9M</b><span>보험·퇴직 관련 확인</span></div>
+              <div class="amount"><b>3건</b><span>근로자 동의 필요</span></div>
+            </div>
+            <div class="queue" style="margin-top:16px">
+              <div class="task"><div><b>급여 공제 오류 가능성</b><span>최근 3개월 공제 내역과 보험 가입 상태 대조</span></div><span class="status amber">점검</span></div>
+              <div class="task"><div><b>근로자 안내문 발송</b><span>베트남어·영어 환급 안내 링크 생성</span></div><span class="status blue">발송</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="source-note">환급 가능 여부와 금액은 비자, 국적, 가입기간, 최신 법령에 따라 달라질 수 있습니다. 화면 내 금액은 예시입니다.</div>
+      </div>
+    </section>
+
+    <section id="api" class="screen">
+      <div class="container">
+        <div class="screen-title">
+          <div>
+            <span class="kicker">Screen 09</span>
+            <h2>ForeignID Financial Passport API</h2>
+          </div>
+          <p>금융사와 보험사에 제공하는 B2B2C 레이어입니다. 신용점수 산출이 아니라 동의 기반 재직·임금·체류 신호를 전달합니다.</p>
+        </div>
+        <div class="api-layout">
+          <div class="card">
+            <h3>제공 신호</h3>
+            <div class="queue" style="margin-top:16px">
+              <div class="task"><div><b>Employment Verified</b><span>고용주 원장 기반 재직 여부, 입사일, 근무지 확인</span></div><span class="status green">Verified</span></div>
+              <div class="task"><div><b>Wage Continuity</b><span>급여 지급 연속성, 임금 변동, 공제 이상치</span></div><span class="status blue">Signal</span></div>
+              <div class="task"><div><b>Stay Validity</b><span>체류자격, 만료 D-day, 근무 가능성 점검 상태</span></div><span class="status amber">Monitor</span></div>
+              <div class="task"><div><b>Consent Audit Log</b><span>동의 범위, 발급 시각, 철회 이력, 목적 제한</span></div><span class="status green">Audit</span></div>
+            </div>
+          </div>
+          <div class="code" aria-label="API 예시">
+<pre>{
+  "worker_id": "fid_live_8f29",
+  "consent": {
+    "scope": ["employment", "wage", "stay_validity"],
+    "issued_at": "2026-07-03T10:30:00+09:00"
+  },
+  "employment": {
+    "status": "verified",
+    "employer_verified": true,
+    "tenure_months": 32
+  },
+  "wage_signal": {
+    "continuity": "stable",
+    "recent_variance": "low"
+  },
+  "stay_validity": {
+    "visa_class": "E-9",
+    "expiry_d_day": 188
+  }
+}</pre>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <b>PlugNX VisaDesk Prototype</b><br />
+      본 HTML은 제품 기획과 PoC 논의를 위한 정적 프로토타입입니다. 비자·노무·환급·금융 판단은 법적 효력이 없는 참고 정보이며 최신 법령과 전문가 검토가 필요합니다.
+    </div>
+  </footer>
+
+<script>
+  const links = Array.from(document.querySelectorAll('.tab'));
+  const sections = links.map(link => document.querySelector(link.getAttribute('href'))).filter(Boolean);
+  const setActive = () => {
+    const pos = window.scrollY + 130;
+    let current = sections[0];
+    for (const section of sections) {
+      if (section.offsetTop <= pos) current = section;
+    }
+    links.forEach(link => link.classList.toggle('active', link.getAttribute('href') === '#' + current.id));
+  };
+  window.addEventListener('scroll', setActive, { passive:true });
+  setActive();
+</script>
+</body>
+</html>

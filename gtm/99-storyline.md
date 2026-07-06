@@ -2,7 +2,7 @@
 
 > 작성: gtm-engagement-lead(신디시스) · 입력: `00-engagement-brief.md` + `01~08`(8개 워크스트림, 전부 읽기 전용) + `PROJECT.md`(SSOT)
 > 통합 원칙: Pyramid Principle(결론 먼저)·SCQA(상황→복잡성→질문→답)·MECE(Where→How to win→How to execute→Prove it). 8개 산출의 ⑥ 헤드라인을 한 지배 메시지로 묶고, 모순·중복·빈칸을 ③④에서 해소한다.
-> 라벨 규칙: 수치는 〔SSOT〕 또는 각 워크스트림 인용(새로 짓지 않음)·재무는 **목표·가정**·외부통계는 출처·기준시점. 브랜딩 PlugNX/VisaDesk/BackWon/ForeignID 엄수(`Plug&X`·`VisaOps`·`Crew` 금지). 비자·금융·법률은 법적 효력 없는 참고 정보 — 전문가 검증 필요.
+> 라벨 규칙: 수치는 〔SSOT〕 또는 각 워크스트림 인용(새로 짓지 않음)·재무는 **목표·가정**·외부통계는 출처·기준시점. 브랜딩 PlugNX/VisaDesk/BackWon/ForeignID 엄수(`폐기 브랜드명`·`폐기 코드네임`·`폐기 기업앱 코드명` 금지). 비자·금융·법률은 법적 효력 없는 참고 정보 — 전문가 검증 필요.
 
 ---
 

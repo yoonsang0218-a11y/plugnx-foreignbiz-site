@@ -7,10 +7,10 @@
 ---
 
 ## 🚨 P0 · 라이브 데모 브랜딩 위반 (본문 외부 운영 액션, IR 전 필수)
-§07이 "MVP 라이브"의 근거로 링크하는 **plugnx-visaops.netlify.app**가 브랜딩 규칙을 정면 위반:
-- `/workers` 헤더·푸터 **"Plug&X VisaOps"**, **"© 2026 Plug&X × BackWon"** / 랜딩 **"PlugNX Crew"** / `/dashboard` **"Plug&X VisaOps"** / 도메인에 폐기 코드네임 **visaops**.
-- PROJECT.md L42 `Plug&X 절대 금지`, L45 `VisaOps·Crew 폐기`. 본문은 `VisaDesk`를 쓰는데 링크 도착지가 불일치 → 투자자가 클릭 시 신뢰 역전.
-- **액션**: 라이브 리브랜딩(Plug&X→PlugNX, VisaOps/Crew→VisaDesk, 도메인 교체). 웹 소스 `C:\Users\admin\plugnx-foreign-finance-opportunity\webapp\`. business-case 본문 변경 아님 — **제품/배포 작업**.
+§07이 "MVP 라이브"의 근거로 링크하는 **VisaDesk 데모**가 브랜딩 규칙을 정면 위반:
+- `/workers` 헤더·푸터 **"폐기 브랜드명 폐기 코드네임"**, **"© 2026 폐기 브랜드명 × BackWon"** / 랜딩 **"PlugNX 폐기 기업앱 코드명"** / `/dashboard` **"폐기 브랜드명 폐기 코드네임"** / 도메인에 폐기 코드네임 **폐기 코드네임**.
+- PROJECT.md L42 `폐기 브랜드명 절대 금지`, L45 `폐기 코드네임·폐기 기업앱 코드명 폐기`. 본문은 `VisaDesk`를 쓰는데 링크 도착지가 불일치 → 투자자가 클릭 시 신뢰 역전.
+- **액션**: 라이브 리브랜딩(폐기 브랜드명→PlugNX, 폐기 코드네임/폐기 기업앱 코드명→VisaDesk, 도메인 교체). 웹 소스 `C:\Users\admin\plugnx-foreign-finance-opportunity\webapp\`. business-case 본문 변경 아님 — **제품/배포 작업**.
 
 ---
 
@@ -60,7 +60,7 @@
 ```
 **(c) BackWon 환급 셀 보정**: "표시 금액(평균 1,050만)은 예시 평균이며, 실제 환급액은 체류자격·국적·사회보장협정·납부이력·출국여부에 따라 달라지는 추정치(확정액은 소관기관 조회)."
 **(d) 6개 언어 SSOT 보정**: PROJECT.md L16 ‘6개 언어’는 라이브(3개)와 불일치 → ‘3개 라이브 + 3개 확대 중’으로 SSOT 보정 권고.
-**(e) 출처 각주**: "라이브 상태·화면 수·기능 성숙도는 2026.6.2 plugnx-visaops.netlify.app 직접 접근 기준(데모는 수시 업데이트)."
+**(e) 출처 각주**: "라이브 상태·화면 수·기능 성숙도는 2026.6.2 VisaDesk 데모 직접 접근 기준(데모는 수시 업데이트)."
 
 ## §12 KPI — 선행지표·게이트·벤치마크 라벨
 **(a) 전환 단계 분해 각주**: "‘전환 30%’는 세미나→계약(50→15) 기준. 분해 시 세미나→미팅 40%, 미팅→유료 75%. self-serve 무료체험 중앙값(4~6%)과 직접 비교 부적절(범주 오류) — 이건 ‘무료 준법진단=가치 입증 세션’."

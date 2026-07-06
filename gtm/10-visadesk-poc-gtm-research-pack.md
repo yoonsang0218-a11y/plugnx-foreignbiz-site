@@ -234,7 +234,7 @@ Ahrefs/Semrush 데이터가 없으므로 정성 기반 1차안이며, 추후 실
 
 ## 6. VisaDesk 랜딩 AEO/GEO 감사
 
-감사 URL: https://plugnx-visaops.netlify.app  
+감사 URL: visadesk.html  
 결과 JSON: `scratch/aeo-visadesk/aeo-audit.json`
 
 ### 점수
